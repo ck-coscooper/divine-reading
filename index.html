@@ -7,13 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Sarabun:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --forest-green: #013220;
-            --gold-foil: #D4AF37;
-            --gold-bright: #FFD700;
-            --deep-dark: #0a0a0a;
-            --text-silver: #e0e0e0;
-        }
+        :root { --forest-green: #013220; --gold-foil: #D4AF37; --gold-bright: #FFD700; --deep-dark: #0a0a0a; --text-silver: #e0e0e0; }
         body { background-color: var(--deep-dark); color: var(--text-silver); font-family: 'Sarabun', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         .font-cinzel { font-family: 'Cinzel', serif; }
         .gold-gradient-text { background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -112,7 +106,6 @@
         </section>
     </main>
     <script>
-        const GEMINI_KEY = "AIzaSyDBVTj6nl75XBoqMfYVf4nzyPgATjJRrig";
         const tarotDeck = [
             { id: 0, name: "The Fool", sub: "สัญชาตญาณและการเริ่มต้นใหม่", img: "https://www.sacred-texts.com/tarot/pkt/img/ar00.jpg" },
             { id: 1, name: "The Magician", sub: "ศักยภาพและการจัดการทรัพยากร", img: "https://www.sacred-texts.com/tarot/pkt/img/ar01.jpg" },
@@ -197,18 +190,14 @@
         async function fetchDiagnosis() {
             const prompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือผู้วางแผนและวินิจฉัยชีวิตระดับโลก บุคลิก: นิ่ง ตรง มีอำนาจ (Scorpio-Saturn class)\n\nข้อมูลผู้มาเยือน:\n- ชื่อ: ${state.name}\n- จำนวนวันที่อยู่บนโลก: ${state.days.toLocaleString()} วัน\n- ความในใจ/คำถาม: ${state.inquiry}\n- หน้าไพ่: ${state.card.name} (${state.card.sub})\n\nภารกิจ:\n1. ถ้า Yes/No ให้ฟันธงทันทีบรรทัดแรก\n2. วินิจฉัยจุดบอด บาดแผล ทางตัน อย่างตรงไปตรงมา ไม่ปลอบใจ\n3. ห้ามใช้ศัพท์ก่อสร้าง ห้ามเอ่ยชื่อวันเกิด\n4. ภาษา Sharp เฉียบคม ดูแพงระดับ World-Class\n\nเขียน 3-4 ย่อหน้าสั้นๆ เป็นภาษาไทย`;
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.9, maxOutputTokens: 1024 } })
+                const res = await fetch('/api/diagnose', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
                 });
                 const data = await res.json();
-                if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
-                    return data.candidates[0].content.parts[0].text;
-                }
-                console.error('Gemini error:', JSON.stringify(data));
-                return "ระบบขัดข้องชั่วคราว กรุณาลองใหม่อีกครั้ง";
+                return data.result || "ระบบขัดข้อง กรุณาลองใหม่";
             } catch (err) {
-                console.error('Fetch error:', err);
                 return "การเชื่อมต่อขัดข้อง กรุณาตรวจสอบอินเทอร์เน็ต";
             }
         }
