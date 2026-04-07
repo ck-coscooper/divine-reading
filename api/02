@@ -1,8 +1,1 @@
-{
-  question: userQuestion,
-  cards: selectedCards,
-  birthDay,
-  birthMonth,
-  birthYearAD,
-  birthHour
-}
+delete unused file 02
