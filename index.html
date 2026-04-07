@@ -13,8 +13,6 @@
         .gold-gradient-text { background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gold-border { border: 1px solid transparent; background-image: linear-gradient(var(--forest-green), var(--forest-green)), radial-gradient(circle at top left, #f5d67b, #d4af37); background-origin: border-box; background-clip: padding-box, border-box; box-shadow: 0 0 30px rgba(212, 175, 55, 0.1); }
         .btn-gold { background: linear-gradient(45deg, #B38728, #FBF5B7, #AA771C); color: var(--forest-green); font-weight: 700; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); text-transform: uppercase; letter-spacing: 2px; }
-        .btn-outline { border: 1px solid var(--gold-foil); color: var(--gold-foil); background: transparent; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
-        .btn-outline:hover { background: rgba(212,175,55,0.1); }
         input, select, textarea { font-size: 14px !important; background-color: rgba(0,0,0,0.6) !important; border: 1px solid rgba(212,175,55,0.2) !important; color: white !important; border-radius: 4px !important; padding: 0 15px !important; height: 42px !important; width: 100%; font-family: 'Sarabun', sans-serif; box-sizing: border-box; }
         textarea { height: auto !important; min-height: 100px !important; padding: 12px 15px !important; line-height: 1.6; }
         input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
@@ -30,28 +28,18 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .loading-pulse { animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
-        .lang-btn { padding: 2px 8px; font-size: 10px; border-radius: 3px; cursor: pointer; font-family: 'Cinzel', serif; letter-spacing: 1px; transition: all 0.2s; border: 1px solid rgba(212,175,55,0.4); color: rgba(212,175,55,0.5); background: transparent; }
-        .lang-btn.active { background: var(--gold-foil); color: #000; border-color: var(--gold-foil); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
     <header class="p-6 flex justify-between items-center border-b border-yellow-900/10 bg-black/80 backdrop-blur-xl sticky top-0 z-50">
         <h1 class="text-xl md:text-2xl font-cinzel gold-gradient-text font-bold tracking-[4px] uppercase">TAROT / AJARN FAAN</h1>
-        <div class="flex flex-col items-end gap-1">
-            <div id="live-date" class="text-[11px] text-yellow-400/80 font-cinzel tracking-[1px] uppercase"></div>
-            <div id="live-time" class="text-[13px] text-yellow-300 font-cinzel tracking-[2px]"></div>
-            <div class="text-[9px] text-yellow-400/40 tracking-[1px] uppercase font-cinzel">Bangkok · GMT+7</div>
-            <div class="flex gap-2 mt-1">
-                <button class="lang-btn active" id="btn-th" onclick="setLang('th')">TH</button>
-                <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-            </div>
-        </div>
+        <div id="live-clock" class="text-[10px] text-yellow-400/70 opacity-80 uppercase tracking-[1px]"></div>
     </header>
     <main class="flex-grow flex items-center justify-center p-4">
         <section id="step-1" class="w-full max-w-xl p-8 md:p-12 gold-border bg-[#013220]/98 rounded-xl space-y-10 fade-in">
             <div class="text-center space-y-3">
                 <h2 class="text-2xl font-cinzel gold-gradient-text uppercase tracking-[3px]">Identification</h2>
-                <p class="text-sm text-gray-300">ระบุพิกัดชะตาเพื่อยืนยันตัวตน</p>
+                <p class="text-[11px] text-gray-400 uppercase tracking-[2px]">ระบุพิกัดชะตาเพื่อยืนยันตัวตน</p>
             </div>
             <div class="space-y-6">
                 <div>
@@ -68,29 +56,35 @@
                     <div><label class="text-yellow-400 text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">MINUTE</label><select id="birth-minute"></select></div>
                 </div>
             </div>
-            <button onclick="proceedToSelection()" class="w-full btn-gold py-4 rounded text-xs mt-6 tracking-[3px]">BEGIN THE READING</button>
+            <button onclick="proceedToSelection()" class="w-full btn-gold py-4 rounded text-xs mt-6 tracking-[3px]">PROCEED TO RITUAL</button>
         </section>
-        <section id="step-2" class="hidden-step w-full max-w-4xl p-6 md:p-10 gold-border bg-[#013220]/98 rounded-xl space-y-6 fade-in">
+        <section id="step-2" class="hidden-step w-full max-w-6xl p-6 md:p-10 gold-border bg-[#013220]/98 rounded-xl space-y-8 fade-in">
             <div class="text-center space-y-4">
                 <h2 id="user-display" class="text-xl md:text-2xl font-cinzel gold-gradient-text uppercase font-bold tracking-tight"></h2>
                 <div id="life-log" class="text-sm text-gray-300 border-y border-yellow-900/10 py-4"></div>
-                <div class="space-y-3 max-w-xl mx-auto">
-                    <p class="text-yellow-400 text-[12px] uppercase tracking-[3px] font-bold">ตั้งคำถามในใจ</p>
-                    <textarea id="user-inquiry" placeholder="พิมพ์สิ่งที่อยู่ในใจ หรือคำถามที่ต้องการคำตอบ..."></textarea>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="space-y-3">
+                        <p class="text-yellow-400 text-[12px] uppercase tracking-[3px] font-bold">THE CORE INQUIRY</p>
+                        <textarea id="user-inquiry" placeholder="วินิจฉัยประเด็นใด: ระบุความในใจ หรือสิ่งที่ท่านต้องการหาทางออก..."></textarea>
+                    </div>
+                    <div class="p-6 bg-black/40 rounded border border-yellow-900/10">
+                        <p class="text-gray-400 text-sm leading-relaxed font-light">จงตั้งจิตให้มั่น พิมพ์ประเด็นที่ท่านต้องการวินิจฉัย จากนั้นใช้สมาธิเลือกไพ่ที่ดึงดูดใจท่านที่สุดเพียง 1 ใบจากกระดาน</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-8">
+                    <div id="card-grid" class="card-deck-grid bg-black/20 rounded-lg border border-yellow-900/5"></div>
                 </div>
             </div>
-            <div class="p-5 bg-black/40 rounded border border-yellow-900/10 text-center max-w-xl mx-auto">
-                <p class="text-gray-400 text-sm leading-relaxed font-light">อธิษฐานตั้งจิตก่อนเลือก — ถ้าจิตไม่นิ่ง คุณจะได้ด้านมืดในใจเปิดออกมา<br>อธิษฐานแล้วเลือกเพียง 1 ใบ</p>
-            </div>
-            <div id="card-grid" class="card-deck-grid bg-black/20 rounded-lg border border-yellow-900/5"></div>
         </section>
         <section id="step-3" class="hidden-step w-full max-w-4xl text-center py-20 flex flex-col items-center justify-center space-y-8">
             <div id="process-timer" class="text-9xl font-cinzel gold-gradient-text drop-shadow-[0_0_30px_rgba(255,215,0,0.4)]">10</div>
             <div class="space-y-5 loading-pulse">
                 <h3 class="gold-gradient-text text-2xl font-cinzel tracking-widest font-bold">PROFESSIONAL SPECTRUM SCAN</h3>
                 <p class="text-white opacity-80">ระบบกำลังสแกนพิกัดชะตา...</p>
-                <p class="text-white opacity-60">วิเคราะห์มวลประสบการณ์จากหน้าไพ่ที่คุณเลือก...</p>
-                <p class="text-white opacity-40">ประมวลผลเส้นทางและจุดตัดสำคัญ...</p>
+                <p class="text-white opacity-60">วิเคราะห์อารมณ์ในตอนที่คุณกดเลือกไพ่...</p>
+                <p class="text-white opacity-40">ประมวลคำตอบหากคุณกดด้วยใจไม่นิ่งไพ่จะสะท้อนด้านมืดในใจคุณ...</p>
                 <p class="text-yellow-400 opacity-90 font-cinzel tracking-[3px] text-sm">DECODING YOUR LIFE COORDINATES</p>
             </div>
             <div class="w-12 h-12 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
@@ -104,38 +98,14 @@
                     <p id="res-card-sub" class="text-lg text-white/70 italic font-light mt-1"></p>
                 </div>
                 <div id="ai-response" class="text-[16px] leading-[1.9] text-gray-200 font-light space-y-4"></div>
-                <div class="pt-8 border-t border-yellow-900/10 flex flex-wrap justify-between items-center gap-3">
-                    <div class="flex gap-3">
-                        <button onclick="location.reload()" class="btn-gold px-6 py-3 rounded text-[10px] font-bold">RE-ESTABLISH</button>
-                        <button onclick="backToQuestion()" class="btn-outline px-6 py-3 rounded text-[10px] font-bold">NEW QUESTION</button>
-                    </div>
+                <div class="pt-8 border-t border-yellow-900/10 flex justify-between items-center">
+                    <button onclick="location.reload()" class="btn-gold px-10 py-3 rounded text-[10px] font-bold">RE-ESTABLISH</button>
                     <p class="text-[9px] text-gray-600 uppercase tracking-[3px] font-cinzel">AJARN FAAN | AUTHORITY ANALYSIS</p>
                 </div>
             </div>
         </section>
     </main>
     <script>
-        let currentLang = 'th';
-        const translations = {
-            th: {
-                lifeMsg: (days, mins) => `วิญญาณลงมาใช้ชีวิตบนโลก ปัจจุบันเป็นจำนวน <span class="text-yellow-300 text-xl font-bold font-cinzel">${days.toLocaleString()}</span> วัน<br><span class="text-gray-400 text-xs">หรือ <span class="text-yellow-300 font-bold">${mins.toLocaleString()}</span> นาทีบนโลกใบนี้</span>`,
-                alertName: 'กรุณาระบุข้อมูลให้ครบถ้วน',
-                alertInquiry: 'กรุณาระบุความในใจก่อนเลือกไพ่',
-                promptLang: 'ภาษาไทย'
-            },
-            en: {
-                lifeMsg: (days, mins) => `Your soul has journeyed on this earth for <span class="text-yellow-300 text-xl font-bold font-cinzel">${days.toLocaleString()}</span> days<br><span class="text-gray-400 text-xs">or <span class="text-yellow-300 font-bold">${mins.toLocaleString()}</span> minutes in this lifetime</span>`,
-                alertName: 'Please complete all required fields.',
-                alertInquiry: 'Please enter your intention before selecting a card.',
-                promptLang: 'English'
-            }
-        };
-        function setLang(lang) {
-            currentLang = lang;
-            document.getElementById('btn-th').classList.toggle('active', lang === 'th');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.getElementById('user-inquiry').placeholder = lang === 'th' ? 'พิมพ์สิ่งที่อยู่ในใจ หรือคำถามที่ต้องการคำตอบ...' : 'Type what is on your mind, or the question seeking an answer...';
-        }
         const tarotDeck = [
             { id: 0, name: "The Fool", sub: "สัญชาตญาณและการเริ่มต้นใหม่", img: "https://www.sacred-texts.com/tarot/pkt/img/ar00.jpg" },
             { id: 1, name: "The Magician", sub: "ศักยภาพและการจัดการทรัพยากร", img: "https://www.sacred-texts.com/tarot/pkt/img/ar01.jpg" },
@@ -160,7 +130,7 @@
             { id: 20, name: "Judgement", sub: "การตัดสินใจและการปลดปล่อย", img: "https://www.sacred-texts.com/tarot/pkt/img/ar20.jpg" },
             { id: 21, name: "The World", sub: "ความสมบูรณ์แบบและการบรรลุเป้าหมาย", img: "https://www.sacred-texts.com/tarot/pkt/img/ar21.jpg" }
         ];
-        let state = { name: "", birthInfo: "", days: 0, minutes: 0, inquiry: "", card: null };
+        let state = { name: "", birthInfo: "", days: 0, inquiry: "", card: null };
         window.onload = () => {
             const pop = (id, s, e, pad=false) => {
                 const el = document.getElementById(id);
@@ -177,28 +147,26 @@
             document.getElementById('birth-month').value = 1;
             document.getElementById('birth-hour').value = 3;
             setInterval(() => {
-                const now = new Date();
-                document.getElementById('live-date').innerText = now.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Bangkok' });
-                document.getElementById('live-time').innerText = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Bangkok' });
+                document.getElementById('live-clock').innerText = new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' });
             }, 1000);
         };
         function proceedToSelection() {
-            const t = translations[currentLang];
             const name = document.getElementById('user-name').value.trim();
             const yearIn = parseInt(document.getElementById('birth-year').value);
-            if (!name || isNaN(yearIn)) { alert(t.alertName); return; }
+            if (!name || isNaN(yearIn)) { alert("กรุณาระบุข้อมูลให้ครบถ้วน"); return; }
             const d = parseInt(document.getElementById('birth-day').value);
             const m = parseInt(document.getElementById('birth-month').value);
             const hr = parseInt(document.getElementById('birth-hour').value);
             const mn = parseInt(document.getElementById('birth-minute').value);
             let yearAD = yearIn > 2400 ? yearIn - 543 : yearIn;
             const bDate = new Date(yearAD, m-1, d, hr, mn);
-            const diffMs = new Date() - bDate;
             state.name = name; state.birthInfo = `${d}/${m}/${yearIn}`;
-            state.days = Math.floor(diffMs / 86400000);
-            state.minutes = Math.floor(diffMs / 60000);
+            state.days = Math.floor((new Date() - bDate) / 86400000);
+            let astroDay = new Date(yearAD, m-1, d);
+            if (hr < 6) astroDay.setDate(astroDay.getDate() - 1);
+            const thaiDay = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"][astroDay.getDay()];
             document.getElementById('user-display').innerText = `CONSULTATION FOR: ${name} (${state.birthInfo})`;
-            document.getElementById('life-log').innerHTML = t.lifeMsg(state.days, state.minutes);
+            document.getElementById('life-log').innerHTML = `ท่านเกิดในวัน<span class="text-yellow-400 font-bold">วัน${thaiDay}</span> และได้เผชิญโลกใบนี้มาแล้ว <span class="text-yellow-300 text-xl font-bold font-cinzel">${state.days.toLocaleString()}</span> วัน`;
             renderGrid(); switchStep('step-1', 'step-2');
         }
         function renderGrid() {
@@ -209,9 +177,8 @@
             }
         }
         async function selectCard(idx) {
-            const t = translations[currentLang];
             const inquiry = document.getElementById('user-inquiry').value.trim();
-            if (!inquiry) { alert(t.alertInquiry); return; }
+            if (!inquiry) { alert("กรุณาระบุความในใจก่อนเลือกไพ่"); return; }
             state.inquiry = inquiry;
             state.card = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
             switchStep('step-2', 'step-3');
@@ -221,29 +188,30 @@
             showResult(diagnosis);
         }
         async function fetchDiagnosis() {
-            const t = translations[currentLang];
-            const prompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือผู้วางแผนและวินิจฉัยชีวิตระดับโลก บุคลิก: นิ่ง ตรง มีอำนาจ (Scorpio-Saturn class)\n\nข้อมูลผู้มาเยือน:\n- ชื่อ: ${state.name}\n- จำนวนวันที่อยู่บนโลก: ${state.days.toLocaleString()} วัน\n- ความในใจ/คำถาม: ${state.inquiry}\n- หน้าไพ่: ${state.card.name} (${state.card.sub})\n\nภารกิจ:\n1. วินิจฉัยพลังงาน ณ ขณะนี้จากหน้าไพ่ สะท้อนสัญญาณให้คนตีความเอง ไม่ฟันธงตรงๆ\n2. วินิจฉัยจุดบอด บาดแผล ทางตัน อย่างตรงไปตรงมา ไม่ปลอบใจ\n3. ห้ามใช้ศัพท์ก่อสร้าง ห้ามเอ่ยชื่อวันเกิด\n4. ภาษาเข้าใจง่าย ครอบคลุมทุกวัย แทงใจถึงกระดูก\n\nตอบเป็น${t.promptLang} 3-4 ย่อหน้าสั้นๆ กระชับ`;
+            const prompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือผู้วางแผนและวินิจฉัยชีวิตระดับโลก บุคลิก: นิ่ง ตรง มีอำนาจ (Scorpio-Saturn class)\n\nข้อมูลผู้มาเยือน:\n- ชื่อ: ${state.name}\n- จำนวนวันที่อยู่บนโลก: ${state.days.toLocaleString()} วัน\n- ความในใจ/คำถาม: ${state.inquiry}\n- หน้าไพ่: ${state.card.name} (${state.card.sub})\n\nภารกิจ:\n1. ถ้า Yes/No ให้ฟันธงทันทีบรรทัดแรก\n2. วินิจฉัยจุดบอด บาดแผล ทางตัน อย่างตรงไปตรงมา ไม่ปลอบใจ\n3. ห้ามใช้ศัพท์ก่อสร้าง ห้ามเอ่ยชื่อวันเกิด\n4. ภาษา Sharp เฉียบคม ดูแพงระดับ World-Class\n\nเขียน 3-4 ย่อหน้าสั้นๆ เป็นภาษาไทย`;
             try {
-                const res = await fetch('/api/diagnose', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+                const res = await fetch('/api/diagnose', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
                 const data = await res.json();
                 return data.result || "ระบบขัดข้อง กรุณาลองใหม่";
-            } catch (err) { return "การเชื่อมต่อขัดข้อง"; }
+            } catch (err) {
+                return "การเชื่อมต่อขัดข้อง กรุณาตรวจสอบอินเทอร์เน็ต";
+            }
         }
         function showResult(diagnosis) {
             document.getElementById('res-card-name').innerText = state.card.name;
             document.getElementById('res-card-sub').innerText = state.card.sub;
             document.getElementById('result-card-box').innerHTML = `<div class="tarot-card-result"><img src="${state.card.img}" class="w-full h-full object-cover" alt="${state.card.name}"></div>`;
-            document.getElementById('ai-response').innerHTML = `<div class="p-4 bg-white/5 border-l-2 border-yellow-400/30 mb-6 italic text-sm text-gray-400">"${state.inquiry}"</div>${diagnosis.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('')}`;
+            document.getElementById('ai-response').innerHTML = `<div class="p-4 bg-white/5 border-l-2 border-yellow-400/30 mb-6 italic text-sm text-gray-400">"วินิจฉัยความในใจ: ${state.inquiry}"</div>${diagnosis.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('')}`;
             switchStep('step-3', 'step-4');
         }
         function switchStep(hide, show) {
             document.getElementById(hide).classList.add('hidden-step');
             document.getElementById(show).classList.remove('hidden-step');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        function backToQuestion() {
-            document.getElementById('user-inquiry').value = '';
-            switchStep('step-4', 'step-2');
         }
     </script>
 </body>
