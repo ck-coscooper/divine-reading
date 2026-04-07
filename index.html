@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -138,6 +134,12 @@
             box-shadow: 0 0 60px rgba(0,0,0,0.9);
         }
 
+        .card-face-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .scan-text-ritual {
             font-size: 1.1rem; 
             line-height: 1.8;
@@ -171,12 +173,12 @@
     <!-- Header -->
     <header class="p-6 flex justify-between items-center border-b border-yellow-900/20 bg-black/40 backdrop-blur-xl sticky top-0 z-50">
         <h1 class="text-lg md:text-xl font-cinzel gold-gradient-text font-normal tracking-normal uppercase">TAROT / AJARN FAAN</h1>
-        <div id="live-clock" class="text-[10px] text-gold-foil font-light tracking-normal uppercase text-right"></div>
+        <div id="live-clock" class="text-[10px] text-gold-foil font-light opacity-60 tracking-normal uppercase text-right"></div>
     </header>
 
     <main class="flex-grow flex flex-col items-center justify-center p-6">
         
-        <!-- Step 1: Identification (Pre-filled for CK Testing) -->
+        <!-- Step 1: Identification -->
         <div id="step-login" class="w-full max-w-lg p-10 gold-border forest-overlay rounded-xl space-y-8 shadow-2xl">
             <div class="text-center">
                 <h2 class="text-2xl font-cinzel gold-gradient-text tracking-normal mb-2 uppercase">Identification</h2>
@@ -217,7 +219,7 @@
             <button onclick="proceedToRitual()" class="w-full btn-gold py-4 rounded text-sm tracking-normal shadow-lg mt-4 uppercase">ยอมรับเงื่อนไขและเข้าสู่ระบบ</button>
         </div>
 
-        <!-- Step 2: Ritual (Prayer & Selection) -->
+        <!-- Step 2: Ritual -->
         <div id="step-ritual" class="hidden w-full max-w-6xl p-10 gold-border forest-overlay rounded-xl space-y-10">
             <div class="text-center space-y-5">
                 <h2 id="consultation-header" class="text-xl md:text-2xl font-cinzel gold-gradient-text tracking-normal uppercase font-bold leading-tight"></h2>
@@ -243,16 +245,15 @@
             </div>
         </div>
 
-        <!-- Step 3: Professional Spectrum Scan Loading (Fixed 10s Sequence) -->
+        <!-- Step 3: Professional Spectrum Scan Loading -->
         <div id="step-loading" class="hidden w-full max-w-5xl text-center space-y-4 py-20 flex flex-col items-center justify-center min-h-[550px]">
-            <!-- Countdown at TOP -->
             <div id="scan-countdown" class="text-6xl md:text-7xl font-cinzel text-gold-bright drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] mb-10">10</div>
 
             <div class="scan-text-ritual uppercase">
-                <span class="text-white block opacity-80 mb-2">ระบบกำลังวิเคราะห์ผลลัพธ์ผ่านหน้าไพ่...</span>
+                <span class="text-white block opacity-80 mb-2 font-sarabun">ระบบกำลังวิเคราะห์ผลลัพธ์ผ่านหน้าไพ่...</span>
                 <span class="gold-gradient-text block font-cinzel font-bold text-2xl md:text-3xl mb-2">PROFESSIONAL SPECTRUM SCAN</span>
-                <span class="text-white block opacity-80 mb-4">จากอารมณ์ที่คุณเลือกไพ่</span>
-                <span class="text-[#D4AF37] block font-normal text-xl md:text-2xl">ถ้าคุณไม่มีสมาธิไพ่นั้นก็จะสะท้อนตัวคุณเอง</span>
+                <span class="text-white block opacity-80 mb-4 font-sarabun">จากอารมณ์ที่คุณเลือกไพ่</span>
+                <span class="text-[#D4AF37] block font-normal text-xl md:text-2xl font-sarabun">ถ้าคุณไม่มีสมาธิไพ่นั้นก็จะสะท้อนตัวคุณเอง</span>
             </div>
             
             <div class="mt-12 flex space-x-4">
@@ -285,7 +286,7 @@
     </main>
 
     <script>
-        const apiKey = "AIzaSyDoyeZx1E2obEuPOywzFvXmA0ypt6fPAx8"; 
+        const apiKey = ""; 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'ajarn-faan-worldclass';
 
         const majorArcana = [
@@ -326,7 +327,6 @@
             populateOptions('birth-hour', 0, 23, true);
             populateOptions('birth-minute', 0, 59, true);
             
-            // Default Values: CK, 17 Jan 2529 (1986), 03:00
             document.getElementById('birth-day').value = "17";
             document.getElementById('birth-month').value = "1";
             document.getElementById('birth-hour').value = "3";
@@ -357,14 +357,13 @@
             if (!name || isNaN(yearInput)) return alert("กรุณาระบุข้อมูลระบุตัวตนให้ครบถ้วน");
             
             let yearAD = yearInput;
-            if (yearInput > 2400) yearAD -= 543; // BE to AD
+            if (yearInput > 2400) yearAD -= 543; 
 
             const d = document.getElementById('birth-day').value;
             const m = document.getElementById('birth-month').value;
             const hr = document.getElementById('birth-hour').value;
             const mn = document.getElementById('birth-minute').value;
 
-            // Accurate Birth Calculation
             const birthDate = new Date(yearAD, m - 1, d, hr, mn);
             const now = new Date();
             const diffMs = now - birthDate;
@@ -373,7 +372,6 @@
             const hoursLived = Math.floor(diffMs / (1000 * 60 * 60));
             const minutesLived = Math.floor(diffMs / (1000 * 60));
 
-            // Thai Astrology Day Logic (06:00 cut)
             let dispDay = new Date(yearAD, m - 1, d);
             if (parseInt(hr) < 6) dispDay.setDate(dispDay.getDate() - 1);
             const thaiDayName = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"][dispDay.getDay()];
@@ -387,9 +385,9 @@
             document.getElementById('consultation-header').innerText = `CONSULTATION FOR: ${name} (${currentUser.birthStr})`;
             document.getElementById('life-stats').innerHTML = `
                 <div class="flex flex-col gap-1">
-                    <p>ท่านเกิดในวัน<span class="text-gold-foil font-bold">${currentUser.thaiDay}</span> (ตามหลักอาทิตย์อุทัย)</p>
-                    <p>ท่านได้เผชิญโลกใบนี้มาแล้ว <span class="text-gold-bright font-bold text-2xl">${daysLived.toLocaleString()} วัน</span></p>
-                    <p class="text-[11px] text-gray-500 uppercase tracking-normal mt-2">สถิติพิกัด: ${hoursLived.toLocaleString()} ชั่วโมง / ${minutesLived.toLocaleString()} นาที แห่งการมีตัวตน</p>
+                    <p>ท่านเกิดในวัน<span class="text-gold-foil font-bold font-sarabun">วัน${currentUser.thaiDay}</span> (ตามหลักอาทิตย์อุทัย)</p>
+                    <p>ท่านได้เผชิญโลกใบนี้มาแล้ว <span class="text-gold-bright font-bold text-2xl font-sarabun">${daysLived.toLocaleString()} วัน</span></p>
+                    <p class="text-[11px] text-gray-500 uppercase tracking-normal mt-2 font-sarabun">สถิติพิกัด: ${hoursLived.toLocaleString()} ชั่วโมง / ${minutesLived.toLocaleString()} นาที แห่งการมีตัวตน</p>
                 </div>
             `;
 
@@ -424,22 +422,35 @@
             window.scrollTo(0,0);
 
             const resultCard = fullTarotDeck[Math.floor(Math.random() * fullTarotDeck.length)];
-            const systemPrompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตา (Scorpio-Saturn class) 
-            วินิจฉัยดวงชะตาด้วยมาตรวัดระดับโลก นิ่ง ตรง และทรงอำนาจ
-            ใช้ "ภาษามนุษย์ปกติ" ที่สื่อสารกับคนทุกวัย (18-89 ปี) ได้อย่างลึกซึ้ง เข้าใจง่าย ไม่ลิเก ไม่กำกวม
             
-            กฎแห่งสัมพัทธภาพของจิต: จงเชื่อมโยงปมในใจที่ระบุมา เข้ากับสัญลักษณ์ของหน้าไพ่ โดยใช้สัญชาตญาณเดิมนำทาง
+            // --- PROFESSIONAL PROMPT SYSTEM ---
+            const systemPrompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตาเชิงสัญลักษณ์ (Analytical Symbolic Diagnosis) 
+            บุคลิก: นิ่ง ตรง มีอำนาจ (Scorpio-Saturn Class)
+            หน้าที่: วินิจฉัยคำอธิษฐานของผู้รับคำปรึกษาผ่านสถิติชีวิตและหน้าไพ่
             
-            กติกาเข้มงวด:
-            - ห้ามเอ่ยถึงชื่อวันเกิดเด็ดขาด (เช่น ห้ามพูดว่า "คนวันพฤหัสบดี") ระบบรู้พิกัดนี้อยู่แล้ว ให้ใช้วินิจฉัยจุดบอดเลย
-            - ห้ามหยาบคาย ภาษาต้องดูแพง เป็นการวินิจฉัย (Diagnosis) แบบกุนซือระดับสูง
-            - วิเคราะห์ 'ปมในใจ' (${currentUser.prayer}) ผ่านหน้าไพ่ ${resultCard.name}
-            - นำ 'สถิติการใช้ชีวิต' (${currentUser.daysLived} วัน) มาคำนวณน้ำหนักบาดแผลและทางตัน
-            - ห้ามใช้ศัพท์ก่อสร้าง
+            ขั้นตอนการประมวลผลคำทำนาย (Logic Flow):
+            1. คัดกรองประเภทคำถาม:
+               - หากเป็นคำถามที่ต้องการผลลัพธ์ชัดเจน (Yes/No) เช่น จะได้ของไหม, จะได้ไปไหม, จะสำเร็จไหม: 
+                 ให้ "ฟันธง" ผลลัพธ์ในบรรทัดแรกทันทีตามพลังงานของหน้าไพ่ ${resultCard.name}
+               - หากเป็นคำถามเชิงปมในใจหรือทางตันชีวิต: ให้เริ่มด้วยการสะท้อนสภาวะจิตใจ
             
-            เขียน 3-4 ย่อหน้าสั้นๆ ที่ทำให้ลูกดวงรู้สึกจุกและตื่นรู้จากภายใน`;
+            2. การวินิจฉัย (Diagnosis):
+               - ใช้ 'จำนวนวันที่เผชิญโลก' (${currentUser.daysLived} วัน) มาคำนวณ 'มวลประสบการณ์' เพื่ออธิบายว่าทำไมเขาถึงเจอเหตุการณ์นี้
+               - ห้ามเอ่ยชื่อวันเกิด (เช่น คนเกิดวันพฤหัสบดี) แต่ให้ใช้พลังดาวอุทัยวินิจฉัยอยู่เบื้องหลัง
+               - ใช้ภาษามนุษย์ปกติ (Human Realism) ที่เข้าใจง่ายสำหรับคนอายุ 18-89 ปี
+            
+            3. ข้อห้ามเด็ดขาด:
+               - ห้ามหยาบคาย ห้ามใช้คำตลาดล่าง
+               - ห้ามใช้ศัพท์ก่อสร้าง (เสาเข็ม, พิมพ์เขียว, โครงสร้าง)
+               - ห้ามปลอบใจเกินจริง ห้ามใช้คำธรรมะลอยๆ ที่จับต้องไม่ได้
+            
+            4. โครงสร้างบทสรุป:
+               - ย่อหน้าแรก: ฟันธงคำตอบหรือสะท้อนสภาวะที่เป็นอยู่ให้ "จุก"
+               - ย่อหน้ากลาง: วิเคราะห์ปมในใจ (${currentUser.prayer}) ผ่านหน้าไพ่ ${resultCard.name}
+               - ย่อหน้าสุดท้าย: การจัดระเบียบชีวิตและทางออกที่เฉียบขาด
+            
+            เขียน 3-4 ย่อหน้าสั้นๆ เฉียบคมเหมือนกุนซือระดับโลก`;
 
-            // Setup Countdown and Fetch
             let secondsLeft = 10;
             const countdownEl = document.getElementById('scan-countdown');
             countdownEl.innerText = secondsLeft;
@@ -459,37 +470,21 @@
             function checkFinalTransition() {
                 if (fetchDone && secondsLeft <= 0) displayResult(aiResponse, resultCard);
             }
-try {
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [
-        {
-          parts: [
-            { text: systemPrompt }
-          ]
-        }
-      ]
-    })
-  });
 
-  const data = await res.json();
-  console.log('Gemini response:', data);
-
-  if (!res.ok) {
-    throw new Error(data?.error?.message || 'Gemini request failed');
-  }
-
-  aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง";
-  fetchDone = true;
-  checkFinalTransition();
-} catch (err) {
-  console.error('Gemini error:', err);
-  aiResponse = "การเชื่อมต่อ AI มีปัญหา: " + err.message;
-  fetchDone = true;
-  checkFinalTransition();
-}
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })
+                });
+                const data = await res.json();
+                aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง";
+                fetchDone = true;
+                checkFinalTransition();
+            } catch (e) {
+                aiResponse = "การเชื่อมต่อสมาธิถูกรบกวนเนื่องจากสัญญาณรบกวนภายนอก กรุณาลองใหม่";
+                fetchDone = true;
+                checkFinalTransition();
             }
         }
 
@@ -508,7 +503,7 @@ try {
             
             document.getElementById('card-name').innerText = card.name;
             document.getElementById('card-subtitle').innerText = card.sub;
-            document.getElementById('card-description').innerHTML = text.split('\n').filter(p=>p.trim()).map(p=>`<p class="mb-4">${p}</p>`).join('');
+            document.getElementById('card-description').innerHTML = text.split('\n').filter(p=>p.trim()).map(p=>`<p class="mb-4 font-sarabun text-gray-200">${p}</p>`).join('');
         }
 
         function resetRitual() {
@@ -523,14 +518,9 @@ try {
             document.getElementById('step-result').classList.add('hidden');
             document.getElementById('step-loading').classList.add('hidden');
             document.getElementById('step-login').classList.remove('hidden');
-            document.getElementById('prayer').value = ''; // Always clear prayer
+            document.getElementById('prayer').value = ''; 
             window.scrollTo(0,0);
         }
     </script>
 </body>
 </html>
-
-
-
-
-
