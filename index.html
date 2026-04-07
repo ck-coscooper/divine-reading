@@ -52,12 +52,6 @@
             filter: brightness(1.1);
         }
 
-        .btn-gold:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            filter: grayscale(1);
-        }
-
         input, select, textarea {
             background-color: rgba(255, 255, 255, 0.03) !important;
             border: 1px solid rgba(212, 175, 55, 0.2) !important;
@@ -68,7 +62,7 @@
 
         input:focus { border-color: var(--gold-foil) !important; outline: none; }
 
-        /* Animation Carousel Styles */
+        /* Carousel Animation */
         .card-strip-container {
             width: 100%;
             height: 400px;
@@ -85,7 +79,6 @@
             top: 50%;
             transform: translateY(-50%);
             height: 320px;
-            align-items: center;
         }
 
         .ritual-card {
@@ -100,29 +93,22 @@
             font-family: 'Cinzel';
             color: var(--gold-foil);
             font-size: 1.2rem;
-            position: relative;
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
             flex-shrink: 0;
+            letter-spacing: 4px;
         }
 
-        .animate-fast { animation: slideLeft 0.8s linear infinite; }
+        .animate-fast { animation: slideLeft 0.7s linear infinite; }
 
         @keyframes slideLeft {
             from { transform: translateX(0) translateY(-50%); }
             to { transform: translateX(-440px) translateY(-50%); }
         }
 
-        .result-reveal {
-            animation: popIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.6); opacity: 0; filter: blur(15px); }
-            100% { transform: scale(1); opacity: 1; filter: blur(0); }
-        }
-
-        .forest-overlay {
-            background: radial-gradient(circle at center, rgba(1, 50, 32, 0.3) 0%, rgba(5, 8, 5, 1) 100%);
+        .result-box {
+            background: linear-gradient(135deg, rgba(1, 50, 32, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(20px);
         }
 
         .scanning-line {
@@ -130,11 +116,8 @@
             width: 100%;
             height: 2px;
             background: var(--gold-bright);
-            box-shadow: 0 0 15px var(--gold-bright);
-            top: 0;
-            left: 0;
+            box-shadow: 0 0 20px var(--gold-bright);
             animation: scanMove 2s linear infinite;
-            z-index: 20;
         }
 
         @keyframes scanMove {
@@ -144,7 +127,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col forest-overlay">
+<body class="min-h-screen flex flex-col font-sarabun">
 
     <header class="p-6 flex justify-between items-center border-b border-yellow-900/20 bg-black/60 backdrop-blur-md sticky top-0 z-50">
         <h1 class="text-xl md:text-2xl font-cinzel gold-gradient-text tracking-widest font-bold">TAROT / AJARN FAAN</h1>
@@ -154,87 +137,89 @@
     <main class="flex-grow flex flex-col items-center justify-center p-4">
         
         <!-- STEP 1: Identification -->
-        <div id="step-login" class="w-full max-w-xl p-8 md:p-12 gold-border bg-black/80 space-y-8 shadow-2xl relative">
+        <div id="step-login" class="w-full max-w-xl p-8 md:p-12 gold-border bg-black/80 space-y-8 shadow-2xl">
             <div class="text-center">
                 <h2 class="text-3xl font-cinzel gold-gradient-text mb-2 uppercase">Identification</h2>
-                <p class="text-xs text-gray-500 tracking-[0.2em] font-light uppercase">กรุณาระบุพิกัดตัวตนเพื่อเริ่มการวินิจฉัย</p>
+                <p class="text-xs text-gray-500 tracking-[0.2em] font-light uppercase">ระบุพิกัดตัวตนเพื่อการวินิจฉัยระดับอาชีพ</p>
             </div>
             
             <div class="space-y-6">
                 <div>
-                    <label class="text-gold-foil text-[10px] uppercase mb-2 block tracking-widest">Full Name / นามแห่งท่าน</label>
+                    <label class="text-gold-foil text-[10px] uppercase mb-2 block tracking-widest">นามแห่งท่าน</label>
                     <input type="text" id="fullname" class="w-full text-lg" placeholder="ระบุชื่อ-นามสกุล">
                 </div>
-                
                 <div class="grid grid-cols-3 gap-4">
-                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Day</label><select id="birth-day" class="w-full"></select></div>
-                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Month</label><select id="birth-month" class="w-full"></select></div>
-                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Year (พ.ศ.)</label><input type="number" id="birth-year" class="w-full" value="2530"></div>
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">วัน</label><select id="birth-day" class="w-full"></select></div>
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">เดือน</label><select id="birth-month" class="w-full"></select></div>
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">ปี พ.ศ.</label><input type="number" id="birth-year" class="w-full" value="2530"></div>
                 </div>
-
                 <div class="grid grid-cols-2 gap-4">
-                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Hour</label><select id="birth-hour" class="w-full"></select></div>
-                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Minute</label><select id="birth-minute" class="w-full"></select></div>
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">ชั่วโมงเกิด</label><select id="birth-hour" class="w-full"></select></div>
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">นาทีเกิด</label><select id="birth-minute" class="w-full"></select></div>
                 </div>
             </div>
-            <button onclick="proceedToRitual()" class="w-full btn-gold py-5 text-sm shadow-xl mt-6">เข้าสู่ห้องทำนาย</button>
+            <button onclick="proceedToRitual()" class="w-full btn-gold py-5 text-sm shadow-xl mt-6">เข้าสู่ห้องวินิจฉัย</button>
         </div>
 
         <!-- STEP 2: Ritual & Prayer -->
         <div id="step-ritual" class="hidden w-full max-w-4xl p-10 gold-border bg-black/90 space-y-10 text-center">
-            <div id="user-stats" class="space-y-2 border-b border-yellow-900/20 pb-8"></div>
+            <div id="user-stats" class="space-y-2 border-b border-yellow-900/10 pb-8"></div>
             <div class="space-y-6">
-                <h3 class="text-gold-foil font-cinzel text-xl tracking-widest uppercase">ถ้อยแถลงต่อสัญชาตญาณ</h3>
-                <textarea id="prayer" class="w-full h-32 bg-black border border-yellow-900/30 p-4 text-white focus:border-gold-foil transition-all" placeholder="ระบุปมในใจ บาดแผล หรือสิ่งที่ท่านต้องการหาทางออกในครั้งนี้..."></textarea>
+                <h3 class="text-gold-foil font-cinzel text-xl tracking-widest uppercase">พิมพ์ความในใจออกมาสู่จักรวาล</h3>
+                <textarea id="prayer" class="w-full h-32 bg-black border border-yellow-900/30 p-4 text-white focus:border-gold-foil transition-all" placeholder="ระบุปมในใจ บาดแผล หรือจุดบอดที่ท่านต้องการปลดล็อก..."></textarea>
                 <div class="py-4">
-                    <p class="text-sm text-gray-400 mb-8 italic">"จงรวบรวมสมาธิให้มั่นคงที่สุด เมื่อพร้อมแล้วกดเริ่มเพื่อสุ่มไพ่"</p>
-                    <button id="start-btn" onclick="startAnimation()" class="btn-gold px-12 py-4">Start Ritual</button>
+                    <p class="text-sm text-gray-400 mb-8 italic">"จงนิ่งที่สุด เมื่อใจนิ่งแล้วกดเริ่มเพื่อสแกนพิกัดชะตา"</p>
+                    <button onclick="startAnimation()" class="btn-gold px-12 py-4">Start Spectrum Scan</button>
                 </div>
             </div>
         </div>
 
-        <!-- STEP 3: Animation Loop -->
-        <div id="step-animation" class="hidden w-full flex flex-col items-center justify-center space-y-12">
+        <!-- STEP 3: Animation (Professional Sequence) -->
+        <div id="step-animation" class="hidden w-full flex flex-col items-center justify-center space-y-6">
             <div class="text-center space-y-4">
-                <div id="countdown" class="text-8xl font-cinzel text-gold-bright drop-shadow-[0_0_20px_rgba(212,175,55,0.6)]">10</div>
-                <p class="text-gold-foil tracking-[0.4em] uppercase text-sm animate-pulse">Professional Spectrum Scanning...</p>
+                <div id="countdown" class="text-8xl md:text-9xl font-cinzel text-gold-bright drop-shadow-[0_0_25px_rgba(212,175,55,0.7)]">10</div>
+                
+                <div class="space-y-2">
+                    <p class="text-white opacity-80 text-lg md:text-xl font-light font-sarabun tracking-wide">ระบบกำลังวิเคราะห์ผลลัพธ์ผ่านหน้าไพ่...</p>
+                    <h2 class="gold-gradient-text font-cinzel font-bold text-3xl md:text-5xl tracking-widest uppercase">PROFESSIONAL SPECTRUM SCAN</h2>
+                    <p class="text-white opacity-80 text-lg md:text-xl font-light font-sarabun tracking-wide">จากอารมณ์ที่คุณเลือกไพ่</p>
+                    <p class="text-gold-foil text-xl md:text-2xl font-normal font-sarabun tracking-wide animate-pulse">ถ้าคุณไม่มีสมาธิไพ่นั้นก็จะสะท้อนตัวคุณเอง</p>
+                </div>
             </div>
             <div class="card-strip-container">
                 <div id="card-strip" class="card-strip animate-fast"></div>
-                <div class="absolute inset-0 border-x-[40px] border-black/40 pointer-events-none"></div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[340px] border-4 border-gold-bright z-10 shadow-[0_0_50px_rgba(212,215,0,0.3)]">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[340px] border-4 border-gold-bright z-10">
                     <div class="scanning-line"></div>
                 </div>
             </div>
         </div>
 
         <!-- STEP 4: Result -->
-        <div id="step-result" class="hidden w-full max-w-6xl flex flex-col lg:flex-row items-center gap-12 p-6">
-            <div id="final-card-display" class="flex-shrink-0 result-reveal"></div>
-            <div class="flex-grow space-y-8 bg-black/40 p-8 md:p-12 border border-yellow-900/10 backdrop-blur-xl relative">
+        <div id="step-result" class="hidden w-full max-w-7xl flex flex-col lg:flex-row items-center gap-12 p-6">
+            <div id="final-card-display" class="flex-shrink-0"></div>
+            <div class="flex-grow space-y-8 result-box p-8 md:p-12 rounded-xl relative overflow-hidden">
                 <div class="border-l-4 border-gold-foil pl-8">
-                    <div class="text-xs text-gold-foil/60 uppercase tracking-widest mb-2 font-bold">Analytical Diagnosis</div>
-                    <h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase font-bold"></h2>
-                    <p id="res-card-sub" class="text-sm text-gray-400 italic mt-1 font-sarabun"></p>
+                    <div class="text-[10px] text-gold-foil uppercase tracking-[0.3em] mb-3 font-bold opacity-70">Analytical Insight</div>
+                    <h2 id="res-card-name" class="text-4xl md:text-6xl font-cinzel gold-gradient-text uppercase font-bold leading-none"></h2>
+                    <p id="res-card-sub" class="text-lg text-white/60 italic mt-3 font-light"></p>
                 </div>
-                <div id="res-analysis" class="text-lg leading-relaxed font-light text-gray-200 space-y-6 font-sarabun">
+                <div id="res-analysis" class="text-lg leading-loose font-light text-gray-200 space-y-6 text-justify">
                     <!-- AI Content will be injected here -->
                 </div>
                 <div class="pt-8 border-t border-yellow-900/10">
-                    <button onclick="location.reload()" class="text-[10px] text-gold-foil uppercase tracking-widest border-b border-gold-foil/30 hover:border-gold-foil pb-1 transition-all">วิเคราะห์ปัญหาอื่น</button>
+                    <button onclick="backToHome()" class="text-[10px] text-gold-foil uppercase tracking-widest border-b border-gold-foil/30 hover:border-gold-foil pb-1 transition-all">กลับหน้าแรก</button>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <footer class="p-6 text-center text-[10px] text-gray-600 tracking-[0.4em] uppercase">
-        &copy; 2026 AJARN FAAN | AUTHORITY ANALYTICAL SYMBOLISM
+    <footer class="p-6 text-center text-[10px] text-gray-700 tracking-[0.4em] uppercase">
+        &copy; 2026 AJARN FAAN | Scorpio-Saturn-Uranus Authority
     </footer>
 
     <script>
-        // *** สำคัญ: ต้องใส่ API Key ของคุณที่นี่เพื่อให้คำทำนายแสดงผลบน Vercel ***
-        const apiKey = ""; 
+        const apiKey = "AIzaSyBa_s7T7SeNVPUrRltNO8WvDSz8lYRS5h0"; 
 
         let currentUser = {};
         const tarotDeck = [
@@ -246,7 +231,7 @@
             { name: "The Hierophant", img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg", sub: "ความเชื่อและกรอบประเพณี" },
             { name: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg", sub: "การเลือกและแรงดึงดูด" },
             { name: "The Chariot", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg", sub: "การควบคุมและชัยชนะ" },
-            { name: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", sub: "ความอดทนและพลังภายใน" },
+            { name: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", sub: "ความอดทนและพลังอำนาจภายใน" },
             { name: "The Hermit", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg", sub: "ความวิเวกและการค้นพบตนเอง" },
             { name: "The Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg", sub: "กงล้อแห่งชะตากรรม" },
             { name: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg", sub: "ความยุติธรรมและกฎแห่งกรรม" },
@@ -271,145 +256,149 @@
             updateClock();
         };
 
-        function populate(id, start, end, pad = false) {
+        function populate(id, s, e, p = false) {
             const el = document.getElementById(id);
-            for (let i = start; i <= end; i++) {
-                const opt = document.createElement('option');
-                opt.value = i;
-                opt.innerText = pad ? i.toString().padStart(2, '0') : i;
-                el.appendChild(opt);
+            for (let i = s; i <= e; i++) {
+                const o = document.createElement('option');
+                o.value = i; o.innerText = p ? i.toString().padStart(2, '0') : i;
+                el.appendChild(o);
             }
         }
 
         function updateClock() {
-            const clock = document.getElementById('live-clock');
-            const now = new Date();
-            clock.innerText = now.toLocaleString('th-TH', { 
+            const c = document.getElementById('live-clock');
+            c.innerText = new Date().toLocaleString('th-TH', { 
                 weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', 
                 hour: '2-digit', minute: '2-digit', second: '2-digit' 
-            });
+            }) + " (GMT+7)";
         }
 
         function proceedToRitual() {
-            const name = document.getElementById('fullname').value;
-            const year = parseInt(document.getElementById('birth-year').value);
-            if (!name || isNaN(year)) {
-                alert("กรุณาระบุข้อมูลระบุตัวตนให้ครบถ้วน");
-                return;
-            }
+            const n = document.getElementById('fullname').value;
+            const y = parseInt(document.getElementById('birth-year').value);
+            if (!n || isNaN(y)) return alert("ข้อมูลไม่ครบถ้วน");
 
             const d = parseInt(document.getElementById('birth-day').value);
             const m = parseInt(document.getElementById('birth-month').value);
             const hr = parseInt(document.getElementById('birth-hour').value);
             const min = parseInt(document.getElementById('birth-minute').value);
 
-            let birthYearAD = year > 2400 ? year - 543 : year;
-            const birthDate = new Date(birthYearAD, m - 1, d, hr, min);
+            let yAD = y > 2400 ? y - 543 : y;
+            const bDate = new Date(yAD, m - 1, d, hr, min);
             const now = new Date();
-            const daysLived = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
+            const days = Math.floor((now - bDate) / (1000 * 60 * 60 * 24));
             
-            let thaiDayIndex = birthDate.getDay();
-            if (hr < 6) thaiDayIndex = (thaiDayIndex + 6) % 7;
-            const thaiDays = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"];
+            let tIdx = bDate.getDay();
+            if (hr < 6) tIdx = (tIdx + 6) % 7;
+            const tDays = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"];
 
-            currentUser = { name, daysLived, dayName: thaiDays[thaiDayIndex], birthStr: `${d}/${m}/${year}` };
+            currentUser = { name: n, days, dayName: tDays[tIdx], birth: `${d}/${m}/${y}` };
 
             document.getElementById('user-stats').innerHTML = `
-                <h2 class="text-3xl font-cinzel gold-gradient-text uppercase font-bold">${name}</h2>
-                <p class="text-sm tracking-widest text-gray-400 mt-2">พิกัดชะตา: เกิดวัน${thaiDays[thaiDayIndex]} | เผชิญโลกมาแล้ว <span class="text-gold-bright font-bold">${daysLived.toLocaleString()}</span> วัน</p>
+                <h2 class="text-3xl font-cinzel gold-gradient-text uppercase font-bold">${n}</h2>
+                <p class="text-sm tracking-[0.3em] text-gray-500 mt-2">พิกัด: วัน${tDays[tIdx]} | เผชิญโลกมาแล้ว <span class="text-gold-bright font-bold">${days.toLocaleString()}</span> วัน</p>
             `;
-
             document.getElementById('step-login').classList.add('hidden');
             document.getElementById('step-ritual').classList.remove('hidden');
             window.scrollTo(0,0);
         }
 
         async function startAnimation() {
-            const prayer = document.getElementById('prayer').value.trim();
-            if (!prayer) {
-                alert("กรุณาระบุถ้อยแถลงหรือปมในใจเพื่อให้ไพ่สะท้อนความจริง");
-                return;
-            }
-            currentUser.prayer = prayer;
+            const p = document.getElementById('prayer').value.trim();
+            if (!p) return alert("กรุณาระบุความในใจเพื่อให้สัญชาตญาณเดิมนำทาง");
+            currentUser.prayer = p;
 
             document.getElementById('step-ritual').classList.add('hidden');
             document.getElementById('step-animation').classList.remove('hidden');
-            window.scrollTo(0,0);
 
-            const strip = document.getElementById('card-strip');
-            strip.innerHTML = '';
+            const s = document.getElementById('card-strip');
+            s.innerHTML = '';
             for(let i=0; i<60; i++) {
-                const card = document.createElement('div');
-                card.className = 'ritual-card';
-                card.innerHTML = `<span class="opacity-40">TAROT</span>`;
-                strip.appendChild(card);
+                const c = document.createElement('div');
+                c.className = 'ritual-card'; c.innerHTML = `<span>TAROT</span>`;
+                s.appendChild(c);
             }
 
-            // เตรียมข้อมูล AI ล่วงหน้า
-            let aiResult = null;
-            const finalCard = tarotDeck[Math.floor(Math.random() * tarotDeck.deck?.length || tarotDeck.length)];
-            
-            // เริ่มดึงข้อมูลทันทีขณะ Animation ทำงาน
-            const fetchPromise = fetchAI(finalCard);
+            const card = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
+            const aiCall = fetchAI(card);
 
-            let seconds = 10;
-            const countdownEl = document.getElementById('countdown');
+            let sec = 10;
+            const cEl = document.getElementById('countdown');
             const timer = setInterval(async () => {
-                seconds--;
-                countdownEl.innerText = seconds;
-                if (seconds <= 0) {
+                sec--; cEl.innerText = sec;
+                if (sec <= 0) {
                     clearInterval(timer);
-                    aiResult = await fetchPromise;
-                    showFinalResult(finalCard, aiResult);
+                    const res = await aiCall;
+                    showResult(card, res);
                 }
             }, 1000);
         }
 
         async function fetchAI(card) {
-            if (!apiKey) return "ระบบตรวจพบว่าไม่มี API Key กรุณาตรวจสอบการตั้งค่าบน Vercel (Environment Variables)";
+            const fetchWithRetry = async (url, options, retries = 5, backoff = 1000) => {
+                try {
+                    const r = await fetch(url, options);
+                    if (!r.ok) throw new Error(r.statusText);
+                    return await r.json();
+                } catch (e) {
+                    if (retries > 0) {
+                        await new Promise(res => setTimeout(res, backoff));
+                        return fetchWithRetry(url, options, retries - 1, backoff * 2);
+                    }
+                    throw e;
+                }
+            };
 
-            const systemPrompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตาเชิงสัญลักษณ์ บุคลิก: นิ่ง ตรง มีอำนาจ
-            วินิจฉัยคำอธิษฐานผ่านสถิติชีวิตและหน้าไพ่
-            - ผู้รับคำปรึกษา: ${currentUser.name} (เผชิญโลกมา ${currentUser.daysLived} วัน)
-            - ปมในใจ: ${currentUser.prayer}
-            - หน้าไพ่: ${card.name}
+            const systemPrompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตาเชิงสัญลักษณ์วิเคราะห์ (Analytical Symbolic Diagnosis)
+            บุคลิก: นิ่ง ตรง มีอำนาจ (Scorpio-Saturn-Uranus Class) ไม่ใช่นักปลอบใจ แต่เป็นกุนซือผู้วางแผนชีวิต
             
-            แนวทาง:
-            1. ฟันธงสภาวะปัจจุบันในย่อหน้าแรกทันที
-            2. วิเคราะห์ปมในใจผ่านไพ่ ${card.name}
-            3. ให้ทางออกเฉียบขาด เน้นคำว่า 'การจัดระเบียบชีวิต' หรือ 'สัญชาตญาณเดิม'
-            เขียน 3 ย่อหน้าสั้นๆ เฉียบคม ห้ามใช้คำปลอบใจเกินจริง`;
+            ลำดับการประมวลผล (Chain of Thought):
+            1. คัดกรองประเภทคำถาม: หากถามเพื่อเอาผลลัพธ์ (Yes/No) ให้ "ฟันธง" ในประโยคแรกทันทีตามพลังงานไพ่ ${card.name}
+            2. วินิจฉัยตามพิกัด: ใช้จำนวนวันที่เผชิญโลก (${currentUser.days} วัน) มาคำนวณ 'มวลประสบการณ์' เพื่ออธิบายเหตุและผลของเหตุการณ์ปัจจุบัน
+            3. เชื่อมโยงสัญลักษณ์: สะท้อนปมในใจหรือบาดแผล (${currentUser.prayer}) ผ่านรหัสลับในหน้าไพ่
+            4. คุมโทนระดับโลก: ใช้ภาษาที่เฉียบคม ดูแพง รักษาระดับความเป็น Professional สากล ห้ามใช้ศัพท์งานก่อสร้าง ห้ามเอ่ยชื่อวันเกิด (เช่น คนวันพฤหัสบดี) โดยเด็ดขาด
+            
+            เป้าหมาย: เขียน 3-4 ย่อหน้าสั้นๆ ที่ Sharp (เฉียบคม) กระชากหน้ากากอีโก้ และให้ทางออกที่เป็นการ 'จัดระเบียบชีวิต' หรือ 'สัญชาตญาณเดิม' เท่านั้น`;
+
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: `วิเคราะห์ไพ่ ${card.name} จากคำถาม: ${currentUser.prayer}` }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
 
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })
-                });
-                const data = await res.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง กรุณาลองใหม่อีกครั้ง";
+                if (!apiKey) return "ไม่พบพิกัดสัญญาณ (API Key ว่างเปล่า)";
+                const data = await fetchWithRetry(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง";
             } catch (e) {
-                return "การเชื่อมต่อสัญญาณดวงดาวขัดข้อง: " + e.message;
+                return "สัญญาณรบกวนภายนอกขัดจังหวะการวินิจฉัย (Network Error)";
             }
         }
 
-        function showFinalResult(card, text) {
+        function showResult(card, text) {
             document.getElementById('step-animation').classList.add('hidden');
             document.getElementById('step-result').classList.remove('hidden');
             window.scrollTo(0,0);
 
             document.getElementById('final-card-display').innerHTML = `
-                <div class="w-[300px] h-[480px] rounded-xl overflow-hidden border-[6px] border-gold-foil shadow-[0_0_60px_rgba(212,175,55,0.3)] relative bg-black">
+                <div class="w-[300px] h-[480px] rounded-xl overflow-hidden border-[6px] border-gold-foil shadow-[0_0_80px_rgba(212,175,55,0.4)] relative bg-black">
                     <img src="${card.img}" class="w-full h-full object-cover" alt="${card.name}">
-                    <div class="absolute bottom-0 left-0 right-0 bg-black/90 p-5 text-center border-t border-gold-foil/40 backdrop-blur-md">
-                        <span class="font-cinzel text-gold-foil text-lg tracking-[0.2em] uppercase font-bold">${card.name}</span>
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/90 p-5 text-center border-t border-gold-foil/30 backdrop-blur-md">
+                        <span class="font-cinzel text-gold-foil text-lg tracking-[0.3em] uppercase font-bold">${card.name}</span>
                     </div>
-                </div>
-            `;
+                </div>`;
 
             document.getElementById('res-card-name').innerText = card.name;
             document.getElementById('res-card-sub').innerText = card.sub;
             document.getElementById('res-analysis').innerHTML = text.split('\n').filter(p=>p.trim()).map(p => `<p class="mb-4">${p}</p>`).join('');
+        }
+
+        function backToHome() {
+            document.getElementById('prayer').value = '';
+            document.getElementById('fullname').value = '';
+            document.getElementById('step-result').classList.add('hidden');
+            document.getElementById('step-login').classList.remove('hidden');
+            window.scrollTo(0,0);
         }
     </script>
 </body>
