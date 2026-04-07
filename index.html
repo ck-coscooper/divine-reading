@@ -390,8 +390,11 @@
                     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                 });
                 const data = await res.json();
+                return (data.candidates && data.candidates[0] && data.candidates[0].content) {
                 return data.candidates[0].content.parts[0].text;
-            } catch (err) {
+            } 
+            console.error('Gemini response:', JSON.stringify(data));
+                return 'ไม่สามารถรับคำตอบได้ กรุณาลองใหม่';
                 console.error(err);
                 return "พิกัดสัญญาณสมาธิขัดข้องชั่วคราว กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตหรือลองใหม่อีกครั้ง";
             }
