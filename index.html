@@ -1,563 +1,520 @@
+
+
+
+
 <!DOCTYPE html>
-<html>
+<html lang="th">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 10.7px 0.0px; font: 14.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d; background-color: #ecf1f7}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #6b0001; -webkit-text-stroke: #6b0001; background-color: #ecf1f7}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #fb0007; -webkit-text-stroke: #fb0007; background-color: #ecf1f7}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #0000ff; -webkit-text-stroke: #0000ff; background-color: #ecf1f7}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #000000; -webkit-text-stroke: #000000; background-color: #ecf1f7}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #093c94; -webkit-text-stroke: #093c94; background-color: #ecf1f7}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #4d5055; -webkit-text-stroke: #4d5055; background-color: #ecf1f7}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Menlo; color: #18702b; -webkit-text-stroke: #18702b; background-color: #ecf1f7}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 14.0px Thonburi; color: #18702b; -webkit-text-stroke: #18702b; background-color: #ecf1f7}
-    p.p11 {margin: 0.0px 0.0px 10.7px 0.0px; font: 16.0px Helvetica; color: #000000; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; color: #fb0007; -webkit-text-stroke: 0px #fb0007}
-    span.s3 {font-kerning: none; color: #2a2a2a; -webkit-text-stroke: 0px #2a2a2a}
-    span.s4 {font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
-    span.s5 {font-kerning: none; color: #0000ff; -webkit-text-stroke: 0px #0000ff}
-    span.s6 {font-kerning: none; color: #6b0001; -webkit-text-stroke: 0px #6b0001}
-    span.s7 {font-kerning: none; color: #093c94; -webkit-text-stroke: 0px #093c94}
-    span.s8 {font-kerning: none; color: #18702b; -webkit-text-stroke: 0px #18702b}
-    span.s9 {font-kerning: none; color: #137646; -webkit-text-stroke: 0px #137646}
-    span.s10 {font-kerning: none; color: #6f0ec3; -webkit-text-stroke: 0px #6f0ec3}
-    span.s11 {font: 14.0px Thonburi; font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
-    span.s12 {font: 14.0px Thonburi; font-kerning: none}
-    span.s13 {font-kerning: none; color: #a4450b; -webkit-text-stroke: 0px #a4450b}
-    span.s14 {font-kerning: none; color: #0e6e6d; -webkit-text-stroke: 0px #0e6e6d}
-    span.s15 {font: 14.0px Thonburi; font-kerning: none; color: #18702b; -webkit-text-stroke: 0px #18702b}
-    span.s16 {font-kerning: none; color: #4d5055; -webkit-text-stroke: 0px #4d5055}
-    span.s17 {font: 14.0px Menlo; font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
-    span.s18 {font: 14.0px Menlo; font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAROT / AJARN FAAN | World-Class Professional Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Sarabun:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-green: #013220;
+            --gold-foil: #D4AF37;
+            --gold-bright: #FFD700;
+            --deep-dark: #0a0a0a;
+            --text-silver: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--deep-dark);
+            color: var(--text-silver);
+            font-family: 'Sarabun', sans-serif;
+            overflow-x: hidden;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border {
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--forest-green), var(--forest-green)), radial-gradient(circle at top left, #f5d67b, #d4af37);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .btn-gold {
+            background: linear-gradient(45deg, #B38728, #FBF5B7, #AA771C);
+            color: var(--forest-green);
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-transform: uppercase;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        input, select, textarea {
+            font-size: 14px !important;
+            background-color: rgba(0, 0, 0, 0.5) !important;
+            border: 1px solid rgba(212, 175, 55, 0.2) !important;
+            color: white !important;
+            border-radius: 4px !important;
+            padding: 12px 15px !important;
+            height: 45px; 
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        textarea {
+            height: auto !important;
+            min-height: 140px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--gold-foil) !important;
+            outline: none;
+            box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        @media (min-width: 768px) { .card-grid { grid-template-columns: repeat(10, 1fr); } }
+        @media (min-width: 1280px) { .card-grid { grid-template-columns: repeat(15, 1fr); } }
+
+        .card-selectable {
+            aspect-ratio: 2/3.2;
+            background: linear-gradient(135deg, var(--forest-green) 0%, #001a10 100%);
+            border: 1px solid var(--gold-foil);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            color: var(--gold-foil);
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .card-selectable:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 15px var(--gold-foil);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .card-selectable::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border: 0.5px solid rgba(212, 175, 55, 0.15);
+            border-radius: 1px;
+        }
+
+        .tarot-card-result {
+            width: 300px;
+            height: 480px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 5px solid var(--gold-foil);
+            box-shadow: 0 0 60px rgba(0,0,0,0.9);
+        }
+
+        .scan-text-ritual {
+            font-size: 1.1rem; 
+            line-height: 1.8;
+            font-weight: 400;
+            text-align: center;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        @media (max-width: 768px) { .scan-text-ritual { font-size: 0.95rem; } }
+
+        .reveal-scale {
+            animation: revealScale 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes revealScale {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--deep-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-foil); border-radius: 10px; }
+
+        .forest-overlay {
+            background: linear-gradient(135deg, rgba(1, 50, 32, 0.98) 0%, rgba(10, 10, 10, 1) 100%);
+        }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p2"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;</span><span class="s1">html</span><span class="s4"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s5">"th"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s4">    </span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s5">"UTF-8"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">    </span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s4"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">    </span><span class="s3">&lt;</span><span class="s6">title</span><span class="s3">&gt;</span><span class="s1">TAROT / AJARN FAAN | World-Class Professional Analysis</span><span class="s3">&lt;/</span><span class="s6">title</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">    </span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">    </span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&amp;family=Sarabun:wght@200;300;400;600&amp;display=swap"</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4">    </span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">        </span><span class="s6">:root</span><span class="s1"> {</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">--forest-green:</span><span class="s4"> </span><span class="s7">#013220</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">--gold-foil:</span><span class="s1"> </span><span class="s7">#D4AF37</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">--gold-bright:</span><span class="s1"> </span><span class="s7">#FFD700</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">--deep-dark:</span><span class="s1"> </span><span class="s7">#0a0a0a</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">--text-silver:</span><span class="s1"> </span><span class="s7">#e0e0e0</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s6">body</span><span class="s1"> {</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">background-color:</span><span class="s4"> </span><span class="s7">var(--deep-dark)</span><span class="s4">;</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">color:</span><span class="s4"> </span><span class="s1">var(--text-silver)</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Sarabun'</span><span class="s1">, </span><span class="s7">sans-serif</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">overflow-x:</span><span class="s1"> </span><span class="s7">hidden</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">15px</span><span class="s1">;</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">-webkit-font-smoothing:</span><span class="s4"> </span><span class="s7">antialiased</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">h1</span><span class="s4">, </span><span class="s1">h2</span><span class="s4">, </span><span class="s1">h3</span><span class="s4">, </span><span class="s1">.font-cinzel</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Cinzel'</span><span class="s1">, </span><span class="s7">serif</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.gold-gradient-text</span><span class="s4"> {</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">background:</span><span class="s4"> </span><span class="s1">linear-gradient(to</span><span class="s4"> </span><span class="s1">bottom</span><span class="s4">, </span><span class="s1">#BF953F</span><span class="s4">, </span><span class="s1">#FCF6BA</span><span class="s4">, </span><span class="s1">#B38728</span><span class="s4">, </span><span class="s1">#FBF5B7</span><span class="s4">, </span><span class="s1">#AA771C)</span><span class="s4">;</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">-webkit-background-clip:</span><span class="s4"> </span><span class="s7">text</span><span class="s4">;</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">-webkit-text-fill-color:</span><span class="s4"> </span><span class="s7">transparent</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.gold-border</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border:</span><span class="s1"> </span><span class="s9">2px</span><span class="s1"> </span><span class="s7">solid</span><span class="s1"> </span><span class="s7">transparent</span><span class="s1">;</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">background-image:</span><span class="s4"> </span><span class="s1">linear-gradient(var(--forest-green)</span><span class="s4">, </span><span class="s1">var(--forest-green))</span><span class="s4">, </span><span class="s1">radial-gradient(circle</span><span class="s4"> </span><span class="s1">at</span><span class="s4"> </span><span class="s1">top</span><span class="s4"> </span><span class="s1">left</span><span class="s4">, </span><span class="s1">#f5d67b</span><span class="s4">, </span><span class="s1">#d4af37)</span><span class="s4">;</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">background-origin:</span><span class="s4"> </span><span class="s7">border-box</span><span class="s4">;</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">background-clip:</span><span class="s4"> </span><span class="s1">padding-box</span><span class="s4">, </span><span class="s1">border-box</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">25px</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">212</span><span class="s1">, </span><span class="s9">175</span><span class="s1">, </span><span class="s9">55</span><span class="s1">, </span><span class="s9">0.15</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s6">.btn-gold</span><span class="s1"> {</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">background:</span><span class="s4"> </span><span class="s1">linear-gradient(</span><span class="s9">45deg</span><span class="s4">, </span><span class="s1">#B38728</span><span class="s4">, </span><span class="s1">#FBF5B7</span><span class="s4">, </span><span class="s1">#AA771C)</span><span class="s4">;</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">color:</span><span class="s4"> </span><span class="s1">var(--forest-green)</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-weight:</span><span class="s1"> </span><span class="s9">600</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">transition:</span><span class="s1"> </span><span class="s7">all</span><span class="s1"> </span><span class="s9">0.4s</span><span class="s1"> </span><span class="s7">cubic-bezier(</span><span class="s9">0.165</span><span class="s1">, </span><span class="s9">0.84</span><span class="s1">, </span><span class="s9">0.44</span><span class="s1">, </span><span class="s9">1</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">text-transform:</span><span class="s4"> </span><span class="s7">uppercase</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.btn-gold:hover</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">transform:</span><span class="s1"> </span><span class="s7">translateY(</span><span class="s9">-2px</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">8px</span><span class="s1"> </span><span class="s9">30px</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">212</span><span class="s1">, </span><span class="s9">175</span><span class="s1">, </span><span class="s9">55</span><span class="s1">, </span><span class="s9">0.4</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">input</span><span class="s4">, </span><span class="s1">select</span><span class="s4">, </span><span class="s1">textarea</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">14px</span><span class="s1"> </span><span class="s10">!important</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">background-color:</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">0</span><span class="s1">, </span><span class="s9">0</span><span class="s1">, </span><span class="s9">0</span><span class="s1">, </span><span class="s9">0.5</span><span class="s7">)</span><span class="s1"> </span><span class="s10">!important</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border:</span><span class="s1"> </span><span class="s9">1px</span><span class="s1"> </span><span class="s7">solid</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">212</span><span class="s1">, </span><span class="s9">175</span><span class="s1">, </span><span class="s9">55</span><span class="s1">, </span><span class="s9">0.2</span><span class="s7">)</span><span class="s1"> </span><span class="s10">!important</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">color:</span><span class="s1"> </span><span class="s7">white</span><span class="s1"> </span><span class="s10">!important</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border-radius:</span><span class="s1"> </span><span class="s9">4px</span><span class="s1"> </span><span class="s10">!important</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">padding:</span><span class="s1"> </span><span class="s9">12px</span><span class="s1"> </span><span class="s9">15px</span><span class="s1"> </span><span class="s10">!important</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">height:</span><span class="s1"> </span><span class="s9">45px</span><span class="s1">;<span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">width:</span><span class="s1"> </span><span class="s9">100%</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">box-sizing:</span><span class="s1"> </span><span class="s7">border-box</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Sarabun'</span><span class="s1">, </span><span class="s7">sans-serif</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s6">textarea</span><span class="s1"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">height:</span><span class="s1"> </span><span class="s7">auto</span><span class="s1"> </span><span class="s10">!important</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">min-height:</span><span class="s1"> </span><span class="s9">140px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">input:focus</span><span class="s4">, </span><span class="s1">select:focus</span><span class="s4">, </span><span class="s1">textarea:focus</span><span class="s4"> {</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">border-color:</span><span class="s4"> </span><span class="s1">var(--gold-foil)</span><span class="s4"> </span><span class="s10">!important</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">outline:</span><span class="s1"> </span><span class="s7">none</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">1px</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">212</span><span class="s1">, </span><span class="s9">175</span><span class="s1">, </span><span class="s9">55</span><span class="s1">, </span><span class="s9">0.3</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s6">.card-grid</span><span class="s1"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">display:</span><span class="s1"> </span><span class="s7">grid</span><span class="s1">;</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">grid-template-columns:</span><span class="s4"> </span><span class="s7">repeat(</span><span class="s9">5</span><span class="s4">, </span><span class="s9">1fr</span><span class="s7">)</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">gap:</span><span class="s1"> </span><span class="s9">10px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">padding:</span><span class="s1"> </span><span class="s9">20px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border-radius:</span><span class="s1"> </span><span class="s9">12px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">background:</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">0</span><span class="s1">,</span><span class="s9">0</span><span class="s1">,</span><span class="s9">0</span><span class="s1">,</span><span class="s9">0.5</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border:</span><span class="s1"> </span><span class="s9">1px</span><span class="s1"> </span><span class="s7">solid</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">212</span><span class="s1">, </span><span class="s9">175</span><span class="s1">, </span><span class="s9">55</span><span class="s1">, </span><span class="s9">0.1</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        @</span><span class="s6">media</span><span class="s1"> (</span><span class="s6">min-width:</span><span class="s1"> 768</span><span class="s6">px</span><span class="s1">) { .card-grid { </span><span class="s2">grid-template-columns:</span><span class="s1"> </span><span class="s7">repeat(</span><span class="s9">10</span><span class="s1">, </span><span class="s9">1fr</span><span class="s7">)</span><span class="s1">; } }</span></p>
-<p class="p6"><span class="s1">        @</span><span class="s6">media</span><span class="s1"> (</span><span class="s6">min-width:</span><span class="s1"> 1280</span><span class="s6">px</span><span class="s1">) { .card-grid { </span><span class="s2">grid-template-columns:</span><span class="s1"> </span><span class="s7">repeat(</span><span class="s9">15</span><span class="s1">, </span><span class="s9">1fr</span><span class="s7">)</span><span class="s1">; } }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.card-selectable</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">aspect-ratio:</span><span class="s1"> </span><span class="s9">2</span><span class="s1">/</span><span class="s9">3.2</span><span class="s1">;</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">background:</span><span class="s4"> </span><span class="s1">linear-gradient(</span><span class="s9">135deg</span><span class="s4">, </span><span class="s1">var(--forest-green)</span><span class="s4"> </span><span class="s9">0%</span><span class="s4">, </span><span class="s1">#001a10</span><span class="s4"> </span><span class="s9">100%</span><span class="s1">)</span><span class="s4">;</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">border:</span><span class="s4"> </span><span class="s9">1px</span><span class="s4"> </span><span class="s1">solid</span><span class="s4"> </span><span class="s1">var(--gold-foil)</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border-radius:</span><span class="s1"> </span><span class="s9">3px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">cursor:</span><span class="s1"> </span><span class="s7">pointer</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">transition:</span><span class="s1"> </span><span class="s7">all</span><span class="s1"> </span><span class="s9">0.4s</span><span class="s1"> </span><span class="s7">ease</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">position:</span><span class="s1"> </span><span class="s7">relative</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s9">0.7</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">display:</span><span class="s1"> </span><span class="s7">flex</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">align-items:</span><span class="s1"> </span><span class="s7">center</span><span class="s1">;</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">justify-content:</span><span class="s4"> </span><span class="s7">center</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Cinzel'</span><span class="s1">, </span><span class="s7">serif</span><span class="s1">;</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">color:</span><span class="s4"> </span><span class="s1">var(--gold-foil)</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">9px</span><span class="s1">;</span></p>
-<p class="p4"><span class="s4">            </span><span class="s1">letter-spacing:</span><span class="s4"> </span><span class="s9">1px</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.card-selectable:hover</span><span class="s4"> {</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">transform:</span><span class="s4"> </span><span class="s1">scale(</span><span class="s9">1.05</span><span class="s1">)</span><span class="s4"> </span><span class="s1">translateY(</span><span class="s9">-5px</span><span class="s1">)</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">15px</span><span class="s1"> </span><span class="s7">var(--gold-foil)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s9">1</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">z-index:</span><span class="s1"> </span><span class="s9">10</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.card-selectable::after</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">content:</span><span class="s1"> </span><span class="s8">''</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">position:</span><span class="s1"> </span><span class="s7">absolute</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">inset:</span><span class="s1"> </span><span class="s9">3px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border:</span><span class="s1"> </span><span class="s9">0.5px</span><span class="s1"> </span><span class="s7">solid</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">212</span><span class="s1">, </span><span class="s9">175</span><span class="s1">, </span><span class="s9">55</span><span class="s1">, </span><span class="s9">0.15</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border-radius:</span><span class="s1"> </span><span class="s9">1px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.tarot-card-result</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">width:</span><span class="s1"> </span><span class="s9">300px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">height:</span><span class="s1"> </span><span class="s9">480px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">border-radius:</span><span class="s1"> </span><span class="s9">15px</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">overflow:</span><span class="s1"> </span><span class="s7">hidden</span><span class="s1">;</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">border:</span><span class="s4"> </span><span class="s9">5px</span><span class="s4"> </span><span class="s1">solid</span><span class="s4"> </span><span class="s1">var(--gold-foil)</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">60px</span><span class="s1"> </span><span class="s7">rgba(</span><span class="s9">0</span><span class="s1">,</span><span class="s9">0</span><span class="s1">,</span><span class="s9">0</span><span class="s1">,</span><span class="s9">0.9</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.scan-text-ritual</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">1.1rem</span><span class="s1">;<span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">line-height:</span><span class="s1"> </span><span class="s9">1.8</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-weight:</span><span class="s1"> </span><span class="s9">400</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">text-align:</span><span class="s1"> </span><span class="s7">center</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Sarabun'</span><span class="s1">, </span><span class="s7">sans-serif</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        @</span><span class="s6">media</span><span class="s1"> (</span><span class="s6">max-width:</span><span class="s1"> 768</span><span class="s6">px</span><span class="s1">) { .scan-text-ritual { </span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">0.95rem</span><span class="s1">; } }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.reveal-scale</span><span class="s4"> {</span></p>
-<p class="p7"><span class="s4">            </span><span class="s2">animation:</span><span class="s4"> </span><span class="s1">revealScale</span><span class="s4"> </span><span class="s9">1.2s</span><span class="s4"> </span><span class="s1">cubic-bezier(</span><span class="s9">0.175</span><span class="s4">, </span><span class="s9">0.885</span><span class="s4">, </span><span class="s9">0.32</span><span class="s4">, </span><span class="s9">1.275</span><span class="s1">)</span><span class="s4"> </span><span class="s1">forwards</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">@keyframes</span><span class="s1"> </span><span class="s7">revealScale</span><span class="s1"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s9">0%</span><span class="s1"> { </span><span class="s2">transform:</span><span class="s1"> </span><span class="s7">scale(</span><span class="s9">0.6</span><span class="s7">)</span><span class="s1">; </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s9">0</span><span class="s1">; }</span></p>
-<p class="p6"><span class="s1">            </span><span class="s9">100%</span><span class="s1"> { </span><span class="s2">transform:</span><span class="s1"> </span><span class="s7">scale(</span><span class="s9">1</span><span class="s7">)</span><span class="s1">; </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s9">1</span><span class="s1">; }</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">::-webkit-scrollbar</span><span class="s4"> { </span><span class="s2">width:</span><span class="s4"> </span><span class="s9">5px</span><span class="s4">; }</span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">::-webkit-scrollbar-track</span><span class="s4"> { </span><span class="s2">background:</span><span class="s4"> </span><span class="s7">var(--deep-dark)</span><span class="s4">; }</span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">::-webkit-scrollbar-thumb</span><span class="s4"> { </span><span class="s2">background:</span><span class="s4"> </span><span class="s7">var(--gold-foil)</span><span class="s4">; </span><span class="s2">border-radius:</span><span class="s4"> </span><span class="s9">10px</span><span class="s4">; }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">        </span><span class="s1">.forest-overlay</span><span class="s4"> {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s2">background:</span><span class="s1"> </span><span class="s7">linear-gradient(</span><span class="s9">135deg</span><span class="s1">, </span><span class="s7">rgba(</span><span class="s9">1</span><span class="s1">, </span><span class="s9">50</span><span class="s1">, </span><span class="s9">32</span><span class="s1">, </span><span class="s9">0.98</span><span class="s7">)</span><span class="s1"> </span><span class="s9">0%</span><span class="s1">, </span><span class="s7">rgba(</span><span class="s9">10</span><span class="s1">, </span><span class="s9">10</span><span class="s1">, </span><span class="s9">10</span><span class="s1">, </span><span class="s9">1</span><span class="s7">)</span><span class="s1"> </span><span class="s9">100%</span><span class="s7">)</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p3"><span class="s4">    </span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s3">&lt;</span><span class="s6">body</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"min-h-screen flex flex-col"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p8"><span class="s4">    </span><span class="s1">&lt;!-- Header --&gt;</span></p>
-<p class="p5"><span class="s4">    </span><span class="s3">&lt;</span><span class="s6">header</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"p-6 flex justify-between items-center border-b border-yellow-900/20 bg-black/40 backdrop-blur-xl sticky top-0 z-50"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">        </span><span class="s3">&lt;</span><span class="s6">h1</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-lg md:text-xl font-cinzel gold-gradient-text font-normal tracking-normal uppercase"</span><span class="s3">&gt;</span><span class="s4">TAROT / AJARN FAAN</span><span class="s3">&lt;/</span><span class="s6">h1</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">        </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"live-clock"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[10px] text-gold-foil font-light tracking-normal uppercase text-right"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4">    </span><span class="s3">&lt;/</span><span class="s1">header</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p5"><span class="s4">    </span><span class="s3">&lt;</span><span class="s6">main</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex-grow flex flex-col items-center justify-center p-6"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">       <span class="Apple-converted-space"> </span></span></p>
-<p class="p8"><span class="s4">        </span><span class="s1">&lt;!-- Step 1: Identification (Pre-filled for CK Testing) --&gt;</span></p>
-<p class="p5"><span class="s4">        </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"step-login"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full max-w-lg p-10 gold-border forest-overlay rounded-xl space-y-8 shadow-2xl"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-center"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-2xl font-cinzel gold-gradient-text tracking-normal mb-2 uppercase"</span><span class="s3">&gt;</span><span class="s4">Identification</span><span class="s3">&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">p</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[12px] text-gray-500 uppercase tracking-normal font-light font-sarabun"</span><span class="s3">&gt;</span><span class="s11">ไพ่ยิปซีจักรวาลสะท้อนตัวตน</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-1 gap-5"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">label</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gold-foil text-[10px] uppercase mb-2 block font-sarabun"</span><span class="s3">&gt;</span><span class="s11">ชื่อ-นามสกุล</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">input</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"text"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"fullname"</span><span class="s4"> </span><span class="s2">value</span><span class="s3">=</span><span class="s1">"CK"</span><span class="s4"> </span><span class="s2">placeholder</span><span class="s3">=</span><span class="s1">"</span><span class="s12">ระบุชื่อจริง..."</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">               <span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-3 gap-3"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                        </span><span class="s3">&lt;</span><span class="s6">label</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gold-foil text-[10px] uppercase mb-2 block font-sarabun"</span><span class="s3">&gt;</span><span class="s11">วันเกิด</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                        </span><span class="s3">&lt;</span><span class="s6">select</span><span class="s1"> </span><span class="s2">id</span><span class="s3">=</span><span class="s5">"birth-day"</span><span class="s3">&gt;&lt;/</span><span class="s6">select</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                        </span><span class="s3">&lt;</span><span class="s6">label</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gold-foil text-[10px] uppercase mb-2 block font-sarabun"</span><span class="s3">&gt;</span><span class="s11">เดือนเกิด</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                        </span><span class="s3">&lt;</span><span class="s6">select</span><span class="s1"> </span><span class="s2">id</span><span class="s3">=</span><span class="s5">"birth-month"</span><span class="s3">&gt;&lt;/</span><span class="s6">select</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                        </span><span class="s3">&lt;</span><span class="s6">label</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gold-foil text-[10px] uppercase mb-2 block font-sarabun"</span><span class="s3">&gt;</span><span class="s11">ปี (พ.ศ./ค.ศ.)</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                        </span><span class="s3">&lt;</span><span class="s6">input</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"number"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"birth-year"</span><span class="s4"> </span><span class="s2">value</span><span class="s3">=</span><span class="s1">"2529"</span><span class="s4"> </span><span class="s2">placeholder</span><span class="s3">=</span><span class="s1">"25XX / 19XX"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-2 gap-3"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                        </span><span class="s3">&lt;</span><span class="s6">label</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gold-foil text-[10px] uppercase mb-2 block font-sarabun"</span><span class="s3">&gt;</span><span class="s11">ชั่วโมงเกิด</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                        </span><span class="s3">&lt;</span><span class="s6">select</span><span class="s1"> </span><span class="s2">id</span><span class="s3">=</span><span class="s5">"birth-hour"</span><span class="s3">&gt;&lt;/</span><span class="s6">select</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                        </span><span class="s3">&lt;</span><span class="s6">label</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gold-foil text-[10px] uppercase mb-2 block font-sarabun"</span><span class="s3">&gt;</span><span class="s11">นาทีเกิด</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                        </span><span class="s3">&lt;</span><span class="s6">select</span><span class="s1"> </span><span class="s2">id</span><span class="s3">=</span><span class="s5">"birth-minute"</span><span class="s3">&gt;&lt;/</span><span class="s6">select</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"proceedToRitual()"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full btn-gold py-4 rounded text-sm tracking-normal shadow-lg mt-4 uppercase"</span><span class="s3">&gt;</span><span class="s11">ยอมรับเงื่อนไขและเข้าสู่ระบบ</span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">        </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p8"><span class="s4">        </span><span class="s1">&lt;!-- Step 2: Ritual (Prayer &amp; Selection) --&gt;</span></p>
-<p class="p5"><span class="s4">        </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"step-ritual"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden w-full max-w-6xl p-10 gold-border forest-overlay rounded-xl space-y-10"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-center space-y-5"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"consultation-header"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-xl md:text-2xl font-cinzel gold-gradient-text tracking-normal uppercase font-bold leading-tight"</span><span class="s3">&gt;&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"life-stats"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[15px] text-gray-300 space-y-2 py-6 border-y border-yellow-900/10 leading-relaxed tracking-normal font-sarabun"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"space-y-6"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">p</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-center text-[15px] text-gold-foil uppercase mb-4 tracking-normal font-normal font-sarabun"</span><span class="s3">&gt;</span><span class="s11">ถ้อยแถลงต่อดวงดาวและจักรวาล</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">textarea</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"prayer"</span><span class="s4"> </span><span class="s2">placeholder</span><span class="s3">=</span><span class="s1">"</span><span class="s12">ระบุปมในใจ บาดแผล หรือสิ่งที่ท่านต้องการปลดล็อกในครั้งนี้..."</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full leading-relaxed resize-none"</span><span class="s3">&gt;&lt;/</span><span class="s6">textarea</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"space-y-3 pt-6 border-t border-yellow-900/10"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-center text-[15px] text-gray-200 tracking-normal font-normal font-sarabun"</span><span class="s3">&gt;</span><span class="s12">กรุณาพิมพ์ถ้อยแถลงให้ครบถ้วน จากนั้นใช้สมาธิเลือกไพ่ที่ท่านรู้สึกถึง </span><span class="s1">1 </span><span class="s12">ใบ</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-center text-[18px] text-[#D4AF37] tracking-normal font-normal font-sarabun"</span><span class="s3">&gt;</span><span class="s12">จงมีสมาธิในการเลือก จิตนิ่ง ใจนิ่ง สมองโล่งที่สุด ไม่งั้นไพ่จะสะท้อนจิตสำนึก</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                   <span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"card-selection-grid"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"card-grid mt-8"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex justify-center pt-4"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"backToHome()"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[11px] text-gray-500 uppercase tracking-normal hover:text-gold-foil transition-all border-b border-gray-800 hover:border-gold-foil pb-1 font-sarabun"</span><span class="s3">&gt;</span><span class="s11">กลับสู่หน้าแรก</span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">        </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p8"><span class="s4">        </span><span class="s1">&lt;!-- Step 3: Professional Spectrum Scan Loading (Fixed 10s Sequence) --&gt;</span></p>
-<p class="p5"><span class="s4">        </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"step-loading"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden w-full max-w-5xl text-center space-y-4 py-20 flex flex-col items-center justify-center min-h-[550px]"</span><span class="s3">&gt;</span></p>
-<p class="p8"><span class="s4">            </span><span class="s1">&lt;!-- Countdown at TOP --&gt;</span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"scan-countdown"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-6xl md:text-7xl font-cinzel text-gold-bright drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] mb-10"</span><span class="s3">&gt;</span><span class="s4">10</span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"scan-text-ritual uppercase"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-white block opacity-80 mb-2"</span><span class="s3">&gt;</span><span class="s12">ระบบกำลังวิเคราะห์ผลลัพธ์ผ่านหน้าไพ่...</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">span</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"gold-gradient-text block font-cinzel font-bold text-2xl md:text-3xl mb-2"</span><span class="s3">&gt;</span><span class="s4">PROFESSIONAL SPECTRUM SCAN</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-white block opacity-80 mb-4"</span><span class="s3">&gt;</span><span class="s12">จากอารมณ์ที่คุณเลือกไพ่</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-[#D4AF37] block font-normal text-xl md:text-2xl"</span><span class="s3">&gt;</span><span class="s12">ถ้าคุณไม่มีสมาธิไพ่นั้นก็จะสะท้อนตัวคุณเอง</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">           <span class="Apple-converted-space"> </span></span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"mt-12 flex space-x-4"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse"</span><span class="s4"> </span><span class="s2">style</span><span class="s3">=</span><span class="s1">"animation-delay: 0.2s"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse"</span><span class="s4"> </span><span class="s2">style</span><span class="s3">=</span><span class="s1">"animation-delay: 0.4s"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">        </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p8"><span class="s4">        </span><span class="s1">&lt;!-- Step 4: Analytical Result --&gt;</span></p>
-<p class="p5"><span class="s4">        </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"step-result"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden w-full max-w-7xl flex flex-col lg:flex-row items-center gap-16 p-6"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"final-card-container"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex-shrink-0"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">            </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"space-y-8 flex-grow bg-black/40 p-12 rounded-xl gold-border backdrop-blur-sm"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"border-l-4 border-gold-foil pl-10"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[13px] text-gold-foil mb-2 uppercase tracking-normal font-bold opacity-70 font-sarabun"</span><span class="s3">&gt;</span><span class="s4">Analytical Insight</span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"card-name"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase tracking-normal mb-2 font-bold"</span><span class="s3">&gt;&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">h3</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"card-subtitle"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-xl text-white/80 italic font-light font-sarabun"</span><span class="s3">&gt;&lt;/</span><span class="s6">h3</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"card-description"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[17px] font-sarabun leading-loose text-gray-200 space-y-8 font-light"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"pt-10 border-t border-yellow-900/20 flex flex-wrap justify-between items-center gap-6"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"flex gap-10"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                        </span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"resetRitual()"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[11px] text-gold-foil uppercase tracking-normal border-b border-gold-foil/30 hover:border-gold-foil transition-all pb-1 font-sarabun"</span><span class="s3">&gt;</span><span class="s11">วิเคราะห์ปัญหาอื่น</span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                        </span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"backToHome()"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[11px] text-gray-500 uppercase tracking-normal border-b border-gray-700/30 hover:border-gray-300 transition-all pb-1 font-sarabun"</span><span class="s3">&gt;</span><span class="s11">กลับหน้าแรก</span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                    </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4">                    </span><span class="s3">&lt;</span><span class="s6">p</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-[10px] text-gray-600 uppercase tracking-normal font-cinzel"</span><span class="s3">&gt;</span><span class="s4">AJARN FAAN | AUTHORITY ANALYSIS</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">        </span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">    </span><span class="s3">&lt;/</span><span class="s6">main</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p3"><span class="s4">    </span><span class="s3">&lt;</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">const</span><span class="s1"> apiKey = </span><span class="s8">""</span><span class="s1">;<span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">const</span><span class="s1"> appId = </span><span class="s10">typeof</span><span class="s1"> __app_id !== </span><span class="s8">'undefined'</span><span class="s1"> ? __app_id : </span><span class="s8">'ajarn-faan-worldclass'</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">const</span><span class="s1"> majorArcana = [</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Fool"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">สัญชาตญาณเดิมและการเริ่มต้น"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Magician"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ศักยภาพที่ยังไม่จัดระเบียบ"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The High Priestess"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">เสียงกระซิบจากความลึกลับ"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Empress"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความอุดมสมบูรณ์และอำนาจฝ่ายหญิง"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Emperor"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">โครงสร้างและความรับผิดชอบ"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Hierophant"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความเชื่อและกรอบประเพณี"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Lovers"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">การเลือกและแรงดึงดูด"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Chariot"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">การควบคุมและชัยชนะ"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"Strength"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความอดทนและพลังอำนาจภายใน"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Hermit"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความวิเวกและการค้นพบตนเอง"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Wheel of Fortune"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">กงล้อแห่งชะตากรรม"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"Justice"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความยุติธรรมและกฎแห่งกรรม"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Hanged Man"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">การเสียสละและมุมมองใหม่"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"Death"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">การสิ้นสุดเพื่อเกิดใหม่"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"Temperance"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความสมดุลและการปรับตัว"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Devil"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">พันธนาการแห่งกิเลส"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Tower"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความย่อยยับที่สว่างแจ้ง"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Star"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความหวังและการเยียวยา"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Moon"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/f/f0/RWS_Tarot_18_Moon.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ภาพลวงตาและความกลัว"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The Sun"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความสำเร็จและพลังอำนาจ"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"Judgement"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">การปลุกตื่นและการประกาศผล"</span><span class="s4"> },</span></p>
-<p class="p9"><span class="s4">            { name: </span><span class="s1">"The World"</span><span class="s4">, img: </span><span class="s1">"https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg"</span><span class="s4">, sub: </span><span class="s1">"</span><span class="s12">ความสมบูรณ์แบบและการหลุดพ้น"</span><span class="s4"> }</span></p>
-<p class="p6"><span class="s1">        ];</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">const</span><span class="s1"> fullTarotDeck = [...majorArcana];</span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">while</span><span class="s1"> (fullTarotDeck.length &lt; </span><span class="s13">78</span><span class="s1">) {</span></p>
-<p class="p6"><span class="s1">            fullTarotDeck.push({...majorArcana[</span><span class="s14">Math</span><span class="s1">.floor(</span><span class="s14">Math</span><span class="s1">.random() * majorArcana.length)]});</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">let</span><span class="s1"> currentUser = {};</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        window.onload = () =&gt; {</span></p>
-<p class="p6"><span class="s1">            populateOptions(</span><span class="s8">'birth-day'</span><span class="s1">, </span><span class="s13">1</span><span class="s1">, </span><span class="s13">31</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            populateOptions(</span><span class="s8">'birth-month'</span><span class="s1">, </span><span class="s13">1</span><span class="s1">, </span><span class="s13">12</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            populateOptions(</span><span class="s8">'birth-hour'</span><span class="s1">, </span><span class="s13">0</span><span class="s1">, </span><span class="s13">23</span><span class="s1">, </span><span class="s10">true</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            populateOptions(</span><span class="s8">'birth-minute'</span><span class="s1">, </span><span class="s13">0</span><span class="s1">, </span><span class="s13">59</span><span class="s1">, </span><span class="s10">true</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">           <span class="Apple-converted-space"> </span></span></p>
-<p class="p8"><span class="s4">            </span><span class="s1">// Default Values: CK, 17 Jan 2529 (1986), 03:00</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'birth-day'</span><span class="s1">).value = </span><span class="s8">"17"</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'birth-month'</span><span class="s1">).value = </span><span class="s8">"1"</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'birth-hour'</span><span class="s1">).value = </span><span class="s8">"3"</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'birth-minute'</span><span class="s1">).value = </span><span class="s8">"0"</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            updateClock();</span></p>
-<p class="p6"><span class="s1">            setInterval(updateClock, </span><span class="s13">1000</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">        };</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">function</span><span class="s1"> populateOptions(id, min, max, pad = </span><span class="s10">false</span><span class="s1">) {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> select = document.getElementById(id);</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">for</span><span class="s1"> (</span><span class="s10">let</span><span class="s1"> i = min; i &lt;= max; i++) {</span></p>
-<p class="p6"><span class="s1">                </span><span class="s10">const</span><span class="s1"> opt = document.createElement(</span><span class="s8">'option'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">                opt.value = i;</span></p>
-<p class="p6"><span class="s1">                opt.innerText = pad ? i.toString().padStart(</span><span class="s13">2</span><span class="s1">, </span><span class="s8">'0'</span><span class="s1">) : i;</span></p>
-<p class="p6"><span class="s1">                select.appendChild(opt);</span></p>
-<p class="p6"><span class="s1">            }</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">function</span><span class="s1"> updateClock() {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> clock = document.getElementById(</span><span class="s8">'live-clock'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">if</span><span class="s1">(clock) clock.innerText = </span><span class="s10">new</span><span class="s1"> </span><span class="s14">Date</span><span class="s1">().toLocaleDateString(</span><span class="s8">'th-TH'</span><span class="s1">, { weekday: </span><span class="s8">'long'</span><span class="s1">, year: </span><span class="s8">'numeric'</span><span class="s1">, month: </span><span class="s8">'long'</span><span class="s1">, day: </span><span class="s8">'numeric'</span><span class="s1">, hour: </span><span class="s8">'2-digit'</span><span class="s1">, minute: </span><span class="s8">'2-digit'</span><span class="s1">, second: </span><span class="s8">'2-digit'</span><span class="s1"> });</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">function</span><span class="s1"> proceedToRitual() {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> name = document.getElementById(</span><span class="s8">'fullname'</span><span class="s1">).value;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">let</span><span class="s1"> yearInput = parseInt(document.getElementById(</span><span class="s8">'birth-year'</span><span class="s1">).value);</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">if</span><span class="s1"> (!name || isNaN(yearInput)) </span><span class="s10">return</span><span class="s1"> alert(</span><span class="s8">"</span><span class="s15">กรุณาระบุข้อมูลระบุตัวตนให้ครบถ้วน"</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">           <span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">let</span><span class="s1"> yearAD = yearInput;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">if</span><span class="s1"> (yearInput &gt; </span><span class="s13">2400</span><span class="s1">) yearAD -= </span><span class="s13">543</span><span class="s1">; </span><span class="s16">// BE to AD</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> d = document.getElementById(</span><span class="s8">'birth-day'</span><span class="s1">).value;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> m = document.getElementById(</span><span class="s8">'birth-month'</span><span class="s1">).value;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> hr = document.getElementById(</span><span class="s8">'birth-hour'</span><span class="s1">).value;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> mn = document.getElementById(</span><span class="s8">'birth-minute'</span><span class="s1">).value;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p8"><span class="s4">            </span><span class="s1">// Accurate Birth Calculation</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> birthDate = </span><span class="s10">new</span><span class="s1"> </span><span class="s14">Date</span><span class="s1">(yearAD, m - </span><span class="s13">1</span><span class="s1">, d, hr, mn);</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> now = </span><span class="s10">new</span><span class="s1"> </span><span class="s14">Date</span><span class="s1">();</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> diffMs = now - birthDate;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> daysLived = </span><span class="s14">Math</span><span class="s1">.floor(diffMs / (</span><span class="s13">1000</span><span class="s1"> * </span><span class="s13">60</span><span class="s1"> * </span><span class="s13">60</span><span class="s1"> * </span><span class="s13">24</span><span class="s1">));</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> hoursLived = </span><span class="s14">Math</span><span class="s1">.floor(diffMs / (</span><span class="s13">1000</span><span class="s1"> * </span><span class="s13">60</span><span class="s1"> * </span><span class="s13">60</span><span class="s1">));</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> minutesLived = </span><span class="s14">Math</span><span class="s1">.floor(diffMs / (</span><span class="s13">1000</span><span class="s1"> * </span><span class="s13">60</span><span class="s1">));</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p8"><span class="s4">            </span><span class="s1">// Thai Astrology Day Logic (06:00 cut)</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">let</span><span class="s1"> dispDay = </span><span class="s10">new</span><span class="s1"> </span><span class="s14">Date</span><span class="s1">(yearAD, m - </span><span class="s13">1</span><span class="s1">, d);</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">if</span><span class="s1"> (parseInt(hr) &lt; </span><span class="s13">6</span><span class="s1">) dispDay.setDate(dispDay.getDate() - </span><span class="s13">1</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> thaiDayName = [</span><span class="s8">"</span><span class="s15">อาทิตย์"</span><span class="s1">, </span><span class="s8">"</span><span class="s15">จันทร์"</span><span class="s1">, </span><span class="s8">"</span><span class="s15">อังคาร"</span><span class="s1">, </span><span class="s8">"</span><span class="s15">พุธ"</span><span class="s1">, </span><span class="s8">"</span><span class="s15">พฤหัสบดี"</span><span class="s1">, </span><span class="s8">"</span><span class="s15">ศุกร์"</span><span class="s1">, </span><span class="s8">"</span><span class="s15">เสาร์"</span><span class="s1">][dispDay.getDay()];</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            currentUser = {<span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">                name, daysLived, hoursLived, minutesLived,<span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">                thaiDay: thaiDayName, birthStr: </span><span class="s8">`</span><span class="s1">${d}</span><span class="s8">/</span><span class="s1">${m}</span><span class="s8">/</span><span class="s1">${yearInput}</span><span class="s8">`</span><span class="s1">,</span></p>
-<p class="p6"><span class="s1">                prayer: </span><span class="s8">""</span><span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">            };</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'consultation-header'</span><span class="s1">).innerText = </span><span class="s8">`CONSULTATION FOR: </span><span class="s1">${name}</span><span class="s8"> (</span><span class="s1">${currentUser.birthStr}</span><span class="s8">)`</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'life-stats'</span><span class="s1">).innerHTML = </span><span class="s8">`</span></p>
-<p class="p9"><span class="s1">                &lt;div class="flex flex-col gap-1"&gt;</span></p>
-<p class="p9"><span class="s1">                    &lt;p&gt;</span><span class="s12">ท่านเกิดในวัน</span><span class="s1">&lt;span class="text-gold-foil font-bold"&gt;</span><span class="s4">${currentUser.thaiDay}</span><span class="s1">&lt;/span&gt; (</span><span class="s12">ตามหลักอาทิตย์อุทัย)</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p9"><span class="s1">                    &lt;p&gt;</span><span class="s12">ท่านได้เผชิญโลกใบนี้มาแล้ว</span><span class="s1"> &lt;span class="text-gold-bright font-bold text-2xl"&gt;</span><span class="s4">${daysLived.toLocaleString()}</span><span class="s1"> </span><span class="s12">วัน</span><span class="s1">&lt;/span&gt;&lt;/p&gt;</span></p>
-<p class="p9"><span class="s1">                    &lt;p class="text-[11px] text-gray-500 uppercase tracking-normal mt-2"&gt;</span><span class="s12">สถิติพิกัด:</span><span class="s1"> </span><span class="s4">${hoursLived.toLocaleString()}</span><span class="s1"> </span><span class="s12">ชั่วโมง /</span><span class="s1"> </span><span class="s4">${minutesLived.toLocaleString()}</span><span class="s1"> </span><span class="s12">นาที แห่งการมีตัวตน</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p9"><span class="s1">                &lt;/div&gt;</span></p>
-<p class="p9"><span class="s1">            `</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            generateGrid();</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-login'</span><span class="s1">).classList.add(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-ritual'</span><span class="s1">).classList.remove(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            window.scrollTo(</span><span class="s13">0</span><span class="s1">,</span><span class="s13">0</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">function</span><span class="s1"> generateGrid() {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> grid = document.getElementById(</span><span class="s8">'card-selection-grid'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            grid.innerHTML = </span><span class="s8">''</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">for</span><span class="s1"> (</span><span class="s10">let</span><span class="s1"> i = </span><span class="s13">0</span><span class="s1">; i &lt; </span><span class="s13">78</span><span class="s1">; i++) {</span></p>
-<p class="p6"><span class="s1">                </span><span class="s10">const</span><span class="s1"> card = document.createElement(</span><span class="s8">'div'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">                card.className = </span><span class="s8">'card-selectable'</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">                card.innerHTML = </span><span class="s8">`&lt;span&gt;TAROT&lt;/span&gt;`</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">                card.onclick = () =&gt; performScan(i);</span></p>
-<p class="p6"><span class="s1">                grid.appendChild(card);</span></p>
-<p class="p6"><span class="s1">            }</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">async</span><span class="s1"> </span><span class="s10">function</span><span class="s1"> performScan(cardIndex) {</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> prayerText = document.getElementById(</span><span class="s8">'prayer'</span><span class="s1">).value.trim();</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">if</span><span class="s1"> (!prayerText) {</span></p>
-<p class="p10"><span class="s17">                alert(</span><span class="s18">"</span><span class="s1">กรุณาระบุถ้อยแถลงหรือปมในใจของท่านก่อนสัมผัสไพ่ เพื่อให้สัญชาตญาณเดิมนำทาง"</span><span class="s17">);</span></p>
-<p class="p6"><span class="s1">                </span><span class="s10">return</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            }</span></p>
-<p class="p6"><span class="s1">            currentUser.prayer = prayerText;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-ritual'</span><span class="s1">).classList.add(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-loading'</span><span class="s1">).classList.remove(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            window.scrollTo(</span><span class="s13">0</span><span class="s1">,</span><span class="s13">0</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> resultCard = fullTarotDeck[</span><span class="s14">Math</span><span class="s1">.floor(</span><span class="s14">Math</span><span class="s1">.random() * fullTarotDeck.length)];</span></p>
-<p class="p9"><span class="s4">            </span><span class="s10">const</span><span class="s4"> systemPrompt = </span><span class="s1">`</span><span class="s12">คุณคืออาจารย์ฟาณ (</span><span class="s1">Ajarn Faan) </span><span class="s12">กุนซือวิเคราะห์ดวงชะตา (</span><span class="s1">Scorpio-Saturn class)<span class="Apple-converted-space"> </span></span></p>
-<p class="p10"><span class="s18">            </span><span class="s1">วินิจฉัยดวงชะตาด้วยมาตรวัดระดับโลก นิ่ง ตรง และทรงอำนาจ</span></p>
-<p class="p10"><span class="s18">            </span><span class="s1">ใช้ "ภาษามนุษย์ปกติ" ที่สื่อสารกับคนทุกวัย (</span><span class="s18">18-89 </span><span class="s1">ปี) ได้อย่างลึกซึ้ง เข้าใจง่าย ไม่ลิเก ไม่กำกวม</span></p>
-<p class="p9"><span class="s1">           <span class="Apple-converted-space"> </span></span></p>
-<p class="p10"><span class="s18">            </span><span class="s1">กฎแห่งสัมพัทธภาพของจิต: จงเชื่อมโยงปมในใจที่ระบุมา เข้ากับสัญลักษณ์ของหน้าไพ่ โดยใช้สัญชาตญาณเดิมนำทาง</span></p>
-<p class="p9"><span class="s1">           <span class="Apple-converted-space"> </span></span></p>
-<p class="p10"><span class="s18">            </span><span class="s1">กติกาเข้มงวด:</span></p>
-<p class="p10"><span class="s18">            - </span><span class="s1">ห้ามเอ่ยถึงชื่อวันเกิดเด็ดขาด (เช่น ห้ามพูดว่า "คนวันพฤหัสบดี") ระบบรู้พิกัดนี้อยู่แล้ว ให้ใช้วินิจฉัยจุดบอดเลย</span></p>
-<p class="p10"><span class="s18">            - </span><span class="s1">ห้ามหยาบคาย ภาษาต้องดูแพง เป็นการวินิจฉัย (</span><span class="s18">Diagnosis) </span><span class="s1">แบบกุนซือระดับสูง</span></p>
-<p class="p9"><span class="s1">            - </span><span class="s12">วิเคราะห์ </span><span class="s1">'</span><span class="s12">ปมในใจ</span><span class="s1">' (</span><span class="s4">${currentUser.prayer}</span><span class="s1">) </span><span class="s12">ผ่านหน้าไพ่</span><span class="s1"> </span><span class="s4">${resultCard.name}</span></p>
-<p class="p10"><span class="s18">            - </span><span class="s1">นำ </span><span class="s18">'</span><span class="s1">สถิติการใช้ชีวิต</span><span class="s18">' (</span><span class="s17">${currentUser.daysLived}</span><span class="s18"> </span><span class="s1">วัน) มาคำนวณน้ำหนักบาดแผลและทางตัน</span></p>
-<p class="p10"><span class="s18">            - </span><span class="s1">ห้ามใช้ศัพท์ก่อสร้าง</span></p>
-<p class="p9"><span class="s1">           <span class="Apple-converted-space"> </span></span></p>
-<p class="p10"><span class="s18">            </span><span class="s1">เขียน </span><span class="s18">3-4 </span><span class="s1">ย่อหน้าสั้นๆ ที่ทำให้ลูกดวงรู้สึกจุกและตื่นรู้จากภายใน</span><span class="s18">`</span><span class="s17">;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p8"><span class="s4">            </span><span class="s1">// Setup Countdown and Fetch</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">let</span><span class="s1"> secondsLeft = </span><span class="s13">10</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> countdownEl = document.getElementById(</span><span class="s8">'scan-countdown'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            countdownEl.innerText = secondsLeft;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">let</span><span class="s1"> aiResponse = </span><span class="s8">""</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">let</span><span class="s1"> fetchDone = </span><span class="s10">false</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">const</span><span class="s1"> timerInterval = setInterval(() =&gt; {</span></p>
-<p class="p6"><span class="s1">                secondsLeft--;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s10">if</span><span class="s1"> (secondsLeft &gt;= </span><span class="s13">0</span><span class="s1">) countdownEl.innerText = secondsLeft;</span></p>
-<p class="p6"><span class="s1">                </span><span class="s10">if</span><span class="s1"> (secondsLeft &lt;= </span><span class="s13">0</span><span class="s1">) {</span></p>
-<p class="p6"><span class="s1">                    clearInterval(timerInterval);</span></p>
-<p class="p6"><span class="s1">                    checkFinalTransition();</span></p>
-<p class="p6"><span class="s1">                }</span></p>
-<p class="p6"><span class="s1">            }, </span><span class="s13">1000</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">function</span><span class="s1"> checkFinalTransition() {</span></p>
-<p class="p6"><span class="s1">                </span><span class="s10">if</span><span class="s1"> (fetchDone &amp;&amp; secondsLeft &lt;= </span><span class="s13">0</span><span class="s1">) displayResult(aiResponse, resultCard);</span></p>
-<p class="p6"><span class="s1">            }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">            </span><span class="s10">try</span><span class="s1"> {</span></p>
-<p class="p9"><span class="s4">                </span><span class="s10">const</span><span class="s4"> res = </span><span class="s10">await</span><span class="s4"> fetch(</span><span class="s1">`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=</span><span class="s4">${apiKey}</span><span class="s1">`</span><span class="s4">, {</span></p>
-<p class="p6"><span class="s1">                    method: </span><span class="s8">'POST'</span><span class="s1">,</span></p>
-<p class="p6"><span class="s1">                    headers: { </span><span class="s8">'Content-Type'</span><span class="s1">: </span><span class="s8">'application/json'</span><span class="s1"> },</span></p>
-<p class="p6"><span class="s1">                    body: </span><span class="s14">JSON</span><span class="s1">.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })</span></p>
-<p class="p6"><span class="s1">                });</span></p>
-<p class="p6"><span class="s1">                </span><span class="s10">const</span><span class="s1"> data = </span><span class="s10">await</span><span class="s1"> res.json();</span></p>
-<p class="p6"><span class="s1">                aiResponse = data.candidates?.[</span><span class="s13">0</span><span class="s1">]?.content?.parts?.[</span><span class="s13">0</span><span class="s1">]?.text || </span><span class="s8">"</span><span class="s15">พิกัดสมาธิขัดข้อง"</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">                fetchDone = </span><span class="s10">true</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">                checkFinalTransition();</span></p>
-<p class="p6"><span class="s1">            } </span><span class="s10">catch</span><span class="s1"> (e) {</span></p>
-<p class="p10"><span class="s17">                aiResponse = </span><span class="s18">"</span><span class="s1">การเชื่อมต่อสมาธิถูกรบกวนเนื่องจากสัญญาณรบกวนภายนอก กรุณาลองใหม่"</span><span class="s17">;</span></p>
-<p class="p6"><span class="s1">                fetchDone = </span><span class="s10">true</span><span class="s1">;</span></p>
-<p class="p6"><span class="s1">                checkFinalTransition();</span></p>
-<p class="p6"><span class="s1">            }</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">function</span><span class="s1"> displayResult(text, card) {</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-loading'</span><span class="s1">).classList.add(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-result'</span><span class="s1">).classList.remove(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            window.scrollTo(</span><span class="s13">0</span><span class="s1">,</span><span class="s13">0</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">           <span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'final-card-container'</span><span class="s1">).innerHTML = </span><span class="s8">`</span></p>
-<p class="p9"><span class="s1">                &lt;div class="tarot-card-result reveal-scale bg-white"&gt;</span></p>
-<p class="p9"><span class="s1">                    &lt;img src="</span><span class="s4">${card.img}</span><span class="s1">" class="card-face-img" alt="</span><span class="s4">${card.name}</span><span class="s1">"&gt;</span></p>
-<p class="p9"><span class="s1">                    &lt;div class="absolute bottom-0 left-0 right-0 p-5 bg-black/80 backdrop-blur-md text-center border-t border-gold-foil/30"&gt;</span></p>
-<p class="p9"><span class="s1">                        &lt;div class="font-cinzel text-gold-foil text-sm font-bold uppercase tracking-normal"&gt;</span><span class="s4">${card.name}</span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p9"><span class="s1">                    &lt;/div&gt;</span></p>
-<p class="p9"><span class="s1">                &lt;/div&gt;`</span><span class="s4">;</span></p>
-<p class="p6"><span class="s1">           <span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'card-name'</span><span class="s1">).innerText = card.name;</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'card-subtitle'</span><span class="s1">).innerText = card.sub;</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'card-description'</span><span class="s1">).innerHTML = text.split(</span><span class="s8">'\n'</span><span class="s1">).filter(p=&gt;p.trim()).map(p=&gt;</span><span class="s8">`&lt;p class="mb-4"&gt;</span><span class="s1">${p}</span><span class="s8">&lt;/p&gt;`</span><span class="s1">).join(</span><span class="s8">''</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">function</span><span class="s1"> resetRitual() {</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-result'</span><span class="s1">).classList.add(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-ritual'</span><span class="s1">).classList.remove(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'prayer'</span><span class="s1">).value = </span><span class="s8">''</span><span class="s1">;<span class="Apple-converted-space"> </span></span></p>
-<p class="p6"><span class="s1">            window.scrollTo(</span><span class="s13">0</span><span class="s1">,</span><span class="s13">0</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p6"><span class="s1"> </span></p>
-<p class="p6"><span class="s1">        </span><span class="s10">function</span><span class="s1"> backToHome() {</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-ritual'</span><span class="s1">).classList.add(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-result'</span><span class="s1">).classList.add(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-loading'</span><span class="s1">).classList.add(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'step-login'</span><span class="s1">).classList.remove(</span><span class="s8">'hidden'</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">            document.getElementById(</span><span class="s8">'prayer'</span><span class="s1">).value = </span><span class="s8">''</span><span class="s1">; </span><span class="s16">// Always clear prayer</span></p>
-<p class="p6"><span class="s1">            window.scrollTo(</span><span class="s13">0</span><span class="s1">,</span><span class="s13">0</span><span class="s1">);</span></p>
-<p class="p6"><span class="s1">        }</span></p>
-<p class="p3"><span class="s4">    </span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
-<p class="p11"><span class="s1"> </span></p>
-<p class="p11"><span class="s1"> </span></p>
-<p class="p11"><span class="s1"> </span></p>
-<p class="p11"><span class="s1"> </span></p>
-<p class="p11"><span class="s1"> </span></p>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="p-6 flex justify-between items-center border-b border-yellow-900/20 bg-black/40 backdrop-blur-xl sticky top-0 z-50">
+        <h1 class="text-lg md:text-xl font-cinzel gold-gradient-text font-normal tracking-normal uppercase">TAROT / AJARN FAAN</h1>
+        <div id="live-clock" class="text-[10px] text-gold-foil font-light tracking-normal uppercase text-right"></div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-6">
+        
+        <!-- Step 1: Identification (Pre-filled for CK Testing) -->
+        <div id="step-login" class="w-full max-w-lg p-10 gold-border forest-overlay rounded-xl space-y-8 shadow-2xl">
+            <div class="text-center">
+                <h2 class="text-2xl font-cinzel gold-gradient-text tracking-normal mb-2 uppercase">Identification</h2>
+                <p class="text-[12px] text-gray-500 uppercase tracking-normal font-light font-sarabun">ไพ่ยิปซีจักรวาลสะท้อนตัวตน</p>
+            </div>
+            <div class="grid grid-cols-1 gap-5">
+                <div>
+                    <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">ชื่อ-นามสกุล</label>
+                    <input type="text" id="fullname" value="CK" placeholder="ระบุชื่อจริง...">
+                </div>
+                
+                <div class="grid grid-cols-3 gap-3">
+                    <div>
+                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">วันเกิด</label>
+                        <select id="birth-day"></select>
+                    </div>
+                    <div>
+                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">เดือนเกิด</label>
+                        <select id="birth-month"></select>
+                    </div>
+                    <div>
+                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">ปี (พ.ศ./ค.ศ.)</label>
+                        <input type="number" id="birth-year" value="2529" placeholder="25XX / 19XX">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">ชั่วโมงเกิด</label>
+                        <select id="birth-hour"></select>
+                    </div>
+                    <div>
+                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">นาทีเกิด</label>
+                        <select id="birth-minute"></select>
+                    </div>
+                </div>
+            </div>
+            <button onclick="proceedToRitual()" class="w-full btn-gold py-4 rounded text-sm tracking-normal shadow-lg mt-4 uppercase">ยอมรับเงื่อนไขและเข้าสู่ระบบ</button>
+        </div>
+
+        <!-- Step 2: Ritual (Prayer & Selection) -->
+        <div id="step-ritual" class="hidden w-full max-w-6xl p-10 gold-border forest-overlay rounded-xl space-y-10">
+            <div class="text-center space-y-5">
+                <h2 id="consultation-header" class="text-xl md:text-2xl font-cinzel gold-gradient-text tracking-normal uppercase font-bold leading-tight"></h2>
+                <div id="life-stats" class="text-[15px] text-gray-300 space-y-2 py-6 border-y border-yellow-900/10 leading-relaxed tracking-normal font-sarabun"></div>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <p class="text-center text-[15px] text-gold-foil uppercase mb-4 tracking-normal font-normal font-sarabun">ถ้อยแถลงต่อดวงดาวและจักรวาล</p>
+                    <textarea id="prayer" placeholder="ระบุปมในใจ บาดแผล หรือสิ่งที่ท่านต้องการปลดล็อกในครั้งนี้..." class="w-full leading-relaxed resize-none"></textarea>
+                </div>
+
+                <div class="space-y-3 pt-6 border-t border-yellow-900/10">
+                    <p class="text-center text-[15px] text-gray-200 tracking-normal font-normal font-sarabun">กรุณาพิมพ์ถ้อยแถลงให้ครบถ้วน จากนั้นใช้สมาธิเลือกไพ่ที่ท่านรู้สึกถึง 1 ใบ</p>
+                    <p class="text-center text-[18px] text-[#D4AF37] tracking-normal font-normal font-sarabun">จงมีสมาธิในการเลือก จิตนิ่ง ใจนิ่ง สมองโล่งที่สุด ไม่งั้นไพ่จะสะท้อนจิตสำนึก</p>
+                    
+                    <div id="card-selection-grid" class="card-grid mt-8"></div>
+                </div>
+            </div>
+
+            <div class="flex justify-center pt-4">
+                <button onclick="backToHome()" class="text-[11px] text-gray-500 uppercase tracking-normal hover:text-gold-foil transition-all border-b border-gray-800 hover:border-gold-foil pb-1 font-sarabun">กลับสู่หน้าแรก</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Professional Spectrum Scan Loading (Fixed 10s Sequence) -->
+        <div id="step-loading" class="hidden w-full max-w-5xl text-center space-y-4 py-20 flex flex-col items-center justify-center min-h-[550px]">
+            <!-- Countdown at TOP -->
+            <div id="scan-countdown" class="text-6xl md:text-7xl font-cinzel text-gold-bright drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] mb-10">10</div>
+
+            <div class="scan-text-ritual uppercase">
+                <span class="text-white block opacity-80 mb-2">ระบบกำลังวิเคราะห์ผลลัพธ์ผ่านหน้าไพ่...</span>
+                <span class="gold-gradient-text block font-cinzel font-bold text-2xl md:text-3xl mb-2">PROFESSIONAL SPECTRUM SCAN</span>
+                <span class="text-white block opacity-80 mb-4">จากอารมณ์ที่คุณเลือกไพ่</span>
+                <span class="text-[#D4AF37] block font-normal text-xl md:text-2xl">ถ้าคุณไม่มีสมาธิไพ่นั้นก็จะสะท้อนตัวคุณเอง</span>
+            </div>
+            
+            <div class="mt-12 flex space-x-4">
+                <div class="w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse"></div>
+                <div class="w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                <div class="w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+            </div>
+        </div>
+
+        <!-- Step 4: Analytical Result -->
+        <div id="step-result" class="hidden w-full max-w-7xl flex flex-col lg:flex-row items-center gap-16 p-6">
+            <div id="final-card-container" class="flex-shrink-0"></div>
+            <div class="space-y-8 flex-grow bg-black/40 p-12 rounded-xl gold-border backdrop-blur-sm">
+                <div class="border-l-4 border-gold-foil pl-10">
+                    <div class="text-[13px] text-gold-foil mb-2 uppercase tracking-normal font-bold opacity-70 font-sarabun">Analytical Insight</div>
+                    <h2 id="card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase tracking-normal mb-2 font-bold"></h2>
+                    <h3 id="card-subtitle" class="text-xl text-white/80 italic font-light font-sarabun"></h3>
+                </div>
+                <div id="card-description" class="text-[17px] font-sarabun leading-loose text-gray-200 space-y-8 font-light"></div>
+                <div class="pt-10 border-t border-yellow-900/20 flex flex-wrap justify-between items-center gap-6">
+                    <div class="flex gap-10">
+                        <button onclick="resetRitual()" class="text-[11px] text-gold-foil uppercase tracking-normal border-b border-gold-foil/30 hover:border-gold-foil transition-all pb-1 font-sarabun">วิเคราะห์ปัญหาอื่น</button>
+                        <button onclick="backToHome()" class="text-[11px] text-gray-500 uppercase tracking-normal border-b border-gray-700/30 hover:border-gray-300 transition-all pb-1 font-sarabun">กลับหน้าแรก</button>
+                    </div>
+                    <p class="text-[10px] text-gray-600 uppercase tracking-normal font-cinzel">AJARN FAAN | AUTHORITY ANALYSIS</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const apiKey = ""; 
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'ajarn-faan-worldclass';
+
+        const majorArcana = [
+            { name: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg", sub: "สัญชาตญาณเดิมและการเริ่มต้น" },
+            { name: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg", sub: "ศักยภาพที่ยังไม่จัดระเบียบ" },
+            { name: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg", sub: "เสียงกระซิบจากความลึกลับ" },
+            { name: "The Empress", img: "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg", sub: "ความอุดมสมบูรณ์และอำนาจฝ่ายหญิง" },
+            { name: "The Emperor", img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg", sub: "โครงสร้างและความรับผิดชอบ" },
+            { name: "The Hierophant", img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg", sub: "ความเชื่อและกรอบประเพณี" },
+            { name: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg", sub: "การเลือกและแรงดึงดูด" },
+            { name: "The Chariot", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg", sub: "การควบคุมและชัยชนะ" },
+            { name: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", sub: "ความอดทนและพลังอำนาจภายใน" },
+            { name: "The Hermit", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg", sub: "ความวิเวกและการค้นพบตนเอง" },
+            { name: "The Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg", sub: "กงล้อแห่งชะตากรรม" },
+            { name: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg", sub: "ความยุติธรรมและกฎแห่งกรรม" },
+            { name: "The Hanged Man", img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg", sub: "การเสียสละและมุมมองใหม่" },
+            { name: "Death", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg", sub: "การสิ้นสุดเพื่อเกิดใหม่" },
+            { name: "Temperance", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg", sub: "ความสมดุลและการปรับตัว" },
+            { name: "The Devil", img: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg", sub: "พันธนาการแห่งกิเลส" },
+            { name: "The Tower", img: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg", sub: "ความย่อยยับที่สว่างแจ้ง" },
+            { name: "The Star", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg", sub: "ความหวังและการเยียวยา" },
+            { name: "The Moon", img: "https://upload.wikimedia.org/wikipedia/commons/f/f0/RWS_Tarot_18_Moon.jpg", sub: "ภาพลวงตาและความกลัว" },
+            { name: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg", sub: "ความสำเร็จและพลังอำนาจ" },
+            { name: "Judgement", img: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg", sub: "การปลุกตื่นและการประกาศผล" },
+            { name: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg", sub: "ความสมบูรณ์แบบและการหลุดพ้น" }
+        ];
+
+        const fullTarotDeck = [...majorArcana];
+        while (fullTarotDeck.length < 78) {
+            fullTarotDeck.push({...majorArcana[Math.floor(Math.random() * majorArcana.length)]});
+        }
+
+        let currentUser = {};
+
+        window.onload = () => {
+            populateOptions('birth-day', 1, 31);
+            populateOptions('birth-month', 1, 12);
+            populateOptions('birth-hour', 0, 23, true);
+            populateOptions('birth-minute', 0, 59, true);
+            
+            // Default Values: CK, 17 Jan 2529 (1986), 03:00
+            document.getElementById('birth-day').value = "17";
+            document.getElementById('birth-month').value = "1";
+            document.getElementById('birth-hour').value = "3";
+            document.getElementById('birth-minute').value = "0";
+
+            updateClock();
+            setInterval(updateClock, 1000);
+        };
+
+        function populateOptions(id, min, max, pad = false) {
+            const select = document.getElementById(id);
+            for (let i = min; i <= max; i++) {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.innerText = pad ? i.toString().padStart(2, '0') : i;
+                select.appendChild(opt);
+            }
+        }
+
+        function updateClock() {
+            const clock = document.getElementById('live-clock');
+            if(clock) clock.innerText = new Date().toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        }
+
+        function proceedToRitual() {
+            const name = document.getElementById('fullname').value;
+            let yearInput = parseInt(document.getElementById('birth-year').value);
+            if (!name || isNaN(yearInput)) return alert("กรุณาระบุข้อมูลระบุตัวตนให้ครบถ้วน");
+            
+            let yearAD = yearInput;
+            if (yearInput > 2400) yearAD -= 543; // BE to AD
+
+            const d = document.getElementById('birth-day').value;
+            const m = document.getElementById('birth-month').value;
+            const hr = document.getElementById('birth-hour').value;
+            const mn = document.getElementById('birth-minute').value;
+
+            // Accurate Birth Calculation
+            const birthDate = new Date(yearAD, m - 1, d, hr, mn);
+            const now = new Date();
+            const diffMs = now - birthDate;
+
+            const daysLived = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const hoursLived = Math.floor(diffMs / (1000 * 60 * 60));
+            const minutesLived = Math.floor(diffMs / (1000 * 60));
+
+            // Thai Astrology Day Logic (06:00 cut)
+            let dispDay = new Date(yearAD, m - 1, d);
+            if (parseInt(hr) < 6) dispDay.setDate(dispDay.getDate() - 1);
+            const thaiDayName = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"][dispDay.getDay()];
+
+            currentUser = { 
+                name, daysLived, hoursLived, minutesLived, 
+                thaiDay: thaiDayName, birthStr: `${d}/${m}/${yearInput}`,
+                prayer: "" 
+            };
+
+            document.getElementById('consultation-header').innerText = `CONSULTATION FOR: ${name} (${currentUser.birthStr})`;
+            document.getElementById('life-stats').innerHTML = `
+                <div class="flex flex-col gap-1">
+                    <p>ท่านเกิดในวัน<span class="text-gold-foil font-bold">${currentUser.thaiDay}</span> (ตามหลักอาทิตย์อุทัย)</p>
+                    <p>ท่านได้เผชิญโลกใบนี้มาแล้ว <span class="text-gold-bright font-bold text-2xl">${daysLived.toLocaleString()} วัน</span></p>
+                    <p class="text-[11px] text-gray-500 uppercase tracking-normal mt-2">สถิติพิกัด: ${hoursLived.toLocaleString()} ชั่วโมง / ${minutesLived.toLocaleString()} นาที แห่งการมีตัวตน</p>
+                </div>
+            `;
+
+            generateGrid();
+            document.getElementById('step-login').classList.add('hidden');
+            document.getElementById('step-ritual').classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function generateGrid() {
+            const grid = document.getElementById('card-selection-grid');
+            grid.innerHTML = '';
+            for (let i = 0; i < 78; i++) {
+                const card = document.createElement('div');
+                card.className = 'card-selectable';
+                card.innerHTML = `<span>TAROT</span>`;
+                card.onclick = () => performScan(i);
+                grid.appendChild(card);
+            }
+        }
+
+        async function performScan(cardIndex) {
+            const prayerText = document.getElementById('prayer').value.trim();
+            if (!prayerText) {
+                alert("กรุณาระบุถ้อยแถลงหรือปมในใจของท่านก่อนสัมผัสไพ่ เพื่อให้สัญชาตญาณเดิมนำทาง");
+                return;
+            }
+            currentUser.prayer = prayerText;
+
+            document.getElementById('step-ritual').classList.add('hidden');
+            document.getElementById('step-loading').classList.remove('hidden');
+            window.scrollTo(0,0);
+
+            const resultCard = fullTarotDeck[Math.floor(Math.random() * fullTarotDeck.length)];
+            const systemPrompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตา (Scorpio-Saturn class) 
+            วินิจฉัยดวงชะตาด้วยมาตรวัดระดับโลก นิ่ง ตรง และทรงอำนาจ
+            ใช้ "ภาษามนุษย์ปกติ" ที่สื่อสารกับคนทุกวัย (18-89 ปี) ได้อย่างลึกซึ้ง เข้าใจง่าย ไม่ลิเก ไม่กำกวม
+            
+            กฎแห่งสัมพัทธภาพของจิต: จงเชื่อมโยงปมในใจที่ระบุมา เข้ากับสัญลักษณ์ของหน้าไพ่ โดยใช้สัญชาตญาณเดิมนำทาง
+            
+            กติกาเข้มงวด:
+            - ห้ามเอ่ยถึงชื่อวันเกิดเด็ดขาด (เช่น ห้ามพูดว่า "คนวันพฤหัสบดี") ระบบรู้พิกัดนี้อยู่แล้ว ให้ใช้วินิจฉัยจุดบอดเลย
+            - ห้ามหยาบคาย ภาษาต้องดูแพง เป็นการวินิจฉัย (Diagnosis) แบบกุนซือระดับสูง
+            - วิเคราะห์ 'ปมในใจ' (${currentUser.prayer}) ผ่านหน้าไพ่ ${resultCard.name}
+            - นำ 'สถิติการใช้ชีวิต' (${currentUser.daysLived} วัน) มาคำนวณน้ำหนักบาดแผลและทางตัน
+            - ห้ามใช้ศัพท์ก่อสร้าง
+            
+            เขียน 3-4 ย่อหน้าสั้นๆ ที่ทำให้ลูกดวงรู้สึกจุกและตื่นรู้จากภายใน`;
+
+            // Setup Countdown and Fetch
+            let secondsLeft = 10;
+            const countdownEl = document.getElementById('scan-countdown');
+            countdownEl.innerText = secondsLeft;
+
+            let aiResponse = "";
+            let fetchDone = false;
+
+            const timerInterval = setInterval(() => {
+                secondsLeft--;
+                if (secondsLeft >= 0) countdownEl.innerText = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    checkFinalTransition();
+                }
+            }, 1000);
+
+            function checkFinalTransition() {
+                if (fetchDone && secondsLeft <= 0) displayResult(aiResponse, resultCard);
+            }
+
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })
+                });
+                const data = await res.json();
+                aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง";
+                fetchDone = true;
+                checkFinalTransition();
+            } catch (e) {
+                aiResponse = "การเชื่อมต่อสมาธิถูกรบกวนเนื่องจากสัญญาณรบกวนภายนอก กรุณาลองใหม่";
+                fetchDone = true;
+                checkFinalTransition();
+            }
+        }
+
+        function displayResult(text, card) {
+            document.getElementById('step-loading').classList.add('hidden');
+            document.getElementById('step-result').classList.remove('hidden');
+            window.scrollTo(0,0);
+            
+            document.getElementById('final-card-container').innerHTML = `
+                <div class="tarot-card-result reveal-scale bg-white">
+                    <img src="${card.img}" class="card-face-img" alt="${card.name}">
+                    <div class="absolute bottom-0 left-0 right-0 p-5 bg-black/80 backdrop-blur-md text-center border-t border-gold-foil/30">
+                        <div class="font-cinzel text-gold-foil text-sm font-bold uppercase tracking-normal">${card.name}</div>
+                    </div>
+                </div>`;
+            
+            document.getElementById('card-name').innerText = card.name;
+            document.getElementById('card-subtitle').innerText = card.sub;
+            document.getElementById('card-description').innerHTML = text.split('\n').filter(p=>p.trim()).map(p=>`<p class="mb-4">${p}</p>`).join('');
+        }
+
+        function resetRitual() {
+            document.getElementById('step-result').classList.add('hidden');
+            document.getElementById('step-ritual').classList.remove('hidden');
+            document.getElementById('prayer').value = ''; 
+            window.scrollTo(0,0);
+        }
+
+        function backToHome() {
+            document.getElementById('step-ritual').classList.add('hidden');
+            document.getElementById('step-result').classList.add('hidden');
+            document.getElementById('step-loading').classList.add('hidden');
+            document.getElementById('step-login').classList.remove('hidden');
+            document.getElementById('prayer').value = ''; // Always clear prayer
+            window.scrollTo(0,0);
+        }
+    </script>
 </body>
 </html>
+
+
+
+
+
