@@ -11,22 +11,18 @@
             --forest-green: #013220;
             --gold-foil: #D4AF37;
             --gold-bright: #FFD700;
-            --deep-dark: #0a0a0a;
-            --text-silver: #e0e0e0;
+            --deep-dark: #050805;
         }
 
         body {
             background-color: var(--deep-dark);
-            color: var(--text-silver);
+            color: #e0e0e0;
             font-family: 'Sarabun', sans-serif;
             overflow-x: hidden;
-            font-size: 15px;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .font-cinzel {
-            font-family: 'Cinzel', serif;
-        }
+        h1, h2, h3, .font-cinzel { font-family: 'Cinzel', serif; }
 
         .gold-gradient-text {
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
@@ -35,261 +31,213 @@
         }
 
         .gold-border {
-            border: 2px solid transparent;
+            border: 1px solid transparent;
             background-image: linear-gradient(var(--forest-green), var(--forest-green)), radial-gradient(circle at top left, #f5d67b, #d4af37);
             background-origin: border-box;
             background-clip: padding-box, border-box;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
         }
 
         .btn-gold {
             background: linear-gradient(45deg, #B38728, #FBF5B7, #AA771C);
             color: var(--forest-green);
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            font-weight: 700;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        .btn-gold:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-gold:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(1);
         }
 
         input, select, textarea {
-            font-size: 14px !important;
-            background-color: rgba(0, 0, 0, 0.5) !important;
+            background-color: rgba(255, 255, 255, 0.03) !important;
             border: 1px solid rgba(212, 175, 55, 0.2) !important;
             color: white !important;
-            border-radius: 4px !important;
             padding: 12px 15px !important;
-            height: 45px; 
+            border-radius: 0 !important;
+        }
+
+        input:focus { border-color: var(--gold-foil) !important; outline: none; }
+
+        /* Animation Carousel Styles */
+        .card-strip-container {
             width: 100%;
-            box-sizing: border-box;
-            font-family: 'Sarabun', sans-serif;
-        }
-
-        textarea {
-            height: auto !important;
-            min-height: 140px;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--gold-foil) !important;
-            outline: none;
-            box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3);
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            padding: 20px;
-            border-radius: 12px;
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        @media (min-width: 768px) { .card-grid { grid-template-columns: repeat(10, 1fr); } }
-        @media (min-width: 1280px) { .card-grid { grid-template-columns: repeat(15, 1fr); } }
-
-        .card-selectable {
-            aspect-ratio: 2/3.2;
-            background: linear-gradient(135deg, var(--forest-green) 0%, #001a10 100%);
-            border: 1px solid var(--gold-foil);
-            border-radius: 3px;
-            cursor: pointer;
-            transition: all 0.4s ease;
+            height: 400px;
+            overflow: hidden;
             position: relative;
-            opacity: 0.7;
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        }
+
+        .card-strip {
+            display: flex;
+            gap: 20px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 320px;
+            align-items: center;
+        }
+
+        .ritual-card {
+            min-width: 200px;
+            height: 320px;
+            background: linear-gradient(135deg, var(--forest-green) 0%, #000 100%);
+            border: 2px solid var(--gold-foil);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Cinzel', serif;
+            font-family: 'Cinzel';
             color: var(--gold-foil);
-            font-size: 9px;
-            letter-spacing: 1px;
+            font-size: 1.2rem;
+            position: relative;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+            flex-shrink: 0;
         }
 
-        .card-selectable:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 0 15px var(--gold-foil);
-            opacity: 1;
-            z-index: 10;
+        .animate-fast { animation: slideLeft 0.8s linear infinite; }
+
+        @keyframes slideLeft {
+            from { transform: translateX(0) translateY(-50%); }
+            to { transform: translateX(-440px) translateY(-50%); }
         }
 
-        .card-selectable::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            border: 0.5px solid rgba(212, 175, 55, 0.15);
-            border-radius: 1px;
+        .result-reveal {
+            animation: popIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        .tarot-card-result {
-            width: 300px;
-            height: 480px;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 5px solid var(--gold-foil);
-            box-shadow: 0 0 60px rgba(0,0,0,0.9);
+        @keyframes popIn {
+            0% { transform: scale(0.6); opacity: 0; filter: blur(15px); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); }
         }
-
-        .card-face-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .scan-text-ritual {
-            font-size: 1.1rem; 
-            line-height: 1.8;
-            font-weight: 400;
-            text-align: center;
-            font-family: 'Sarabun', sans-serif;
-        }
-
-        @media (max-width: 768px) { .scan-text-ritual { font-size: 0.95rem; } }
-
-        .reveal-scale {
-            animation: revealScale 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        @keyframes revealScale {
-            0% { transform: scale(0.6); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--deep-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--gold-foil); border-radius: 10px; }
 
         .forest-overlay {
-            background: linear-gradient(135deg, rgba(1, 50, 32, 0.98) 0%, rgba(10, 10, 10, 1) 100%);
+            background: radial-gradient(circle at center, rgba(1, 50, 32, 0.3) 0%, rgba(5, 8, 5, 1) 100%);
+        }
+
+        .scanning-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--gold-bright);
+            box-shadow: 0 0 15px var(--gold-bright);
+            top: 0;
+            left: 0;
+            animation: scanMove 2s linear infinite;
+            z-index: 20;
+        }
+
+        @keyframes scanMove {
+            0% { top: 0; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col forest-overlay">
 
-    <!-- Header -->
-    <header class="p-6 flex justify-between items-center border-b border-yellow-900/20 bg-black/40 backdrop-blur-xl sticky top-0 z-50">
-        <h1 class="text-lg md:text-xl font-cinzel gold-gradient-text font-normal tracking-normal uppercase">TAROT / AJARN FAAN</h1>
-        <div id="live-clock" class="text-[10px] text-gold-foil font-light opacity-60 tracking-normal uppercase text-right"></div>
+    <header class="p-6 flex justify-between items-center border-b border-yellow-900/20 bg-black/60 backdrop-blur-md sticky top-0 z-50">
+        <h1 class="text-xl md:text-2xl font-cinzel gold-gradient-text tracking-widest font-bold">TAROT / AJARN FAAN</h1>
+        <div id="live-clock" class="text-[10px] text-gold-foil font-light opacity-60 tracking-widest uppercase"></div>
     </header>
 
-    <main class="flex-grow flex flex-col items-center justify-center p-6">
+    <main class="flex-grow flex flex-col items-center justify-center p-4">
         
-        <!-- Step 1: Identification -->
-        <div id="step-login" class="w-full max-w-lg p-10 gold-border forest-overlay rounded-xl space-y-8 shadow-2xl">
+        <!-- STEP 1: Identification -->
+        <div id="step-login" class="w-full max-w-xl p-8 md:p-12 gold-border bg-black/80 space-y-8 shadow-2xl relative">
             <div class="text-center">
-                <h2 class="text-2xl font-cinzel gold-gradient-text tracking-normal mb-2 uppercase">Identification</h2>
-                <p class="text-[12px] text-gray-500 uppercase tracking-normal font-light font-sarabun">ไพ่ยิปซีจักรวาลสะท้อนตัวตน</p>
-            </div>
-            <div class="grid grid-cols-1 gap-5">
-                <div>
-                    <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">ชื่อ-นามสกุล</label>
-                    <input type="text" id="fullname" value="CK" placeholder="ระบุชื่อจริง...">
-                </div>
-                
-                <div class="grid grid-cols-3 gap-3">
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">วันเกิด</label>
-                        <select id="birth-day"></select>
-                    </div>
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">เดือนเกิด</label>
-                        <select id="birth-month"></select>
-                    </div>
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">ปี (พ.ศ./ค.ศ.)</label>
-                        <input type="number" id="birth-year" value="2529" placeholder="25XX / 19XX">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">ชั่วโมงเกิด</label>
-                        <select id="birth-hour"></select>
-                    </div>
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase mb-2 block font-sarabun">นาทีเกิด</label>
-                        <select id="birth-minute"></select>
-                    </div>
-                </div>
-            </div>
-            <button onclick="proceedToRitual()" class="w-full btn-gold py-4 rounded text-sm tracking-normal shadow-lg mt-4 uppercase">ยอมรับเงื่อนไขและเข้าสู่ระบบ</button>
-        </div>
-
-        <!-- Step 2: Ritual -->
-        <div id="step-ritual" class="hidden w-full max-w-6xl p-10 gold-border forest-overlay rounded-xl space-y-10">
-            <div class="text-center space-y-5">
-                <h2 id="consultation-header" class="text-xl md:text-2xl font-cinzel gold-gradient-text tracking-normal uppercase font-bold leading-tight"></h2>
-                <div id="life-stats" class="text-[15px] text-gray-300 space-y-2 py-6 border-y border-yellow-900/10 leading-relaxed tracking-normal font-sarabun"></div>
-            </div>
-
-            <div class="space-y-6">
-                <div>
-                    <p class="text-center text-[15px] text-gold-foil uppercase mb-4 tracking-normal font-normal font-sarabun">ถ้อยแถลงต่อดวงดาวและจักรวาล</p>
-                    <textarea id="prayer" placeholder="ระบุปมในใจ บาดแผล หรือสิ่งที่ท่านต้องการปลดล็อกในครั้งนี้..." class="w-full leading-relaxed resize-none"></textarea>
-                </div>
-
-                <div class="space-y-3 pt-6 border-t border-yellow-900/10">
-                    <p class="text-center text-[15px] text-gray-200 tracking-normal font-normal font-sarabun">กรุณาพิมพ์ถ้อยแถลงให้ครบถ้วน จากนั้นใช้สมาธิเลือกไพ่ที่ท่านรู้สึกถึง 1 ใบ</p>
-                    <p class="text-center text-[18px] text-[#D4AF37] tracking-normal font-normal font-sarabun">จงมีสมาธิในการเลือก จิตนิ่ง ใจนิ่ง สมองโล่งที่สุด ไม่งั้นไพ่จะสะท้อนจิตสำนึก</p>
-                    
-                    <div id="card-selection-grid" class="card-grid mt-8"></div>
-                </div>
-            </div>
-
-            <div class="flex justify-center pt-4">
-                <button onclick="backToHome()" class="text-[11px] text-gray-500 uppercase tracking-normal hover:text-gold-foil transition-all border-b border-gray-800 hover:border-gold-foil pb-1 font-sarabun">กลับสู่หน้าแรก</button>
-            </div>
-        </div>
-
-        <!-- Step 3: Professional Spectrum Scan Loading -->
-        <div id="step-loading" class="hidden w-full max-w-5xl text-center space-y-4 py-20 flex flex-col items-center justify-center min-h-[550px]">
-            <div id="scan-countdown" class="text-6xl md:text-7xl font-cinzel text-gold-bright drop-shadow-[0_0_20px_rgba(212,175,55,0.4)] mb-10">10</div>
-
-            <div class="scan-text-ritual uppercase">
-                <span class="text-white block opacity-80 mb-2 font-sarabun">ระบบกำลังวิเคราะห์ผลลัพธ์ผ่านหน้าไพ่...</span>
-                <span class="gold-gradient-text block font-cinzel font-bold text-2xl md:text-3xl mb-2">PROFESSIONAL SPECTRUM SCAN</span>
-                <span class="text-white block opacity-80 mb-4 font-sarabun">จากอารมณ์ที่คุณเลือกไพ่</span>
-                <span class="text-[#D4AF37] block font-normal text-xl md:text-2xl font-sarabun">ถ้าคุณไม่มีสมาธิไพ่นั้นก็จะสะท้อนตัวคุณเอง</span>
+                <h2 class="text-3xl font-cinzel gold-gradient-text mb-2 uppercase">Identification</h2>
+                <p class="text-xs text-gray-500 tracking-[0.2em] font-light uppercase">กรุณาระบุพิกัดตัวตนเพื่อเริ่มการวินิจฉัย</p>
             </div>
             
-            <div class="mt-12 flex space-x-4">
-                <div class="w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse"></div>
-                <div class="w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
-                <div class="w-1.5 h-1.5 bg-gold-foil rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+            <div class="space-y-6">
+                <div>
+                    <label class="text-gold-foil text-[10px] uppercase mb-2 block tracking-widest">Full Name / นามแห่งท่าน</label>
+                    <input type="text" id="fullname" class="w-full text-lg" placeholder="ระบุชื่อ-นามสกุล">
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Day</label><select id="birth-day" class="w-full"></select></div>
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Month</label><select id="birth-month" class="w-full"></select></div>
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Year (พ.ศ.)</label><input type="number" id="birth-year" class="w-full" value="2530"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Hour</label><select id="birth-hour" class="w-full"></select></div>
+                    <div><label class="text-gold-foil text-[10px] uppercase mb-2 block">Minute</label><select id="birth-minute" class="w-full"></select></div>
+                </div>
+            </div>
+            <button onclick="proceedToRitual()" class="w-full btn-gold py-5 text-sm shadow-xl mt-6">เข้าสู่ห้องทำนาย</button>
+        </div>
+
+        <!-- STEP 2: Ritual & Prayer -->
+        <div id="step-ritual" class="hidden w-full max-w-4xl p-10 gold-border bg-black/90 space-y-10 text-center">
+            <div id="user-stats" class="space-y-2 border-b border-yellow-900/20 pb-8"></div>
+            <div class="space-y-6">
+                <h3 class="text-gold-foil font-cinzel text-xl tracking-widest uppercase">ถ้อยแถลงต่อสัญชาตญาณ</h3>
+                <textarea id="prayer" class="w-full h-32 bg-black border border-yellow-900/30 p-4 text-white focus:border-gold-foil transition-all" placeholder="ระบุปมในใจ บาดแผล หรือสิ่งที่ท่านต้องการหาทางออกในครั้งนี้..."></textarea>
+                <div class="py-4">
+                    <p class="text-sm text-gray-400 mb-8 italic">"จงรวบรวมสมาธิให้มั่นคงที่สุด เมื่อพร้อมแล้วกดเริ่มเพื่อสุ่มไพ่"</p>
+                    <button id="start-btn" onclick="startAnimation()" class="btn-gold px-12 py-4">Start Ritual</button>
+                </div>
             </div>
         </div>
 
-        <!-- Step 4: Analytical Result -->
-        <div id="step-result" class="hidden w-full max-w-7xl flex flex-col lg:flex-row items-center gap-16 p-6">
-            <div id="final-card-container" class="flex-shrink-0"></div>
-            <div class="space-y-8 flex-grow bg-black/40 p-12 rounded-xl gold-border backdrop-blur-sm">
-                <div class="border-l-4 border-gold-foil pl-10">
-                    <div class="text-[13px] text-gold-foil mb-2 uppercase tracking-normal font-bold opacity-70 font-sarabun">Analytical Insight</div>
-                    <h2 id="card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase tracking-normal mb-2 font-bold"></h2>
-                    <h3 id="card-subtitle" class="text-xl text-white/80 italic font-light font-sarabun"></h3>
+        <!-- STEP 3: Animation Loop -->
+        <div id="step-animation" class="hidden w-full flex flex-col items-center justify-center space-y-12">
+            <div class="text-center space-y-4">
+                <div id="countdown" class="text-8xl font-cinzel text-gold-bright drop-shadow-[0_0_20px_rgba(212,175,55,0.6)]">10</div>
+                <p class="text-gold-foil tracking-[0.4em] uppercase text-sm animate-pulse">Professional Spectrum Scanning...</p>
+            </div>
+            <div class="card-strip-container">
+                <div id="card-strip" class="card-strip animate-fast"></div>
+                <div class="absolute inset-0 border-x-[40px] border-black/40 pointer-events-none"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[340px] border-4 border-gold-bright z-10 shadow-[0_0_50px_rgba(212,215,0,0.3)]">
+                    <div class="scanning-line"></div>
                 </div>
-                <div id="card-description" class="text-[17px] font-sarabun leading-loose text-gray-200 space-y-8 font-light"></div>
-                <div class="pt-10 border-t border-yellow-900/20 flex flex-wrap justify-between items-center gap-6">
-                    <div class="flex gap-10">
-                        <button onclick="resetRitual()" class="text-[11px] text-gold-foil uppercase tracking-normal border-b border-gold-foil/30 hover:border-gold-foil transition-all pb-1 font-sarabun">วิเคราะห์ปัญหาอื่น</button>
-                        <button onclick="backToHome()" class="text-[11px] text-gray-500 uppercase tracking-normal border-b border-gray-700/30 hover:border-gray-300 transition-all pb-1 font-sarabun">กลับหน้าแรก</button>
-                    </div>
-                    <p class="text-[10px] text-gray-600 uppercase tracking-normal font-cinzel">AJARN FAAN | AUTHORITY ANALYSIS</p>
+            </div>
+        </div>
+
+        <!-- STEP 4: Result -->
+        <div id="step-result" class="hidden w-full max-w-6xl flex flex-col lg:flex-row items-center gap-12 p-6">
+            <div id="final-card-display" class="flex-shrink-0 result-reveal"></div>
+            <div class="flex-grow space-y-8 bg-black/40 p-8 md:p-12 border border-yellow-900/10 backdrop-blur-xl relative">
+                <div class="border-l-4 border-gold-foil pl-8">
+                    <div class="text-xs text-gold-foil/60 uppercase tracking-widest mb-2 font-bold">Analytical Diagnosis</div>
+                    <h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase font-bold"></h2>
+                    <p id="res-card-sub" class="text-sm text-gray-400 italic mt-1 font-sarabun"></p>
+                </div>
+                <div id="res-analysis" class="text-lg leading-relaxed font-light text-gray-200 space-y-6 font-sarabun">
+                    <!-- AI Content will be injected here -->
+                </div>
+                <div class="pt-8 border-t border-yellow-900/10">
+                    <button onclick="location.reload()" class="text-[10px] text-gold-foil uppercase tracking-widest border-b border-gold-foil/30 hover:border-gold-foil pb-1 transition-all">วิเคราะห์ปัญหาอื่น</button>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <script>
-        const apiKey = ""; 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'ajarn-faan-worldclass';
+    <footer class="p-6 text-center text-[10px] text-gray-600 tracking-[0.4em] uppercase">
+        &copy; 2026 AJARN FAAN | AUTHORITY ANALYTICAL SYMBOLISM
+    </footer>
 
-        const majorArcana = [
+    <script>
+        // *** สำคัญ: ต้องใส่ API Key ของคุณที่นี่เพื่อให้คำทำนายแสดงผลบน Vercel ***
+        const apiKey = ""; 
+
+        let currentUser = {};
+        const tarotDeck = [
             { name: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg", sub: "สัญชาตญาณเดิมและการเริ่มต้น" },
             { name: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg", sub: "ศักยภาพที่ยังไม่จัดระเบียบ" },
             { name: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg", sub: "เสียงกระซิบจากความลึกลับ" },
@@ -298,7 +246,7 @@
             { name: "The Hierophant", img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg", sub: "ความเชื่อและกรอบประเพณี" },
             { name: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg", sub: "การเลือกและแรงดึงดูด" },
             { name: "The Chariot", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg", sub: "การควบคุมและชัยชนะ" },
-            { name: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", sub: "ความอดทนและพลังอำนาจภายใน" },
+            { name: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", sub: "ความอดทนและพลังภายใน" },
             { name: "The Hermit", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg", sub: "ความวิเวกและการค้นพบตนเอง" },
             { name: "The Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg", sub: "กงล้อแห่งชะตากรรม" },
             { name: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg", sub: "ความยุติธรรมและกฎแห่งกรรม" },
@@ -314,162 +262,123 @@
             { name: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg", sub: "ความสมบูรณ์แบบและการหลุดพ้น" }
         ];
 
-        const fullTarotDeck = [...majorArcana];
-        while (fullTarotDeck.length < 78) {
-            fullTarotDeck.push({...majorArcana[Math.floor(Math.random() * majorArcana.length)]});
-        }
-
-        let currentUser = {};
-
         window.onload = () => {
-            populateOptions('birth-day', 1, 31);
-            populateOptions('birth-month', 1, 12);
-            populateOptions('birth-hour', 0, 23, true);
-            populateOptions('birth-minute', 0, 59, true);
-            
-            document.getElementById('birth-day').value = "17";
-            document.getElementById('birth-month').value = "1";
-            document.getElementById('birth-hour').value = "3";
-            document.getElementById('birth-minute').value = "0";
-
-            updateClock();
+            populate('birth-day', 1, 31);
+            populate('birth-month', 1, 12);
+            populate('birth-hour', 0, 23, true);
+            populate('birth-minute', 0, 59, true);
             setInterval(updateClock, 1000);
+            updateClock();
         };
 
-        function populateOptions(id, min, max, pad = false) {
-            const select = document.getElementById(id);
-            for (let i = min; i <= max; i++) {
+        function populate(id, start, end, pad = false) {
+            const el = document.getElementById(id);
+            for (let i = start; i <= end; i++) {
                 const opt = document.createElement('option');
                 opt.value = i;
                 opt.innerText = pad ? i.toString().padStart(2, '0') : i;
-                select.appendChild(opt);
+                el.appendChild(opt);
             }
         }
 
         function updateClock() {
             const clock = document.getElementById('live-clock');
-            if(clock) clock.innerText = new Date().toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const now = new Date();
+            clock.innerText = now.toLocaleString('th-TH', { 
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', 
+                hour: '2-digit', minute: '2-digit', second: '2-digit' 
+            });
         }
 
         function proceedToRitual() {
             const name = document.getElementById('fullname').value;
-            let yearInput = parseInt(document.getElementById('birth-year').value);
-            if (!name || isNaN(yearInput)) return alert("กรุณาระบุข้อมูลระบุตัวตนให้ครบถ้วน");
-            
-            let yearAD = yearInput;
-            if (yearInput > 2400) yearAD -= 543; 
+            const year = parseInt(document.getElementById('birth-year').value);
+            if (!name || isNaN(year)) {
+                alert("กรุณาระบุข้อมูลระบุตัวตนให้ครบถ้วน");
+                return;
+            }
 
-            const d = document.getElementById('birth-day').value;
-            const m = document.getElementById('birth-month').value;
-            const hr = document.getElementById('birth-hour').value;
-            const mn = document.getElementById('birth-minute').value;
+            const d = parseInt(document.getElementById('birth-day').value);
+            const m = parseInt(document.getElementById('birth-month').value);
+            const hr = parseInt(document.getElementById('birth-hour').value);
+            const min = parseInt(document.getElementById('birth-minute').value);
 
-            const birthDate = new Date(yearAD, m - 1, d, hr, mn);
+            let birthYearAD = year > 2400 ? year - 543 : year;
+            const birthDate = new Date(birthYearAD, m - 1, d, hr, min);
             const now = new Date();
-            const diffMs = now - birthDate;
+            const daysLived = Math.floor((now - birthDate) / (1000 * 60 * 60 * 24));
+            
+            let thaiDayIndex = birthDate.getDay();
+            if (hr < 6) thaiDayIndex = (thaiDayIndex + 6) % 7;
+            const thaiDays = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"];
 
-            const daysLived = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            const hoursLived = Math.floor(diffMs / (1000 * 60 * 60));
-            const minutesLived = Math.floor(diffMs / (1000 * 60));
+            currentUser = { name, daysLived, dayName: thaiDays[thaiDayIndex], birthStr: `${d}/${m}/${year}` };
 
-            let dispDay = new Date(yearAD, m - 1, d);
-            if (parseInt(hr) < 6) dispDay.setDate(dispDay.getDate() - 1);
-            const thaiDayName = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"][dispDay.getDay()];
-
-            currentUser = { 
-                name, daysLived, hoursLived, minutesLived, 
-                thaiDay: thaiDayName, birthStr: `${d}/${m}/${yearInput}`,
-                prayer: "" 
-            };
-
-            document.getElementById('consultation-header').innerText = `CONSULTATION FOR: ${name} (${currentUser.birthStr})`;
-            document.getElementById('life-stats').innerHTML = `
-                <div class="flex flex-col gap-1">
-                    <p>ท่านเกิดในวัน<span class="text-gold-foil font-bold font-sarabun">วัน${currentUser.thaiDay}</span> (ตามหลักอาทิตย์อุทัย)</p>
-                    <p>ท่านได้เผชิญโลกใบนี้มาแล้ว <span class="text-gold-bright font-bold text-2xl font-sarabun">${daysLived.toLocaleString()} วัน</span></p>
-                    <p class="text-[11px] text-gray-500 uppercase tracking-normal mt-2 font-sarabun">สถิติพิกัด: ${hoursLived.toLocaleString()} ชั่วโมง / ${minutesLived.toLocaleString()} นาที แห่งการมีตัวตน</p>
-                </div>
+            document.getElementById('user-stats').innerHTML = `
+                <h2 class="text-3xl font-cinzel gold-gradient-text uppercase font-bold">${name}</h2>
+                <p class="text-sm tracking-widest text-gray-400 mt-2">พิกัดชะตา: เกิดวัน${thaiDays[thaiDayIndex]} | เผชิญโลกมาแล้ว <span class="text-gold-bright font-bold">${daysLived.toLocaleString()}</span> วัน</p>
             `;
 
-            generateGrid();
             document.getElementById('step-login').classList.add('hidden');
             document.getElementById('step-ritual').classList.remove('hidden');
             window.scrollTo(0,0);
         }
 
-        function generateGrid() {
-            const grid = document.getElementById('card-selection-grid');
-            grid.innerHTML = '';
-            for (let i = 0; i < 78; i++) {
-                const card = document.createElement('div');
-                card.className = 'card-selectable';
-                card.innerHTML = `<span>TAROT</span>`;
-                card.onclick = () => performScan(i);
-                grid.appendChild(card);
-            }
-        }
-
-        async function performScan(cardIndex) {
-            const prayerText = document.getElementById('prayer').value.trim();
-            if (!prayerText) {
-                alert("กรุณาระบุถ้อยแถลงหรือปมในใจของท่านก่อนสัมผัสไพ่ เพื่อให้สัญชาตญาณเดิมนำทาง");
+        async function startAnimation() {
+            const prayer = document.getElementById('prayer').value.trim();
+            if (!prayer) {
+                alert("กรุณาระบุถ้อยแถลงหรือปมในใจเพื่อให้ไพ่สะท้อนความจริง");
                 return;
             }
-            currentUser.prayer = prayerText;
+            currentUser.prayer = prayer;
 
             document.getElementById('step-ritual').classList.add('hidden');
-            document.getElementById('step-loading').classList.remove('hidden');
+            document.getElementById('step-animation').classList.remove('hidden');
             window.scrollTo(0,0);
 
-            const resultCard = fullTarotDeck[Math.floor(Math.random() * fullTarotDeck.length)];
-            
-            // --- PROFESSIONAL PROMPT SYSTEM ---
-            const systemPrompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตาเชิงสัญลักษณ์ (Analytical Symbolic Diagnosis) 
-            บุคลิก: นิ่ง ตรง มีอำนาจ (Scorpio-Saturn Class)
-            หน้าที่: วินิจฉัยคำอธิษฐานของผู้รับคำปรึกษาผ่านสถิติชีวิตและหน้าไพ่
-            
-            ขั้นตอนการประมวลผลคำทำนาย (Logic Flow):
-            1. คัดกรองประเภทคำถาม:
-               - หากเป็นคำถามที่ต้องการผลลัพธ์ชัดเจน (Yes/No) เช่น จะได้ของไหม, จะได้ไปไหม, จะสำเร็จไหม: 
-                 ให้ "ฟันธง" ผลลัพธ์ในบรรทัดแรกทันทีตามพลังงานของหน้าไพ่ ${resultCard.name}
-               - หากเป็นคำถามเชิงปมในใจหรือทางตันชีวิต: ให้เริ่มด้วยการสะท้อนสภาวะจิตใจ
-            
-            2. การวินิจฉัย (Diagnosis):
-               - ใช้ 'จำนวนวันที่เผชิญโลก' (${currentUser.daysLived} วัน) มาคำนวณ 'มวลประสบการณ์' เพื่ออธิบายว่าทำไมเขาถึงเจอเหตุการณ์นี้
-               - ห้ามเอ่ยชื่อวันเกิด (เช่น คนเกิดวันพฤหัสบดี) แต่ให้ใช้พลังดาวอุทัยวินิจฉัยอยู่เบื้องหลัง
-               - ใช้ภาษามนุษย์ปกติ (Human Realism) ที่เข้าใจง่ายสำหรับคนอายุ 18-89 ปี
-            
-            3. ข้อห้ามเด็ดขาด:
-               - ห้ามหยาบคาย ห้ามใช้คำตลาดล่าง
-               - ห้ามใช้ศัพท์ก่อสร้าง (เสาเข็ม, พิมพ์เขียว, โครงสร้าง)
-               - ห้ามปลอบใจเกินจริง ห้ามใช้คำธรรมะลอยๆ ที่จับต้องไม่ได้
-            
-            4. โครงสร้างบทสรุป:
-               - ย่อหน้าแรก: ฟันธงคำตอบหรือสะท้อนสภาวะที่เป็นอยู่ให้ "จุก"
-               - ย่อหน้ากลาง: วิเคราะห์ปมในใจ (${currentUser.prayer}) ผ่านหน้าไพ่ ${resultCard.name}
-               - ย่อหน้าสุดท้าย: การจัดระเบียบชีวิตและทางออกที่เฉียบขาด
-            
-            เขียน 3-4 ย่อหน้าสั้นๆ เฉียบคมเหมือนกุนซือระดับโลก`;
+            const strip = document.getElementById('card-strip');
+            strip.innerHTML = '';
+            for(let i=0; i<60; i++) {
+                const card = document.createElement('div');
+                card.className = 'ritual-card';
+                card.innerHTML = `<span class="opacity-40">TAROT</span>`;
+                strip.appendChild(card);
+            }
 
-            let secondsLeft = 10;
-            const countdownEl = document.getElementById('scan-countdown');
-            countdownEl.innerText = secondsLeft;
+            // เตรียมข้อมูล AI ล่วงหน้า
+            let aiResult = null;
+            const finalCard = tarotDeck[Math.floor(Math.random() * tarotDeck.deck?.length || tarotDeck.length)];
+            
+            // เริ่มดึงข้อมูลทันทีขณะ Animation ทำงาน
+            const fetchPromise = fetchAI(finalCard);
 
-            let aiResponse = "";
-            let fetchDone = false;
-
-            const timerInterval = setInterval(() => {
-                secondsLeft--;
-                if (secondsLeft >= 0) countdownEl.innerText = secondsLeft;
-                if (secondsLeft <= 0) {
-                    clearInterval(timerInterval);
-                    checkFinalTransition();
+            let seconds = 10;
+            const countdownEl = document.getElementById('countdown');
+            const timer = setInterval(async () => {
+                seconds--;
+                countdownEl.innerText = seconds;
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    aiResult = await fetchPromise;
+                    showFinalResult(finalCard, aiResult);
                 }
             }, 1000);
+        }
 
-            function checkFinalTransition() {
-                if (fetchDone && secondsLeft <= 0) displayResult(aiResponse, resultCard);
-            }
+        async function fetchAI(card) {
+            if (!apiKey) return "ระบบตรวจพบว่าไม่มี API Key กรุณาตรวจสอบการตั้งค่าบน Vercel (Environment Variables)";
+
+            const systemPrompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตาเชิงสัญลักษณ์ บุคลิก: นิ่ง ตรง มีอำนาจ
+            วินิจฉัยคำอธิษฐานผ่านสถิติชีวิตและหน้าไพ่
+            - ผู้รับคำปรึกษา: ${currentUser.name} (เผชิญโลกมา ${currentUser.daysLived} วัน)
+            - ปมในใจ: ${currentUser.prayer}
+            - หน้าไพ่: ${card.name}
+            
+            แนวทาง:
+            1. ฟันธงสภาวะปัจจุบันในย่อหน้าแรกทันที
+            2. วิเคราะห์ปมในใจผ่านไพ่ ${card.name}
+            3. ให้ทางออกเฉียบขาด เน้นคำว่า 'การจัดระเบียบชีวิต' หรือ 'สัญชาตญาณเดิม'
+            เขียน 3 ย่อหน้าสั้นๆ เฉียบคม ห้ามใช้คำปลอบใจเกินจริง`;
 
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
@@ -478,48 +387,29 @@
                     body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })
                 });
                 const data = await res.json();
-                aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง";
-                fetchDone = true;
-                checkFinalTransition();
+                return data.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง กรุณาลองใหม่อีกครั้ง";
             } catch (e) {
-                aiResponse = "การเชื่อมต่อสมาธิถูกรบกวนเนื่องจากสัญญาณรบกวนภายนอก กรุณาลองใหม่";
-                fetchDone = true;
-                checkFinalTransition();
+                return "การเชื่อมต่อสัญญาณดวงดาวขัดข้อง: " + e.message;
             }
         }
 
-        function displayResult(text, card) {
-            document.getElementById('step-loading').classList.add('hidden');
+        function showFinalResult(card, text) {
+            document.getElementById('step-animation').classList.add('hidden');
             document.getElementById('step-result').classList.remove('hidden');
             window.scrollTo(0,0);
-            
-            document.getElementById('final-card-container').innerHTML = `
-                <div class="tarot-card-result reveal-scale bg-white">
-                    <img src="${card.img}" class="card-face-img" alt="${card.name}">
-                    <div class="absolute bottom-0 left-0 right-0 p-5 bg-black/80 backdrop-blur-md text-center border-t border-gold-foil/30">
-                        <div class="font-cinzel text-gold-foil text-sm font-bold uppercase tracking-normal">${card.name}</div>
+
+            document.getElementById('final-card-display').innerHTML = `
+                <div class="w-[300px] h-[480px] rounded-xl overflow-hidden border-[6px] border-gold-foil shadow-[0_0_60px_rgba(212,175,55,0.3)] relative bg-black">
+                    <img src="${card.img}" class="w-full h-full object-cover" alt="${card.name}">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/90 p-5 text-center border-t border-gold-foil/40 backdrop-blur-md">
+                        <span class="font-cinzel text-gold-foil text-lg tracking-[0.2em] uppercase font-bold">${card.name}</span>
                     </div>
-                </div>`;
-            
-            document.getElementById('card-name').innerText = card.name;
-            document.getElementById('card-subtitle').innerText = card.sub;
-            document.getElementById('card-description').innerHTML = text.split('\n').filter(p=>p.trim()).map(p=>`<p class="mb-4 font-sarabun text-gray-200">${p}</p>`).join('');
-        }
+                </div>
+            `;
 
-        function resetRitual() {
-            document.getElementById('step-result').classList.add('hidden');
-            document.getElementById('step-ritual').classList.remove('hidden');
-            document.getElementById('prayer').value = ''; 
-            window.scrollTo(0,0);
-        }
-
-        function backToHome() {
-            document.getElementById('step-ritual').classList.add('hidden');
-            document.getElementById('step-result').classList.add('hidden');
-            document.getElementById('step-loading').classList.add('hidden');
-            document.getElementById('step-login').classList.remove('hidden');
-            document.getElementById('prayer').value = ''; 
-            window.scrollTo(0,0);
+            document.getElementById('res-card-name').innerText = card.name;
+            document.getElementById('res-card-sub').innerText = card.sub;
+            document.getElementById('res-analysis').innerHTML = text.split('\n').filter(p=>p.trim()).map(p => `<p class="mb-4">${p}</p>`).join('');
         }
     </script>
 </body>
