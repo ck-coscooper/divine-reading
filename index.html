@@ -66,7 +66,7 @@
             font-family: 'Sarabun', sans-serif;
         }
 
-        textarea { height: auto !important; min-height: 120px; }
+        textarea { height: auto !important; min-height: 120px; line-height: 1.6; }
 
         input:focus, select:focus, textarea:focus {
             border-color: var(--gold-foil) !important;
@@ -122,7 +122,17 @@
             overflow: hidden;
             border: 4px solid var(--gold-foil);
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
-            animation: cardReveal 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-face-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: cardReveal 1.2s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         @keyframes cardReveal {
@@ -143,7 +153,6 @@
 
         .hidden-step { display: none !important; }
         
-        /* Hide number spinners */
         input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
             -webkit-appearance: none; margin: 0;
         }
@@ -270,32 +279,33 @@
 
     <script>
         // Configuration
-        const apiKey = ""; // ใส่ API Key ของคุณที่นี่
+        const apiKey = "AIzaSyBa_s7T7SeNVPUrRltNO8WvDSz8lYRS5h0"; // อัปเดต API Key เรียบร้อยแล้ว
         const modelName = "gemini-2.5-flash-preview-09-2025";
 
+        // Stable Image URLs (Wikimedia fallback + static source)
         const tarotCards = [
-            { id: 0, name: "The Fool", sub: "สัญชาตญาณและการเริ่มต้นใหม่", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg" },
-            { id: 1, name: "The Magician", sub: "ความสามารถและการจัดการทรัพยากร", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg" },
-            { id: 2, name: "The High Priestess", sub: "ความลับและสัญชาตญาณภายใน", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg" },
-            { id: 3, name: "The Empress", sub: "ความอุดมสมบูรณ์และการเติบโต", img: "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg" },
-            { id: 4, name: "The Emperor", sub: "อำนาจ โครงสร้าง และการควบคุม", img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg" },
-            { id: 5, name: "The Hierophant", sub: "ประเพณี ความเชื่อ และจริยธรรม", img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg" },
-            { id: 6, name: "The Lovers", sub: "การเลือกและความสัมพันธ์", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg" },
-            { id: 7, name: "The Chariot", sub: "ชัยชนะและความมุ่งมั่น", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg" },
-            { id: 8, name: "Strength", sub: "ความอดทนและพลังภายใน", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg" },
-            { id: 9, name: "The Hermit", sub: "ความโดดเดี่ยวและการค้นหาความจริง", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg" },
-            { id: 10, name: "Wheel of Fortune", sub: "จังหวะชีวิตและการเปลี่ยนแปลง", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg" },
-            { id: 11, name: "Justice", sub: "ความยุติธรรมและเหตุผล", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg" },
-            { id: 12, name: "The Hanged Man", sub: "การหยุดนิ่งและมุมมองใหม่", img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg" },
-            { id: 13, name: "Death", sub: "การสิ้นสุดเพื่อการเกิดใหม่", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg" },
-            { id: 14, name: "Temperance", sub: "ความสมดุลและการปรับตัว", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg" },
-            { id: 15, name: "The Devil", sub: "พันธนาการและความปรารถนา", img: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg" },
-            { id: 16, name: "The Tower", sub: "การพังทลายที่เฉียบพลัน", img: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg" },
-            { id: 17, name: "The Star", sub: "ความหวังและการเยียวยา", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg" },
-            { id: 18, name: "The Moon", sub: "ความสับสนและภาพลวงตา", img: "https://upload.wikimedia.org/wikipedia/commons/f/f0/RWS_Tarot_18_Moon.jpg" },
-            { id: 19, name: "The Sun", sub: "ความสำเร็จและความสุข", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg" },
-            { id: 20, name: "Judgement", sub: "การตัดสินใจและการปลดปล่อย", img: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg" },
-            { id: 21, name: "The World", sub: "ความสมบูรณ์แบบและการบรรลุเป้าหมาย", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg" }
+            { id: 0, name: "The Fool", sub: "สัญชาตญาณและการเริ่มต้นใหม่", img: "https://www.sacred-texts.com/tarot/pkt/img/ar00.jpg" },
+            { id: 1, name: "The Magician", sub: "ความสามารถและการจัดการทรัพยากร", img: "https://www.sacred-texts.com/tarot/pkt/img/ar01.jpg" },
+            { id: 2, name: "The High Priestess", sub: "ความลับและสัญชาตญาณภายใน", img: "https://www.sacred-texts.com/tarot/pkt/img/ar02.jpg" },
+            { id: 3, name: "The Empress", sub: "ความอุดมสมบูรณ์และการเติบโต", img: "https://www.sacred-texts.com/tarot/pkt/img/ar03.jpg" },
+            { id: 4, name: "The Emperor", sub: "อำนาจ โครงสร้าง และการควบคุม", img: "https://www.sacred-texts.com/tarot/pkt/img/ar04.jpg" },
+            { id: 5, name: "The Hierophant", sub: "ประเพณี ความเชื่อ และจริยธรรม", img: "https://www.sacred-texts.com/tarot/pkt/img/ar05.jpg" },
+            { id: 6, name: "The Lovers", sub: "การเลือกและความสัมพันธ์", img: "https://www.sacred-texts.com/tarot/pkt/img/ar06.jpg" },
+            { id: 7, name: "The Chariot", sub: "ชัยชนะและความมุ่งมั่น", img: "https://www.sacred-texts.com/tarot/pkt/img/ar07.jpg" },
+            { id: 8, name: "Strength", sub: "ความอดทนและพลังภายใน", img: "https://www.sacred-texts.com/tarot/pkt/img/ar08.jpg" },
+            { id: 9, name: "The Hermit", sub: "ความโดดเดี่ยวและการค้นหาความจริง", img: "https://www.sacred-texts.com/tarot/pkt/img/ar09.jpg" },
+            { id: 10, name: "Wheel of Fortune", sub: "จังหวะชีวิตและการเปลี่ยนแปลง", img: "https://www.sacred-texts.com/tarot/pkt/img/ar10.jpg" },
+            { id: 11, name: "Justice", sub: "ความยุติธรรมและเหตุผล", img: "https://www.sacred-texts.com/tarot/pkt/img/ar11.jpg" },
+            { id: 12, name: "The Hanged Man", sub: "การหยุดนิ่งและมุมมองใหม่", img: "https://www.sacred-texts.com/tarot/pkt/img/ar12.jpg" },
+            { id: 13, name: "Death", sub: "การสิ้นสุดเพื่อการเกิดใหม่", img: "https://www.sacred-texts.com/tarot/pkt/img/ar13.jpg" },
+            { id: 14, name: "Temperance", sub: "ความสมดุลและการปรับตัว", img: "https://www.sacred-texts.com/tarot/pkt/img/ar14.jpg" },
+            { id: 15, name: "The Devil", sub: "พันธนาการและความปรารถนา", img: "https://www.sacred-texts.com/tarot/pkt/img/ar15.jpg" },
+            { id: 16, name: "The Tower", sub: "การพังทลายที่เฉียบพลัน", img: "https://www.sacred-texts.com/tarot/pkt/img/ar16.jpg" },
+            { id: 17, name: "The Star", sub: "ความหวังและการเยียวยา", img: "https://www.sacred-texts.com/tarot/pkt/img/ar17.jpg" },
+            { id: 18, name: "The Moon", sub: "ความสับสนและภาพลวงตา", img: "https://www.sacred-texts.com/tarot/pkt/img/ar18.jpg" },
+            { id: 19, name: "The Sun", sub: "ความสำเร็จและความสุข", img: "https://www.sacred-texts.com/tarot/pkt/img/ar19.jpg" },
+            { id: 20, name: "Judgement", sub: "การตัดสินใจและการปลดปล่อย", img: "https://www.sacred-texts.com/tarot/pkt/img/ar20.jpg" },
+            { id: 21, name: "The World", sub: "ความสมบูรณ์แบบและการบรรลุเป้าหมาย", img: "https://www.sacred-texts.com/tarot/pkt/img/ar21.jpg" }
         ];
 
         let state = {
@@ -305,7 +315,6 @@
             selectedCard: null
         };
 
-        // UI Helpers
         window.onload = () => {
             setupDropdowns();
             updateClock();
@@ -336,7 +345,6 @@
             fill('birth-hour', 0, 23, true);
             fill('birth-minute', 0, 59, true);
             
-            // Set some defaults
             document.getElementById('birth-day').value = 17;
             document.getElementById('birth-month').value = 1;
             document.getElementById('birth-hour').value = 3;
@@ -373,7 +381,7 @@
             document.getElementById('ritual-title').innerText = `CONSULTATION FOR: ${state.name} (${state.birthInfo.birthStr})`;
             document.getElementById('life-stats').innerHTML = `
                 <p>ท่านเกิดใน<span class="text-gold-foil font-bold">วัน${thaiDay}</span> (ตามพิกัดอาทิตย์อุทัย)</p>
-                <p>ท่านได้ใช้ชีวิตบนโลกใบนี้มาแล้ว <span class="text-gold-bright text-2xl font-bold font-cinzel">${daysOnEarth.toLocaleString()}</span> วัน</p>
+                <p>ท่านได้ใช้ชีวิตบนโลกใบนี้มาแล้ว <span class="text-gold-bright text-3xl font-bold font-cinzel">${daysOnEarth.toLocaleString()}</span> วัน</p>
                 <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Professional Log: ${hoursOnEarth.toLocaleString()} Hours / ${minutesOnEarth.toLocaleString()} Minutes</p>
             `;
 
@@ -402,7 +410,6 @@
 
             switchStep('step-2', 'step-3');
             
-            // Countdown Ritual
             let count = 10;
             const countEl = document.getElementById('countdown');
             const interval = setInterval(() => {
@@ -411,71 +418,65 @@
                 if(count <= 0) clearInterval(interval);
             }, 1000);
 
-            // AI Call
-            const analysis = await getAIAnalysis();
+            // AI Call with Retry Logic
+            const analysis = await fetchWithRetry();
             
-            // Wait for countdown if AI is too fast
             setTimeout(() => {
                 displayFinalResult(analysis);
             }, Math.max(0, count * 1000));
         }
 
-        async function getAIAnalysis() {
-            const systemPrompt = `
-                คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตาระดับสูง
-                บุคลิก: นิ่ง ตรง มีอำนาจ วินิจฉัยแม่นยำเหมือนหมอผ่าตัด (Scorpio-Saturn Style)
-                
-                ข้อมูลผู้รับคำปรึกษา:
-                - ชื่อ: ${state.name}
-                - วันที่อยู่บนโลก: ${state.birthInfo.daysOnEarth} วัน
-                - คำถาม/ถ้อยแถลง: ${state.prayer}
-                - ไพ่ที่เลือกได้: ${state.selectedCard.name} (${state.selectedCard.sub})
+        async function fetchWithRetry(retries = 5, delay = 1000) {
+            const systemPrompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือวิเคราะห์ดวงชะตาระดับสูง 
+            บุคลิก: นิ่ง ตรง มีอำนาจ วินิจฉัยแม่นยำเหมือนหมอผ่าตัด (Scorpio-Saturn Style)
+            เน้นการวินิจฉัย "ปมในใจ", "บาดแผล", "จุดบอด" และ "ทางตัน" ของมนุษย์
+            
+            ข้อมูลผู้รับคำปรึกษา:
+            - ชื่อ: ${state.name}
+            - วันที่อยู่บนโลก: ${state.birthInfo.daysOnEarth} วัน
+            - ถ้อยแถลง: ${state.prayer}
+            - หน้าไพ่ที่สุ่มได้: ${state.selectedCard.name} (${state.selectedCard.sub})
 
-                ภารกิจ: วินิจฉัยสถานการณ์ตาม "พิกัดสัญชาตญาณเดิม" 
-                
-                กฎเหล็ก:
-                1. ห้ามใช้คำศัพท์ก่อสร้าง (เสาเข็ม, โครงสร้าง, รื้อถอน)
-                2. ห้ามใช้คำธรรมะลอยๆ หรือคำปลอบใจเกินจริง
-                3. ห้ามเอ่ยชื่อวันเกิด (เช่น คนเกิดวันพฤหัส) ให้ใช้พลังงานดาววินิจฉัยแทน
-                4. หากเป็นคำถาม Yes/No (เช่น จะได้งานไหม, จะรวยไหม) ให้ "ฟันธง" ในบรรทัดแรกทันที
-                5. ใช้ภาษาที่ Sharp (เฉียบคม) ตรงไปตรงมา แต่มีความแพงระดับ World-Class
-                6. วิเคราะห์ "มวลประสบการณ์" จากจำนวนวันที่มีชีวิต (${state.birthInfo.daysOnEarth} วัน) เพื่อเชื่อมโยงกับปมในใจ
+            ภารกิจ: วินิจฉัยสถานการณ์ตาม "พิกัดสัญชาตญาณเดิม" 
+            กฎ: ห้ามใช้ศัพท์ก่อสร้าง, ห้ามปลอบใจเกินจริง, ฟันธงคำตอบบรรทัดแรกทันทีถ้าเป็นคำถามสำเร็จ/ล้มเหลว
+            ใช้ภาษาที่ Sharp เฉียบคม ตรงไปตรงมา แต่ดูแพงระดับ World-Class`;
 
-                โครงสร้างการตอบ:
-                - บรรทัดแรก: ฟันธงหรือสรุปสภาวะปัจจุบันให้จุก
-                - ย่อหน้า 2: วินิจฉัยปมในใจผ่านหน้าไพ่ ${state.selectedCard.name}
-                - ย่อหน้า 3: ทางออกและการจัดระเบียบชีวิตที่เฉียบขาด
-                
-                ตอบเป็นภาษาไทย ความยาว 3-4 ย่อหน้าสั้นๆ
-            `;
-
-            try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: systemPrompt }] }]
-                    })
-                });
-                const data = await response.json();
-                return data.candidates[0].content.parts[0].text;
-            } catch (err) {
-                console.error(err);
-                return "การเชื่อมต่อสัญญาณดวงดาวขัดข้อง กรุณาตั้งจิตอธิษฐานและลองใหม่อีกครั้ง";
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })
+                    });
+                    
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    
+                    const data = await response.json();
+                    return data.candidates[0].content.parts[0].text;
+                } catch (err) {
+                    if (i === retries - 1) return "การเชื่อมต่อสัญญาณดวงดาวขัดข้อง กรุณาตั้งจิตอธิษฐานและลองใหม่อีกครั้ง";
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2; // Exponential backoff
+                }
             }
         }
 
         function displayFinalResult(analysis) {
             document.getElementById('res-card-name').innerText = state.selectedCard.name;
             document.getElementById('res-card-sub').innerText = state.selectedCard.sub;
+            
+            // เพิ่มระบบ Error Handling สำหรับรูปภาพ
             document.getElementById('result-card-display').innerHTML = `
                 <div class="tarot-card-result">
-                    <img src="${state.selectedCard.img}" class="w-full h-full object-cover">
+                    <img src="${state.selectedCard.img}" 
+                         class="card-face-img" 
+                         alt="${state.selectedCard.name}"
+                         onerror="this.src='https://via.placeholder.com/320x520/013220/D4AF37?text=${state.selectedCard.name.replace(/ /g, '+')}';">
                 </div>
             `;
             
             const aiContainer = document.getElementById('ai-analysis');
-            aiContainer.innerHTML = analysis.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('');
+            aiContainer.innerHTML = analysis.split('\n').filter(p => p.trim()).map(p => `<p class="mb-4">${p}</p>`).join('');
 
             switchStep('step-3', 'step-4');
         }
@@ -492,7 +493,6 @@
             document.getElementById('user-prayer').value = "";
             switchStep('step-4', 'step-2');
         }
-
     </script>
 </body>
 </html>
