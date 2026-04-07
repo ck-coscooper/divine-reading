@@ -285,7 +285,7 @@
     </main>
 
     <script>
-        const apiKey = ""; 
+        const apiKey = "AIzaSyDoyeZx1E2obEuPOywzFvXmA0ypt6fPAx8"; 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'ajarn-faan-worldclass';
 
         const majorArcana = [
@@ -459,21 +459,37 @@
             function checkFinalTransition() {
                 if (fetchDone && secondsLeft <= 0) displayResult(aiResponse, resultCard);
             }
+try {
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [
+        {
+          parts: [
+            { text: systemPrompt }
+          ]
+        }
+      ]
+    })
+  });
 
-            try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })
-                });
-                const data = await res.json();
-                aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง";
-                fetchDone = true;
-                checkFinalTransition();
-            } catch (e) {
-                aiResponse = "การเชื่อมต่อสมาธิถูกรบกวนเนื่องจากสัญญาณรบกวนภายนอก กรุณาลองใหม่";
-                fetchDone = true;
-                checkFinalTransition();
+  const data = await res.json();
+  console.log('Gemini response:', data);
+
+  if (!res.ok) {
+    throw new Error(data?.error?.message || 'Gemini request failed');
+  }
+
+  aiResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text || "พิกัดสมาธิขัดข้อง";
+  fetchDone = true;
+  checkFinalTransition();
+} catch (err) {
+  console.error('Gemini error:', err);
+  aiResponse = "การเชื่อมต่อ AI มีปัญหา: " + err.message;
+  fetchDone = true;
+  checkFinalTransition();
+}
             }
         }
 
