@@ -14,235 +14,105 @@
             --deep-dark: #0a0a0a;
             --text-silver: #e0e0e0;
         }
-
-        body {
-            background-color: var(--deep-dark);
-            color: var(--text-silver);
-            font-family: 'Sarabun', sans-serif;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        body { background-color: var(--deep-dark); color: var(--text-silver); font-family: 'Sarabun', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         .font-cinzel { font-family: 'Cinzel', serif; }
-
-        .gold-gradient-text {
-            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .gold-border {
-            border: 1px solid transparent;
-            background-image: linear-gradient(var(--forest-green), var(--forest-green)), radial-gradient(circle at top left, #f5d67b, #d4af37);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
-        }
-
-        .btn-gold {
-            background: linear-gradient(45deg, #B38728, #FBF5B7, #AA771C);
-            color: var(--forest-green);
-            font-weight: 700;
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Symmetrical Fields */
-        input, select, textarea {
-            font-size: 14px !important;
-            background-color: rgba(0, 0, 0, 0.6) !important;
-            border: 1px solid rgba(212, 175, 55, 0.2) !important;
-            color: white !important;
-            border-radius: 4px !important;
-            padding: 0 15px !important;
-            height: 42px !important; 
-            width: 100%;
-            font-family: 'Sarabun', sans-serif;
-            box-sizing: border-box;
-        }
-
+        .gold-gradient-text { background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gold-border { border: 1px solid transparent; background-image: linear-gradient(var(--forest-green), var(--forest-green)), radial-gradient(circle at top left, #f5d67b, #d4af37); background-origin: border-box; background-clip: padding-box, border-box; box-shadow: 0 0 30px rgba(212, 175, 55, 0.1); }
+        .btn-gold { background: linear-gradient(45deg, #B38728, #FBF5B7, #AA771C); color: var(--forest-green); font-weight: 700; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); text-transform: uppercase; letter-spacing: 2px; }
+        input, select, textarea { font-size: 14px !important; background-color: rgba(0,0,0,0.6) !important; border: 1px solid rgba(212,175,55,0.2) !important; color: white !important; border-radius: 4px !important; padding: 0 15px !important; height: 42px !important; width: 100%; font-family: 'Sarabun', sans-serif; box-sizing: border-box; }
         textarea { height: auto !important; min-height: 100px !important; padding: 12px 15px !important; line-height: 1.6; }
-
-        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-            -webkit-appearance: none; margin: 0;
-        }
-
-        /* 78 Cards Grid Style */
-        .card-deck-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            padding: 10px;
-        }
-
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        select option { background: #013220; color: white; }
+        .card-deck-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 10px; }
         @media (min-width: 768px) { .card-deck-grid { grid-template-columns: repeat(10, 1fr); gap: 12px; } }
-
-        .card-item {
-            aspect-ratio: 2/3.5;
-            background: linear-gradient(135deg, var(--forest-green) 0%, #001a10 100%);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cinzel', serif;
-            color: var(--gold-foil);
-            font-size: 7px;
-            letter-spacing: 1px;
-            position: relative;
-        }
-
-        .card-item:hover {
-            transform: translateY(-5px) scale(1.05);
-            border-color: var(--gold-bright);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-            z-index: 10;
-        }
-
-        .card-item::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            border: 0.5px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .tarot-card-result {
-            width: 300px;
-            height: 480px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 4px solid var(--gold-foil);
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
-            background-color: #000;
-        }
-
+        .card-item { aspect-ratio: 2/3.5; background: linear-gradient(135deg, var(--forest-green) 0%, #001a10 100%); border: 1px solid rgba(212,175,55,0.4); border-radius: 4px; cursor: pointer; transition: all 0.3s cubic-bezier(0.23,1,0.32,1); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; color: var(--gold-foil); font-size: 7px; letter-spacing: 1px; position: relative; }
+        .card-item:hover { transform: translateY(-5px) scale(1.05); border-color: var(--gold-bright); box-shadow: 0 5px 15px rgba(212,175,55,0.3); z-index: 10; }
+        .card-item::after { content: ''; position: absolute; inset: 3px; border: 0.5px solid rgba(212,175,55,0.1); }
+        .tarot-card-result { width: 280px; height: 460px; border-radius: 12px; overflow: hidden; border: 4px solid var(--gold-foil); box-shadow: 0 0 50px rgba(0,0,0,0.8); background-color: #000; }
         .hidden-step { display: none !important; }
-        
         .fade-in { animation: fadeIn 0.8s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
         .loading-pulse { animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
-
-    <!-- Global Header -->
     <header class="p-6 flex justify-between items-center border-b border-yellow-900/10 bg-black/80 backdrop-blur-xl sticky top-0 z-50">
         <h1 class="text-xl md:text-2xl font-cinzel gold-gradient-text font-bold tracking-[4px] uppercase">TAROT / AJARN FAAN</h1>
-        <div id="live-clock" class="text-[10px] text-gold-foil font-light opacity-80 uppercase font-sarabun tracking-[1px]"></div>
+        <div id="live-clock" class="text-[10px] text-yellow-400/70 opacity-80 uppercase tracking-[1px]"></div>
     </header>
-
     <main class="flex-grow flex items-center justify-center p-4">
-        
-        <!-- Step 1: Identification -->
         <section id="step-1" class="w-full max-w-xl p-8 md:p-12 gold-border bg-[#013220]/98 rounded-xl space-y-10 fade-in">
             <div class="text-center space-y-3">
                 <h2 class="text-2xl font-cinzel gold-gradient-text uppercase tracking-[3px]">Identification</h2>
-                <p class="text-[11px] text-gray-400 font-sarabun uppercase tracking-[2px]">ระบุพิกัดชะตาเพื่อยืนยันตัวตน</p>
+                <p class="text-[11px] text-gray-400 uppercase tracking-[2px]">ระบุพิกัดชะตาเพื่อยืนยันตัวตน</p>
             </div>
-
             <div class="space-y-6">
                 <div>
-                    <label class="text-gold-foil text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">FULL NAME</label>
-                    <input type="text" id="user-name" value="CK">
+                    <label class="text-yellow-400 text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">FULL NAME</label>
+                    <input type="text" id="user-name" placeholder="ระบุชื่อของท่าน">
                 </div>
-                
                 <div class="grid grid-cols-3 gap-4">
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">DAY</label>
-                        <select id="birth-day"></select>
-                    </div>
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">MONTH</label>
-                        <select id="birth-month"></select>
-                    </div>
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">YEAR (พ.ศ.)</label>
-                        <input type="number" id="birth-year" value="2529">
-                    </div>
+                    <div><label class="text-yellow-400 text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">DAY</label><select id="birth-day"></select></div>
+                    <div><label class="text-yellow-400 text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">MONTH</label><select id="birth-month"></select></div>
+                    <div><label class="text-yellow-400 text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">YEAR (พ.ศ.)</label><input type="number" id="birth-year" value="2529"></div>
                 </div>
-
                 <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">HOUR</label>
-                        <select id="birth-hour"></select>
-                    </div>
-                    <div>
-                        <label class="text-gold-foil text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">MINUTE</label>
-                        <select id="birth-minute"></select>
-                    </div>
+                    <div><label class="text-yellow-400 text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">HOUR</label><select id="birth-hour"></select></div>
+                    <div><label class="text-yellow-400 text-[10px] uppercase font-bold tracking-widest ml-1 mb-2 block">MINUTE</label><select id="birth-minute"></select></div>
                 </div>
             </div>
-
             <button onclick="proceedToSelection()" class="w-full btn-gold py-4 rounded text-xs mt-6 tracking-[3px]">PROCEED TO RITUAL</button>
         </section>
-
-        <!-- Step 2: Selection & Inquiry -->
         <section id="step-2" class="hidden-step w-full max-w-6xl p-6 md:p-10 gold-border bg-[#013220]/98 rounded-xl space-y-8 fade-in">
             <div class="text-center space-y-4">
                 <h2 id="user-display" class="text-xl md:text-2xl font-cinzel gold-gradient-text uppercase font-bold tracking-tight"></h2>
-                <div id="life-log" class="text-sm text-gray-300 border-y border-yellow-900/10 py-4 font-sarabun"></div>
+                <div id="life-log" class="text-sm text-gray-300 border-y border-yellow-900/10 py-4"></div>
             </div>
-
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <div class="lg:col-span-4 space-y-6">
                     <div class="space-y-3">
-                        <p class="text-gold-foil text-[12px] uppercase tracking-[3px] font-bold">THE CORE INQUIRY</p>
+                        <p class="text-yellow-400 text-[12px] uppercase tracking-[3px] font-bold">THE CORE INQUIRY</p>
                         <textarea id="user-inquiry" placeholder="วินิจฉัยประเด็นใด: ระบุความในใจ หรือสิ่งที่ท่านต้องการหาทางออก..."></textarea>
                     </div>
                     <div class="p-6 bg-black/40 rounded border border-yellow-900/10">
                         <p class="text-gray-400 text-sm leading-relaxed font-light">จงตั้งจิตให้มั่น พิมพ์ประเด็นที่ท่านต้องการวินิจฉัย จากนั้นใช้สมาธิเลือกไพ่ที่ดึงดูดใจท่านที่สุดเพียง 1 ใบจากกระดาน</p>
                     </div>
                 </div>
-                
                 <div class="lg:col-span-8">
                     <div id="card-grid" class="card-deck-grid bg-black/20 rounded-lg border border-yellow-900/5"></div>
                 </div>
             </div>
         </section>
-
-        <!-- Step 3: Processing (Loading) -->
         <section id="step-3" class="hidden-step w-full max-w-4xl text-center py-20 flex flex-col items-center justify-center space-y-8">
-            <div id="process-timer" class="text-8xl font-cinzel text-gold-bright drop-shadow-[0_0_20px_rgba(255,215,0,0.3)]">10</div>
-            <div class="space-y-4 loading-pulse">
+            <div id="process-timer" class="text-9xl font-cinzel gold-gradient-text drop-shadow-[0_0_30px_rgba(255,215,0,0.4)]">10</div>
+            <div class="space-y-5 loading-pulse">
                 <h3 class="gold-gradient-text text-2xl font-cinzel tracking-widest font-bold">PROFESSIONAL SPECTRUM SCAN</h3>
-                <p class="text-white opacity-70 font-sarabun">กุนซือฟาณกำลังประมวลผลพิกัดชะตาจากหน้าไพ่ที่คุณเลือก...</p>
+                <p class="text-white opacity-80">กุนซือฟาณกำลังสแกนพิกัดชะตา...</p>
+                <p class="text-white opacity-60">วิเคราะห์มวลประสบการณ์จากหน้าไพ่ที่คุณเลือก...</p>
+                <p class="text-white opacity-40">ประมวลผลเส้นทางและจุดตัดสำคัญ...</p>
+                <p class="text-yellow-400 opacity-90 font-cinzel tracking-[3px] text-sm">DECODING YOUR LIFE COORDINATES</p>
             </div>
-            <div class="w-12 h-12 border-2 border-gold-foil border-t-transparent rounded-full animate-spin"></div>
+            <div class="w-12 h-12 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin"></div>
         </section>
-
-        <!-- Step 4: Result -->
-        <section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-center justify-center gap-12 p-4">
-            <div id="result-card-box" class="flex-shrink-0 fade-in"></div>
-            
+        <section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-start justify-center gap-12 p-4 py-10">
+            <div id="result-card-box" class="flex-shrink-0 fade-in self-center lg:self-start lg:sticky lg:top-28"></div>
             <div class="flex-grow space-y-8 bg-black/40 p-8 md:p-14 rounded-2xl gold-border backdrop-blur-2xl max-w-2xl fade-in" style="animation-delay: 0.3s">
-                <div class="border-l-4 border-gold-foil pl-8">
-                    <span class="text-[10px] text-gold-foil/60 uppercase tracking-[4px] font-bold mb-2 block">Diagnostic Diagnosis</span>
+                <div class="border-l-4 border-yellow-400 pl-8">
+                    <span class="text-[10px] text-yellow-400/60 uppercase tracking-[4px] font-bold mb-2 block">Diagnostic Diagnosis</span>
                     <h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase font-bold leading-tight"></h2>
-                    <p id="res-card-sub" class="text-lg text-white/70 italic font-sarabun font-light"></p>
+                    <p id="res-card-sub" class="text-lg text-white/70 italic font-light mt-1"></p>
                 </div>
-
-                <div id="ai-response" class="text-[16px] leading-[1.8] text-gray-200 font-sarabun font-light space-y-5">
-                    <!-- AI Insight -->
-                </div>
-
+                <div id="ai-response" class="text-[16px] leading-[1.9] text-gray-200 font-light space-y-4"></div>
                 <div class="pt-8 border-t border-yellow-900/10 flex justify-between items-center">
                     <button onclick="location.reload()" class="btn-gold px-10 py-3 rounded text-[10px] font-bold">RE-ESTABLISH</button>
                     <p class="text-[9px] text-gray-600 uppercase tracking-[3px] font-cinzel">AJARN FAAN | AUTHORITY ANALYSIS</p>
                 </div>
             </div>
         </section>
-
     </main>
-
     <script>
-        const apiKey = "AIzaSyBa_s7T7SeNVPUrRltNO8WvDSz8lYRS5h0"; 
-        const modelName = "gemini-1.5-flash"; // ใช้รุ่นเสถียรที่สุดในการ Deploy สากล
-
+        const GEMINI_KEY = "AIzaSyBa_s7T7SeNVPUrRltNO8WvDSz8lYRS5h0";
         const tarotDeck = [
             { id: 0, name: "The Fool", sub: "สัญชาตญาณและการเริ่มต้นใหม่", img: "https://www.sacred-texts.com/tarot/pkt/img/ar00.jpg" },
             { id: 1, name: "The Magician", sub: "ศักยภาพและการจัดการทรัพยากร", img: "https://www.sacred-texts.com/tarot/pkt/img/ar01.jpg" },
@@ -267,162 +137,91 @@
             { id: 20, name: "Judgement", sub: "การตัดสินใจและการปลดปล่อย", img: "https://www.sacred-texts.com/tarot/pkt/img/ar20.jpg" },
             { id: 21, name: "The World", sub: "ความสมบูรณ์แบบและการบรรลุเป้าหมาย", img: "https://www.sacred-texts.com/tarot/pkt/img/ar21.jpg" }
         ];
-
         let state = { name: "", birthInfo: "", days: 0, inquiry: "", card: null };
-
         window.onload = () => {
-            const populate = (id, s, e, p=false) => {
+            const pop = (id, s, e, pad=false) => {
                 const el = document.getElementById(id);
-                for(let i=s; i<=e; i++) {
+                for (let i = s; i <= e; i++) {
                     const o = document.createElement('option');
-                    o.value = i; o.innerText = p ? String(i).padStart(2,'0') : i;
+                    o.value = i;
+                    o.innerText = pad ? String(i).padStart(2,'0') : i;
                     el.appendChild(o);
                 }
             };
-            populate('birth-day', 1, 31);
-            populate('birth-month', 1, 12);
-            populate('birth-hour', 0, 23, true);
-            populate('birth-minute', 0, 59, true);
+            pop('birth-day', 1, 31); pop('birth-month', 1, 12);
+            pop('birth-hour', 0, 23, true); pop('birth-minute', 0, 59, true);
             document.getElementById('birth-day').value = 17;
             document.getElementById('birth-month').value = 1;
             document.getElementById('birth-hour').value = 3;
-
             setInterval(() => {
-                document.getElementById('live-clock').innerText = new Date().toLocaleDateString('th-TH', { 
-                    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', 
-                    hour: '2-digit', minute: '2-digit', second: '2-digit' 
-                });
+                document.getElementById('live-clock').innerText = new Date().toLocaleDateString('th-TH', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' });
             }, 1000);
         };
-
         function proceedToSelection() {
             const name = document.getElementById('user-name').value.trim();
             const yearIn = parseInt(document.getElementById('birth-year').value);
-            if(!name || isNaN(yearIn)) return alert("กรุณาระบุข้อมูลระบุตัวตนให้ครบถ้วน");
-
+            if (!name || isNaN(yearIn)) { alert("กรุณาระบุข้อมูลให้ครบถ้วน"); return; }
             const d = parseInt(document.getElementById('birth-day').value);
             const m = parseInt(document.getElementById('birth-month').value);
             const hr = parseInt(document.getElementById('birth-hour').value);
             const mn = parseInt(document.getElementById('birth-minute').value);
-
             let yearAD = yearIn > 2400 ? yearIn - 543 : yearIn;
-            const bDate = new Date(yearAD, m - 1, d, hr, mn);
-            const now = new Date();
-            const diff = now - bDate;
-
-            state.name = name;
-            state.birthInfo = `${d}/${m}/${yearIn}`;
-            state.days = Math.floor(diff / 86400000);
-
-            let astroDay = new Date(yearAD, m - 1, d);
-            if(hr < 6) astroDay.setDate(astroDay.getDate() - 1);
-            const thaiDay = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"][astroDay.getDay()];
-
+            const bDate = new Date(yearAD, m-1, d, hr, mn);
+            state.name = name; state.birthInfo = `${d}/${m}/${yearIn}`;
+            state.days = Math.floor((new Date() - bDate) / 86400000);
+            let astroDay = new Date(yearAD, m-1, d);
+            if (hr < 6) astroDay.setDate(astroDay.getDate() - 1);
+            const thaiDay = ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"][astroDay.getDay()];
             document.getElementById('user-display').innerText = `CONSULTATION FOR: ${name} (${state.birthInfo})`;
-            document.getElementById('life-log').innerHTML = `
-                ท่านเกิดในวัน<span class="text-gold-foil font-bold">วัน${thaiDay}</span> 
-                และได้เผชิญโลกใบนี้มาแล้ว <span class="text-gold-bright text-xl font-bold font-cinzel">${state.days.toLocaleString()}</span> วัน
-            `;
-
-            renderGrid();
-            switchStep('step-1', 'step-2');
+            document.getElementById('life-log').innerHTML = `ท่านเกิดในวัน<span class="text-yellow-400 font-bold">วัน${thaiDay}</span> และได้เผชิญโลกใบนี้มาแล้ว <span class="text-yellow-300 text-xl font-bold font-cinzel">${state.days.toLocaleString()}</span> วัน`;
+            renderGrid(); switchStep('step-1', 'step-2');
         }
-
         function renderGrid() {
-            const grid = document.getElementById('card-grid');
-            grid.innerHTML = "";
-            for(let i=0; i<78; i++) {
-                const card = document.createElement('div');
-                card.className = "card-item";
-                card.innerHTML = "TAROT";
-                card.onclick = () => selectCard(i);
-                grid.appendChild(card);
+            const grid = document.getElementById('card-grid'); grid.innerHTML = "";
+            for (let i = 0; i < 78; i++) {
+                const card = document.createElement('div'); card.className = "card-item"; card.innerHTML = "TAROT";
+                card.onclick = () => selectCard(i); grid.appendChild(card);
             }
         }
-
         async function selectCard(idx) {
             const inquiry = document.getElementById('user-inquiry').value.trim();
-            if(!inquiry) return alert("กรุณาระบุความในใจหรือประเด็นที่ต้องการวินิจฉัยก่อนเลือกไพ่");
-
+            if (!inquiry) { alert("กรุณาระบุความในใจก่อนเลือกไพ่"); return; }
             state.inquiry = inquiry;
             state.card = tarotDeck[Math.floor(Math.random() * tarotDeck.length)];
-
             switchStep('step-2', 'step-3');
-
-            let timer = 10;
-            const timerEl = document.getElementById('process-timer');
-            const countdown = setInterval(() => {
-                timer--;
-                timerEl.innerText = timer;
-                if(timer <= 0) clearInterval(countdown);
-            }, 1000);
-
-            const diagnosis = await fetchDiagnosis();
-
-            setTimeout(() => {
-                showResult(diagnosis);
-            }, 10000);
+            let timer = 10; const timerEl = document.getElementById('process-timer'); timerEl.innerText = timer;
+            const countdown = setInterval(() => { timer--; timerEl.innerText = timer; if (timer <= 0) clearInterval(countdown); }, 1000);
+            const [diagnosis] = await Promise.all([fetchDiagnosis(), new Promise(r => setTimeout(r, 10000))]);
+            showResult(diagnosis);
         }
-
         async function fetchDiagnosis() {
-            const prompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือผู้วางแผนและวินิจฉัยชีวิตระดับโลก
-            บุคลิก: นิ่ง ตรง มีอำนาจ วินิจฉัยแม่นยำ (Scorpio-Saturn class)
-            
-            ข้อมูลผู้มาเยือน:
-            - ชื่อ: ${state.name}
-            - จำนวนวันที่อยู่บนโลก: ${state.days} วัน
-            - ความในใจ/คำถาม: ${state.inquiry}
-            - หน้าไพ่ที่เลือกได้: ${state.card.name} (${state.card.sub})
-
-            ภารกิจ:
-            1. วินิจฉัยปมในใจจาก "มวลประสบการณ์" ของจำนวนวันที่เขาอยู่บนโลก
-            2. หากคำถามต้องการผลลัพธ์ (Yes/No) ให้ฟันธงบรรทัดแรกทันที
-            3. วินิจฉัยจุดบอด บาดแผล และทางตันอย่างตรงไปตรงมา ไม่ปลอบใจ ไม่ใช้คำธรรมะลอยๆ
-            4. ห้ามใช้ศัพท์ก่อสร้าง 100%
-            5. ภาษาที่ใช้ต้อง Sharp เฉียบคม และดูแพงระดับ World-Class
-            
-            เขียน 3-4 ย่อหน้าสั้นๆ`;
-
+            const prompt = `คุณคืออาจารย์ฟาณ (Ajarn Faan) กุนซือผู้วางแผนและวินิจฉัยชีวิตระดับโลก บุคลิก: นิ่ง ตรง มีอำนาจ (Scorpio-Saturn class)\n\nข้อมูลผู้มาเยือน:\n- ชื่อ: ${state.name}\n- จำนวนวันที่อยู่บนโลก: ${state.days.toLocaleString()} วัน\n- ความในใจ/คำถาม: ${state.inquiry}\n- หน้าไพ่: ${state.card.name} (${state.card.sub})\n\nภารกิจ:\n1. ถ้า Yes/No ให้ฟันธงทันทีบรรทัดแรก\n2. วินิจฉัยจุดบอด บาดแผล ทางตัน อย่างตรงไปตรงมา ไม่ปลอบใจ\n3. ห้ามใช้ศัพท์ก่อสร้าง ห้ามเอ่ยชื่อวันเกิด\n4. ภาษา Sharp เฉียบคม ดูแพงระดับ World-Class\n\nเขียน 3-4 ย่อหน้าสั้นๆ เป็นภาษาไทย`;
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.9, maxOutputTokens: 1024 } })
                 });
                 const data = await res.json();
-                return (data.candidates && data.candidates[0] && data.candidates[0].content) {
-                return data.candidates[0].content.parts[0].text;
-            } 
-            console.error('Gemini response:', JSON.stringify(data));
-                return 'ไม่สามารถรับคำตอบได้ กรุณาลองใหม่';
-                console.error(err);
-                return "พิกัดสัญญาณสมาธิขัดข้องชั่วคราว กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตหรือลองใหม่อีกครั้ง";
+                if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
+                    return data.candidates[0].content.parts[0].text;
+                }
+                console.error('Gemini error:', JSON.stringify(data));
+                return "ระบบขัดข้องชั่วคราว กรุณาลองใหม่อีกครั้ง";
+            } catch (err) {
+                console.error('Fetch error:', err);
+                return "การเชื่อมต่อขัดข้อง กรุณาตรวจสอบอินเทอร์เน็ต";
             }
         }
-
         function showResult(diagnosis) {
             document.getElementById('res-card-name').innerText = state.card.name;
             document.getElementById('res-card-sub').innerText = state.card.sub;
-            document.getElementById('result-card-box').innerHTML = `
-                <div class="tarot-card-result">
-                    <img src="${state.card.img}" class="w-full h-full object-cover">
-                </div>
-            `;
-            
-            const responseEl = document.getElementById('ai-response');
-            responseEl.innerHTML = `
-                <div class="p-4 bg-white/5 border-l-2 border-gold-foil/30 mb-6 italic text-sm text-gray-400">
-                    "วินิจฉัยความในใจ: ${state.inquiry}"
-                </div>
-                ${diagnosis.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('')}
-            `;
-
+            document.getElementById('result-card-box').innerHTML = `<div class="tarot-card-result"><img src="${state.card.img}" class="w-full h-full object-cover" alt="${state.card.name}"></div>`;
+            document.getElementById('ai-response').innerHTML = `<div class="p-4 bg-white/5 border-l-2 border-yellow-400/30 mb-6 italic text-sm text-gray-400">"วินิจฉัยความในใจ: ${state.inquiry}"</div>${diagnosis.split('\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('')}`;
             switchStep('step-3', 'step-4');
         }
-
-        function switchStep(h, s) {
-            document.getElementById(h).classList.add('hidden-step');
-            document.getElementById(s).classList.remove('hidden-step');
+        function switchStep(hide, show) {
+            document.getElementById(hide).classList.add('hidden-step');
+            document.getElementById(show).classList.remove('hidden-step');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
