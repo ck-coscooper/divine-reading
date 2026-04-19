@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="th"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE D'VINE ROOM | Professional Spectrum Scan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">    <style>
+        :root { --forest-green: #013220; --gold-foil: #D4AF37; --gold-bright: #FFD700; --deep-dark: #111009; --text-silver: #f0ece0; }
+        * { max-width: 100%; box-sizing: border-box; }
+        html, body { overflow-x: hidden; width: 100%; }
+body { background-color: #111009; color: var(--text-silver); font-family: 'IBM Plex Sans Thai', sans-serif; -webkit-font-smoothing: antialiased; }        .font-cinzel { font-family: 'Cinzel', serif; }        .gold-gradient-text { background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gold-border { border: 1px solid transparent; background-image: linear-gradient(#0d0d0b,#0d0d0b), radial-gradient(circle at top left, #f5d67b, #d4af37); background-origin: border-box; background-clip: padding-box, border-box; box-shadow: 0 0 30px rgba(212, 175, 55, 0.1); }
+        .btn-gold { background: linear-gradient(45deg, #B38728, #FBF5B7, #AA771C); color: var(--forest-green); font-weight: 700; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); text-transform: uppercase; letter-spacing: 2px; }
+        .btn-outline { border: 1px solid var(--gold-foil); color: var(--gold-foil); background: transparent; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
+        .btn-outline:hover { background: rgba(212,175,55,0.1); }
+        input, select, textarea { font-size: 14px !important; background-color: rgba(255,255,255,0.95) !important; border: 1px solid rgba(212,175,55,0.4) !important; color: #000 !important; border-radius: 4px !important; padding: 0 15px !important; height: 42px !important; width: 100%; font-family: 'IBM Plex Sans Thai', sans-serif !important; box-sizing: border-box; }
+        textarea { height: auto !important; min-height: 100px !important; padding: 12px 15px !important; line-height: 1.6; }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        select option { background: #013220; color: white; }
+        .card-deck-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 10px; }
+        @media (min-width: 768px) { .card-deck-grid { grid-template-columns: repeat(10, 1fr); gap: 12px; } }
+        .card-item { aspect-ratio: 2/3.5; background: linear-gradient(135deg, var(--forest-green) 0%, #001a10 100%); border: 1px solid rgba(212,175,55,0.4); border-radius: 4px; cursor: pointer; transition: all 0.3s cubic-bezier(0.23,1,0.32,1); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; color: var(--gold-foil); font-size: 7px; letter-spacing: 1px; position: relative; }
+        .card-item:hover { transform: translateY(-5px) scale(1.05); border-color: var(--gold-bright); box-shadow: 0 5px 15px rgba(212,175,55,0.3); z-index: 10; }
+        .card-item::after { content: ''; position: absolute; inset: 3px; border: 0.5px solid rgba(212,175,55,0.1); }
+        .tarot-card-result { width: 280px; height: 460px; border-radius: 12px; overflow: hidden; border: 4px solid var(--gold-foil); box-shadow: 0 0 50px rgba(0,0,0,0.8); background-color: #000; }
+        .hidden-step { display: none !important; }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .loading-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+        .pray-text { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 15px; }
+        .float-msg { position: absolute; left: 50%; transform: translateX(-50%); font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; color: rgba(212,175,55,0.85); white-space: nowrap; animation: floatUp 3.5s ease-out forwards; pointer-events: none; }
+        @keyframes floatUp { 0% { opacity: 0; transform: translateX(-50%) translateY(0px); } 15% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; transform: translateX(-50%) translateY(-120px); } } 
+        @keyframes slideIn {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    75% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+@keyframes slowSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+    </style>
+</head>
+<body>
+<header class="sticky top-0 z-50" style="background:linear-gradient(180deg,#1a1508 0%,#111009 100%); border-bottom:1px solid rgba(212,175,55,0.15);">
+    <div class="flex justify-end items-center px-4 py-1.5 gap-2" style="border-bottom:1px solid rgba(212,175,55,0.08);">
+        <button onclick="setLang('th')" id="btn-th" style="background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:2px;color:#D4AF37;font-family:'Cinzel',serif;">TH</button>
+        <span style="color:#D4AF37;opacity:0.3;font-size:9px;">|</span>
+        <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:2px;color:#D4AF37;opacity:0.7;font-family:'Cinzel',serif;">EN</button>
+        <span style="color:#D4AF37;opacity:0.2;margin:0 2px;">·</span>
+        <button onclick="window.location.href='signin.html'" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;color:#c9b882;font-family:'Inter',sans-serif;font-size:clamp(10px,1.2vw,14px);" onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='#c9b882'"><svg width="12" height="16" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="52" height="72" rx="6" fill="transparent" stroke="#D4AF37" stroke-width="2.5"/><rect x="9" y="9" width="42" height="62" rx="4" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.4"/><polygon points="30,22 32.5,30 41,30 34.5,35 37,43 30,38 23,43 25.5,35 19,30 27.5,30" fill="#D4AF37"/></svg>Sign in</button>
+        <button onclick="window.location.href='signup.html'" style="background:linear-gradient(45deg,#B38728,#FBF5B7,#AA771C);border:none;cursor:pointer;font-size:clamp(10px,1.2vw,14px);font-weight:600;color:#013220;padding:clamp(2px,0.3vw,5px) clamp(8px,1vw,14px);border-radius:3px;font-family:'Inter',sans-serif;">Sign up</button>
+    </div>
+    <div class="flex flex-col items-center text-center px-4 py-2 gap-0.5">
+        <h1 class="font-cinzel gold-gradient-text font-bold uppercase" style="font-size:clamp(1.1rem,3vw,2.2rem);letter-spacing:8px;">THE D'VINE ROOM</h1>
+<p class="font-cinzel" style="font-size:clamp(8px,1.3vw,12px);letter-spacing:1px;color:#D4AF37;">SCARS OF THE DIVINE / AJ. FAAN</p>    </div>
+    <nav style="border-top:1px solid rgba(212,175,55,0.15); overflow-x:auto; position:relative;">
+      <style>
+        .nav-item { position:relative; }
+        .nav-item:hover .nav-drop { display:block !important; }
+        .nav-drop { display:none; position:absolute; top:100%; left:0; background:#1a1508; border:1px solid rgba(212,175,55,0.3); min-width:180px; z-index:999; box-shadow:0 8px 24px rgba(0,0,0,0.6); }
+        .nav-drop a { display:block; padding:12px 18px; color:rgba(212,175,55,0.8); text-decoration:none; font-family:'Cinzel',serif; font-size:11px; letter-spacing:1px; border-bottom:1px solid rgba(212,175,55,0.1); background:#1a1508; }
+        .nav-drop a:last-child { border-bottom:none; }
+        .nav-drop a:hover { color:#D4AF37; background:rgba(212,175,55,0.08); }
+        .nav-link { font-family:'Cinzel',serif; font-weight:700; text-transform:uppercase; text-decoration:none; white-space:nowrap; color:#ffffff; border-bottom:2px solid transparent; display:block; padding:10px clamp(8px,1.5vw,20px); font-size:clamp(10px,1.5vw,14px); letter-spacing:clamp(1px,0.3vw,3px); transition:all 0.3s; }
+.nav-link:hover { color:#D4AF37; border-bottom-color:#D4AF37; }
+.nav-link.active { color:#D4AF37; border-bottom:2px solid #D4AF37; font-weight:600; }
+          
+      </style>
+      <div style="display:flex; justify-content:center; align-items:center; min-width:fit-content; padding:0 10px;">
+
+        <div class="nav-item">
+          <a href="learn.html" class="nav-link">LEARN</a>
+          <div class="nav-drop">
+            <a href="learn.html#articles">บทความ</a>
+            <a href="learn.html#course">คอร์สเรียน</a>
+            <a href="learn.html#ebook">Ebook</a>
+            <a href="learn.html#crystal">หินจักระ</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="tarot.html" class="nav-link">TAROT</a>
+          <div class="nav-drop">
+            <a href="tarot.html#major">Major Arcana</a>
+            <a href="tarot.html#minor">Minor Arcana</a>
+            <a href="tarot.html#all">ความหมายไพ่ทั้งหมด</a>
+          </div>
+        </div>
+
+<a href="index.html" class="nav-link active">READING</a>
+        <div class="nav-item">
+          <a href="almanac.html" class="nav-link">ALMANAC</a>
+          <div class="nav-drop">
+            <a href="almanac.html#lagna">เช็คลัคนา / ราศี</a>
+            <a href="almanac.html#calendar">ปฏิทินดาวรายเดือน</a>
+            <a href="almanac.html#auspicious">ฤกษ์ดี</a>
+          </div>
+        </div>
+
+        <a href="community.html" class="nav-link">COMMUNITY</a>
+
+      </div>
+    </nav>
+</header>
+    <main class="flex-grow flex items-center justify-center" style="padding: 2rem 1rem; background:#111009;">
+        <section id="step-1" class="w-full max-w-lg gold-border bg-[#013220]/98 rounded-xl fade-in" style="padding:2rem 2.5rem;">
+            <div class="text-center mb-6" style="padding-bottom:1.5rem;border-bottom:1px solid rgba(212,175,55,0.1);">
+                <h2 class="font-cinzel gold-gradient-text uppercase" style="font-size:1.4rem;letter-spacing:1px;margin-bottom:0.5rem;">Identification</h2>
+                <p id="txt-sub1" style="font-size:13px;color:color:#ffffff;">ระบุพิกัดชะตาเพื่อยืนยันตัวตน</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:1.2rem;">
+                <div>
+                    <label class="font-cinzel text-yellow-400 uppercase block mb-2" style="font-size:10px;letter-spacing:1px;">Full Name</label>
+                    <input type="text" id="user-name" placeholder="ระบุชื่อของท่าน">
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <label class="font-cinzel text-yellow-400 uppercase block mb-2" style="font-size:10px;letter-spacing:1px;">Day</label>
+                        <select id="birth-day"></select>
+                    </div>
+                    <div>
+                        <label class="font-cinzel text-yellow-400 uppercase block mb-2" style="font-size:10px;letter-spacing:1px;">Month</label>
+                        <select id="birth-month"></select>
+                    </div>
+                    <div>
+                        <label class="font-cinzel text-yellow-400 uppercase block mb-2" style="font-size:10px;letter-spacing:1px;">Year</label>
+                        <input type="text" id="birth-year" value="" placeholder="2569 / 2026" oninput="formatYear(this)">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="font-cinzel text-yellow-400 uppercase block mb-2" style="font-size:10px;letter-spacing:1px;">Hour</label>
+                        <select id="birth-hour"></select>
+                    </div>
+                    <div>
+                        <label class="font-cinzel text-yellow-400 uppercase block mb-2" style="font-size:10px;letter-spacing:1px;">Minute</label>
+                        <select id="birth-minute"></select>
+                    </div>
+                </div>
+            </div>
+            <button onclick="proceedToSelection()" class="w-full btn-gold rounded" style="margin-top:1.5rem;padding:14px;font-size:11px;font-family:'Cinzel';letter-spacing:2px;">BEGIN THE READING</button>
+        </section>
+                <section id="step-2" class="hidden-step w-full max-w-4xl p-4 md:p-10 gold-border bg-[#013220]/98 rounded-xl space-y-6 fade-in" style="position:relative;">
+<button onclick="switchStep('step-2','step-1')" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;" onmouseover="this.querySelector('rect.card').setAttribute('fill','url(#goldFill)');this.querySelector('rect.card').setAttribute('stroke','#B38728');this.querySelector('polygon').setAttribute('fill','#1a1200');this.querySelector('span').style.color='#D4AF37';" onmouseout="this.querySelector('rect.card').setAttribute('fill','transparent');this.querySelector('rect.card').setAttribute('stroke','rgba(255,255,255,0.6)');this.querySelector('polygon').setAttribute('fill','rgba(255,255,255,0.6)');this.querySelector('span').style.color='rgba(255,255,255,0.5)';"><svg width="28" height="37" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="goldFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FCF6BA"/><stop offset="50%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#AA771C"/></linearGradient></defs><rect class="card" x="4" y="4" width="52" height="72" rx="6" fill="transparent" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"/><rect x="9" y="9" width="42" height="62" rx="4" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/><polygon points="30,22 32.5,30 41,30 34.5,35 37,43 30,38 23,43 25.5,35 19,30 27.5,30" fill="rgba(255,255,255,0.6)"/></svg><span style="font-family:'Cinzel',serif;font-size:7px;letter-spacing:2px;color:rgba(255,255,255,0.5);">HOME</span></button>
+            <div class="text-center space-y-2">
+                <h2 id="user-display" class="text-base md:text-2xl font-cinzel gold-gradient-text uppercase font-bold tracking-tight px-2"></h2>
+                <div id="life-log" class="border-y border-yellow-900/10 py-1"></div>
+                <div class="space-y-3 max-w-xl mx-auto">
+    <textarea id="user-inquiry" placeholder="พิมพ์สิ่งที่อยู่ในใจ หรือคำถามที่ต้องการคำตอบ...เล่าที่อยากระบายมาได้เลย จักรวาลจะตอบเอง"></textarea>
+</div>
+</div>
+            </div>
+            <p id="txt-pray" class="pray-text text-center max-w-xl mx-auto" style="line-height:1.8; font-size:clamp(11px,2.5vw,15px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"> ถ้าจิตไม่นิ่ง คุณจะได้ด้านมืดในใจเปิดออกมา เลือกเพียง 1 ใบ</p>
+            <div id="card-grid" class="card-deck-grid bg-black/20 rounded-lg border border-yellow-900/5"></div>
+        </section>
+        <section id="step-3" class="hidden-step w-full" style="position:relative;min-height:100vh;background:#0a0906;overflow:hidden;font-family:'Space Mono',monospace;margin:-2rem -1rem -2rem -1rem;width:calc(100% + 2rem);box-sizing:border-box;">
+  <style>
+    .dvine-stars { position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 80% 10%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 50% 70%,rgba(255,255,255,0.25) 0%,transparent 100%),radial-gradient(1px 1px at 10% 80%,rgba(255,255,255,0.2) 0%,transparent 100%),radial-gradient(1px 1px at 90% 60%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 35% 15%,rgba(255,255,255,0.35) 0%,transparent 100%),radial-gradient(1px 1px at 65% 85%,rgba(255,255,255,0.25) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 75% 40%,rgba(197,160,89,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 25% 55%,rgba(255,255,255,0.2) 0%,transparent 100%),radial-gradient(1px 1px at 45% 45%,rgba(255,255,255,0.15) 0%,transparent 100%);background-size:400px 300px; }
+    @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes spinRev { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+    @keyframes scanLine { 0%{top:15%} 50%{top:82%} 100%{top:15%} }
+    @keyframes pulseDot2 { 0%,100%{opacity:0.4} 50%{opacity:1} }
+    @keyframes fadeData { 0%,100%{opacity:0.5} 50%{opacity:1} }
+    @keyframes tickerSlide2 { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
+    .ticker2 { white-space:nowrap;font-family:'IBM Plex Sans Thai',sans-serif;font-size:clamp(16px,1.8vw,16px);letter-spacing:0;color:#ffffff;animation:tickerSlide2 36s linear infinite;display:inline-block; }
+  </style>
+  <div class="dvine-stars"></div>
+  <div style="position:absolute;inset:0;opacity:0.035;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');background-size:200px;"></div>
+
+  <div style="width:100%;overflow:hidden;border-top:1px solid rgba(212,175,55,0.15);border-bottom:1px solid rgba(212,175,55,0.15);padding:10px 0;background:#013220;position:relative;z-index:3;">
+    <div class="ticker2">คำทำนายไม่ได้มีไว้ทำร้ายคุณ &nbsp;&nbsp;✦&nbsp;&nbsp; มันแค่ช่วยให้คุณเห็นบางอย่างชัดขึ้น &nbsp;&nbsp;✦&nbsp;&nbsp; จงนิ่ง…แล้วมองเข้าไปข้างใน &nbsp;&nbsp;✦&nbsp;&nbsp; เพราะสิ่งที่กำลังจะเปิดออกมา &nbsp;&nbsp;✦&nbsp;&nbsp; คือด้านที่คุณอาจยังไม่เคยมอง &nbsp;&nbsp;✦&nbsp;&nbsp; ถ้าคุณพร้อม... &nbsp;&nbsp;✦&nbsp;&nbsp; คำตอบที่ได้จะพาคุณไปไกลกว่าที่คิด &nbsp;&nbsp;✦&nbsp;&nbsp; และบางสิ่งที่คุณค้นพบ อาจเปลี่ยนวิธีที่คุณมองตัวเองไปตลอด &nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </div>
+
+  <div style="position:relative;z-index:2;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:40px;padding:32px 24px;flex-wrap:wrap;justify-content:center;align-items:center;">
+
+    <div style="position:relative;width:300px;height:300px;flex-shrink:0;">
+      <svg style="position:absolute;inset:0;animation:spinSlow 18s linear infinite;" width="300" height="300" viewBox="0 0 300 300">
+        <circle cx="150" cy="150" r="138" fill="none" stroke="#C5A059" stroke-width="0.8" stroke-dasharray="4 8" opacity="0.6"/>
+        <circle cx="150" cy="150" r="145" fill="none" stroke="#C5A059" stroke-width="0.4" stroke-dasharray="2 14" opacity="0.3"/>
+        <defs><path id="outerRing2" d="M 150,5 A 145,145 0 1 1 149.99,5"/></defs>
+        <text font-family="Space Mono" font-size="7" fill="#C5A059" opacity="0.5"><textPath href="#outerRing2">N 13.7563° ··· E 100.5018° ··· GMT+7 ··· SPECTRUM ··· SCAN ··· DIVINE ··· N 13.7563° ··· E 100.5018° ···</textPath></text>
+      </svg>
+      <svg style="position:absolute;inset:0;animation:spinRev 10s linear infinite;" width="300" height="300" viewBox="0 0 300 300">
+        <circle cx="150" cy="150" r="118" fill="none" stroke="#C5A059" stroke-width="1" stroke-dasharray="1 6" opacity="0.5"/>
+        <circle cx="150" cy="150" r="108" fill="none" stroke="#C5A059" stroke-width="0.5" stroke-dasharray="8 4" opacity="0.25"/>
+      </svg>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+        <div style="width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#2a1f0a 0%,#1a1205 40%,#0d0a05 100%);border:1.5px solid rgba(197,160,89,0.4);box-shadow:0 0 40px rgba(197,160,89,0.15);overflow:hidden;position:relative;">
+          <svg width="220" height="220" viewBox="0 0 220 220" style="position:absolute;inset:0;opacity:0.5;">
+            <circle cx="110" cy="110" r="90" fill="none" stroke="#C5A059" stroke-width="0.3" stroke-dasharray="1 3"/>
+            <circle cx="110" cy="110" r="70" fill="none" stroke="#C5A059" stroke-width="0.3" stroke-dasharray="2 4"/>
+            <circle cx="110" cy="110" r="50" fill="none" stroke="#C5A059" stroke-width="0.3" stroke-dasharray="1 2"/>
+            <circle cx="110" cy="110" r="30" fill="none" stroke="#C5A059" stroke-width="0.4"/>
+            <line x1="20" y1="110" x2="200" y2="110" stroke="#C5A059" stroke-width="0.3" opacity="0.4"/>
+            <line x1="110" y1="20" x2="110" y2="200" stroke="#C5A059" stroke-width="0.3" opacity="0.4"/>
+            <circle cx="110" cy="110" r="8" fill="rgba(197,160,89,0.3)" stroke="#C5A059" stroke-width="1"/>
+            <circle cx="110" cy="110" r="3" fill="#C5A059"/>
+          </svg>
+          <div style="position:absolute;left:0;right:0;height:1.5px;background:linear-gradient(to right,transparent,#C5A059,#fff8e0,#C5A059,transparent);opacity:0.9;animation:scanLine 3s ease-in-out infinite;box-shadow:0 0 8px rgba(197,160,89,0.8);"></div>
+        </div>
+      </div>
+      <div id="scan-birthinfo" style="position:absolute;top:8px;right:8px;font-size:11px;color:#C5A059;opacity:0.8;text-align:right;line-height:1.8;font-family:'Space Mono',monospace;"></div>
+<div id="scan-days" style="position:absolute;bottom:8px;left:8px;font-size:11px;color:#C5A059;opacity:0.8;line-height:1.8;font-family:'Space Mono',monospace;"></div>
+    </div>
+
+    <div style="max-width:340px;display:flex;flex-direction:column;gap:16px;">
+      <div>
+       <div style="font-family:'Cinzel',serif;font-size:clamp(13px,2.5vw,18px);letter-spacing:2px;color:#C5A059;">PROFESSIONAL</div>
+<div style="font-family:'Cinzel',serif;font-size:clamp(13px,2.5vw,18px);letter-spacing:2px;color:#C5A059;">SPECTRUM SCAN</div>
+        <div style="width:60px;height:1px;background:linear-gradient(to right,#C5A059,transparent);margin-top:10px;"></div>
+      </div>
+      <div style="border-left:2px solid #C5A059;padding:10px 14px;background:rgba(197,160,89,0.04);">
+        <div style="font-size:8px;color:#C5A059;letter-spacing:2px;margin-bottom:4px;">SYSTEM STATUS</div>
+        <p id="txt-scan1" style="font-size:11px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0 0 4px;font-family:'IBM Plex Sans Thai',sans-serif;">ระบบกำลังสแกนพิกัดชะตา...</p>
+<p id="txt-scan2" style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;margin:0;font-family:'IBM Plex Sans Thai',sans-serif;">วิเคราะห์มวลประสบการณ์จากหน้าไพ่ที่คุณเลือก...</p>
+      </div>
+      <div style="border-left:2px solid rgba(197,160,89,0.3);padding:10px 14px;">
+        <div style="font-size:8px;color:#C5A059;letter-spacing:2px;margin-bottom:6px;">DIAGNOSTIC NODES</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;justify-content:space-between;font-size:9px;"><span style="color:rgba(255,255,255,0.5);">BIRTH COORDINATE</span><span style="color:#C5A059;animation:fadeData 2s infinite;">LOCKED</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:9px;"><span style="color:rgba(255,255,255,0.5);">CARD RESONANCE</span><span style="color:#C5A059;animation:fadeData 2.4s infinite;">READING</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:9px;"><span style="color:rgba(255,255,255,0.5);">LIFE IMPRINT</span><span style="color:rgba(197,160,89,0.6);animation:fadeData 1.8s infinite;">PROCESSING...</span></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:#C5A059;display:inline-block;animation:pulseDot2 1.4s infinite;"></span>
+        <span style="width:6px;height:6px;border-radius:50%;background:#C5A059;display:inline-block;animation:pulseDot2 1.4s 0.2s infinite;"></span>
+        <span style="width:6px;height:6px;border-radius:50%;background:#C5A059;display:inline-block;animation:pulseDot2 1.4s 0.4s infinite;"></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+    </main>
+    </section>
+        <section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-start justify-center gap-12 p-4 py-10">
+            <div id="result-card-box" class="flex-shrink-0 fade-in self-center lg:self-start lg:sticky lg:top-28"></div>
+            <div class="flex-grow space-y-8 bg-black/40 p-8 md:p-14 rounded-2xl gold-border backdrop-blur-2xl max-w-2xl fade-in" style="animation-delay: 0.3s">
+                <div class="border-l-4 border-yellow-400 pl-8">
+                    <span class="text-[10px] text-yellow-400/60 uppercase tracking-[4px] font-bold mb-2 block">Diagnostic Diagnosis</span>
+                    <h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase font-bold leading-tight"></h2>
+                    <p id="res-card-sub" class="text-lg text-white/70 italic font-light mt-1"></p>
+                </div>
+                <div id="ai-response" class="text-[16px] leading-[1.9] text-gray-200 font-light space-y-4"></div>
+                <div class="pt-8 border-t border-yellow-900/10 flex flex-wrap justify-between items-center gap-3">
+                    <div class="flex gap-3">
+                        <button onclick="location.reload()" class="btn-gold px-6 py-3 rounded text-[10px] font-bold">RESET</button>
+                        <button onclick="backToQuestion()" class="btn-outline px-6 py-3 rounded text-[10px] font-bold">NEW QUESTION</button>
+                    </div>
+                    <p class="text-[9px] text-gray-600 uppercase tracking-[3px] font-cinzel">AJARN FAAN | AUTHORITY ANALYSIS</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        var currentLang = 'th';
+        var txt = {
+            th: {
+                sub1: 'ระบุพิกัดชะตาเพื่อยืนยันตัวตน',
+                namePlaceholder: 'ระบุชื่อของท่าน',
+                placeholder: 'พิมพ์สิ่งที่อยู่ในใจ หรือคำถามที่ต้องการคำตอบ...',
+                pray: 'อธิษฐานตั้งจิตก่อนเลือก — ถ้าจิตไม่นิ่ง คุณจะได้ด้านมืดในใจเปิดออกมา เลือกเพียง 1 ใบ',
+                scan1: 'ระบบกำลังสแกนพิกัดชะตา...',
+                scan2: 'วิเคราะห์มวลประสบการณ์จากหน้าไพ่ที่คุณเลือก...',
+                alertName: 'กรุณาระบุข้อมูลให้ครบถ้วน',
+                alertInquiry: 'กรุณาระบุความในใจก่อนเลือกไพ่',
+                lifeMsg: function(days) { return '<div style="font-family:\'IBM Plex Sans Thai\',sans-serif;font-size:0.95rem;letter-spacing:0;color:#ffffff;margin-bottom:0.3rem;">' + state.birthInfo + ' &nbsp;·&nbsp; จำนวนการอยู่บนโลกมนุษย์</div><span style="font-family:Cinzel,serif;font-size:clamp(2.5rem,8vw,4rem);color:#ffffff;">' + days.toLocaleString() + ' DAYS</span>'; },
+                langInstruction: 'ตอบเป็นภาษาไทยเท่านั้น ห้ามใช้ภาษาอังกฤษในคำตอบเด็ดขาด'
+            },
+            en: {
+                sub1: 'Enter your birth coordinates to begin',
+                namePlaceholder: 'Enter your full name',
+                placeholder: 'Type what is on your mind, or the question seeking an answer...',
+                pray: 'Set your intention before choosing — an unsettled mind will reveal your shadow self. Pray, then choose only 1 card.',
+                scan1: 'Scanning your life coordinates...',
+                scan2: 'Analysing the energy of your chosen card...',
+                alertName: 'Please complete all required fields.',
+                alertInquiry: 'Please enter your intention before selecting a card.',
+                lifeMsg: function(days) { return '<div style="font-family:Cinzel,serif;font-size:0.95rem;letter-spacing:1px;color:#ffffff;margin-bottom:0.3rem;">' + state.birthInfo + ' &nbsp;·&nbsp; days journeyed on this earth</div><span style="font-family:Cinzel,serif;font-size:clamp(2.5rem,8vw,4rem);color:#ffffff;">' + days.toLocaleString() + ' DAYS</span>'; },
+                langInstruction: 'Answer in English only. Do not use Thai language in your response.'
+            }
+        };
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.getElementById('btn-th').classList.toggle('active', lang === 'th');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            var t = txt[lang];
+            document.getElementById('txt-sub1').innerText = t.sub1;
+            document.getElementById('user-name').placeholder = t.namePlaceholder;
+            document.getElementById('user-inquiry').placeholder = t.placeholder;
+            document.getElementById('txt-pray').innerText = t.pray;
+            document.getElementById('txt-scan1').innerText = t.scan1;
+            document.getElementById('txt-scan2').innerText = t.scan2;
+        }
+
+        var tarotDeck = [
+    {name:"The Fool",sub:"สัญชาตญาณและการเริ่มต้นใหม่",subEn:"Intuition & New Beginnings",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/RWS_Tarot_00_Fool.jpg/300px-RWS_Tarot_00_Fool.jpg"},
+    {name:"The Magician",sub:"ศักยภาพและการจัดการทรัพยากร",subEn:"Potential & Resource Mastery",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/RWS_Tarot_01_Magician.jpg/300px-RWS_Tarot_01_Magician.jpg"},
+    {name:"The High Priestess",sub:"ความลับและสัญชาตญาณภายใน",subEn:"Secrets & Inner Intuition",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/RWS_Tarot_02_High_Priestess.jpg/300px-RWS_Tarot_02_High_Priestess.jpg"},
+    {name:"The Empress",sub:"ความอุดมสมบูรณ์และการเติบโต",subEn:"Abundance & Growth",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/RWS_Tarot_03_Empress.jpg/300px-RWS_Tarot_03_Empress.jpg"},
+    {name:"The Emperor",sub:"อำนาจและการควบคุม",subEn:"Authority & Control",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/RWS_Tarot_04_Emperor.jpg/300px-RWS_Tarot_04_Emperor.jpg"},
+    {name:"The Hierophant",sub:"ประเพณีและจริยธรรม",subEn:"Tradition & Ethics",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/RWS_Tarot_05_Hierophant.jpg/300px-RWS_Tarot_05_Hierophant.jpg"},
+    {name:"The Lovers",sub:"การเลือกและความสัมพันธ์",subEn:"Choice & Relationships",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/TheLovers.jpg/300px-TheLovers.jpg"},
+    {name:"The Chariot",sub:"ชัยชนะและความมุ่งมั่น",subEn:"Victory & Determination",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/RWS_Tarot_07_Chariot.jpg/300px-RWS_Tarot_07_Chariot.jpg"},
+    {name:"Strength",sub:"ความอดทนและพลังภายใน",subEn:"Patience & Inner Power",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/RWS_Tarot_08_Strength.jpg/300px-RWS_Tarot_08_Strength.jpg"},
+    {name:"The Hermit",sub:"ความวิเวกและการค้นหาความจริง",subEn:"Solitude & Truth Seeking",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/RWS_Tarot_09_Hermit.jpg/300px-RWS_Tarot_09_Hermit.jpg"},
+    {name:"Wheel of Fortune",sub:"จังหวะชีวิตและการเปลี่ยนแปลง",subEn:"Life Cycles & Change",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg/300px-RWS_Tarot_10_Wheel_of_Fortune.jpg"},
+    {name:"Justice",sub:"ความยุติธรรมและเหตุผล",subEn:"Justice & Reason",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/RWS_Tarot_11_Justice.jpg/300px-RWS_Tarot_11_Justice.jpg"},
+    {name:"The Hanged Man",sub:"การหยุดนิ่งและมุมมองใหม่",subEn:"Pause & New Perspective",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/RWS_Tarot_12_Hanged_Man.jpg/300px-RWS_Tarot_12_Hanged_Man.jpg"},
+    {name:"Death",sub:"การสิ้นสุดเพื่อการเกิดใหม่",subEn:"Endings & Rebirth",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/RWS_Tarot_13_Death.jpg/300px-RWS_Tarot_13_Death.jpg"},
+    {name:"Temperance",sub:"ความสมดุลและการปรับชีวิต",subEn:"Balance & Life Calibration",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/RWS_Tarot_14_Temperance.jpg/300px-RWS_Tarot_14_Temperance.jpg"},
+    {name:"The Devil",sub:"พันธนาการและความปรารถนา",subEn:"Bondage & Desire",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/RWS_Tarot_15_Devil.jpg/300px-RWS_Tarot_15_Devil.jpg"},
+    {name:"The Tower",sub:"การพังทลายที่เฉียบพลัน",subEn:"Sudden Collapse",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/RWS_Tarot_16_Tower.jpg/300px-RWS_Tarot_16_Tower.jpg"},
+    {name:"The Star",sub:"ความหวังและการเยียวยา",subEn:"Hope & Healing",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/RWS_Tarot_17_Star.jpg/300px-RWS_Tarot_17_Star.jpg"},
+    {name:"The Moon",sub:"ความสับสนและภาพลวงตา",subEn:"Confusion & Illusion",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/RWS_Tarot_18_Moon.jpg/300px-RWS_Tarot_18_Moon.jpg"},
+    {name:"The Sun",sub:"ความสำเร็จและความสุข",subEn:"Success & Joy",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/RWS_Tarot_19_Sun.jpg/300px-RWS_Tarot_19_Sun.jpg"},
+    {name:"Judgement",sub:"การตัดสินใจและการปลดปล่อย",subEn:"Decision & Liberation",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/RWS_Tarot_20_Judgement.jpg/300px-RWS_Tarot_20_Judgement.jpg"},
+    {name:"The World",sub:"ความสมบูรณ์และการบรรลุเป้าหมาย",subEn:"Completion & Achievement",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/RWS_Tarot_21_World.jpg/300px-RWS_Tarot_21_World.jpg"},
+    {name:"Ace of Wands",sub:"พลังงานใหม่และแรงบันดาลใจ",subEn:"New Energy & Inspiration",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Wands01.jpg/300px-Wands01.jpg"},
+    {name:"Two of Wands",sub:"การวางแผนและการมองไกล",subEn:"Planning & Vision",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Wands02.jpg/300px-Wands02.jpg"},
+    {name:"Three of Wands",sub:"การขยายและความก้าวหน้า",subEn:"Expansion & Progress",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Wands03.jpg/300px-Wands03.jpg"},
+    {name:"Four of Wands",sub:"ความมั่นคงและการเฉลิมฉลอง",subEn:"Stability & Celebration",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Wands04.jpg/300px-Wands04.jpg"},
+    {name:"Five of Wands",sub:"ความขัดแย้งและการแข่งขัน",subEn:"Conflict & Competition",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Wands05.jpg/300px-Wands05.jpg"},
+    {name:"Six of Wands",sub:"ชัยชนะและการยอมรับ",subEn:"Victory & Recognition",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Wands06.jpg/300px-Wands06.jpg"},
+    {name:"Seven of Wands",sub:"การต่อสู้และการยืนหยัด",subEn:"Struggle & Perseverance",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Wands07.jpg/300px-Wands07.jpg"},
+    {name:"Eight of Wands",sub:"ความเร็วและการเคลื่อนไหว",subEn:"Speed & Movement",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Wands08.jpg/300px-Wands08.jpg"},
+    {name:"Nine of Wands",sub:"ความอดทนและการป้องกัน",subEn:"Resilience & Defense",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tarot_Nine_of_Wands.jpg/300px-Tarot_Nine_of_Wands.jpg"},
+    {name:"Ten of Wands",sub:"ภาระและความรับผิดชอบ",subEn:"Burden & Responsibility",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Wands10.jpg/300px-Wands10.jpg"},
+    {name:"Page of Wands",sub:"ความกระตือรือร้นและการสำรวจ",subEn:"Enthusiasm & Exploration",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Wands11.jpg/300px-Wands11.jpg"},
+    {name:"Knight of Wands",sub:"พลังงานและความกล้าหาญ",subEn:"Energy & Courage",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Wands12.jpg/300px-Wands12.jpg"},
+    {name:"Queen of Wands",sub:"ความมั่นใจและความคิดสร้างสรรค์",subEn:"Confidence & Creativity",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Wands13.jpg/300px-Wands13.jpg"},
+    {name:"King of Wands",sub:"ความเป็นผู้นำและวิสัยทัศน์",subEn:"Leadership & Vision",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Wands14.jpg/300px-Wands14.jpg"},
+    {name:"Ace of Cups",sub:"ความรักและการเริ่มต้นใหม่ทางใจ",subEn:"Love & New Emotional Beginnings",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Cups01.jpg/300px-Cups01.jpg"},
+    {name:"Two of Cups",sub:"ความสัมพันธ์และการเชื่อมโยง",subEn:"Connection & Partnership",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Cups02.jpg/300px-Cups02.jpg"},
+    {name:"Three of Cups",sub:"มิตรภาพและการเฉลิมฉลอง",subEn:"Friendship & Celebration",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Cups03.jpg/300px-Cups03.jpg"},
+    {name:"Four of Cups",sub:"ความเบื่อหน่ายและการพิจารณา",subEn:"Boredom & Contemplation",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Cups04.jpg/300px-Cups04.jpg"},
+    {name:"Five of Cups",sub:"ความสูญเสียและความเสียใจ",subEn:"Loss & Regret",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cups05.jpg/300px-Cups05.jpg"},
+    {name:"Six of Cups",sub:"ความทรงจำและความบริสุทธิ์",subEn:"Memory & Innocence",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Cups06.jpg/300px-Cups06.jpg"},
+    {name:"Seven of Cups",sub:"ภาพลวงตาและการเลือก",subEn:"Illusion & Choices",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Cups07.jpg/300px-Cups07.jpg"},
+    {name:"Eight of Cups",sub:"การละทิ้งและการค้นหา",subEn:"Abandonment & Search",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cups08.jpg/300px-Cups08.jpg"},
+    {name:"Nine of Cups",sub:"ความพอใจและความสุข",subEn:"Contentment & Happiness",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Cups09.jpg/300px-Cups09.jpg"},
+    {name:"Ten of Cups",sub:"ความสุขในครอบครัวและความสมบูรณ์",subEn:"Family Happiness & Fulfillment",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Cups10.jpg/300px-Cups10.jpg"},
+    {name:"Page of Cups",sub:"ความอ่อนโยนและสัญชาตญาณ",subEn:"Sensitivity & Intuition",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Cups11.jpg/300px-Cups11.jpg"},
+    {name:"Knight of Cups",sub:"ความโรแมนติกและการแสวงหา",subEn:"Romance & Quest",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Cups12.jpg/300px-Cups12.jpg"},
+    {name:"Queen of Cups",sub:"ความเห็นอกเห็นใจและสัญชาตญาณ",subEn:"Compassion & Intuition",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Cups13.jpg/300px-Cups13.jpg"},
+    {name:"King of Cups",sub:"ความสมดุลทางอารมณ์และปัญญา",subEn:"Emotional Balance & Wisdom",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Cups14.jpg/300px-Cups14.jpg"},
+    {name:"Ace of Swords",sub:"ความชัดเจนและความจริง",subEn:"Clarity & Truth",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Swords01.jpg/300px-Swords01.jpg"},
+    {name:"Two of Swords",sub:"การตัดสินใจที่ยากลำบาก",subEn:"Difficult Decision",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Swords02.jpg/300px-Swords02.jpg"},
+    {name:"Three of Swords",sub:"ความเจ็บปวดและความเศร้า",subEn:"Heartbreak & Sorrow",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Swords03.jpg/300px-Swords03.jpg"},
+    {name:"Four of Swords",sub:"การพักผ่อนและการฟื้นฟู",subEn:"Rest & Recovery",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Swords04.jpg/300px-Swords04.jpg"},
+    {name:"Five of Swords",sub:"ความขัดแย้งและการพ่ายแพ้",subEn:"Conflict & Defeat",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Swords05.jpg/300px-Swords05.jpg"},
+    {name:"Six of Swords",sub:"การเปลี่ยนแปลงและการเดินทาง",subEn:"Transition & Journey",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Swords06.jpg/300px-Swords06.jpg"},
+    {name:"Seven of Swords",sub:"การหลอกลวงและกลยุทธ์",subEn:"Deception & Strategy",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Swords07.jpg/300px-Swords07.jpg"},
+    {name:"Eight of Swords",sub:"การถูกจำกัดและความกลัว",subEn:"Restriction & Fear",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Swords08.jpg/300px-Swords08.jpg"},
+    {name:"Nine of Swords",sub:"ความวิตกกังวลและฝันร้าย",subEn:"Anxiety & Nightmares",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Swords09.jpg/300px-Swords09.jpg"},
+    {name:"Ten of Swords",sub:"การสิ้นสุดและการทรยศ",subEn:"Endings & Betrayal",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Swords10.jpg/300px-Swords10.jpg"},
+    {name:"Page of Swords",sub:"ความอยากรู้และความคิดแหลมคม",subEn:"Curiosity & Sharp Mind",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Swords11.jpg/300px-Swords11.jpg"},
+    {name:"Knight of Swords",sub:"ความเด็ดขาดและการกระทำ",subEn:"Decisiveness & Action",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Swords12.jpg/300px-Swords12.jpg"},
+    {name:"Queen of Swords",sub:"ความเป็นอิสระและความฉลาด",subEn:"Independence & Intelligence",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Swords13.jpg/300px-Swords13.jpg"},
+    {name:"King of Swords",sub:"อำนาจทางปัญญาและความยุติธรรม",subEn:"Intellectual Power & Justice",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Swords14.jpg/300px-Swords14.jpg"},
+    {name:"Ace of Pentacles",sub:"โอกาสทางการเงินและความมั่นคง",subEn:"Financial Opportunity & Stability",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Pents01.jpg/300px-Pents01.jpg"},
+    {name:"Two of Pentacles",sub:"ความสมดุลและการจัดการ",subEn:"Balance & Management",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Pents02.jpg/300px-Pents02.jpg"},
+    {name:"Three of Pentacles",sub:"ทักษะและการทำงานร่วมกัน",subEn:"Skill & Collaboration",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Pents03.jpg/300px-Pents03.jpg"},
+    {name:"Four of Pentacles",sub:"ความมั่นคงและการยึดติด",subEn:"Security & Attachment",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pents04.jpg/300px-Pents04.jpg"},
+    {name:"Five of Pentacles",sub:"ความยากลำบากและการสูญเสีย",subEn:"Hardship & Loss",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Pents05.jpg/300px-Pents05.jpg"},
+    {name:"Six of Pentacles",sub:"ความเอื้อเฟื้อและความสมดุล",subEn:"Generosity & Balance",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Pents06.jpg/300px-Pents06.jpg"},
+    {name:"Seven of Pentacles",sub:"การลงทุนและการรอผล",subEn:"Investment & Patience",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Pents07.jpg/300px-Pents07.jpg"},
+    {name:"Eight of Pentacles",sub:"ความขยันและการพัฒนาทักษะ",subEn:"Diligence & Skill Development",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pents08.jpg/300px-Pents08.jpg"},
+    {name:"Nine of Pentacles",sub:"ความอุดมสมบูรณ์และความเป็นอิสระ",subEn:"Abundance & Independence",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Pents09.jpg/300px-Pents09.jpg"},
+    {name:"Ten of Pentacles",sub:"ความมั่งคั่งและมรดก",subEn:"Wealth & Legacy",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Pents10.jpg/300px-Pents10.jpg"},
+    {name:"Page of Pentacles",sub:"การเรียนรู้และความทะเยอทะยาน",subEn:"Learning & Ambition",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Pents11.jpg/300px-Pents11.jpg"},
+    {name:"Knight of Pentacles",sub:"ความพากเพียรและความรับผิดชอบ",subEn:"Perseverance & Responsibility",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Pents12.jpg/300px-Pents12.jpg"},
+    {name:"Queen of Pentacles",sub:"ความอุดมสมบูรณ์และการดูแล",subEn:"Nurturing & Abundance",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Pents13.jpg/300px-Pents13.jpg"},
+    {name:"King of Pentacles",sub:"ความมั่งคั่งและความสำเร็จ",subEn:"Wealth & Success",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Pents14.jpg/300px-King_of_Pentacles.jpg"}
+];
+
+        var state = { name:"", birthInfo:"", days:0, age:0, birthDay:0, birthMonth:0, birthYearAD:0, birthHour:0, inquiry:"", card:null };
+
+        window.onload = function() {
+            function pop(id, s, e, pad) {
+                var el = document.getElementById(id);
+                for (var i = s; i <= e; i++) {
+                    var o = document.createElement('option');
+                    o.value = i;
+                    o.innerText = pad ? String(i).padStart(2,'0') : i;
+                    el.appendChild(o);
+                }
+            }
+            pop('birth-day', 1, 31, false);
+            pop('birth-month', 1, 12, false);
+            pop('birth-hour', 0, 23, true);
+            pop('birth-minute', 0, 59, true);
+            
+            // ลบการกำหนดค่าเริ่มต้น (Default) ออกทั้งหมด เพื่อให้ผู้ใช้เลือกเอง
+            setInterval(function() {
+                var now = new Date();
+            }, 1000);
+        };
+        
+        function proceedToSelection() {
+            var t = txt[currentLang];
+            var name = document.getElementById('user-name').value.trim();
+            var yearRaw = document.getElementById('birth-year');
+            var yearIn = parseInt(yearRaw.dataset.year || yearRaw.value.replace(/[^0-9]/g, ''));
+            
+            // เพิ่มการตรวจสอบข้อมูลให้ครบถ้วนก่อนเริ่ม
+            if (!name || isNaN(yearIn)) { alert(t.alertName); return; }
+            
+            var d = parseInt(document.getElementById('birth-day').value);
+            var m = parseInt(document.getElementById('birth-month').value);
+            var hr = parseInt(document.getElementById('birth-hour').value);
+            var mn = parseInt(document.getElementById('birth-minute').value);
+            var yearAD = yearIn > 2400 ? yearIn - 543 : yearIn;
+            var bDate = new Date(yearAD, m-1, d, hr, mn);
+            var diffMs = new Date() - bDate;
+            state.name = name;
+            state.birthInfo = d + '/' + m + '/' + yearIn;
+            state.days = Math.floor(diffMs / 86400000);
+            state.age = Math.floor(state.days / 365);
+            state.birthDay = d;
+            state.birthMonth = m;
+            state.birthYearAD = yearAD;
+            state.birthHour = hr;
+            document.getElementById('user-display').innerText = 'CONSULTATION FOR';
+            document.getElementById('life-log').innerHTML = t.lifeMsg(state.days);
+            renderGrid();
+            switchStep('step-1', 'step-2');
+        }
+
+        function renderGrid() {
+            var grid = document.getElementById('card-grid');
+            grid.innerHTML = '';
+            var indices = Array.from({length: tarotDeck.length}, function(_, i) { return i; });
+            for (var i = indices.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = indices[i]; indices[i] = indices[j]; indices[j] = tmp;
+            }
+            for (var i = 0; i < indices.length; i++) {
+                var card = document.createElement('div');
+                card.className = 'card-item';
+                card.innerHTML = 'TAROT';
+                card.onclick = (function(idx) { return function() { selectCard(idx); }; })(indices[i]);
+                grid.appendChild(card);
+            }
+        }
+
+        function selectCard(idx) {
+            var t = txt[currentLang];
+            var inquiry = document.getElementById('user-inquiry').value.trim();
+            if (!inquiry) { alert(t.alertInquiry); return; }
+var thaiCount = (inquiry.match(/[\u0E00-\u0E7F]/g) || []).length;
+var engCount = (inquiry.match(/[a-zA-Z]/g) || []).length;
+var totalLetters = thaiCount + engCount;
+if (totalLetters < 5) { alert('กรุณาพิมพ์คำถามให้ชัดเจนขึ้น (อย่างน้อย 5 ตัวอักษร)'); return; }
+if (engCount > thaiCount && thaiCount < 3) { alert('กรุณาพิมพ์คำถามเป็นภาษาไทย'); return; }
+            state.inquiry = inquiry;
+            state.card = tarotDeck[idx % tarotDeck.length];
+            switchStep('step-2', 'step-3');
+var bi = document.getElementById('scan-birthinfo');
+var sd = document.getElementById('scan-days');
+if (bi) bi.innerHTML = 'BIRTH: ' + state.birthInfo;
+if (sd) sd.innerHTML = 'DAYS: ' + state.days.toLocaleString() + '<br>STATE: ANALYZING...';
+            var floatMsgs = [
+    'คำทำนายไม่ได้มีไว้ทำร้ายคุณ',
+    'มันแค่ช่วยให้คุณเห็นบางอย่างชัดขึ้น',
+    'จงนิ่ง…แล้วมองเข้าไปข้างใน',
+    'เพราะสิ่งที่กำลังจะเปิดออกมา',
+    'คือด้านที่คุณอาจยังไม่เคยมอง',
+    'ถ้าคุณพร้อม…',
+    'คำตอบที่ได้…จะพาคุณไปไกลกว่าที่คิด',
+    'และบางสิ่งที่คุณค้นพบ',
+    'อาจเปลี่ยนวิธีที่คุณมองตัวเองไปตลอด'
+];
+var fi = 0;
+floatInterval = null
+            
+            fetchDiagnosis().then(function(result) {
+                showResult(result);
+            });
+        }
+
+        function fetchDiagnosis() {
+            var t = txt[currentLang];
+            var cardSub = currentLang === 'th' ? state.card.sub : state.card.subEn;
+            var prompt = 'ข้อมูลผู้ถาม:\n- ชื่อ: ' + state.name + '\n- อายุ: ' + state.age + ' ปี (' + state.days.toLocaleString() + ' วัน)\n- คำถาม: ' + state.inquiry + '\n- ไพ่ที่ได้: ' + state.card.name + ' (' + cardSub + ')\n\n' + t.langInstruction;
+            return fetch('/api/diagnose', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    prompt: prompt,
+                    birthDay: state.birthDay,
+                    birthMonth: state.birthMonth,
+                    birthYearAD: state.birthYearAD,
+                    birthHour: state.birthHour
+                })
+            }).then(function(res) {
+                return res.json();
+            }).then(function(data) {
+                return data.result || 'ระบบขัดข้อง กรุณาลองใหม่';
+            }).catch(function() {
+                return 'การเชื่อมต่อขัดข้อง';
+            });
+        }
+
+        function showResult(diagnosis) {
+            document.getElementById('res-card-name').innerText = state.card.name;
+            document.getElementById('res-card-sub').innerText = currentLang === 'th' ? state.card.sub : state.card.subEn;
+            document.getElementById('result-card-box').innerHTML = '<div class="tarot-card-result"><img src="https://images.weserv.nl/?url=' + state.card.img.replace('https://','') + '&w=300" class="w-full h-full object-cover" alt="' + state.card.name + '"></div>';
+            var paragraphs = diagnosis.split('\n').filter(function(p) { return p.trim(); }).map(function(p) { return '<p>' + p + '</p>'; }).join('');
+            document.getElementById('ai-response').innerHTML = '<div class="p-4 bg-white/5 border-l-2 border-yellow-400/30 mb-6 italic text-sm text-gray-400">"' + state.inquiry + '"</div>' + paragraphs;
+           
+            switchStep('step-3', 'step-4');
+        }
+
+        function switchStep(hide, show) {
+            document.getElementById(hide).classList.add('hidden-step');
+            document.getElementById(show).classList.remove('hidden-step');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function backToQuestion() {
+            document.getElementById('user-inquiry').value = '';
+            renderGrid();
+            switchStep('step-4', 'step-2');
+        }
+    </script>
+
+    <script>
+if ('ontouchstart' in window) {
+    document.querySelectorAll('.nav-item > a').forEach(function(a) {
+        a.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            window.location.href = a.href;
+        });
+    });
+}
+</script>
+</body>
+</html> 
