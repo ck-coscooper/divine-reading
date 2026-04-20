@@ -583,25 +583,7 @@ localStorage.setItem('dvine_birth', JSON.stringify({
             switchStep('step-3', 'step-4');
 
             // --- เริ่มระบบ Typewriter Effect (หมัดฮุคสะกดสายตากรรมการ) ---
-            let i = 0;
-            const speed = 25; 
-            const formattedDiagnosis = diagnosis.replace(/\n/g, "<br>");
-            
-            function typeWriter() {
-                if (i < formattedDiagnosis.length) {
-                    if (formattedDiagnosis.substring(i, i + 4) === "<br>") {
-                        textContainer.innerHTML += "<br>";
-                        i += 4;
-                    } else {
-                        textContainer.innerHTML += formattedDiagnosis.charAt(i);
-                        i++;
-                    }
-                    setTimeout(typeWriter, speed);
-                    // สั่งให้หน้าจอเลื่อนลงตามตัวอักษรที่พิมพ์
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                }
-            }
-            typeWriter();
+            textContainer.innerHTML = diagnosis.replace(/\n/g, "<br>");
         }
 
         function switchStep(hide, show) {
