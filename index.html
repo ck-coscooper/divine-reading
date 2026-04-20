@@ -69,7 +69,7 @@
         <button onclick="window.location.href='signup.html'" style="background:linear-gradient(45deg,#B38728,#FBF5B7,#AA771C);border:none;cursor:pointer;font-size:clamp(10px,1.2vw,14px);font-weight:600;color:#013220;padding:clamp(2px,0.3vw,5px) clamp(8px,1vw,14px);border-radius:3px;font-family:'Inter',sans-serif;">Sign up</button>
     </div>
    <div style="text-align:center;padding:16px 16px 12px;">
-<h1 class="gold-gradient-text" style="font-family:'Cinzel',serif;font-size:clamp(1.1rem,3vw,2.2rem);letter-spacing:8px;font-weight:700;">THE D'VINE ROOM</h1>
+<h1 class="gold-gradient-text" style="font-family:'Cinzel',serif;font-size:clamp(1.1rem,3vw,2.2rem);letter-spacing:clamp(4px,1.5vw,10px);font-weight:700;">THE D'VINE ROOM</h1>
 <p class="gold-gradient-text" style="font-family:'Cinzel',serif;font-size:clamp(8px,1.3vw,12px);letter-spacing:1px;margin-top:4px;opacity:0.9;">SCARS OF THE DIVINE / AJ. FAAN</p>
 </div>
     </div>
@@ -82,7 +82,7 @@
         .nav-drop a { display:block; padding:12px 18px; color:rgba(212,175,55,0.8); text-decoration:none; font-family:'Cinzel',serif; font-size:11px; letter-spacing:1px; border-bottom:1px solid rgba(212,175,55,0.1); background:#1a1508; }
         .nav-drop a:last-child { border-bottom:none; }
         .nav-drop a:hover { color:#D4AF37; background:rgba(212,175,55,0.08); }
-        .nav-link { font-family:'Cinzel',serif; font-weight:700; text-transform:uppercase; text-decoration:none; white-space:nowrap; color:#ffffff; border-bottom:2px solid transparent; display:block; padding:10px clamp(8px,1.5vw,20px); font-size:clamp(10px,1.5vw,14px); letter-spacing:clamp(1px,0.3vw,3px); transition:all 0.3s; }
+        .nav-link { font-family:'Cinzel',serif; font-weight:700; text-transform:uppercase; text-decoration:none; white-space:nowrap; color:#ffffff; border-bottom:2px solid transparent; display:block; padding:10px clamp(8px,1.5vw,20px); font-size:clamp(9px,2.2vw,13px); letter-spacing:clamp(1px,0.4vw,3px); white-space:nowrap; transition:all 0.3s; }
 .nav-link:hover { color:#D4AF37; border-bottom-color:#D4AF37; }
 .nav-link.active { color:#D4AF37; border-bottom:2px solid #D4AF37; font-weight:600; }
           
@@ -414,9 +414,19 @@
             pop('birth-minute', 0, 59, true);
             
             // ลบการกำหนดค่าเริ่มต้น (Default) ออกทั้งหมด เพื่อให้ผู้ใช้เลือกเอง
-            setInterval(function() {
-                var now = new Date();
-            }, 1000);
+            // โหลดข้อมูลที่เคยกรอกไว้
+var saved = localStorage.getItem('dvine_birth');
+if (saved) {
+    try {
+        var s = JSON.parse(saved);
+        if (s.name) document.getElementById('user-name').value = s.name;
+        if (s.day) document.getElementById('birth-day').value = s.day;
+        if (s.month) document.getElementById('birth-month').value = s.month;
+        if (s.year) document.getElementById('birth-year').value = s.year;
+        if (s.hour !== undefined) document.getElementById('birth-hour').value = s.hour;
+        if (s.minute !== undefined) document.getElementById('birth-minute').value = s.minute;
+    } catch(e) {}
+}
         };
         
         function proceedToSelection() {
@@ -427,6 +437,15 @@
             
             // เพิ่มการตรวจสอบข้อมูลให้ครบถ้วนก่อนเริ่ม
             if (!name || isNaN(yearIn)) { alert(t.alertName); return; }
+            // บันทึกข้อมูลลง localStorage
+localStorage.setItem('dvine_birth', JSON.stringify({
+    name: name,
+    day: document.getElementById('birth-day').value,
+    month: document.getElementById('birth-month').value,
+    year: document.getElementById('birth-year').value,
+    hour: document.getElementById('birth-hour').value,
+    minute: document.getElementById('birth-minute').value
+}));
             
             var d = parseInt(document.getElementById('birth-day').value);
             var m = parseInt(document.getElementById('birth-month').value);
@@ -550,10 +569,10 @@ floatInterval = null
     <script>
 if ('ontouchstart' in window) {
     document.querySelectorAll('.nav-item > a').forEach(function(a) {
-        a.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            window.location.href = a.href;
-        });
+        a.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    window.location.href = a.href;
+});
     });
 }
 </script>
