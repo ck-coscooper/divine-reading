@@ -14,7 +14,13 @@
     -webkit-background-clip: text; 
     background-clip: text; /* เพิ่มบรรทัดนี้ */
     -webkit-text-fill-color: transparent; 
-}        .gold-border { border: 1px solid transparent; background-image: linear-gradient(#0d0d0b,#0d0d0b), radial-gradient(circle at top left, #f5d67b, #d4af37); background-origin: border-box; background-clip: padding-box, border-box; box-shadow: 0 0 30px rgba(212, 175, 55, 0.1); }
+}       .gold-border { 
+    border: 1px solid transparent; 
+    background-image: linear-gradient(#013220,#013220), radial-gradient(circle at top left, #f5d67b, #d4af37); 
+    background-origin: border-box; 
+    background-clip: padding-box, border-box; 
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.1); 
+}
         .btn-gold { background: linear-gradient(45deg, #B38728, #FBF5B7, #AA771C); color: var(--forest-green); font-weight: 700; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); text-transform: uppercase; letter-spacing: 2px; }
         .btn-outline { border: 1px solid var(--gold-foil); color: var(--gold-foil); background: transparent; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
         .btn-outline:hover { background: rgba(212,175,55,0.1); }
@@ -256,8 +262,7 @@
     </section>
         <section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-start justify-center gap-12 p-4 py-10">
             <div id="result-card-box" class="flex-shrink-0 fade-in self-center lg:self-start lg:sticky lg:top-28"></div>
-            <div class="flex-grow space-y-8 bg-black/40 p-8 md:p-14 rounded-2xl gold-border backdrop-blur-2xl max-w-2xl fade-in" style="animation-delay: 0.3s">
-                <div class="border-l-4 border-yellow-400 pl-8">
+<div class="flex-grow space-y-8 bg-[#013220]/90 p-8 md:p-14 rounded-2xl gold-border backdrop-blur-2xl max-w-2xl fade-in" style="animation-delay: 0.3s">                <div class="border-l-4 border-yellow-400 pl-8">
                     <span class="text-[10px] text-yellow-400/60 uppercase tracking-[4px] font-bold mb-2 block">Diagnostic Diagnosis</span>
                     <h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase font-bold leading-tight"></h2>
                     <p id="res-card-sub" class="text-lg text-white/70 italic font-light mt-1"></p>
