@@ -184,15 +184,14 @@
     @keyframes fadeData { 0%,100%{opacity:0.5} 50%{opacity:1} }
     @keyframes tickerSlide2 { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
     .ticker2 { white-space:nowrap;font-family:'IBM Plex Sans Thai',sans-serif;font-size:clamp(16px,1.8vw,16px);letter-spacing:0;color:#ffffff;animation:tickerSlide2 36s linear infinite;display:inline-block; }
-  </style>
-  <div class="dvine-stars"></div>
+  </style> <div class="dvine-stars"></div>
   <div style="position:absolute;inset:0;opacity:0.035;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');background-size:200px;"></div>
 
   <div style="width:100%;overflow:hidden;border-top:1px solid rgba(212,175,55,0.15);border-bottom:1px solid rgba(212,175,55,0.15);padding:10px 0;background:#013220;position:relative;z-index:3;">
     <div class="ticker2">คำทำนายไม่ได้มีไว้ทำร้ายคุณ &nbsp;&nbsp;✦&nbsp;&nbsp; มันแค่ช่วยให้คุณเห็นบางอย่างชัดขึ้น &nbsp;&nbsp;✦&nbsp;&nbsp; จงนิ่ง…แล้วมองเข้าไปข้างใน &nbsp;&nbsp;✦&nbsp;&nbsp; เพราะสิ่งที่กำลังจะเปิดออกมา &nbsp;&nbsp;✦&nbsp;&nbsp; คือด้านที่คุณอาจยังไม่เคยมอง &nbsp;&nbsp;✦&nbsp;&nbsp; ถ้าคุณพร้อม... &nbsp;&nbsp;✦&nbsp;&nbsp; คำตอบที่ได้จะพาคุณไปไกลกว่าที่คิด &nbsp;&nbsp;✦&nbsp;&nbsp; และบางสิ่งที่คุณค้นพบ อาจเปลี่ยนวิธีที่คุณมองตัวเองไปตลอด &nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
   </div>
 
-  <div style="position:relative;z-index:2;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:40px;padding:32px 24px;flex-wrap:wrap;justify-content:center;align-items:center;">
+  <div style="position:relative;z-index:2;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:40px;padding:32px 24px;flex-wrap:wrap;">
 
     <div style="position:relative;width:300px;height:300px;flex-shrink:0;">
       <svg style="position:absolute;inset:0;animation:spinSlow 18s linear infinite;" width="300" height="300" viewBox="0 0 300 300">
@@ -221,19 +220,19 @@
         </div>
       </div>
       <div id="scan-birthinfo" style="position:absolute;top:8px;right:8px;font-size:11px;color:#C5A059;opacity:0.8;text-align:right;line-height:1.8;font-family:'Space Mono',monospace;"></div>
-<div id="scan-days" style="position:absolute;bottom:8px;left:8px;font-size:11px;color:#C5A059;opacity:0.8;line-height:1.8;font-family:'Space Mono',monospace;"></div>
+      <div id="scan-days" style="position:absolute;bottom:8px;left:8px;font-size:11px;color:#C5A059;opacity:0.8;line-height:1.8;font-family:'Space Mono',monospace;"></div>
     </div>
 
     <div style="max-width:340px;display:flex;flex-direction:column;gap:16px;">
       <div>
-       <div style="font-family:'Cinzel',serif;font-size:clamp(13px,2.5vw,18px);letter-spacing:2px;color:#C5A059;">PROFESSIONAL</div>
-<div style="font-family:'Cinzel',serif;font-size:clamp(13px,2.5vw,18px);letter-spacing:2px;color:#C5A059;">SPECTRUM SCAN</div>
+        <div style="font-family:'Cinzel',serif;font-size:clamp(13px,2.5vw,18px);letter-spacing:2px;color:#C5A059;">PROFESSIONAL</div>
+        <div style="font-family:'Cinzel',serif;font-size:clamp(13px,2.5vw,18px);letter-spacing:2px;color:#C5A059;">SPECTRUM SCAN</div>
         <div style="width:60px;height:1px;background:linear-gradient(to right,#C5A059,transparent);margin-top:10px;"></div>
       </div>
       <div style="border-left:2px solid #C5A059;padding:10px 14px;background:rgba(197,160,89,0.04);">
         <div style="font-size:8px;color:#C5A059;letter-spacing:2px;margin-bottom:4px;">SYSTEM STATUS</div>
         <p id="txt-scan1" style="font-size:11px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0 0 4px;font-family:'IBM Plex Sans Thai',sans-serif;">ระบบกำลังสแกนพิกัดชะตา...</p>
-<p id="txt-scan2" style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;margin:0;font-family:'IBM Plex Sans Thai',sans-serif;">วิเคราะห์มวลประสบการณ์จากหน้าไพ่ที่คุณเลือก...</p>
+        <p id="txt-scan2" style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;margin:0;font-family:'IBM Plex Sans Thai',sans-serif;">วิเคราะห์มวลประสบการณ์จากหน้าไพ่ที่คุณเลือก...</p>
       </div>
       <div style="border-left:2px solid rgba(197,160,89,0.3);padding:10px 14px;">
         <div style="font-size:8px;color:#C5A059;letter-spacing:2px;margin-bottom:6px;">DIAGNOSTIC NODES</div>
@@ -251,27 +250,30 @@
     </div>
 
   </div>
-</section>
-    </main>
-    </section>
-        <section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-start justify-center gap-12 p-4 py-10">
-            <div id="result-card-box" class="flex-shrink-0 fade-in self-center lg:self-start lg:sticky lg:top-28"></div>
-<div class="flex-grow space-y-8 bg-[#013220]/90 p-8 md:p-14 rounded-2xl gold-border backdrop-blur-2xl max-w-2xl fade-in" style="animation-delay: 0.3s">                <div class="border-l-4 border-yellow-400 pl-8">
-                    <span class="text-[10px] text-yellow-400/60 uppercase tracking-[4px] font-bold mb-2 block">Diagnostic Diagnosis</span>
-                    <h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase font-bold leading-tight"></h2>
-                    <p id="res-card-sub" class="text-lg text-white/70 italic font-light mt-1"></p>
-                </div>
-                <div id="ai-response" class="text-[16px] leading-[1.9] text-gray-200 font-light space-y-4"></div>
-                <div class="pt-8 border-t border-yellow-900/10 flex flex-wrap justify-between items-center gap-3">
-                    <div class="flex gap-3">
-                        <button onclick="location.reload()" class="btn-gold px-6 py-3 rounded text-[10px] font-bold">RESET</button>
-                        <button onclick="backToQuestion()" class="btn-outline px-6 py-3 rounded text-[10px] font-bold">NEW QUESTION</button>
-                    </div>
-                    <p class="text-[9px] text-gray-600 uppercase tracking-[3px] font-cinzel">AJARN FAAN | AUTHORITY ANALYSIS</p>
-                </div>
+</section> <section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-start justify-center gap-12 p-4 py-10">
+    <div id="result-card-box" class="flex-shrink-0 fade-in self-center lg:self-start lg:sticky lg:top-28"></div>
+
+    <div class="flex-grow space-y-8 bg-[#013220]/90 p-8 md:p-14 rounded-2xl gold-border backdrop-blur-2xl max-w-2xl fade-in" style="animation-delay: 0.3s">                
+        <div class="border-l-4 border-yellow-400 pl-8">
+            <span class="text-[10px] text-yellow-400/60 uppercase tracking-[4px] font-bold mb-2 block">Diagnostic Diagnosis</span>
+            <h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel gold-gradient-text uppercase font-bold leading-tight"></h2>
+            <p id="res-card-sub" class="text-lg text-white/70 italic font-light mt-1"></p>
+        </div>
+
+        <div id="ai-response" class="text-[16px] leading-[1.9] text-gray-200 font-light space-y-4"></div>
+
+        <div class="pt-8 border-t border-yellow-900/10 flex flex-wrap justify-between items-center gap-3">
+            <div class="flex flex-wrap gap-3">
+                <button onclick="location.reload()" class="btn-gold px-6 py-3 rounded text-[10px] font-bold">RESET</button>
+<button onclick="backToQuestion()" class="btn-outline px-6 py-3 rounded text-[10px] font-bold">NEW</button>
+<button onclick="prepareFollowUp()" class="btn-outline px-6 py-3 rounded text-[10px] font-bold" style="border-color: #D4AF37; background: rgba(212,175,55,0.05);">Keep Asking</button>
             </div>
-        </section>
-    </main>
+            <p class="text-[9px] text-gray-600 uppercase tracking-[3px] font-cinzel">AJARN FAAN | AUTHORITY ANALYSIS</p>
+        </div>
+    </div>
+</section>
+    </main> 
+
     <script>
         var currentLang = 'th';
         var txt = {
@@ -395,8 +397,7 @@
     {name:"King of Pentacles",sub:"ความมั่งคั่งและความสำเร็จ",subEn:"Wealth & Success",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Pents14.jpg/300px-King_of_Pentacles.jpg"}
 ];
 
-        var state = { name:"", birthInfo:"", days:0, age:0, birthDay:0, birthMonth:0, birthYearAD:0, birthHour:0, inquiry:"", card:null };
-
+var state = { name:"", birthInfo:"", days:0, age:0, birthDay:0, birthMonth:0, birthYearAD:0, birthHour:0, inquiry:"", card:null, isFollowUp: false, lastDiagnosis: "", lastCardName: "" };
         window.onload = function() {
             function pop(id, s, e, pad) {
                 var el = document.getElementById(id);
@@ -522,7 +523,26 @@ floatInterval = null
         function fetchDiagnosis() {
             var t = txt[currentLang];
             var cardSub = currentLang === 'th' ? state.card.sub : state.card.subEn;
-            var prompt = 'ข้อมูลผู้ถาม:\n- ชื่อ: ' + state.name + '\n- อายุ: ' + state.age + ' ปี (' + state.days.toLocaleString() + ' วัน)\n- คำถาม: ' + state.inquiry + '\n- ไพ่ที่ได้: ' + state.card.name + ' (' + cardSub + ')\n\n' + t.langInstruction;
+            
+            var prompt = "";
+
+            if (state.isFollowUp) {
+                // 1. กรณีถามต่อเนื่อง: ส่งทั้งชื่อไพ่ใบแรก, คำทำนายแรก และไพ่ใบที่สอง
+                prompt = "การวิเคราะห์ต่อเนื่องระดับลึก (Sequential Authority Analysis):\n" +
+                         "- ข้อมูลผู้ถาม: " + state.name + " (" + state.days.toLocaleString() + " วันบนโลก)\n" +
+                         "- [พิกัดเดิม] ไพ่ใบแรกที่เปิดได้: " + state.lastCardName + "\n" +
+                         "- [บทสรุปเดิม] คำทำนายก่อนหน้า: " + state.lastDiagnosis + "\n" +
+                         "- [ประเด็นสงสัยเพิ่ม]: " + state.inquiry + "\n" +
+                         "- [พิกัดใหม่] ไพ่ใบที่สองที่เพิ่งเปิดได้: " + state.card.name + " (" + cardSub + ")\n\n" +
+                         "จงวิเคราะห์ความเชื่อมโยงระหว่างไพ่ทั้งสองใบ และตอบคำถามที่สงสัยเพิ่มให้เฉียบคมที่สุด";
+            } else {
+                // 2. กรณีวิเคราะห์ครั้งแรก
+                prompt = "ข้อมูลวิเคราะห์เบื้องต้น:\n- ชื่อ: " + state.name + "\n- อายุ: " + state.age + " ปี\n- คำถาม: " + state.inquiry + "\n- ไพ่ที่ได้: " + state.card.name + " (" + cardSub + ")";
+            }
+
+            // ปิดท้ายด้วยคำสั่งบังคับภาษา
+            prompt += "\n\n" + t.langInstruction;
+
             return fetch('/api/diagnose', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -546,6 +566,7 @@ floatInterval = null
             document.getElementById('res-card-name').innerText = state.card.name;
             document.getElementById('res-card-sub').innerText = currentLang === 'th' ? state.card.sub : state.card.subEn;
             document.getElementById('result-card-box').innerHTML = '<div class="tarot-card-result"><img src="https://images.weserv.nl/?url=' + state.card.img.replace('https://','') + '&w=300" class="w-full h-full object-cover" alt="' + state.card.name + '"></div>';
+            
             var paragraphs = diagnosis.split('\n').filter(function(p) { return p.trim(); }).map(function(p) { return '<p>' + p + '</p>'; }).join('');
             document.getElementById('ai-response').innerHTML = '<div class="p-4 bg-white/5 border-l-2 border-yellow-400/30 mb-6 italic text-sm text-gray-400">"' + state.inquiry + '"</div>' + paragraphs;
            
@@ -558,8 +579,50 @@ floatInterval = null
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function backToQuestion() {
+        function prepareFollowUp() {
+            // 1. เก็บประวัติ: บันทึกชื่อไพ่ใบแรกและคำทำนายรอบแรกไว้ในระบบความจำ
+            state.lastCardName = state.card.name; 
+            state.lastDiagnosis = document.getElementById('ai-response').innerText;
+            state.isFollowUp = true; // เปิดโหมดถามต่อเนื่อง
+            
+            // 2. เคลียร์ช่องกรอก: ล้างคำถามเก่าออกเพื่อให้พิมพ์เรื่องใหม่ที่สงสัย
             document.getElementById('user-inquiry').value = '';
+            document.getElementById('user-inquiry').placeholder = "พิมพ์สิ่งที่ท่านอยากรู้เพิ่มจากคำทำนายตะกี้...";
+            
+            // 3. คืนค่าการเลือกไพ่: แสดงกระดานไพ่ 78 ใบอีกครั้ง เพื่อให้ผู้ใช้เลือกใบที่สอง
+            document.getElementById('card-grid').classList.remove('hidden-step'); 
+            document.getElementById('txt-pray').innerText = "ตั้งจิตอธิษฐานถึงเรื่องเดิม แล้วเลือกไพ่ใบที่สองเพื่อเจาะลึกทางออก";
+
+            // 4. จัดการปุ่ม: ซ่อนปุ่มส่งแบบพิเศษ (ถ้าเคยมี) เพื่อให้ระบบใช้การคลิกที่ไพ่ตามปกติ
+            if (document.getElementById('btn-submit-followup')) {
+                document.getElementById('btn-submit-followup').classList.add('hidden-step');
+            }
+
+            // 5. เปลี่ยนหน้า: พากลับไปที่หน้ากรอกคำถามและเลือกไพ่ (Step 2)
+            switchStep('step-4', 'step-2');
+            
+            // 6. สับไพ่ใหม่: เพื่อความศักดิ์สิทธิ์ในการเลือกใบที่สอง
+            renderGrid(); 
+        }
+
+        function backToQuestion() {
+            // 1. รีเซ็ตสถานะการติดตาม (Follow-up) ให้กลับเป็นโหมดเริ่มต้น
+            state.isFollowUp = false;
+            
+            // 2. จัดการปุ่ม Deep Dive (ถ้ามีอยู่ในระบบ ให้ซ่อนทันที)
+            var followupBtn = document.getElementById('btn-submit-followup');
+            if (followupBtn) {
+                followupBtn.classList.add('hidden-step');
+                followupBtn.style.display = 'none'; // เสริมความชัวร์เพื่อไม่ให้เลย์เอาต์ขยับ
+            }
+
+            // 3. คืนค่า UI หน้ากรอกคำถามให้เป็นมาตรฐาน
+            document.getElementById('card-grid').classList.remove('hidden-step'); // แสดงไพ่ 78 ใบ
+            document.getElementById('user-inquiry').value = ''; // ล้างคำถามเก่า
+            document.getElementById('user-inquiry').placeholder = txt[currentLang].placeholder; // คืนค่า Placeholder เดิม
+            document.getElementById('txt-pray').innerText = txt[currentLang].pray; // คืนค่าคำแนะนำการตั้งจิต
+
+            // 4. สับไพ่ใหม่ และเปลี่ยนหน้ากลับไปยังจุดเริ่มต้นของการเลือกไพ่
             renderGrid();
             switchStep('step-4', 'step-2');
         }
