@@ -174,83 +174,124 @@
             <p id="txt-pray" class="pray-text text-center max-w-xl mx-auto" style="line-height:1.8; font-size:clamp(11px,2.5vw,15px); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"> ถ้าจิตไม่นิ่ง คุณจะได้ด้านมืดในใจเปิดออกมา เลือกเพียง 1 ใบ</p>
             <div id="card-grid" class="card-deck-grid bg-black/20 rounded-lg border border-yellow-900/5"></div>
         </section>
-        <section id="step-3" class="hidden-step w-full" style="position:relative;min-height:100vh;background:#0a0906;overflow:hidden;font-family:'Space Mono',monospace;margin:-2rem -1rem -2rem -1rem;width:calc(100% + 2rem);box-sizing:border-box;">
+        <section id="step-3" class="hidden-step w-full" style="position:relative;min-height:100vh;background:#0d0208;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;">
   <style>
-    .dvine-stars { position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 80% 10%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 50% 70%,rgba(255,255,255,0.25) 0%,transparent 100%),radial-gradient(1px 1px at 10% 80%,rgba(255,255,255,0.2) 0%,transparent 100%),radial-gradient(1px 1px at 90% 60%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 35% 15%,rgba(255,255,255,0.35) 0%,transparent 100%),radial-gradient(1px 1px at 65% 85%,rgba(255,255,255,0.25) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 75% 40%,rgba(197,160,89,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 25% 55%,rgba(255,255,255,0.2) 0%,transparent 100%),radial-gradient(1px 1px at 45% 45%,rgba(255,255,255,0.15) 0%,transparent 100%);background-size:400px 300px; }
-    @keyframes spinSlow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-    @keyframes spinRev { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
-    @keyframes scanLine { 0%{top:15%} 50%{top:82%} 100%{top:15%} }
-    @keyframes pulseDot2 { 0%,100%{opacity:0.4} 50%{opacity:1} }
-    @keyframes fadeData { 0%,100%{opacity:0.5} 50%{opacity:1} }
-    @keyframes tickerSlide2 { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
-    .ticker2 { white-space:nowrap;font-family:'IBM Plex Sans Thai',sans-serif;font-size:clamp(16px,1.8vw,16px);letter-spacing:0;color:#ffffff;animation:tickerSlide2 36s linear infinite;display:inline-block; }
-  </style> <div class="dvine-stars"></div>
-  <div style="position:absolute;inset:0;opacity:0.035;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');background-size:200px;"></div>
+    @keyframes cardReveal {
+      0% { transform: rotateY(90deg) translateY(30px); opacity: 0; }
+      60% { transform: rotateY(-8deg) translateY(-4px); opacity: 1; }
+      100% { transform: rotateY(0deg) translateY(0); opacity: 1; }
+    }
+    @keyframes glowPulse {
+      0%,100% { box-shadow: 0 0 20px rgba(180,120,255,0.3), 0 0 60px rgba(120,60,200,0.15); }
+      50% { box-shadow: 0 0 40px rgba(180,120,255,0.7), 0 0 100px rgba(120,60,200,0.4); }
+    }
+    @keyframes orbFloat {
+      0%,100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-12px) scale(1.04); }
+    }
+    @keyframes mistRise {
+      0% { opacity:0; transform:translateY(40px); }
+      100% { opacity:1; transform:translateY(0); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes tickSlide3 { 0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)} }
+    @keyframes arcCard1 {
+  0%,100% { transform: translateY(0px) rotate(-3deg) scale(1); }
+  50% { transform: translateY(-20px) rotate(2deg) scale(1.06); }
+}
+@keyframes arcCard2 {
+  0%,100% { transform: translateY(-10px) rotate(2deg) scale(1.05); }
+  50% { transform: translateY(10px) rotate(-2deg) scale(1.12); }
 
-  <div style="width:100%;overflow:hidden;border-top:1px solid rgba(212,175,55,0.15);border-bottom:1px solid rgba(212,175,55,0.15);padding:10px 0;background:#013220;position:relative;z-index:3;">
-    <div class="ticker2">คำทำนายไม่ได้มีไว้ทำร้ายคุณ &nbsp;&nbsp;✦&nbsp;&nbsp; มันแค่ช่วยให้คุณเห็นบางอย่างชัดขึ้น &nbsp;&nbsp;✦&nbsp;&nbsp; จงนิ่ง…แล้วมองเข้าไปข้างใน &nbsp;&nbsp;✦&nbsp;&nbsp; เพราะสิ่งที่กำลังจะเปิดออกมา &nbsp;&nbsp;✦&nbsp;&nbsp; คือด้านที่คุณอาจยังไม่เคยมอง &nbsp;&nbsp;✦&nbsp;&nbsp; ถ้าคุณพร้อม... &nbsp;&nbsp;✦&nbsp;&nbsp; คำตอบที่ได้จะพาคุณไปไกลกว่าที่คิด &nbsp;&nbsp;✦&nbsp;&nbsp; และบางสิ่งที่คุณค้นพบ อาจเปลี่ยนวิธีที่คุณมองตัวเองไปตลอด &nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+}
+@keyframes cardGlow1 {
+  0%,100% { box-shadow: 0 0 15px rgba(180,120,255,0.5); }
+  50% { box-shadow: 0 0 40px rgba(180,120,255,1), 0 0 80px rgba(120,60,200,0.6); }
+}
+@keyframes cardGlow2 {
+  0%,100% { box-shadow: 0 0 20px rgba(212,175,55,0.6); }
+  50% { box-shadow: 0 0 60px rgba(212,175,55,1), 0 0 100px rgba(180,140,0,0.7); }
+}
+    .ticker3 { white-space:nowrap; font-family:'IBM Plex Sans Thai',sans-serif; font-size:14px; color:rgba(200,160,255,0.7); animation:tickSlide3 30s linear infinite; display:inline-block; letter-spacing:1px; }
+    .reveal-card {
+  width: 120px; height: 200px; border-radius: 10px;
+  background: linear-gradient(135deg, #1a0a2e 0%, #2d0a4e 50%, #1a0a2e 100%);
+  border: 1.5px solid rgba(180,120,255,0.5);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1;
+  cursor: default; position: relative; overflow: hidden;
+}
+    .reveal-card::before {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%);
+      background-size: 200% 200%; animation: shimmer 2s infinite;
+    }
+    .reveal-card .card-inner-symbol { font-size:2.2rem; filter: drop-shadow(0 0 8px rgba(180,120,255,0.8)); }
+    .progress-orb {
+      width:150px; height:150px; border-radius:50%;
+      background: radial-gradient(circle at 38% 35%, #3d1060 0%, #1a0530 50%, #0d0208 100%);
+      border: 2px solid rgba(180,120,255,0.4);
+      animation: orbFloat 3s ease-in-out infinite, glowPulse 2.5s ease-in-out infinite;
+      display:flex; align-items:center; justify-content:center; position:relative;
+    }
+    .scan-ring {
+      position:absolute; border-radius:50%; border:1px solid rgba(180,120,255,0.25);
+      animation: orbFloat 3s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- ticker top -->
+  <div style="position:absolute;top:0;width:100%;overflow:hidden;padding:10px 0;background:rgba(80,20,120,0.3);border-bottom:1px solid rgba(180,120,255,0.15);z-index:3;">
+    <div class="ticker3">✦ &nbsp; จักรวาลกำลังค้นหาคำตอบของคุณ &nbsp; ✦ &nbsp; ไพ่ไม่ได้โกหก &nbsp; ✦ &nbsp; มันสะท้อนสิ่งที่อยู่ในจิตใต้สำนึก &nbsp; ✦ &nbsp; จงนิ่งและรับสาร &nbsp; ✦ &nbsp; ทุกใบที่เปิดออก คือความจริงที่คุณหลีกเลี่ยงมานาน &nbsp; ✦ &nbsp;</div>
   </div>
 
-  <div style="position:relative;z-index:2;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:40px;padding:32px 24px;flex-wrap:wrap;">
+  <!-- stars bg -->
+  <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(100,40,180,0.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 30%,rgba(180,80,255,0.08) 0%,transparent 50%);"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.4;" xmlns="http://www.w3.org/2000/svg">
+      <defs><radialGradient id="sg"><stop offset="0%" stop-color="#c89fff" stop-opacity="0.8"/><stop offset="100%" stop-color="#c89fff" stop-opacity="0"/></radialGradient></defs>
+      <circle cx="10%" cy="20%" r="1.5" fill="url(#sg)"/><circle cx="85%" cy="15%" r="1" fill="url(#sg)"/>
+      <circle cx="30%" cy="80%" r="1.5" fill="url(#sg)"/><circle cx="70%" cy="70%" r="1" fill="url(#sg)"/>
+      <circle cx="50%" cy="10%" r="2" fill="url(#sg)"/><circle cx="90%" cy="60%" r="1" fill="url(#sg)"/>
+      <circle cx="15%" cy="50%" r="1" fill="url(#sg)"/><circle cx="60%" cy="90%" r="1.5" fill="url(#sg)"/>
+    </svg>
+  </div>
 
-    <div style="position:relative;width:300px;height:300px;flex-shrink:0;">
-      <svg style="position:absolute;inset:0;animation:spinSlow 18s linear infinite;" width="300" height="300" viewBox="0 0 300 300">
-        <circle cx="150" cy="150" r="138" fill="none" stroke="#C5A059" stroke-width="0.8" stroke-dasharray="4 8" opacity="0.6"/>
-        <circle cx="150" cy="150" r="145" fill="none" stroke="#C5A059" stroke-width="0.4" stroke-dasharray="2 14" opacity="0.3"/>
-        <defs><path id="outerRing2" d="M 150,5 A 145,145 0 1 1 149.99,5"/></defs>
-        <text font-family="Space Mono" font-size="7" fill="#C5A059" opacity="0.5"><textPath href="#outerRing2">N 13.7563° ··· E 100.5018° ··· GMT+7 ··· SPECTRUM ··· SCAN ··· DIVINE ··· N 13.7563° ··· E 100.5018° ···</textPath></text>
-      </svg>
-      <svg style="position:absolute;inset:0;animation:spinRev 10s linear infinite;" width="300" height="300" viewBox="0 0 300 300">
-        <circle cx="150" cy="150" r="118" fill="none" stroke="#C5A059" stroke-width="1" stroke-dasharray="1 6" opacity="0.5"/>
-        <circle cx="150" cy="150" r="108" fill="none" stroke="#C5A059" stroke-width="0.5" stroke-dasharray="8 4" opacity="0.25"/>
-      </svg>
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-        <div style="width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#2a1f0a 0%,#1a1205 40%,#0d0a05 100%);border:1.5px solid rgba(197,160,89,0.4);box-shadow:0 0 40px rgba(197,160,89,0.15);overflow:hidden;position:relative;">
-          <svg width="220" height="220" viewBox="0 0 220 220" style="position:absolute;inset:0;opacity:0.5;">
-            <circle cx="110" cy="110" r="90" fill="none" stroke="#C5A059" stroke-width="0.3" stroke-dasharray="1 3"/>
-            <circle cx="110" cy="110" r="70" fill="none" stroke="#C5A059" stroke-width="0.3" stroke-dasharray="2 4"/>
-            <circle cx="110" cy="110" r="50" fill="none" stroke="#C5A059" stroke-width="0.3" stroke-dasharray="1 2"/>
-            <circle cx="110" cy="110" r="30" fill="none" stroke="#C5A059" stroke-width="0.4"/>
-            <line x1="20" y1="110" x2="200" y2="110" stroke="#C5A059" stroke-width="0.3" opacity="0.4"/>
-            <line x1="110" y1="20" x2="110" y2="200" stroke="#C5A059" stroke-width="0.3" opacity="0.4"/>
-            <circle cx="110" cy="110" r="8" fill="rgba(197,160,89,0.3)" stroke="#C5A059" stroke-width="1"/>
-            <circle cx="110" cy="110" r="3" fill="#C5A059"/>
-          </svg>
-          <div style="position:absolute;left:0;right:0;height:1.5px;background:linear-gradient(to right,transparent,#C5A059,#fff8e0,#C5A059,transparent);opacity:0.9;animation:scanLine 3s ease-in-out infinite;box-shadow:0 0 8px rgba(197,160,89,0.8);"></div>
+  <!-- main content -->
+<div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 24px 16px;min-height:calc(100vh - 120px);justify-content:center;">    <!-- orb -->
+<div style="position:relative;display:flex;align-items:center;justify-content:center;width:180px;height:180px;">      <div class="scan-ring" style="width:210px;height:210px;animation-delay:0s;"></div>
+      <div class="scan-ring" style="width:240px;height:240px;animation-delay:0.5s;opacity:0.4;"></div>
+      <div class="progress-orb">
+        <div style="text-align:center;">
+          <div style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:rgba(200,160,255,0.7);margin-bottom:6px;">READING</div>
+          <div id="orb-percent" style="font-family:'Cinzel',serif;font-size:2rem;color:#e0c8ff;font-weight:700;line-height:1;">0%</div>
+          <div style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:10px;color:rgba(200,160,255,0.5);margin-top:4px;">กำลังวิเคราะห์</div>
         </div>
       </div>
-      <div id="scan-birthinfo" style="position:absolute;top:8px;right:8px;font-size:11px;color:#C5A059;opacity:0.8;text-align:right;line-height:1.8;font-family:'Space Mono',monospace;"></div>
-      <div id="scan-days" style="position:absolute;bottom:8px;left:8px;font-size:11px;color:#C5A059;opacity:0.8;line-height:1.8;font-family:'Space Mono',monospace;"></div>
-    </div>
 
-    <div style="max-width:340px;display:flex;flex-direction:column;gap:16px;">
-      <div>
-        <div style="font-family:'Cinzel',serif;font-size:clamp(13px,2.5vw,18px);letter-spacing:2px;color:#C5A059;">PROFESSIONAL</div>
-        <div style="font-family:'Cinzel',serif;font-size:clamp(13px,2.5vw,18px);letter-spacing:2px;color:#C5A059;">SPECTRUM SCAN</div>
-        <div style="width:60px;height:1px;background:linear-gradient(to right,#C5A059,transparent);margin-top:10px;"></div>
-      </div>
-      <div style="border-left:2px solid #C5A059;padding:10px 14px;background:rgba(197,160,89,0.04);">
-        <div style="font-size:8px;color:#C5A059;letter-spacing:2px;margin-bottom:4px;">SYSTEM STATUS</div>
-        <p id="txt-scan1" style="font-size:11px;color:rgba(255,255,255,0.8);line-height:1.6;margin:0 0 4px;font-family:'IBM Plex Sans Thai',sans-serif;">ระบบกำลังสแกนพิกัดชะตา...</p>
-        <p id="txt-scan2" style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.6;margin:0;font-family:'IBM Plex Sans Thai',sans-serif;">วิเคราะห์มวลประสบการณ์จากหน้าไพ่ที่คุณเลือก...</p>
-      </div>
-      <div style="border-left:2px solid rgba(197,160,89,0.3);padding:10px 14px;">
-        <div style="font-size:8px;color:#C5A059;letter-spacing:2px;margin-bottom:6px;">DIAGNOSTIC NODES</div>
-        <div style="display:flex;flex-direction:column;gap:6px;">
-          <div style="display:flex;justify-content:space-between;font-size:9px;"><span style="color:rgba(255,255,255,0.5);">BIRTH COORDINATE</span><span style="color:#C5A059;animation:fadeData 2s infinite;">LOCKED</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:9px;"><span style="color:rgba(255,255,255,0.5);">CARD RESONANCE</span><span style="color:#C5A059;animation:fadeData 2.4s infinite;">READING</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:9px;"><span style="color:rgba(255,255,255,0.5);">LIFE IMPRINT</span><span style="color:rgba(197,160,89,0.6);animation:fadeData 1.8s infinite;">PROCESSING...</span></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:6px;">
-        <span style="width:6px;height:6px;border-radius:50%;background:#C5A059;display:inline-block;animation:pulseDot2 1.4s infinite;"></span>
-        <span style="width:6px;height:6px;border-radius:50%;background:#C5A059;display:inline-block;animation:pulseDot2 1.4s 0.2s infinite;"></span>
-        <span style="width:6px;height:6px;border-radius:50%;background:#C5A059;display:inline-block;animation:pulseDot2 1.4s 0.4s infinite;"></span>
-      </div>
+   </div>
+
+    <!-- cards reveal row -->
+<div style="display:flex;gap:14px;align-items:center;justify-content:center;perspective:1200px;position:relative;width:100%;overflow:visible;height:220px;">  
+    <div style="position:relative;width:100%;height:200px;">
+  <div class="reveal-card" id="rc1" style="position:absolute;left:50%;width:90px;height:150px;margin-left:-140px;top:25px;animation:arcCard1 2.5s ease-in-out infinite;"></div>
+  <div class="reveal-card" id="rc2" style="position:absolute;left:50%;width:110px;height:175px;margin-left:-55px;top:0;border-color:rgba(212,175,55,0.7);background:linear-gradient(135deg,#1a1200 0%,#3d2e00 50%,#1a1200 100%);animation:arcCard2 2s ease-in-out infinite;"></div>
+  <div class="reveal-card" id="rc3" style="position:absolute;left:50%;width:90px;height:150px;margin-left:50px;top:25px;animation:arcCard1 3s ease-in-out infinite 0.5s;"></div>
+</div>
+</div>
+
+    <!-- status text -->
+    <div style="text-align:center;animation:mistRise 1s ease forwards;">
+      <p id="txt-scan1" style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:15px;color:rgba(220,190,255,0.9);margin:0 0 6px;"></p>
+      <p id="txt-scan2" style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px;color:rgba(180,140,255,0.55);margin:0;letter-spacing:1px;"></p>
     </div>
 
   </div>
-</section> <section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-start justify-center gap-12 p-4 py-10">
+</section>
+<section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-start justify-center gap-12 p-4 py-10">
     <div id="result-card-box" class="flex-shrink-0 fade-in self-center lg:self-start lg:sticky lg:top-28"></div>
 
     <div class="flex-grow space-y-8 bg-[#013220]/90 p-8 md:p-14 rounded-2xl gold-border backdrop-blur-2xl max-w-2xl fade-in" style="animation-delay: 0.3s">                
@@ -494,36 +535,59 @@ localStorage.setItem('dvine_birth', JSON.stringify({
 
             state.inquiry = inquiry;
             state.card = tarotDeck[idx % tarotDeck.length];
-            switchStep('step-2', 'step-3');
+switchStep('step-2', 'step-3');
 
-            // --- เริ่มระบบ LIVE DIAGNOSTIC LOGS (โชว์ความขลังระดับโลก) ---
-            const scanLogs = [
-                "INITIALIZING SPECTRUM ANALYSIS...",
-                "EXTRACTING BIRTH COORDINATES: " + state.birthInfo,
-                "LOCKED ON CELESTIAL ALIGNMENT...",
-                "DECODING CARD RESONANCE: " + state.card.name,
-                "SCANNING SOUL ARCHITECTURE...",
-                "IDENTIFYING LIFE IMPRINTS...",
-                "SYNCING AUTHORITY DATA NODES...",
-                "FINALIZING DIAGNOSIS..."
-            ];
+// reset cards ก่อน (สำหรับครั้งที่ 2+)
+['rc1','rc2','rc3'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) { void el.offsetWidth; }
+});
+document.getElementById('orb-percent').innerText = '0%';
 
-            let logIdx = 0;
-            const statusTxt1 = document.getElementById('txt-scan1');
-            const statusTxt2 = document.getElementById('txt-scan2');
+// trigger card reveal
+setTimeout(function(){ document.getElementById('rc1').style.animationPlayState='running'; }, 300);
+setTimeout(function(){ document.getElementById('rc2').style.animationPlayState='running'; }, 900);
+setTimeout(function(){ document.getElementById('rc3').style.animationPlayState='running'; }, 1500);
 
-            if (logInterval) clearInterval(logInterval);
-            logInterval = setInterval(() => {
-                statusTxt1.innerText = scanLogs[logIdx];
-                statusTxt2.innerText = "PROCESSING NODE " + (logIdx + 1) + "/8 [" + Math.floor(Math.random() * 100) + "%]";
-                logIdx++;
-                if (logIdx >= scanLogs.length) logIdx = scanLogs.length - 1;
-            }, 1500);
+// progress orb
+var pct = 0;
+var orbTimer = setInterval(function(){
+    pct = Math.min(pct + Math.floor(Math.random()*4)+1, 94);
+    var el = document.getElementById('orb-percent');
+    if(el) el.innerText = pct + '%';
+}, 400);
 
-            fetchDiagnosis().then(function(result) {
-                clearInterval(logInterval); // หยุดสแกนเมื่อ AI ตอบ
-                showResult(result);
-            });
+// scan logs
+var scanLogs = [
+    "INITIALIZING SPECTRUM ANALYSIS...",
+    "EXTRACTING BIRTH COORDINATES: " + state.birthInfo,
+    "LOCKED ON CELESTIAL ALIGNMENT...",
+    "DECODING CARD RESONANCE: " + state.card.name,
+    "SCANNING SOUL ARCHITECTURE...",
+    "IDENTIFYING LIFE IMPRINTS...",
+    "SYNCING AUTHORITY DATA NODES...",
+    "FINALIZING DIAGNOSIS..."
+];
+var logIdx = 0;
+var statusTxt1 = document.getElementById('txt-scan1');
+var statusTxt2 = document.getElementById('txt-scan2');
+if (logInterval) clearInterval(logInterval);
+logInterval = setInterval(function(){
+    statusTxt1.innerText = scanLogs[logIdx];
+    statusTxt2.innerText = "PROCESSING NODE " + (logIdx+1) + "/8 [" + Math.floor(Math.random()*100) + "%]";
+    logIdx++;
+    if (logIdx >= scanLogs.length) logIdx = scanLogs.length - 1;
+}, 1500);
+
+fetchDiagnosis().then(function(result) {
+    clearInterval(logInterval);
+    clearInterval(orbTimer);
+    var el = document.getElementById('orb-percent');
+    if(el) el.innerText = '100%';
+    setTimeout(function(){ showResult(result); }, 400);
+});
+
+            
         }
         
 
