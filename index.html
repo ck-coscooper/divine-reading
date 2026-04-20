@@ -35,7 +35,8 @@
     background-clip: text; /* เพิ่มบรรทัดนี้ */
     -webkit-text-fill-color: transparent; 
     font-size: 15px; 
-}        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .loading-pulse { animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 .pray-text { 
@@ -59,8 +60,7 @@
     </style>
 </head>
 <body>
-<header class="sticky top-0 z-50" style="background:linear-gradient(180deg,#1a1508 0%,#111009 100%); border-bottom:1px solid rgba(212,175,55,0.15);">
-    <div class="flex justify-end items-center px-4 py-1.5 gap-2" style="border-bottom:1px solid rgba(212,175,55,0.08);">
+<header class="sticky top-0 z-50" style="background:linear-gradient(180deg, rgba(6, 44, 26, 0.99) 0%, rgba(4, 31, 19, 0.97) 100%); border-bottom:1px solid rgba(212,175,55,0.15);">    <div class="flex justify-end items-center px-4 py-1.5 gap-2" style="border-bottom:1px solid rgba(212,175,55,0.08);">
         <button onclick="setLang('th')" id="btn-th" style="background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:2px;color:#D4AF37;font-family:'Cinzel',serif;">TH</button>
         <span style="color:#D4AF37;opacity:0.3;font-size:9px;">|</span>
         <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:2px;color:#D4AF37;opacity:0.7;font-family:'Cinzel',serif;">EN</button>
@@ -68,11 +68,14 @@
         <button onclick="window.location.href='signin.html'" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;color:#c9b882;font-family:'Inter',sans-serif;font-size:clamp(10px,1.2vw,14px);" onmouseover="this.style.color='#D4AF37'" onmouseout="this.style.color='#c9b882'"><svg width="12" height="16" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="52" height="72" rx="6" fill="transparent" stroke="#D4AF37" stroke-width="2.5"/><rect x="9" y="9" width="42" height="62" rx="4" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.4"/><polygon points="30,22 32.5,30 41,30 34.5,35 37,43 30,38 23,43 25.5,35 19,30 27.5,30" fill="#D4AF37"/></svg>Sign in</button>
         <button onclick="window.location.href='signup.html'" style="background:linear-gradient(45deg,#B38728,#FBF5B7,#AA771C);border:none;cursor:pointer;font-size:clamp(10px,1.2vw,14px);font-weight:600;color:#013220;padding:clamp(2px,0.3vw,5px) clamp(8px,1vw,14px);border-radius:3px;font-family:'Inter',sans-serif;">Sign up</button>
     </div>
-    <div class="flex flex-col items-center text-center px-4 py-2 gap-0.5">
-        <h1 class="font-cinzel gold-gradient-text font-bold uppercase" style="font-size:clamp(1.1rem,3vw,2.2rem);letter-spacing:8px;">THE D'VINE ROOM</h1>
-<p class="font-cinzel" style="font-size:clamp(8px,1.3vw,12px);letter-spacing:1px;color:#D4AF37;">SCARS OF THE DIVINE / AJ. FAAN</p>    </div>
+   <div style="text-align:center;padding:16px 16px 12px;">
+<h1 class="gold-gradient-text" style="font-family:'Cinzel',serif;font-size:clamp(1.1rem,3vw,2.2rem);letter-spacing:8px;font-weight:700;">THE D'VINE ROOM</h1>
+<p class="gold-gradient-text" style="font-family:'Cinzel',serif;font-size:clamp(8px,1.3vw,12px);letter-spacing:1px;margin-top:4px;opacity:0.9;">SCARS OF THE DIVINE / AJ. FAAN</p>
+</div>
+    </div>
     <nav style="border-top:1px solid rgba(212,175,55,0.15); overflow-x:auto; position:relative;">
       <style>
+
         .nav-item { position:relative; }
         .nav-item:hover .nav-drop { display:block !important; }
         .nav-drop { display:none; position:absolute; top:100%; left:0; background:#1a1508; border:1px solid rgba(212,175,55,0.3); min-width:180px; z-index:999; box-shadow:0 8px 24px rgba(0,0,0,0.6); }

@@ -27,7 +27,6 @@
             -webkit-font-smoothing: antialiased; 
         }
 
-        /* Paper Texture Overlay */
         body::before { 
             content:''; position:fixed; inset:0; opacity:0.1; 
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
@@ -37,22 +36,23 @@
         .gold-text { 
             background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); 
             -webkit-background-clip: text; 
+            background-clip: text; /* Standard Property */
             -webkit-text-fill-color: transparent; 
         }
         
-        /* Master Header Sync */
         header {
             position: sticky; top: 0; z-index: 100;
             background: linear-gradient(180deg, rgba(6, 44, 26, 0.98) 0%, rgba(4, 31, 19, 0.95) 100%);
             backdrop-filter: blur(20px); border-bottom: 1px solid var(--gold-line);
         }
 
-        .nav-link { 
-            font-family:'Cinzel',serif; font-weight:700; text-transform:uppercase; 
-            color:#ffffff; border-bottom:2px solid transparent; display:block; 
-            padding:12px clamp(10px,2vw,24px); font-size:11px; 
-            letter-spacing: 0.25em; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0.7;
-        }
+       .nav-link { 
+    font-family:'Cinzel',serif; font-weight:700; text-transform:uppercase; 
+    color:#ffffff; border-bottom:2px solid transparent; display:block; 
+    padding:10px clamp(8px,1.5vw,20px);
+    font-size:clamp(10px,1.5vw,14px); 
+    letter-spacing:clamp(1px,0.3vw,3px); transition: all 0.3s; opacity: 0.65;
+}
         .nav-link:hover, .nav-link.active { color:var(--gold-main); opacity: 1; letter-spacing: 0.3em; }
         .nav-link.active { border-bottom: 2px solid var(--gold-main); }
 
@@ -60,7 +60,7 @@
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 35px;
+            gap: 30px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -70,156 +70,112 @@
             background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png"), 
                               linear-gradient(145deg, var(--emerald-void) 0%, var(--emerald-deep) 100%);
             border: 1px solid var(--gold-line); 
-            padding: 55px 45px;
+            padding: 50px 40px;
             position: relative;
             transition: all 0.7s cubic-bezier(0.15, 0.83, 0.66, 1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            min-height: 280px;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+            min-height: 260px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             z-index: 1;
         }
 
-        /* Inner Frame Line */
         .bento-item::before {
-            content: "";
-            position: absolute;
-            inset: 12px;
+            content: ""; position: absolute; inset: 12px;
             border: 1px solid rgba(212, 175, 55, 0.1);
-            pointer-events: none;
-            z-index: 2;
-            transition: all 0.6s ease;
+            pointer-events: none; z-index: 2; transition: all 0.6s ease;
         }
 
-        /* Corner Brackets Detail */
         .bento-item::after {
-            content: "";
-            position: absolute;
-            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            content: ""; position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px;
             background: 
                 linear-gradient(to right, var(--gold-main) 1px, transparent 1px) 0 0,
                 linear-gradient(to bottom, var(--gold-main) 1px, transparent 1px) 0 0,
                 linear-gradient(to left, var(--gold-main) 1px, transparent 1px) 100% 100%,
                 linear-gradient(to top, var(--gold-main) 1px, transparent 1px) 100% 100%;
-            background-repeat: no-repeat;
-            background-size: 15px 15px;
-            opacity: 0.2;
-            transition: all 0.5s ease;
-            pointer-events: none;
-            z-index: 2;
+            background-repeat: no-repeat; background-size: 15px 15px;
+            opacity: 0.2; transition: all 0.5s ease; pointer-events: none; z-index: 2;
         }
 
         .bento-item:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 45px 90px rgba(6, 44, 26, 0.5);
+            transform: translateY(-10px) scale(1.02);
             border-color: var(--gold-bright);
         }
 
-        /* Frame Hover Interaction */
-        .bento-item:hover::before { border-color: rgba(212, 175, 55, 0.3); inset: 15px; }
-        .bento-item:hover::after { opacity: 0.8; top: 15px; left: 15px; right: 15px; bottom: 15px; }
-
         .bento-title {
             font-family: 'Cinzel', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--gold-main);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            z-index: 5;
-            text-shadow: 0 3px 6px rgba(0,0,0,0.4);
+            font-size: 26px; font-weight: 700; color: var(--gold-main);
+            letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px;
+            z-index: 5; text-shadow: 0 3px 6px rgba(0,0,0,0.4);
         }
 
         .bento-tag {
             font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 5px;
-            color: rgba(232, 224, 208, 0.6);
-            text-transform: uppercase;
-            z-index: 5;
-            transition: all 0.4s ease;
+            font-size: 9px; font-weight: 600; letter-spacing: 4px;
+            color: rgba(232, 224, 208, 0.6); text-transform: uppercase;
+            z-index: 5; transition: all 0.4s ease;
         }
-
-        .bento-item:hover .bento-tag { color: #fff; transform: translateX(10px); }
 
         .bento-number {
-            position: absolute;
-            top: 35px; right: 45px;
-            font-family: 'Cinzel', serif;
-            font-size: 82px;
-            font-weight: 700;
-            color: var(--white-ivory);
-            line-height: 1;
+            position: absolute; top: 30px; right: 40px;
+            font-family: 'Cinzel', serif; font-size: 72px;
+            font-weight: 700; color: var(--white-ivory);
+            line-height: 1; opacity: 0.9; z-index: 1;
             transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
-            pointer-events: none;
-            opacity: 0.9;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.6);
-            z-index: 1;
         }
 
-        .bento-item:hover .bento-number {
-            opacity: 1;
-            transform: scale(1.15) translateY(-5px);
-        }
-
-        /* Section Header */
         .section-header h2 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            letter-spacing: 0.3em;
-            font-weight: 700;
-            color: var(--emerald-void);
-            line-height: 0.9;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            letter-spacing: 0.25em; font-weight: 700;
+            color: var(--emerald-void); line-height: 0.9;
         }
 
-        .section-header p {
-            letter-spacing: 0.6em;
-            font-weight: 500;
-            color: var(--emerald-void);
-            opacity: 0.6;
-        }
-
-        @media (max-width: 640px) {
-            .bento-grid { grid-template-columns: 1fr; gap: 25px; padding: 0 15px; }
-            .bento-item { min-height: 240px; padding: 40px 30px; }
-            .bento-number { font-size: 60px; top: 25px; right: 30px; }
+        /* --- MOBILE REFINEMENT --- */
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 15px; }
+            .bento-item { min-height: 220px; padding: 40px 25px; }
+            .bento-number { font-size: 54px; top: 20px; right: 25px; }
+            .section-header { margin-bottom: 4rem !important; }
+            main { padding: 4rem 1.2rem 6rem !important; }
+            .bento-item[style*="grid-column: span 2"] { grid-column: span 1 !important; }
         }
     </style>
 </head>
 <body>
 <header>
-    <div class="header-inner" style="display:flex;justify-content:flex-end;align-items:center;padding:10px 24px;gap:15px;border-bottom:1px solid rgba(212,175,55,0.05);">
-        <button style="background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:3px;color:#D4AF37;font-family:'Inter',sans-serif;font-weight:600;">TH</button>
-        <span style="color:#D4AF37;opacity:0.2;font-size:9px;">|</span>
-        <button style="background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:3px;color:#D4AF37;opacity:0.4;font-family:'Inter',sans-serif;font-weight:600;">EN</button>
-        <span style="color:#D4AF37;opacity:0.1;margin:0 2px;">·</span>
-        <button style="background:none;border:none;cursor:pointer;color:rgba(252,252,249,0.5);font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;">SIGN IN</button>
-        <button style="background:linear-gradient(45deg,#B38728,#FBF5B7,#AA771C);border:none;cursor:pointer;font-size:10px;font-weight:700;color:#041f13;padding:5px 14px;border-radius:1px;font-family:'Inter',sans-serif;letter-spacing:1px;">SIGN UP</button>
+    <div class="header-inner" style="display:flex;justify-content:flex-end;align-items:center;padding:8px 24px;gap:15px;border-bottom:1px solid rgba(212,175,55,0.05);">
+        <div style="display: flex; gap: 10px;">
+            <button style="background:none;border:none;cursor:pointer;font-size:9px;letter-spacing:2px;color:#D4AF37;font-weight:600;">TH</button>
+            <span style="color:#D4AF37;opacity:0.2;font-size:9px;">|</span>
+            <button style="background:none;border:none;cursor:pointer;font-size:9px;letter-spacing:2px;color:#D4AF37;opacity:0.4;font-weight:600;">EN</button>
+        </div>
+        <span style="color:#D4AF37;opacity:0.1;">·</span>
+        <button style="background:none;border:none;cursor:pointer;color:rgba(252,252,249,0.5);font-size:9px;letter-spacing:2px;">SIGN IN</button>
+        <button style="background:linear-gradient(45deg,#B38728,#FBF5B7,#AA771C);border:none;cursor:pointer;font-size:9px;font-weight:700;color:#041f13;padding:5px 12px;border-radius:1px;letter-spacing:1px;">SIGN UP</button>
     </div>
-    <div style="text-align:center;padding:20px 16px 15px;">
-        <h1 class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(1.4rem,3.5vw,2.5rem);letter-spacing:0.4em;font-weight:700;">THE D'VINE ROOM</h1>
-        <p class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(8px,1.1vw,10px);letter-spacing:0.5em;margin-top:6px;opacity:0.9;">SCARS OF THE DIVINE / AJ. FAAN</p>
-    </div>
-    <nav style="border-top:1px solid rgba(212,175,55,0.1);overflow-x:auto;">
+    <div style="text-align:center;padding:16px 16px 12px;">
+<h1 class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(1.1rem,3vw,2.2rem);letter-spacing:8px;font-weight:700;">THE D'VINE ROOM</h1>
+<p class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(8px,1.3vw,12px);letter-spacing:1px;margin-top:4px;">SCARS OF THE DIVINE / AJ. FAAN</p>
+</div>
+    <nav style="border-top:1px solid rgba(212,175,55,0.1);overflow-x:auto;scrollbar-width:none;">
       <div style="display:flex;justify-content:center;min-width:fit-content;padding:0 10px;">
-        <div class="nav-item"><a href="learn.html" class="nav-link">LEARN</a></div>
-        <div class="nav-item"><a href="tarot.html" class="nav-link active">TAROT</a></div>
-        <div class="nav-item"><a href="index.html" class="nav-link">READING</a></div>
-        <div class="nav-item"><a href="almanac.html" class="nav-link">ALMANAC</a></div>
-        <div class="nav-item"><a href="community.html" class="nav-link">COMMUNITY</a></div>
+        <a href="learn.html" class="nav-link">LEARN</a>
+        <a href="tarot.html" class="nav-link active">TAROT</a>
+        <a href="index.html" class="nav-link">READING</a>
+        <a href="almanac.html" class="nav-link">ALMANAC</a>
+        <a href="community.html" class="nav-link">COMMUNITY</a>
       </div>
     </nav>
 </header>
 
-<main style="padding:8rem 1.5rem 10rem; position:relative; z-index:1;">
-    <div class="section-header" style="margin-bottom:8rem; text-align: center;">
+<main style="padding:3rem 1.5rem 8rem; position:relative; z-index:1;">
+    <div class="section-header" style="margin-bottom:4rem; text-align: center;">
         <h2>TAROT</h2>
-        <div style="width: 60px; height: 1px; background: var(--gold-main); margin: 35px auto; opacity: 0.6;"></div>
-        <p style="font-size:12px; margin-top:10px; text-transform: uppercase;">The Arcane Symbolism Database</p>
+        <div style="width: 50px; height: 1px; background: var(--gold-main); margin: 25px auto; opacity: 0.6;"></div>
+        <p style="font-size:10px; margin-top:10px; text-transform: uppercase; letter-spacing: 0.5em;">The Arcane Symbolism Database</p>
     </div>
 
     <div class="bento-grid">
