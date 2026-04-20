@@ -484,41 +484,48 @@ localStorage.setItem('dvine_birth', JSON.stringify({
                 grid.appendChild(card);
             }
         }
-
+        var logInterval;
         function selectCard(idx) {
             var t = txt[currentLang];
             var inquiry = document.getElementById('user-inquiry').value.trim();
             if (!inquiry) { alert(t.alertInquiry); return; }
-var thaiCount = (inquiry.match(/[\u0E00-\u0E7F]/g) || []).length;
-var engCount = (inquiry.match(/[a-zA-Z]/g) || []).length;
-var totalLetters = thaiCount + engCount;
-if (totalLetters < 5) { alert('กรุณาพิมพ์คำถามให้ชัดเจนขึ้น (อย่างน้อย 5 ตัวอักษร)'); return; }
-if (engCount > thaiCount && thaiCount < 3) { alert('กรุณาพิมพ์คำถามเป็นภาษาไทย'); return; }
+            
+            if (inquiry.length < 5) { alert('กรุณาระบุสิ่งที่อยู่ในใจให้ชัดเจนกว่านี้'); return; }
+
             state.inquiry = inquiry;
             state.card = tarotDeck[idx % tarotDeck.length];
             switchStep('step-2', 'step-3');
-var bi = document.getElementById('scan-birthinfo');
-var sd = document.getElementById('scan-days');
-if (bi) bi.innerHTML = 'BIRTH: ' + state.birthInfo;
-if (sd) sd.innerHTML = 'DAYS: ' + state.days.toLocaleString() + '<br>STATE: ANALYZING...';
-            var floatMsgs = [
-    'คำทำนายไม่ได้มีไว้ทำร้ายคุณ',
-    'มันแค่ช่วยให้คุณเห็นบางอย่างชัดขึ้น',
-    'จงนิ่ง…แล้วมองเข้าไปข้างใน',
-    'เพราะสิ่งที่กำลังจะเปิดออกมา',
-    'คือด้านที่คุณอาจยังไม่เคยมอง',
-    'ถ้าคุณพร้อม…',
-    'คำตอบที่ได้…จะพาคุณไปไกลกว่าที่คิด',
-    'และบางสิ่งที่คุณค้นพบ',
-    'อาจเปลี่ยนวิธีที่คุณมองตัวเองไปตลอด'
-];
-var fi = 0;
-floatInterval = null
-            
+
+            // --- เริ่มระบบ LIVE DIAGNOSTIC LOGS (โชว์ความขลังระดับโลก) ---
+            const scanLogs = [
+                "INITIALIZING SPECTRUM ANALYSIS...",
+                "EXTRACTING BIRTH COORDINATES: " + state.birthInfo,
+                "LOCKED ON CELESTIAL ALIGNMENT...",
+                "DECODING CARD RESONANCE: " + state.card.name,
+                "SCANNING SOUL ARCHITECTURE...",
+                "IDENTIFYING LIFE IMPRINTS...",
+                "SYNCING AUTHORITY DATA NODES...",
+                "FINALIZING DIAGNOSIS..."
+            ];
+
+            let logIdx = 0;
+            const statusTxt1 = document.getElementById('txt-scan1');
+            const statusTxt2 = document.getElementById('txt-scan2');
+
+            if (logInterval) clearInterval(logInterval);
+            logInterval = setInterval(() => {
+                statusTxt1.innerText = scanLogs[logIdx];
+                statusTxt2.innerText = "PROCESSING NODE " + (logIdx + 1) + "/8 [" + Math.floor(Math.random() * 100) + "%]";
+                logIdx++;
+                if (logIdx >= scanLogs.length) logIdx = scanLogs.length - 1;
+            }, 1500);
+
             fetchDiagnosis().then(function(result) {
+                clearInterval(logInterval); // หยุดสแกนเมื่อ AI ตอบ
                 showResult(result);
             });
         }
+        
 
         function fetchDiagnosis() {
             var t = txt[currentLang];
@@ -567,10 +574,34 @@ floatInterval = null
             document.getElementById('res-card-sub').innerText = currentLang === 'th' ? state.card.sub : state.card.subEn;
             document.getElementById('result-card-box').innerHTML = '<div class="tarot-card-result"><img src="https://images.weserv.nl/?url=' + state.card.img.replace('https://','') + '&w=300" class="w-full h-full object-cover" alt="' + state.card.name + '"></div>';
             
-            var paragraphs = diagnosis.split('\n').filter(function(p) { return p.trim(); }).map(function(p) { return '<p>' + p + '</p>'; }).join('');
-            document.getElementById('ai-response').innerHTML = '<div class="p-4 bg-white/5 border-l-2 border-yellow-400/30 mb-6 italic text-sm text-gray-400">"' + state.inquiry + '"</div>' + paragraphs;
-           
+            const responseElement = document.getElementById('ai-response');
+            responseElement.innerHTML = '<div class="p-4 bg-white/5 border-l-2 border-yellow-400/30 mb-6 italic text-sm text-gray-400">"' + state.inquiry + '"</div>';
+            
+            const textContainer = document.createElement('div');
+            responseElement.appendChild(textContainer);
+
             switchStep('step-3', 'step-4');
+
+            // --- เริ่มระบบ Typewriter Effect (หมัดฮุคสะกดสายตากรรมการ) ---
+            let i = 0;
+            const speed = 25; 
+            const formattedDiagnosis = diagnosis.replace(/\n/g, "<br>");
+            
+            function typeWriter() {
+                if (i < formattedDiagnosis.length) {
+                    if (formattedDiagnosis.substring(i, i + 4) === "<br>") {
+                        textContainer.innerHTML += "<br>";
+                        i += 4;
+                    } else {
+                        textContainer.innerHTML += formattedDiagnosis.charAt(i);
+                        i++;
+                    }
+                    setTimeout(typeWriter, speed);
+                    // สั่งให้หน้าจอเลื่อนลงตามตัวอักษรที่พิมพ์
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
+            }
+            typeWriter();
         }
 
         function switchStep(hide, show) {
