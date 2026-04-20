@@ -261,8 +261,8 @@
   </div>
 
   <!-- main content -->
-<div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px 24px 16px;min-height:calc(100vh - 120px);justify-content:center;">    <!-- orb -->
-<div style="position:relative;display:flex;align-items:center;justify-content:center;width:180px;height:180px;">      <div class="scan-ring" style="width:210px;height:210px;animation-delay:0s;"></div>
+<div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:24px;padding:60px 24px 24px;min-height:calc(100vh - 120px);justify-content:center;">
+    <div style="position:relative;display:flex;align-items:center;justify-content:center;width:180px;height:180px;">      <div class="scan-ring" style="width:210px;height:210px;animation-delay:0s;"></div>
       <div class="scan-ring" style="width:240px;height:240px;animation-delay:0.5s;opacity:0.4;"></div>
       <div class="progress-orb">
         <div style="text-align:center;">
@@ -274,18 +274,17 @@
 
    </div>
 
-    <!-- cards reveal row -->
-<div style="display:flex;gap:14px;align-items:center;justify-content:center;perspective:1200px;position:relative;width:100%;overflow:visible;height:220px;">  
-    <div style="position:relative;width:100%;height:200px;">
-  <div class="reveal-card" id="rc1" style="position:absolute;left:50%;width:90px;height:150px;margin-left:-140px;top:25px;animation:arcCard1 2.5s ease-in-out infinite;"><span style="font-size:1.6rem;">🌙</span></div>
-<div class="reveal-card" id="rc2" style="position:absolute;left:50%;width:110px;height:175px;margin-left:-55px;top:0;border-color:rgba(212,175,55,0.7);background:linear-gradient(135deg,#1a1200 0%,#3d2e00 50%,#1a1200 100%);animation:arcCard2 2s ease-in-out infinite;"><span style="font-size:2rem;">✦</span></div>
-<div class="reveal-card" id="rc3" style="position:absolute;left:50%;width:90px;height:150px;margin-left:50px;top:25px;animation:arcCard1 3s ease-in-out infinite 0.5s;"><span style="font-size:1.6rem;">⭐</span></div>
+   <!-- cards reveal row -->
+<div style="position:relative;width:100%;height:220px;margin-bottom:16px;">
+  <div class="reveal-card" id="rc1" style="position:absolute;left:50%;width:90px;height:150px;margin-left:-155px;top:25px;animation:arcCard1 2.5s ease-in-out infinite;box-shadow:0 0 20px rgba(180,120,255,0.6);"><span style="font-size:1.6rem;">🌙</span></div>
+  <div class="reveal-card" id="rc2" style="position:absolute;left:50%;width:130px;height:200px;margin-left:-65px;top:-10px;border-color:rgba(212,175,55,0.9);background:linear-gradient(135deg,#2a1f00 0%,#5a4500 40%,#2a1f00 100%);animation:arcCard2 2s ease-in-out infinite;box-shadow:0 0 40px rgba(212,175,55,0.8),0 0 80px rgba(212,175,55,0.3);z-index:10;"><span style="font-size:3.5rem;filter:drop-shadow(0 0 20px rgba(255,200,0,1));">☀️</span></div>
+  <div class="reveal-card" id="rc3" style="position:absolute;left:50%;width:90px;height:150px;margin-left:65px;top:25px;animation:arcCard1 3s ease-in-out infinite 0.5s;box-shadow:0 0 20px rgba(180,120,255,0.6);"><span style="font-size:1.6rem;">⭐</span></div>
 </div>
 
     <!-- status text -->
-    <div style="text-align:center;animation:mistRise 1s ease forwards;">
-      <p id="txt-scan1" style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:15px;color:rgba(220,190,255,0.9);margin:0 0 6px;"></p>
-      <p id="txt-scan2" style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:12px;color:rgba(180,140,255,0.55);margin:0;letter-spacing:1px;"></p>
+    <div style="width:100%;text-align:center;padding:0 20px;">
+      <p id="txt-scan1" style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:14px;color:rgba(220,190,255,0.9);margin:0 0 4px;"></p>
+      <p id="txt-scan2" style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:11px;color:rgba(180,140,255,0.55);margin:0;letter-spacing:1px;"></p>
     </div>
 
   </div>
