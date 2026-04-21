@@ -7,28 +7,116 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;500;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        :root { --ivory: #fcfcf9; --emerald: #062c1a; --gold: #d4af37; }
-        body { background-color: var(--ivory); color: var(--emerald); font-family: 'IBM Plex Sans Thai', sans-serif; overflow-x: hidden; }
-.hero-title {
-    font-family: 'Cinzel', serif;
-    /* ปรับค่าจาก 15vw เหลือ 8vw และลดเพดานสูงสุดลงเพื่อให้คำยาวๆ อย่าง COMMUNITY ไม่แตกบรรทัด */
-    font-size: clamp(2.5rem, 12vw, 7rem); 
-    line-height: 1.1; /* เพิ่มระยะบรรทัดให้นุ่มนวลขึ้น ป้องกันตัวหนังสือเบียดกัน */
-    letter-spacing: -0.01em;
-    font-weight: 700;
-    text-align: center;
-}
-.gold-gradient-text { background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }        .bento-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
-        .bento-card { position: relative; background: #ffffff; border: 1px solid rgba(6, 44, 26, 0.08); padding: 40px; min-height: 400px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); text-decoration: none !important; }
-        .bento-card:hover { background: var(--emerald); transform: translateY(-10px); }
-        .bento-card:hover * { color: #ffffff !important; }
-        .bento-card:hover .gold-gradient-text { -webkit-text-fill-color: #ffffff; }
-        .card-label { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); }
-        .card-title { font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--emerald); margin-top: 10px; line-height: 1.1; }
-        @media (max-width: 768px) { .bento-container { grid-template-columns: 1fr; } .hero-title { font-size: clamp(3rem, 18vw, 6rem); } }
+        :root { 
+            --ivory: #fcfcf9; 
+            --emerald: #062c1a; 
+            --gold: #d4af37; 
+        }
+
+        body { 
+            background-color: var(--ivory); 
+            color: var(--emerald); 
+            font-family: 'IBM Plex Sans Thai', sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        /* ── ULTIMATE HERO TITLE ── */
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 12vw, 7rem); 
+            line-height: 1.15; 
+            letter-spacing: -0.01em;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .gold-gradient-text { 
+            background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            display: inline-block; 
+        }
+
+        /* ── BENTO GRID & CARDS ── */
+        .bento-container { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 24px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+
+        .bento-card { 
+            position: relative; 
+            background: #ffffff; 
+            border: 1px solid rgba(6, 44, 26, 0.05); 
+            padding: 48px 40px; 
+            min-height: 400px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            transition: all 0.7s cubic-bezier(0.2, 1, 0.2, 1); 
+            text-decoration: none !important; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        /* Featured Card Logic (Emerald Authority) */
+        .bento-card.featured {
+            background: var(--emerald);
+            color: var(--ivory);
+        }
+        .bento-card.featured .card-title { color: var(--gold); }
+        .bento-card.featured .card-label { color: var(--gold); opacity: 0.8; }
+        .bento-card.featured p { color: var(--ivory); opacity: 0.8; }
+
+        .bento-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 30px 60px rgba(6, 44, 26, 0.12);
+            border-color: var(--gold);
+        }
+
+        .bento-card:hover * { color: inherit; }
+        .bento-card:not(.featured):hover .card-title { color: var(--gold); }
+
+        .card-label { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 10px; 
+            letter-spacing: 0.6em; 
+            text-transform: uppercase; 
+            color: var(--gold); 
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .card-title { 
+            font-family: 'Cinzel', serif; 
+            font-size: 2.4rem; 
+            color: var(--emerald); 
+            line-height: 1.1; 
+            font-weight: 700;
+        }
+
+        /* ── MOBILE OPTIMIZATION ── */
+        @media (max-width: 768px) {
+            .bento-container { 
+                grid-template-columns: 1fr !important; 
+                gap: 15px; 
+            }
+            .hero-title { 
+                font-size: clamp(2.2rem, 13vw, 4rem); 
+                line-height: 1.1; 
+            }
+            .bento-card { 
+                min-height: 320px; 
+                padding: 40px 30px; 
+            }
+        } 
     </style>
 </head>
 <body>
+
     <header class="sticky top-0 z-50 bg-[#062c1a] text-white py-4 px-6 border-b border-[#d4af37]/20">
         <div class="max-w-[1400px] mx-auto flex justify-between items-center">
             <a href="index.html" class="text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors duration-300">THE D'VINE ROOM</a>
@@ -46,31 +134,51 @@
 
     <main class="py-20">
         <section class="mb-32 px-6 text-center">
-            <p class="text-[10px] tracking-[0.8em] uppercase mb-8 opacity-40">The Sovereign Knowledge Archive</p>
+            <p class="text-[10px] tracking-[0.8em] uppercase mb-10 opacity-40">The Sovereign Knowledge Archive</p>
             <h1 class="hero-title">LEARN<br>THE<br><span class="gold-gradient-text">DIVINE</span></h1>
-            <div class="flex justify-center mt-12"><div class="w-[1px] h-20 bg-[#062c1a]/20"></div></div>
+            <div class="flex justify-center mt-12">
+                <div class="w-[1px] h-24 bg-[#062c1a]/15"></div>
+            </div>
         </section>
+
         <div class="bento-container">
-            <a href="articles.html" class="bento-card md:col-span-1 md:row-span-2">
-                <div><span class="card-label">KNOWLEDGE 01</span><h2 class="card-title">บทความ<br>INSIGHTS</h2></div>
-                <p class="text-sm leading-relaxed opacity-60">เจาะลึกบทวิเคราะห์ชะตาและปรัชญาแห่งดวงดาว</p>
+            <a href="articles.html" class="bento-card featured md:col-span-1 md:row-span-2">
+                <div>
+                    <span class="card-label">KNOWLEDGE 01</span>
+                    <h2 class="card-title">บทความ<br>INSIGHTS</h2>
+                </div>
+                <p class="text-sm leading-relaxed">เจาะลึกบทวิเคราะห์ชะตาและปรัชญาแห่งดวงดาวผ่านมวลประสบการณ์จริงจากกุนซือ</p>
             </a>
+
             <a href="course.html" class="bento-card">
-                <div><span class="card-label">KNOWLEDGE 02</span><h2 class="card-title">คอร์สเรียน<br>COURSES</h2></div>
-                <p class="text-sm leading-relaxed opacity-60">ถ่ายทอดศาสตร์พยากรณ์จากกุนซือระดับโลก</p>
+                <div>
+                    <span class="card-label">KNOWLEDGE 02</span>
+                    <h2 class="card-title">คอร์สเรียน<br>COURSES</h2>
+                </div>
+                <p class="text-sm leading-relaxed opacity-60">ถ่ายทอดศาสตร์พยากรณ์จากกุนซือระดับโลกเพื่อการปรับใช้ในชีวิตจริง</p>
             </a>
+
             <a href="ebook.html" class="bento-card">
-                <div><span class="card-label">KNOWLEDGE 03</span><h2 class="card-title">E-BOOK<br>ARCHIVE</h2></div>
-                <p class="text-sm leading-relaxed opacity-60">คัมภีร์พยากรณ์ฉบับพกพาในรูปแบบดิจิทัล</p>
+                <div>
+                    <span class="card-label">KNOWLEDGE 03</span>
+                    <h2 class="card-title">E-BOOK<br>ARCHIVE</h2>
+                </div>
+                <p class="text-sm leading-relaxed opacity-60">คัมภีร์พยากรณ์และคู่มือการถอดรหัสลับในรูปแบบดิจิทัล</p>
             </a>
-            <a href="crystal.html" class="bento-card md:col-span-2 min-h-[300px]">
-                <div><span class="card-label">KNOWLEDGE 04</span><h2 class="card-title">หินจักระ<br>CRYSTALS</h2></div>
-                <p class="text-sm leading-relaxed opacity-60">การใช้พลังงานจากธาตุธรรมชาติเพื่อการเยียวยา</p>
+
+            <a href="crystal.html" class="bento-card md:col-span-2 min-h-[350px]">
+                <div>
+                    <span class="card-label">KNOWLEDGE 04</span>
+                    <h2 class="card-title">หินจักระ<br>CRYSTALS</h2>
+                </div>
+                <p class="text-sm leading-relaxed opacity-60">ศาสตร์แห่งการใช้พลังงานจากธาตุธรรมชาติเพื่อการเยียวยาและเสริมอำนาจบารมี</p>
             </a>
         </div>
     </main>
-    <footer class="py-20 text-center border-t border-[#062c1a]/5">
-        <p class="font-cinzel text-[9px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+
+    <footer class="py-24 text-center border-t border-[#062c1a]/5">
+        <p class="font-cinzel text-[10px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
     </footer>
+
 </body>
 </html>

@@ -20,30 +20,29 @@
             overflow-x: hidden;
         }
 
-        /* ── HERO TYPOGRAPHY ── */
+        /* ── HERO TYPOGRAPHY: ULTRA BOLD EDITORIAL ── */
         .hero-title {
-    font-family: 'Cinzel', serif;
-    /* ปรับค่าจาก 15vw เหลือ 8vw และลดเพดานสูงสุดลงเพื่อให้คำยาวๆ อย่าง COMMUNITY ไม่แตกบรรทัด */
-    font-size: clamp(2.5rem, 12vw, 7rem); 
-    line-height: 1.1; /* เพิ่มระยะบรรทัดให้นุ่มนวลขึ้น ป้องกันตัวหนังสือเบียดกัน */
-    letter-spacing: -0.01em;
-    font-weight: 700;
-    text-align: center;
-}
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 12vw, 7rem); 
+            line-height: 1.15; 
+            letter-spacing: -0.01em;
+            font-weight: 700;
+            text-align: center;
+        }
 
-      .gold-gradient-text { 
-    background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C); 
-    -webkit-background-clip: text; 
-    background-clip: text; /* เพิ่มบรรทัดนี้: มาตรฐานสากล */
-    -webkit-text-fill-color: transparent; 
-    display: inline-block; /* เพิ่มบรรทัดนี้: เพื่อให้ Gradient คำนวณขอบเขตได้แม่นยำขึ้น */
-}
+        .gold-gradient-text {
+            background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            display: inline-block;
+        }
 
         /* ── BENTO EDITORIAL GRID ── */
         .bento-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
@@ -52,47 +51,58 @@
         .bento-card {
             position: relative;
             background: #ffffff;
-            border: 1px solid rgba(6, 44, 26, 0.08);
-            padding: 40px;
+            border: 1px solid rgba(6, 44, 26, 0.05);
+            padding: 48px 40px;
             min-height: 400px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.7s cubic-bezier(0.2, 1, 0.2, 1);
             text-decoration: none !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
+
+        /* Featured Card Logic (Emerald Authority) */
+        .bento-card.featured {
+            background: var(--emerald);
+            color: var(--ivory);
+        }
+        .bento-card.featured .card-title { color: var(--gold); }
+        .bento-card.featured .card-label { color: var(--gold); opacity: 0.8; }
+        .bento-card.featured p { color: var(--ivory); opacity: 0.8; }
 
         .bento-card:hover {
-            background: var(--emerald);
-            transform: translateY(-10px);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(6, 44, 26, 0.12);
+            border-color: var(--gold);
         }
-
-        .bento-card:hover * { color: #ffffff !important; }
-        .bento-card:hover .gold-gradient-text { -webkit-text-fill-color: #ffffff; }
 
         .card-label {
             font-family: 'Inter', sans-serif;
             font-size: 10px;
-            letter-spacing: 0.5em;
+            letter-spacing: 0.6em;
             text-transform: uppercase;
             color: var(--gold);
+            margin-bottom: 12px;
+            display: block;
         }
 
         .card-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: var(--emerald);
-            margin-top: 10px;
             line-height: 1.1;
+            font-weight: 700;
         }
 
         /* ── MOBILE OPTIMIZATION ── */
         @media (max-width: 768px) {
-            .bento-container {
-                grid-template-columns: 1fr;
+            .bento-container { grid-template-columns: 1fr !important; gap: 15px; }
+            .hero-title { 
+                font-size: clamp(2.2rem, 13vw, 4rem); 
+                line-height: 1.1; 
             }
-            .hero-title { font-size: clamp(3rem, 18vw, 6rem); }
-            .bento-card { min-height: 280px; padding: 30px; }
+            .bento-card { min-height: 320px; padding: 40px 30px; }
         }
     </style>
 </head>
@@ -103,7 +113,7 @@
             <a href="index.html" class="text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors duration-300">THE D'VINE ROOM</a>
             
             <nav class="hidden md:flex gap-8 text-[10px] tracking-[0.3em] font-cinzel opacity-70">
-                <a href="index.html" class="hover:text-[#d4af37] transition-colors">← HOME</a>
+                <a href="index.html" class="hover:text-[#d4af37]">← HOME</a>
                 <a href="learn.html" class="hover:text-[#d4af37]">LEARN</a>
                 <a href="tarot.html" class="hover:text-[#d4af37]">TAROT</a>
                 <a href="reading.html" class="hover:text-[#d4af37]">READING</a>
@@ -117,20 +127,20 @@
 
     <main class="py-20">
         <section class="mb-32 px-6 text-center">
-            <p class="text-[10px] tracking-[0.8em] uppercase mb-8 opacity-40">The Celestial Ephemeris & Timing</p>
+            <p class="text-[10px] tracking-[0.8em] uppercase mb-10 opacity-40">The Celestial Ephemeris & Timing</p>
             <h1 class="hero-title">TIME<br>AND<br><span class="gold-gradient-text">FATE</span></h1>
             <div class="flex justify-center mt-12">
-                <div class="w-[1px] h-20 bg-[#062c1a]/20"></div>
+                <div class="w-[1px] h-24 bg-[#062c1a]/15"></div>
             </div>
         </section>
 
         <div class="bento-container">
-            <a href="#lagna" class="bento-card md:col-span-1 md:row-span-2">
+            <a href="#lagna" class="bento-card featured md:col-span-1 md:row-span-2">
                 <div>
                     <span class="card-label">EPHEMERIS 01</span>
                     <h2 class="card-title">เช็คลัคนา<br>ASCENDANT</h2>
                 </div>
-                <p class="text-sm leading-relaxed opacity-60">คำนวณพิกัดชะตาที่แท้จริงตามเวลาเกิด เพื่อระบุตัวตนที่ซ่อนอยู่ภายใน</p>
+                <p class="text-sm leading-relaxed">คำนวณพิกัดชะตาที่แท้จริงตามเวลาเกิด เพื่อระบุตัวตนและแรงขับเคลื่อนที่ซ่อนอยู่ภายใน</p>
             </a>
 
             <a href="#calendar" class="bento-card">
@@ -138,7 +148,7 @@
                     <span class="card-label">EPHEMERIS 02</span>
                     <h2 class="card-title">ปฏิทินดาว<br>CALENDAR</h2>
                 </div>
-                <p class="text-sm leading-relaxed opacity-60">ติดตามการเคลื่อนที่ของดวงดาวรายเดือนที่มีผลต่อมวลมนุษยชาติ</p>
+                <p class="text-sm leading-relaxed opacity-60">ติดตามการเคลื่อนที่ของดวงดาวรายเดือนที่มีผลต่อจังหวะชีวิตมวลมนุษยชาติ</p>
             </a>
 
             <a href="#auspicious" class="bento-card">
@@ -146,21 +156,21 @@
                     <span class="card-label">EPHEMERIS 03</span>
                     <h2 class="card-title">ฤกษ์มงคล<br>TIMING</h2>
                 </div>
-                <p class="text-sm leading-relaxed opacity-60">ค้นหาหน้าต่างแห่งโอกาส เพื่อเริ่มต้นกาลสำคัญด้วยพลังงานที่ดีที่สุด</p>
+                <p class="text-sm leading-relaxed opacity-60">ค้นหาหน้าต่างแห่งโอกาส เพื่อเริ่มต้นกาลสำคัญด้วยพลังงานจักรวาลที่ดีที่สุด</p>
             </a>
 
-            <a href="#transits" class="bento-card md:col-span-2 min-h-[300px]">
+            <a href="#transits" class="bento-card md:col-span-2 min-h-[350px]">
                 <div>
                     <span class="card-label">EPHEMERIS 04</span>
                     <h2 class="card-title">ดาวย้าย<br>PLANETARY TRANSITS</h2>
                 </div>
-                <p class="text-sm leading-relaxed opacity-60">วิเคราะห์แรงกระเพื่อมจากการย้ายราศีของดาวใหญ่ที่มีผลต่อชะตาชีวิตและสังคม</p>
+                <p class="text-sm leading-relaxed opacity-60">วิเคราะห์แรงกระเพื่อมจากการย้ายราศีของดาวใหญ่ที่มีผลต่อจุดพลิกผันของชะตาชีวิตและสังคม</p>
             </a>
         </div>
     </main>
 
-    <footer class="py-20 text-center border-t border-[#062c1a]/5">
-        <p class="font-cinzel text-[9px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+    <footer class="py-24 text-center border-t border-[#062c1a]/5">
+        <p class="font-cinzel text-[10px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
     </footer>
 
 </body>

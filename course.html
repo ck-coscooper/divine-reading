@@ -21,22 +21,24 @@
         }
 
         /* ── HERO TYPOGRAPHY ── */
-        .hero-title {
+      /* ── ULTIMATE EDITORIAL TITLE ── */
+.hero-title {
     font-family: 'Cinzel', serif;
-    /* ปรับค่าจาก 15vw เหลือ 8vw และลดเพดานสูงสุดลงเพื่อให้คำยาวๆ อย่าง COMMUNITY ไม่แตกบรรทัด */
+    /* จูนตามคำสั่ง: ขยายเร็วและใหญ่พิเศษ */
     font-size: clamp(2.5rem, 12vw, 7rem); 
-    line-height: 1.1; /* เพิ่มระยะบรรทัดให้นุ่มนวลขึ้น ป้องกันตัวหนังสือเบียดกัน */
+    /* ปรับระยะบรรทัดเป็น 1.15 เพื่อรองรับขนาด 7rem ไม่ให้ตัวหนังสือทับกัน */
+    line-height: 1.15; 
     letter-spacing: -0.01em;
     font-weight: 700;
     text-align: center;
 }
 
-     .gold-gradient-text { 
-    background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C); 
+.gold-gradient-text {
+    background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
     -webkit-background-clip: text; 
-    background-clip: text; /* เพิ่มบรรทัดนี้: มาตรฐานสากล */
+    background-clip: text; /* มาตรฐานสากลเพื่อความเข้ากันได้ */
     -webkit-text-fill-color: transparent; 
-    display: inline-block; /* เพิ่มบรรทัดนี้: เพื่อให้ Gradient คำนวณขอบเขตได้แม่นยำขึ้น */
+    display: inline-block;
 }
 
         /* ── EDITORIAL COURSE LIST ── */
@@ -91,10 +93,26 @@
 
         /* ── MOBILE OPTIMIZATION ── */
         @media (max-width: 768px) {
-            .hero-title { font-size: clamp(3rem, 18vw, 6rem); }
-            .course-entry { padding: 35px 0; }
-            .course-meta { min-width: 50px; font-size: 1rem; }
-        }
+    /* ── BENTO MOBILE ── */
+    .bento-container {
+        grid-template-columns: 1fr !important; /* บังคับ 1 แถวเพื่อความหรูหรา */
+        gap: 15px;
+    }
+
+    /* ── HERO TITLE MOBILE: จูนเพื่อความคม ── */
+    .hero-title { 
+        /* ปรับ 18vw ของเดิมลงเหลือ 13vw เพื่อไม่ให้คำยาวๆ แตกบรรทัดใน iPhone */
+        /* และคุมเพดานสูงสุดไว้ที่ 4rem เพื่อให้ดูแพง ไม่ใหญ่จนล้นจอ */
+        font-size: clamp(2.2rem, 13vw, 4rem); 
+        line-height: 1.1; /* เพิ่มช่องไฟไม่ให้ตัวหนังสือขี่กัน */
+        letter-spacing: -0.02em;
+    }
+
+    .bento-card { 
+        min-height: 300px; 
+        padding: 30px 24px; 
+    }
+}
     </style>
 </head>
 <body>
