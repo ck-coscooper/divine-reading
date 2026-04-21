@@ -56,8 +56,23 @@
             border-bottom: 2px solid transparent;
             display: block; 
             padding: 10px clamp(10px, 2.5vw, 22px);
-            font-size: clamp(9px, 2.2vw, 13px); 
-            letter-spacing: clamp(1px, 0.4vw, 3px);
+            @media (max-width: 480px) {
+    nav {
+        background: rgba(4, 31, 19, 0.95);
+        border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
+    }
+    
+    .nav-link {
+        font-size: 11px !important; /* ล็อกขนาดให้กดง่าย */
+        padding: 15px 12px !important;
+        letter-spacing: 1px !important;
+        opacity: 0.8;
+    }
+    
+    .nav-link.active {
+        background: rgba(212, 175, 55, 0.05); /* ไฮไลท์เมนูที่เลือกอยู่ */
+    }
+}
             transition: all 0.3s;
             opacity: 0.65;
             white-space: nowrap;
@@ -181,11 +196,41 @@
 
         /* ── MOBILE ── */
         @media (max-width: 480px) {
-            .crystal-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
+    .article-row, .course-row, .crystal-row {
+        flex-direction: row !important; /* บังคับให้อยู่แถวเดียวกันแต่จัดระเบียบใหม่ */
+        align-items: center;
+        padding: 18px 15px !important;
+        gap: 15px;
+    }
+    
+    .article-info, .course-info, .crystal-info {
+        gap: 15px !important;
+    }
+
+    .article-number, .course-number, .crystal-number {
+        font-size: 16px !important; /* เล็กลงแต่คมชัด */
+        min-width: 25px !important;
+        opacity: 0.6;
+    }
+
+    .article-tag, .course-tag, .crystal-tag {
+        display: none; /* ซ่อน Text บนมือถือเพื่อลดความรก */
+    }
+
+    /* เพิ่มลูกศรเล็กๆ ด้านหลังแทน Text เพื่อให้ดูเหมือน Native App */
+    .article-row::after, .course-row::after, .crystal-row::after {
+        content: "→";
+        position: static; /* ปลดล็อกจากการเป็นกรอบทอง */
+        font-family: 'Inter', sans-serif;
+        color: var(--gold-main);
+        font-size: 14px;
+        opacity: 0.8;
+        background: none;
+        width: auto;
+        height: auto;
+        border: none;
+    }
+
             .crystal-tag {
                 margin-left: 0;
                 padding-left: clamp(28px, 5vw, 40px);
@@ -232,8 +277,7 @@
 <main style="padding:3rem 1.5rem 8rem; position:relative; z-index:1;">
     <div style="margin-bottom:3.5rem; text-align:center;">
         <a href="learn.html" class="back-btn">← BACK TO LEARN</a>
-        <h2 style="font-family:'Cinzel',serif;font-size:clamp(2.2rem,10vw,5rem);letter-spacing:clamp(0.15em,2vw,0.25em);font-weight:700;color:var(--emerald-void);line-height:0.9;">CRYSTALS</h2>
-        <div style="width:44px;height:1px;background:var(--gold-main);margin:20px auto;opacity:0.6;"></div>
+<h2 style="font-family:'Cinzel',serif;font-size:clamp(2rem, 6vw, 3.8rem);letter-spacing:0.25em;font-weight:700;color:var(--emerald-void);line-height:1.2;text-transform:uppercase;">CRYSTALS</h2>        <div style="width:44px;height:1px;background:var(--gold-main);margin:20px auto;opacity:0.6;"></div>
         <p style="color:var(--emerald-void);font-size:clamp(8px,2vw,10px);letter-spacing:0.45em;font-weight:600;opacity:0.5;text-transform:uppercase;">Energy & Sovereign Healing</p>
     </div>
 

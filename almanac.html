@@ -158,30 +158,33 @@
         }
 
         .section-header h2 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 10vw, 5rem);
-            letter-spacing: clamp(0.1em, 2vw, 0.25em);
-            font-weight: 700;
-            color: var(--emerald-void);
-            line-height: 0.9;
-        }
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem); /* เปลี่ยนจาก 10vw เป็น 6vw */
+    letter-spacing: 0.25em;
+    font-weight: 700;
+    color: var(--emerald-void);
+    line-height: 1.2;
+    text-transform: uppercase;
+}
 
         /* ── MOBILE ── */
         @media (max-width: 480px) {
-            .bento-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-                padding: 0 4px;
-            }
-            .bento-item[style*="grid-row: span 2"],
-            .bento-item[style*="grid-column: span 2"] {
-                grid-row: unset !important;
-                grid-column: unset !important;
-                min-height: 150px !important;
-            }
-            main { padding: 2.5rem 1rem 5rem !important; }
-            .section-header { margin-bottom: 2.5rem !important; }
-        }
+    .bento-grid {
+        grid-template-columns: 1fr !important; /* บังคับ 1 คอลัมน์เด็ดขาด */
+        gap: 12px;
+        padding: 0;
+    }
+    /* ยกเลิกการแผ่ขยายของ Card ทุกรูปแบบบนมือถือ */
+    .bento-item, 
+    .bento-item[style*="grid-column"], 
+    .bento-item[style*="grid-row"] {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        min-height: clamp(160px, 40vw, 200px) !important;
+        padding: 24px 20px !important; /* เพิ่มพื้นที่หายใจให้เนื้อหาดูแพง */
+    }
+    main { padding: 2rem 1rem 6rem !important; }
+}
 
         @media (min-width: 481px) and (max-width: 768px) {
             .bento-grid {
@@ -216,7 +219,7 @@
     </div>
     
     <div style="text-align:center;padding:14px 16px 10px;">
-        <h1 class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(1rem,4vw,2.2rem);letter-spacing:clamp(4px,1.5vw,10px);font-weight:700;">THE D'VINE ROOM</h1>
+<h1 class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(1.2rem, 6vw, 2.2rem);letter-spacing:clamp(2px, 1.2vw, 8px);font-weight:700;line-height:1.2;">THE D'VINE ROOM</h1>
         <p class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(7px,1.8vw,11px);letter-spacing:clamp(1px,0.4vw,2px);margin-top:3px;opacity:0.85;">SCARS OF THE DIVINE / AJ. FAAN</p>
     </div>
 
@@ -267,16 +270,18 @@
 
 <script>
     if ('ontouchstart' in window) {
-        document.querySelectorAll('.bento-item').forEach(item => {
-            item.addEventListener('touchstart', () => {
-                item.style.transform = 'scale(0.97)';
-                item.style.transition = 'all 0.12s ease';
-            }, {passive: true});
-            item.addEventListener('touchend', () => {
-                item.style.transform = '';
-                item.style.transition = 'all 0.5s cubic-bezier(0.15, 0.83, 0.66, 1)';
-            }, {passive: true});
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('touchstart', function() {
+            this.style.opacity = '0.5'; // Visual Feedback ทันทีที่แตะ
         });
+        link.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            const destination = this.getAttribute('href');
+            // สร้าง Delay เล็กน้อยเพื่อให้ผู้ใช้เห็น Feedback ก่อนเปลี่ยนหน้า
+            setTimeout(() => { window.location.href = destination; }, 100);
+        });
+    });
+
 
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('touchend', function(e) {
