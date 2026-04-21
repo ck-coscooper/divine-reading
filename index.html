@@ -20,12 +20,12 @@
             overflow-x: hidden;
         }
 
-        /* ── HERO TYPOGRAPHY: จูนใหม่เพื่อความแม่นยำ ── */
+        /* ── HERO TYPOGRAPHY: ULTRA BOLD EDITORIAL ── */
         .hero-title {
             font-family: 'Cinzel', serif;
-            /* ปรับขนาดลงจาก 15vw เป็น 8vw เพื่อไม่ให้ข้อความล้นตกขอบ */
+            /* จูนตามค่าที่ท่านชอบ: ขยายอลังการที่สุด */
             font-size: clamp(2.5rem, 12vw, 7rem); 
-            line-height: 1.1; /* เพิ่มระยะบรรทัดให้นุ่มนวล ป้องกันตัวอักษรทับกัน */
+            line-height: 1.15; 
             letter-spacing: -0.01em;
             font-weight: 700;
             text-align: center;
@@ -34,16 +34,16 @@
         .gold-gradient-text {
             background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
             -webkit-background-clip: text; 
-            background-clip: text; /* มาตรฐานสากลเพื่อความเข้ากันได้ */
+            background-clip: text; 
             -webkit-text-fill-color: transparent; 
-            display: inline-block; /* ช่วยให้ Gradient คำนวณตำแหน่งได้แม่นยำ */
+            display: inline-block;
         }
 
-        /* ── BENTO EDITORIAL ── */
+        /* ── BENTO EDITORIAL GRID ── */
         .bento-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 24px;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
@@ -52,51 +52,58 @@
         .bento-card {
             position: relative;
             background: #ffffff;
-            border: 1px solid rgba(6, 44, 26, 0.08);
-            padding: 40px;
+            border: 1px solid rgba(6, 44, 26, 0.05);
+            padding: 48px 40px;
             min-height: 450px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.7s cubic-bezier(0.2, 1, 0.2, 1);
             text-decoration: none !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
+
+        /* Featured Card Logic (Emerald Authority) */
+        .bento-card.featured {
+            background: var(--emerald);
+            color: var(--ivory);
+        }
+        .bento-card.featured .card-title { color: var(--gold); }
+        .bento-card.featured .card-label { color: var(--gold); opacity: 0.8; }
+        .bento-card.featured p { color: var(--ivory); opacity: 0.8; }
 
         .bento-card:hover {
-            background: var(--emerald);
-            transform: translateY(-10px);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(6, 44, 26, 0.12);
+            border-color: var(--gold);
         }
-
-        .bento-card:hover * { color: #ffffff !important; }
-        .bento-card:hover .gold-gradient-text { -webkit-text-fill-color: #ffffff; }
 
         .card-label {
             font-family: 'Inter', sans-serif;
             font-size: 10px;
-            letter-spacing: 0.5em;
+            letter-spacing: 0.6em;
             text-transform: uppercase;
             color: var(--gold);
+            margin-bottom: 12px;
+            display: block;
         }
 
         .card-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: var(--emerald);
-            margin-top: 10px;
-            line-height: 1.2;
+            line-height: 1.1;
+            font-weight: 700;
         }
 
         /* ── MOBILE OPTIMIZATION ── */
         @media (max-width: 768px) {
-            .bento-container {
-                grid-template-columns: 1fr;
-            }
+            .bento-container { grid-template-columns: 1fr !important; gap: 15px; }
             .hero-title { 
-                /* ขนาดตัวอักษรที่เหมาะสมที่สุดสำหรับมือถือ */
-                font-size: clamp(2rem, 11vw, 3.5rem); 
-                line-height: 1.05;
+                font-size: clamp(2.2rem, 13vw, 4rem); 
+                line-height: 1.1; 
             }
-            .bento-card { min-height: 320px; padding: 30px; }
+            .bento-card { min-height: 320px; padding: 40px 30px; }
         }
     </style>
 </head>
@@ -120,43 +127,43 @@
     </header>
 
     <main class="py-20">
-        <section class="mb-32 px-6">
-            <p class="text-center text-[10px] tracking-[0.8em] uppercase mb-8 opacity-40">The Sovereign Knowledge Archive</p>
+        <section class="mb-32 px-6 text-center">
+            <p class="text-[10px] tracking-[0.8em] uppercase mb-10 opacity-40">The Sovereign Knowledge Archive</p>
             <h1 class="hero-title">THE<br><span class="gold-gradient-text">D'VINE</span><br>ROOM</h1>
             <div class="flex justify-center mt-12">
-                <div class="w-[1px] h-20 bg-[#062c1a]/20"></div>
+                <div class="w-[1px] h-24 bg-[#062c1a]/15"></div>
             </div>
         </section>
 
         <div class="bento-container">
-            <a href="reading.html" class="bento-card">
+            <a href="reading.html" class="bento-card featured">
                 <div>
                     <span class="card-label">SERVICE 01</span>
                     <h2 class="card-title">TAROT<br>READING</h2>
                 </div>
-                <p class="text-sm leading-relaxed opacity-60">สื่อจิตวิญญาณผ่านไพ่พยากรณ์ระดับสูง เพื่อค้นหาความหมายที่ซ่อนอยู่ในการเดินทางของชีวิต</p>
+                <p class="text-sm leading-relaxed">สื่อจิตวิญญาณผ่านไพ่พยากรณ์ระดับสูง เพื่อค้นหาความหมายที่ซ่อนอยู่ในการเดินทางของชีวิต</p>
             </a>
 
-            <div class="bento-card opacity-40 grayscale">
+            <div class="bento-card opacity-40">
                 <div>
                     <span class="card-label">SERVICE 02</span>
                     <h2 class="card-title">LIFE<br>CHART</h2>
                 </div>
-                <p class="text-sm leading-relaxed opacity-60">วิเคราะห์จังหวะชีวิตผ่านดวงดาว (Coming Soon)</p>
+                <p class="text-sm leading-relaxed opacity-60">วิเคราะห์จังหวะชีวิตผ่านพิกัดดวงดาว (Coming Soon)</p>
             </div>
 
-            <div class="bento-card opacity-40 grayscale">
+            <div class="bento-card opacity-40">
                 <div>
                     <span class="card-label">SERVICE 03</span>
                     <h2 class="card-title">SOUL<br>PROFILE</h2>
                 </div>
-                <p class="text-sm leading-relaxed opacity-60">ถอดรหัสศักยภาพที่ฟ้าประทานมาให้คุณ (Coming Soon)</p>
+                <p class="text-sm leading-relaxed opacity-60">ถอดรหัสศักยภาพที่ฟ้าประทานมาเพื่อความสำเร็จของคุณ (Coming Soon)</p>
             </div>
         </div>
     </main>
 
-    <footer class="py-20 text-center border-t border-[#062c1a]/5">
-        <p class="font-cinzel text-[9px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+    <footer class="py-24 text-center border-t border-[#062c1a]/5">
+        <p class="font-cinzel text-[10px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
     </footer>
 
 </body>
