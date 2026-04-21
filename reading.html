@@ -33,16 +33,19 @@
         }
 
         /* ── ULTIMATE EDITORIAL TITLE ── */
+        /* ── ULTIMATE EDITORIAL TITLE (BOLD & COMPACT) ── */
         .hero-title {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 10vw, 7rem);
-            line-height: 1.1;
-            letter-spacing: -0.01em;
+            font-size: clamp(2.8rem, 15vw, 8rem); 
+            /* บีบระยะบรรทัดให้ชิดที่สุด (0.85) เพื่อให้ดูมีอำนาจ */
+            line-height: 0.85; 
+            letter-spacing: -0.05em; 
             font-weight: 700;
             text-align: center;
-            width: 100%;
-            display: block;
-            margin: 0 auto 2rem auto;
+            text-transform: uppercase;
+            /* ขจัดช่องว่างส่วนเกินรอบตัวอักษร */
+            margin-top: 0; 
+            margin-bottom: 0;
         }
 
         .gold-gradient-text {
@@ -270,30 +273,37 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(179, 135, 40, 0.2);
         }
+        /* ── LUXURY SCROLL ── */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
     </style>
 </head>
 <body>
+
 <header class="sticky top-0 z-50 bg-[#062c1a] text-white py-4 px-6 border-b border-[#d4af37]/20">
-    <div class="max-w-[1400px] mx-auto flex justify-between items-center">
-        <a href="index.html" class="text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors">THE D'VINE ROOM</a>
-        
-        <nav class="hidden md:flex gap-8 text-[10px] tracking-[0.3em] font-cinzel opacity-70">
-            <a href="index.html" class="hover:text-[#d4af37]">← HOME</a>
-            <a href="learn.html" class="hover:text-[#d4af37]">LEARN</a>
-            <a href="tarot.html" class="hover:text-[#d4af37]">TAROT</a>
-            <a href="reading.html" class="text-[#d4af37]">READING</a>
-            <a href="almanac.html" class="hover:text-[#d4af37]">ALMANAC</a>
-            <a href="community.html" class="hover:text-[#d4af37]">COMMUNITY</a>
+    <div class="max-w-[1400px] mx-auto">
+        <div class="flex justify-between items-center mb-4 md:mb-2">
+            <a href="index.html" class="text-[10px] md:text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors uppercase">THE D'VINE ROOM</a>
+            <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
+        </div>
+        <nav class="flex overflow-x-auto no-scrollbar gap-4 md:gap-8 text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-cinzel opacity-70 whitespace-nowrap pt-2 md:pt-0 justify-start md:justify-center border-t border-white/5 md:border-none">
+<a href="index.html" class="hidden md:block hover:text-[#d4af37] transition-colors">HOME</a>
+            <a href="learn.html" class="hover:text-[#d4af37] transition-colors">LEARN</a>
+            <a href="tarot.html" class="hover:text-[#d4af37] transition-colors">TAROT</a>
+            <a href="reading.html" class="hover:text-[#d4af37] transition-colors">READING</a>
+            <a href="almanac.html" class="hover:text-[#d4af37] transition-colors">ALMANAC</a>
+            <a href="community.html" class="hover:text-[#d4af37] transition-colors">COMMUNITY</a>
         </nav>
-        
-        <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
+
     </div>
+
 </header>
 
 <main class="py-4"> 
     <section id="step-1">
         <div class="mb-8 px-6 text-center">
-            <p class="text-[10px] tracking-[0.8em] uppercase mb-6 mt-16 opacity-40">The Sovereign Knowledge Archive</p>
+<p class="text-[10px] tracking-[0.2em] uppercase mb-10 opacity-40">Connect with the Divine Sphere</p>
             <h1 class="hero-title !text-3xl md:!text-5xl !mb-0">SOUL THE <span class="gold-gradient-text">COORDINATES</span></h1>
         </div>
 
@@ -374,8 +384,8 @@
         <div class="max-w-5xl mx-auto">
             <div class="flex flex-col md:flex-row gap-16 items-center md:items-start">
                 
-                <div id="result-card-box" class="flex-shrink-0 sticky top-32 w-[280px]">
-                </div>
+                <div id="result-card-box" class="flex-shrink-0 md:sticky md:top-32 w-[280px]">
+</div>
 
                 <div class="flex-grow">
                     <div class="mb-12 border-b border-[#062c1a]/10 pb-8">
@@ -384,8 +394,8 @@
     <p id="res-card-sub" class="font-th-looped text-[18px] md:text-[22px] italic text-[#B38728] tracking-normal opacity-90"></p>
 </div>
                     
-<div id="ai-response" class="font-th-looped font-light leading-[1.9] text-[16px] md:text-[17px] text-[#062c1a]/85 text-justify [text-justify:inter-word] break-words max-w-3xl">
-                        </div>
+<div id="ai-response" class="font-th-looped font-light leading-[2] text-[16px] md:text-[18px] text-[#062c1a]/90 text-left break-words max-w-3xl opacity-95">
+</div>
 
                     <div class="mt-16 flex flex-wrap gap-6 border-t border-[#062c1a]/5 pt-12">
     <button onclick="prepareFollowUp()" class="btn-editorial btn-ask">ASK MORE</button>
@@ -697,7 +707,7 @@
                 setTimeout(function(){ showResult(result); }, 800);
             });
             
-        }, 900); 
+        }, 900);
     }
 
     function fetchDiagnosis() {
@@ -807,7 +817,9 @@
         switchStep('step-4', 'step-2');
     }
 </script>
-
+<footer class="py-20 text-center border-t border-[#062c1a]/5">
+    <p class="font-cinzel text-[10px] tracking-[0.2em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+</footer>
 <script>
 if ('ontouchstart' in window) {
     document.querySelectorAll('.nav-item > a').forEach(function(a) {

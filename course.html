@@ -20,26 +20,27 @@
             overflow-x: hidden;
         }
 
-        /* ── HERO TYPOGRAPHY ── */
-      /* ── ULTIMATE EDITORIAL TITLE ── */
-.hero-title {
-    font-family: 'Cinzel', serif;
-    /* จูนตามคำสั่ง: ขยายเร็วและใหญ่พิเศษ */
-    font-size: clamp(2.5rem, 12vw, 7rem); 
-    /* ปรับระยะบรรทัดเป็น 1.15 เพื่อรองรับขนาด 7rem ไม่ให้ตัวหนังสือทับกัน */
-    line-height: 1.15; 
-    letter-spacing: -0.01em;
-    font-weight: 700;
-    text-align: center;
-}
+        /* ── LUXURY SCROLL: ซ่อนแถบสไลด์เพื่อให้ดูสะอาดตา ── */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-.gold-gradient-text {
-    background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
-    -webkit-background-clip: text; 
-    background-clip: text; /* มาตรฐานสากลเพื่อความเข้ากันได้ */
-    -webkit-text-fill-color: transparent; 
-    display: inline-block;
-}
+        /* ── HERO TYPOGRAPHY ── */
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 12vw, 7rem); 
+            line-height: 1.15; 
+            letter-spacing: -0.01em;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            display: inline-block;
+        }
 
         /* ── EDITORIAL COURSE LIST ── */
         .course-container {
@@ -93,51 +94,37 @@
 
         /* ── MOBILE OPTIMIZATION ── */
         @media (max-width: 768px) {
-    /* ── BENTO MOBILE ── */
-    .bento-container {
-        grid-template-columns: 1fr !important; /* บังคับ 1 แถวเพื่อความหรูหรา */
-        gap: 15px;
-    }
-
-    /* ── HERO TITLE MOBILE: จูนเพื่อความคม ── */
-    .hero-title { 
-        /* ปรับ 18vw ของเดิมลงเหลือ 13vw เพื่อไม่ให้คำยาวๆ แตกบรรทัดใน iPhone */
-        /* และคุมเพดานสูงสุดไว้ที่ 4rem เพื่อให้ดูแพง ไม่ใหญ่จนล้นจอ */
-        font-size: clamp(2.2rem, 13vw, 4rem); 
-        line-height: 1.1; /* เพิ่มช่องไฟไม่ให้ตัวหนังสือขี่กัน */
-        letter-spacing: -0.02em;
-    }
-
-    .bento-card { 
-        min-height: 300px; 
-        padding: 30px 24px; 
-    }
-}
+            .hero-title { 
+                font-size: clamp(2.2rem, 13vw, 4rem); 
+                line-height: 1.1; 
+                letter-spacing: -0.02em;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header class="sticky top-0 z-50 bg-[#062c1a] text-white py-4 px-6 border-b border-[#d4af37]/20">
-        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors duration-300">THE D'VINE ROOM</a>
-            
-            <nav class="hidden md:flex gap-8 text-[10px] tracking-[0.3em] font-cinzel opacity-70">
-                <a href="index.html" class="hover:text-[#d4af37] transition-colors">← HOME</a>
-                <a href="learn.html" class="text-[#d4af37]">LEARN</a>
-                <a href="tarot.html" class="hover:text-[#d4af37]">TAROT</a>
-                <a href="reading.html" class="hover:text-[#d4af37]">READING</a>
-                <a href="almanac.html" class="hover:text-[#d4af37]">ALMANAC</a>
-                <a href="community.html" class="hover:text-[#d4af37]">COMMUNITY</a>
-            </nav>
-            
+    <div class="max-w-[1400px] mx-auto">
+        <div class="flex justify-between items-center mb-4 md:mb-2">
+            <a href="index.html" class="text-[10px] md:text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors uppercase">THE D'VINE ROOM</a>
             <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
         </div>
-    </header>
+        <nav class="flex overflow-x-auto no-scrollbar gap-4 md:gap-8 text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-cinzel opacity-70 whitespace-nowrap pt-2 md:pt-0 justify-start md:justify-center border-t border-white/5 md:border-none">
+<a href="index.html" class="hidden md:block hover:text-[#d4af37] transition-colors">HOME</a>
+            <a href="learn.html" class="hover:text-[#d4af37] transition-colors">LEARN</a>
+            <a href="tarot.html" class="hover:text-[#d4af37] transition-colors">TAROT</a>
+            <a href="reading.html" class="hover:text-[#d4af37] transition-colors">READING</a>
+            <a href="almanac.html" class="hover:text-[#d4af37] transition-colors">ALMANAC</a>
+            <a href="community.html" class="hover:text-[#d4af37] transition-colors">COMMUNITY</a>
+        </nav>
+    </div>
+</header>
 
     <main class="py-20">
         <section class="mb-32 px-6 text-center">
             <a href="learn.html" class="inline-block mb-12 text-[10px] tracking-[0.3em] uppercase opacity-40 hover:opacity-100 transition-opacity">← Back to Archive</a>
-            <p class="text-[10px] tracking-[0.8em] uppercase mb-8 opacity-40">Masterclass & Sovereign Wisdom</p>
+<p class="text-[10px] tracking-[0.2em] uppercase mb-10 opacity-40">Connect with the Divine Sphere</p>
             <h1 class="hero-title">MASTER<br><span class="gold-gradient-text">CLASSES</span></h1>
             <div class="flex justify-center mt-12">
                 <div class="w-[1px] h-20 bg-[#062c1a]/20"></div>
@@ -171,9 +158,9 @@
         </div>
     </main>
 
-    <footer class="py-20 text-center border-t border-[#062c1a]/5">
-        <p class="font-cinzel text-[9px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
-    </footer>
+    <footer class="py-24 text-center border-t border-[#062c1a]/5">
+    <p class="font-cinzel text-[10px] tracking-[0.3em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+</footer>
 
     <script>
         if ('ontouchstart' in window) {

@@ -9,120 +9,142 @@
     <style>
         :root { 
             --ivory: #fcfcf9; 
-            --emerald: #062c1a;
-            --gold: #d4af37;
+            --emerald: #062c1a; 
+            --gold: #d4af37; 
         }
 
         body { 
             background-color: var(--ivory); 
-            color: var(--emerald);
-            font-family: 'IBM Plex Sans Thai', sans-serif;
-            overflow-x: hidden;
+            color: var(--emerald); 
+            font-family: 'IBM Plex Sans Thai', sans-serif; 
+            overflow-x: hidden; 
         }
 
-        /* ── HERO TYPOGRAPHY: REFINED ── */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* ── HERO TITLE: ปรับให้เท่ากับหน้า Learn ── */
         .hero-title {
             font-family: 'Cinzel', serif;
             font-size: clamp(2.5rem, 12vw, 7rem); 
-            line-height: 1.05; 
-            letter-spacing: -0.02em;
+            line-height: 1.15; 
+            letter-spacing: -0.01em;
             font-weight: 700;
             text-align: center;
         }
 
-        .gold-gradient-text {
-            background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
+        .gold-gradient-text { 
+            background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C); 
             -webkit-background-clip: text; 
             background-clip: text; 
             -webkit-text-fill-color: transparent; 
-            display: inline-block;
+            display: inline-block; 
         }
 
-        /* ── BENTO GRID: EDITORIAL CONTRAST ── */
-        .bento-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* ── BENTO GRID: ปรับ Padding ให้สมมาตร ── */
+        .bento-container { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 24px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 20px 80px 20px; 
         }
 
-        .bento-card {
-            position: relative;
-            background: #ffffff;
-            border: 1px solid rgba(6, 44, 26, 0.05);
-            padding: 48px 40px;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.7s cubic-bezier(0.2, 1, 0.2, 1);
-            text-decoration: none !important;
+        .bento-card { 
+            position: relative; 
+            background: #ffffff; 
+            border: 1px solid rgba(6, 44, 26, 0.05); 
+            padding: 48px 40px; 
+            min-height: 400px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            transition: all 0.7s cubic-bezier(0.2, 1, 0.2, 1); 
+            text-decoration: none !important; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
-        /* ปรับ Card 01 ให้โดดเด่นเป็นพิเศษ (Dark Mode Card) */
         .bento-card.featured {
             background: var(--emerald);
             color: var(--ivory);
         }
         .bento-card.featured .card-title { color: var(--gold); }
         .bento-card.featured .card-label { color: var(--gold); opacity: 0.8; }
+        .bento-card.featured p { color: var(--ivory); opacity: 0.8; }
 
-        .bento-card:hover {
-            transform: translateY(-12px);
+        .bento-card:hover { 
+            transform: translateY(-12px); 
             box-shadow: 0 30px 60px rgba(6, 44, 26, 0.12);
             border-color: var(--gold);
         }
 
-        .card-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            letter-spacing: 0.6em;
-            text-transform: uppercase;
-            color: var(--gold);
+        .card-label { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 10px; 
+            letter-spacing: 0.6em; 
+            text-transform: uppercase; 
+            color: var(--gold); 
             margin-bottom: 12px;
             display: block;
         }
 
-        .card-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.4rem;
-            color: var(--emerald);
-            line-height: 1.1;
+        .card-title { 
+            font-family: 'Cinzel', serif; 
+            font-size: 2.4rem; 
+            color: var(--emerald); 
+            line-height: 1.1; 
             font-weight: 700;
+            word-wrap: break-word; /* ป้องกันคำยาวดันขอบ */
         }
 
-        /* ── MOBILE OPTIMIZATION ── */
+        /* ── MOBILE OPTIMIZATION: Fix ตกขอบ ── */
         @media (max-width: 768px) {
-            .bento-container { grid-template-columns: 1fr; }
-            .hero-title { font-size: clamp(2.2rem, 14vw, 4.5rem); }
-            .bento-card { min-height: 320px; padding: 40px 30px; }
-        }
+            .bento-container { 
+                grid-template-columns: 1fr !important; 
+                gap: 16px; 
+                padding: 0 20px 60px 20px;
+            }
+            .hero-title { 
+                font-size: clamp(2.2rem, 13vw, 4rem); 
+            }
+            .bento-card { 
+                min-height: 320px; 
+                padding: 40px 30px; 
+            }
+            .card-title {
+                font-size: 1.8rem; /* ลดขนาดหัวข้อบนมือถือเพื่อไม่ให้ดันขอบ */
+            }
+        } 
     </style>
 </head>
 <body>
 
     <header class="sticky top-0 z-50 bg-[#062c1a] text-white py-4 px-6 border-b border-[#d4af37]/20">
-        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors">THE D'VINE ROOM</a>
-            <nav class="hidden md:flex gap-8 text-[10px] tracking-[0.3em] font-cinzel opacity-70">
-                <a href="index.html" class="hover:text-[#d4af37]">← HOME</a>
-                <a href="learn.html" class="hover:text-[#d4af37]">LEARN</a>
-                <a href="tarot.html" class="hover:text-[#d4af37]">TAROT</a>
-                <a href="reading.html" class="hover:text-[#d4af37]">READING</a>
-                <a href="almanac.html" class="hover:text-[#d4af37]">ALMANAC</a>
-                <a href="community.html" class="text-[#d4af37]">COMMUNITY</a>
+        <div class="max-w-[1400px] mx-auto">
+            <div class="flex justify-between items-center mb-4 md:mb-2">
+                <a href="index.html" class="text-[10px] md:text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors uppercase">THE D'VINE ROOM</a>
+                <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
+            </div>
+            <nav class="flex overflow-x-auto no-scrollbar gap-4 md:gap-8 text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-cinzel opacity-70 whitespace-nowrap pt-2 md:pt-0 justify-start md:justify-center border-t border-white/5 md:border-none">
+                <a href="index.html" class="hidden md:block hover:text-[#d4af37] transition-colors">HOME</a>
+                <a href="learn.html" class="hover:text-[#d4af37] transition-colors">LEARN</a>
+                <a href="tarot.html" class="hover:text-[#d4af37] transition-colors">TAROT</a>
+                <a href="reading.html" class="hover:text-[#d4af37] transition-colors">READING</a>
+                <a href="almanac.html" class="hover:text-[#d4af37] transition-colors">ALMANAC</a>
+                <a href="community.html" class="text-[#d4af37] transition-colors">COMMUNITY</a>
             </nav>
-            <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
         </div>
     </header>
 
     <main class="py-20">
         <section class="mb-32 px-6 text-center">
-            <p class="text-[10px] font-semibold tracking-[0.8em] uppercase mb-10 opacity-50">Connect with the Divine Sphere</p>
-            <h1 class="hero-title">SACRED<br><span class="gold-gradient-text">COMMUNITY</span></h1>
+            <p class="text-[10px] tracking-[0.2em] uppercase mb-10 opacity-40">Connect with the Divine Sphere</p>
+            <h1 class="hero-title">
+                SACRED<br>
+                COMMU<br>
+                <span class="gold-gradient-text">NITY</span>
+            </h1>
             <div class="flex justify-center mt-12">
                 <div class="w-[1px] h-24 bg-[#062c1a]/15"></div>
             </div>
@@ -134,7 +156,7 @@
                     <span class="card-label">SOCIAL 01</span>
                     <h2 class="card-title">FACEBOOK<br>INSIGHTS</h2>
                 </div>
-                <p class="text-sm leading-relaxed opacity-80">ร่วมเป็นส่วนหนึ่งของสังคมแห่งการแลกเปลี่ยนความรู้และบทวิเคราะห์ชะตาผ่านมวลประสบการณ์จริง</p>
+                <p class="text-sm leading-relaxed">ร่วมเป็นส่วนหนึ่งของสังคมแห่งการแลกเปลี่ยนความรู้และบทวิเคราะห์ชะตาผ่านมวลประสบการณ์จริงจากกุนซือ</p>
             </a>
 
             <a href="https://line.me/ti/p/eXjhz7XZDX" target="_blank" class="bento-card">
@@ -164,7 +186,7 @@
     </main>
 
     <footer class="py-24 text-center border-t border-[#062c1a]/5">
-        <p class="font-cinzel text-[10px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+        <p class="font-cinzel text-[10px] tracking-[0.3em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
     </footer>
 
 </body>

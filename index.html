@@ -20,10 +20,13 @@
             overflow-x: hidden;
         }
 
+        /* ── LUXURY SCROLL: ซ่อนแถบสไลด์เพื่อให้ดูสะอาดตา ── */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         /* ── HERO TYPOGRAPHY: ULTRA BOLD EDITORIAL ── */
         .hero-title {
             font-family: 'Cinzel', serif;
-            /* จูนตามค่าที่ท่านชอบ: ขยายอลังการที่สุด */
             font-size: clamp(2.5rem, 12vw, 7rem); 
             line-height: 1.15; 
             letter-spacing: -0.01em;
@@ -63,7 +66,6 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
-        /* Featured Card Logic (Emerald Authority) */
         .bento-card.featured {
             background: var(--emerald);
             color: var(--ivory);
@@ -96,7 +98,6 @@
             font-weight: 700;
         }
 
-        /* ── MOBILE OPTIMIZATION ── */
         @media (max-width: 768px) {
             .bento-container { grid-template-columns: 1fr !important; gap: 15px; }
             .hero-title { 
@@ -110,25 +111,25 @@
 <body>
 
     <header class="sticky top-0 z-50 bg-[#062c1a] text-white py-4 px-6 border-b border-[#d4af37]/20">
-        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors">THE D'VINE ROOM</a>
-            
-            <nav class="hidden md:flex gap-8 text-[10px] tracking-[0.3em] font-cinzel opacity-70">
-                <a href="index.html" class="text-[#d4af37]">← HOME</a>
-                <a href="learn.html" class="hover:text-[#d4af37]">LEARN</a>
-                <a href="tarot.html" class="hover:text-[#d4af37]">TAROT</a>
-                <a href="reading.html" class="hover:text-[#d4af37]">READING</a>
-                <a href="almanac.html" class="hover:text-[#d4af37]">ALMANAC</a>
-                <a href="community.html" class="hover:text-[#d4af37]">COMMUNITY</a>
-            </nav>
-            
+    <div class="max-w-[1400px] mx-auto">
+        <div class="flex justify-between items-center mb-4 md:mb-2">
+            <a href="index.html" class="text-[10px] md:text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors uppercase">THE D'VINE ROOM</a>
             <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
         </div>
-    </header>
+        <nav class="flex overflow-x-auto no-scrollbar gap-4 md:gap-8 text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-cinzel opacity-70 whitespace-nowrap pt-2 md:pt-0 justify-start md:justify-center border-t border-white/5 md:border-none">
+<a href="index.html" class="hidden md:block hover:text-[#d4af37] transition-colors">HOME</a>
+            <a href="learn.html" class="hover:text-[#d4af37] transition-colors">LEARN</a>
+            <a href="tarot.html" class="hover:text-[#d4af37] transition-colors">TAROT</a>
+            <a href="reading.html" class="hover:text-[#d4af37] transition-colors">READING</a>
+            <a href="almanac.html" class="hover:text-[#d4af37] transition-colors">ALMANAC</a>
+            <a href="community.html" class="hover:text-[#d4af37] transition-colors">COMMUNITY</a>
+        </nav>
+    </div>
+</header>
 
     <main class="py-20">
         <section class="mb-32 px-6 text-center">
-            <p class="text-[10px] tracking-[0.8em] uppercase mb-10 opacity-40">The Sovereign Knowledge Archive</p>
+<p class="text-[10px] tracking-[0.2em] uppercase mb-10 opacity-40">Connect with the Divine Sphere</p>
             <h1 class="hero-title">THE<br><span class="gold-gradient-text">D'VINE</span><br>ROOM</h1>
             <div class="flex justify-center mt-12">
                 <div class="w-[1px] h-24 bg-[#062c1a]/15"></div>
@@ -163,8 +164,8 @@
     </main>
 
     <footer class="py-24 text-center border-t border-[#062c1a]/5">
-        <p class="font-cinzel text-[10px] tracking-[1em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
-    </footer>
+    <p class="font-cinzel text-[10px] tracking-[0.3em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+</footer>
 
 </body>
 </html>
