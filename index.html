@@ -20,20 +20,23 @@
             overflow-x: hidden;
         }
 
-        /* ── HERO TYPOGRAPHY ── */
+        /* ── HERO TYPOGRAPHY: จูนใหม่เพื่อความแม่นยำ ── */
         .hero-title {
             font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 15vw, 9rem); /* ขนาดใหญ่ยักษ์แบบ Editorial */
-            line-height: 0.85;
-            letter-spacing: -0.02em;
+            /* ปรับขนาดลงจาก 15vw เป็น 8vw เพื่อไม่ให้ข้อความล้นตกขอบ */
+            font-size: clamp(2.5rem, 12vw, 7rem); 
+            line-height: 1.1; /* เพิ่มระยะบรรทัดให้นุ่มนวล ป้องกันตัวอักษรทับกัน */
+            letter-spacing: -0.01em;
             font-weight: 700;
             text-align: center;
         }
 
         .gold-gradient-text {
             background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; 
+            background-clip: text; /* มาตรฐานสากลเพื่อความเข้ากันได้ */
+            -webkit-text-fill-color: transparent; 
+            display: inline-block; /* ช่วยให้ Gradient คำนวณตำแหน่งได้แม่นยำ */
         }
 
         /* ── BENTO EDITORIAL ── */
@@ -77,18 +80,23 @@
 
         .card-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--emerald);
             margin-top: 10px;
+            line-height: 1.2;
         }
 
         /* ── MOBILE OPTIMIZATION ── */
         @media (max-width: 768px) {
             .bento-container {
-                grid-template-columns: 1fr; /* บังคับ 1 คอลัมน์เด็ดขาด */
+                grid-template-columns: 1fr;
             }
-            .hero-title { font-size: clamp(3rem, 18vw, 5rem); }
-            .bento-card { min-height: 300px; padding: 30px; }
+            .hero-title { 
+                /* ขนาดตัวอักษรที่เหมาะสมที่สุดสำหรับมือถือ */
+                font-size: clamp(2rem, 11vw, 3.5rem); 
+                line-height: 1.05;
+            }
+            .bento-card { min-height: 320px; padding: 30px; }
         }
     </style>
 </head>
@@ -96,15 +104,18 @@
 
     <header class="sticky top-0 z-50 bg-[#062c1a] text-white py-4 px-6 border-b border-[#d4af37]/20">
         <div class="max-w-[1400px] mx-auto flex justify-between items-center">
-            <div class="text-xs tracking-[0.4em] font-cinzel">THE D'VINE ROOM</div>
+            <a href="index.html" class="text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors">THE D'VINE ROOM</a>
+            
             <nav class="hidden md:flex gap-8 text-[10px] tracking-[0.3em] font-cinzel opacity-70">
-                <a href="learn.html">LEARN</a>
-                <a href="tarot.html">TAROT</a>
-                <a href="reading.html" class="text-[#d4af37]">READING</a>
-                <a href="almanac.html">ALMANAC</a>
-                <a href="almanac.html">COMMUNITY</a>
+                <a href="index.html" class="text-[#d4af37]">← HOME</a>
+                <a href="learn.html" class="hover:text-[#d4af37]">LEARN</a>
+                <a href="tarot.html" class="hover:text-[#d4af37]">TAROT</a>
+                <a href="reading.html" class="hover:text-[#d4af37]">READING</a>
+                <a href="almanac.html" class="hover:text-[#d4af37]">ALMANAC</a>
+                <a href="community.html" class="hover:text-[#d4af37]">COMMUNITY</a>
             </nav>
-            <div class="text-[9px] border border-[#d4af37]/40 px-3 py-1">SIGN UP</div>
+            
+            <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
         </div>
     </header>
 

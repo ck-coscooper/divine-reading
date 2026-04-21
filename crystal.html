@@ -22,19 +22,22 @@
 
         /* ── HERO TYPOGRAPHY ── */
         .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 15vw, 9rem);
-            line-height: 0.85;
-            letter-spacing: -0.02em;
-            font-weight: 700;
-            text-align: center;
-        }
+    font-family: 'Cinzel', serif;
+    /* ปรับค่าจาก 15vw เหลือ 8vw และลดเพดานสูงสุดลงเพื่อให้คำยาวๆ อย่าง COMMUNITY ไม่แตกบรรทัด */
+    font-size: clamp(2.5rem, 12vw, 7rem); 
+    line-height: 1.1; /* เพิ่มระยะบรรทัดให้นุ่มนวลขึ้น ป้องกันตัวหนังสือเบียดกัน */
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    text-align: center;
+}
 
-        .gold-gradient-text {
-            background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+   .gold-gradient-text { 
+    background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C); 
+    -webkit-background-clip: text; 
+    background-clip: text; /* เพิ่มบรรทัดนี้: มาตรฐานสากล */
+    -webkit-text-fill-color: transparent; 
+    display: inline-block; /* เพิ่มบรรทัดนี้: เพื่อให้ Gradient คำนวณขอบเขตได้แม่นยำขึ้น */
+}
 
         /* ── EDITORIAL CRYSTAL LIST ── */
         .crystal-container {
