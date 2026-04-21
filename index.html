@@ -196,10 +196,10 @@
   
   <!-- ritual circles -->
 <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
-  <svg width="600" height="600" viewBox="0 0 600 600">
-    <g opacity="0.12">
-      <circle cx="300" cy="300" r="220" fill="none" stroke="#D4AF37" stroke-width="0.3" stroke-dasharray="2 12"/>
-      <circle cx="300" cy="300" r="160" fill="none" stroke="#D4AF37" stroke-width="0.5" stroke-dasharray="1 6"/>
+  <svg width="600" height="600" viewBox="0 0 600 600" style="opacity:0.4;">
+<g opacity="0.4">
+      <circle cx="300" cy="300" r="280" fill="none" stroke="#D4AF37" stroke-width="0.8" stroke-dasharray="4 8"/>
+      <circle cx="300" cy="300" r="220" fill="none" stroke="#D4AF37" stroke-width="0.3" stroke-dasharray="2 12"/>      <circle cx="300" cy="300" r="160" fill="none" stroke="#D4AF37" stroke-width="0.5" stroke-dasharray="1 6"/>
       <circle cx="300" cy="300" r="100" fill="none" stroke="#D4AF37" stroke-width="0.3"/>
       <line x1="300" y1="20" x2="300" y2="60" stroke="#D4AF37" stroke-width="1" opacity="0.6"/>
       <line x1="300" y1="540" x2="300" y2="580" stroke="#D4AF37" stroke-width="1" opacity="0.6"/>
@@ -208,16 +208,7 @@
     </g>
 <circle cx="300" cy="300" r="295" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-dasharray="5 10 2 6 3 14" stroke-linecap="round" opacity="0.9" filter="url(#outerGlow)">    <animateTransform attributeName="transform" type="rotate" from="0 300 300" to="360 300 300" dur="25s" repeatCount="indefinite"/>
     </circle>
-  </svg>
-</div>
-
-<defs>
-  <filter id="outerGlow">
-    <feGaussianBlur stdDeviation="2.5" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-</defs>
-</svg>
+   </svg>
 </div>
 
 <!-- spinning inner rings -->
@@ -225,10 +216,10 @@
 <div style="position:absolute;width:130px;height:130px;border-radius:50%;border:1px solid rgba(212,175,55,0.1);border-bottom-color:rgba(212,175,55,0.5);animation:ritualSpinR 12s linear infinite;pointer-events:none;"></div>
 
   <!-- center content -->
-<div style="position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 24px;margin-top:-120px;">
-        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:6px;color:rgba(212,175,55,0.5);text-transform:uppercase;margin:0;">THE ORACLE</p>
+<div style="position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 24px;margin-top:clamp(-80px,-10vh,-20px);">
+            <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:6px;color:rgba(212,175,55,0.5);text-transform:uppercase;margin:0;">THE ORACLE</p>
 
-    <div id="orb-percent" style="font-family:'Cinzel',serif;font-size:clamp(3.5rem,10vw,7rem);color:#D4AF37;font-weight:700;line-height:1;background:linear-gradient(to bottom,#FCF6BA,#D4AF37,#AA771C);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">0%</div>
+    <div id="orb-percent" style="font-family:'Cinzel',serif;font-size:clamp(2.8rem,10vw,7rem);color:#D4AF37;font-weight:700;line-height:1;background:linear-gradient(to bottom,#FCF6BA,#D4AF37,#AA771C);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">0%</div>
 
     <div style="width:200px;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.6),transparent);margin:4px 0;"></div>
 
@@ -246,14 +237,13 @@
 <section id="step-4" class="hidden-step w-full max-w-7xl flex flex-col lg:flex-row items-start justify-center gap-12 p-4 py-10">
     <div id="result-card-box" class="flex-shrink-0 fade-in self-center lg:self-start lg:sticky lg:top-28"></div>
 
-    <div class="flex-grow space-y-8 p-8 md:p-14 rounded-2xl max-w-2xl fade-in" style="background:#f5f0e8;border:1px solid rgba(212,175,55,0.3);box-shadow:0 0 40px rgba(0,0,0,0.2);" style="animation-delay: 0.3s">                
-        <div class="border-l-4 border-yellow-400 pl-8">
-            <span class="text-[10px] text-yellow-400/60 uppercase tracking-[4px] font-bold mb-2 block">Diagnostic Diagnosis</span>
-            <h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel uppercase font-bold leading-tight" style="color:#8B6914;font-family:'Cinzel',serif;"></h2>
-            <p id="res-card-sub" class="text-lg text-white/70 italic font-light mt-1"></p>
-        </div>
-
-        <div id="ai-response" class="text-[16px] leading-[1.9] font-light space-y-4" style="color:#1a2e1a;"></div>
+   <div class="flex-grow space-y-8 p-8 md:p-14 rounded-2xl max-w-2xl fade-in" style="background:linear-gradient(180deg,rgba(6,44,26,0.99) 0%,rgba(4,31,19,0.97) 100%);border:1px solid rgba(212,175,55,0.28);box-shadow:0 4px 30px rgba(0,0,0,0.3);">                
+<div class="border-l-4 pl-8" style="border-image:linear-gradient(to bottom,#BF953F,#FCF6BA,#B38728,#FBF5B7,#AA771C) 1;">
+<span class="text-[10px] uppercase tracking-[4px] font-bold mb-2 block" style="color:rgba(245, 245, 110, 0.6);">Diagnostic Diagnosis</span>
+<h2 id="res-card-name" class="text-4xl md:text-5xl font-cinzel uppercase font-bold leading-tight gold-gradient-text" style="font-family:'Cinzel',serif;"></h2>    
+<p id="res-card-sub" class="text-2xl italic font-light mt-1" style="color:rgba(218, 218, 123, 0.85);"></p>
+</div>
+<div id="ai-response" class="text-[16px] leading-[1.9] font-light space-y-4" style="color:rgba(252,252,249,0.85);"></div>
 
         <div class="pt-8 border-t border-yellow-900/10 flex flex-wrap justify-between items-center gap-3">
             <div class="flex flex-wrap gap-3">
@@ -504,38 +494,44 @@ setTimeout(function(){ document.getElementById('rc3').style.animationPlayState='
 // progress orb
 var pct = 0;
 var orbTimer = setInterval(function(){
-    pct = Math.min(pct + Math.floor(Math.random()*4)+1, 94);
+    pct = Math.min(pct + Math.floor(Math.random()*2)+1, 99);
     var el = document.getElementById('orb-percent');
-    if(el) el.innerText = pct + '%';
+    if(el) {
+        el.innerText = pct + '%';
+        if(pct >= 99) {
+            el.style.animation = 'goldPulse 1s infinite';
+        }
+    }
 }, 400);
 
 // scan logs
 var scanLogs = [
-    "INITIALIZING SPECTRUM ANALYSIS...",
-    "EXTRACTING BIRTH COORDINATES: " + state.birthInfo,
-    "LOCKED ON CELESTIAL ALIGNMENT...",
-    "DECODING CARD RESONANCE: " + state.card.name,
-    "SCANNING SOUL ARCHITECTURE...",
-    "IDENTIFYING LIFE IMPRINTS...",
-    "SYNCING AUTHORITY DATA NODES...",
-    "FINALIZING DIAGNOSIS..."
+    "AWAKENING THE ORACLE...",
+    "READING CELESTIAL COORDINATES: " + state.birthInfo,
+    "ALIGNING WITH THE STARS...",
+    "THE CARD SPEAKS: " + state.card.name,
+    "DECODING YOUR SOUL SIGNATURE...",
+    "TRACING THE THREADS OF FATE...",
+    "THE UNIVERSE IS LISTENING...",
+    "TRUTH IS BEING REVEALED..."
 ];
+
 var logIdx = 0;
 var statusTxt1 = document.getElementById('txt-scan1');
 var statusTxt2 = document.getElementById('txt-scan2');
 if (logInterval) clearInterval(logInterval);
 logInterval = setInterval(function(){
     statusTxt1.innerText = scanLogs[logIdx];
-    statusTxt2.innerText = "PROCESSING NODE " + (logIdx+1) + "/8 [" + Math.floor(Math.random()*100) + "%]";
+   statusTxt2.innerText = "RESONANCE " + Math.floor(Math.random()*100) + "% · SIGNAL LOCKED";
     logIdx++;
-    if (logIdx >= scanLogs.length) logIdx = scanLogs.length - 1;
+if (logIdx >= scanLogs.length) logIdx = 0;
 }, 1500);
 
 fetchDiagnosis().then(function(result) {
     clearInterval(logInterval);
     clearInterval(orbTimer);
     var el = document.getElementById('orb-percent');
-    if(el) el.innerText = '100%';
+if(el) { el.innerText = '100%'; el.style.animation = 'none'; }
     setTimeout(function(){ showResult(result); }, 400);
 });
 
