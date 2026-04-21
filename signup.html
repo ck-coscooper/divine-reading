@@ -3,262 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE D'VINE ROOM | Sign Up</title>
+    <title>THE D'VINE ROOM | Join Us</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --ivory-bg: #fcfcf9; 
-            --emerald-void: #062c1a;
-            --emerald-deep: #041f13;
-            --gold-main: #d4af37;
-            --gold-bright: #f5d67b;
-            --gold-line: rgba(212,175,55,0.25);
-        }
-
-        * { box-sizing:border-box; margin:0; padding:0; text-decoration:none !important; }
-        html, body { overflow-x:hidden; width:100%; min-height:100vh; }
-        
-        body { 
-            background-color: var(--ivory-bg); 
-            color: var(--emerald-void); 
-            font-family: 'IBM Plex Sans Thai', sans-serif; 
-            -webkit-font-smoothing: antialiased; 
-            display: flex; flex-direction: column;
-        }
-
-        body::before { 
-            content:''; position:fixed; inset:0; opacity:0.12; 
-            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
-            pointer-events:none; z-index:0; 
-        }
-
-        .gold-text { 
-            background: linear-gradient(to bottom, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); 
-            -webkit-background-clip: text; 
-            background-clip: text;
-            -webkit-text-fill-color: transparent; 
-        }
-        
-        header {
-            background: linear-gradient(180deg, rgba(6,44,26,0.99) 0%, rgba(4,31,19,0.97) 100%);
-            border-bottom: 1px solid var(--gold-line);
-            padding: clamp(12px, 3vw, 18px) 0;
-            z-index: 10;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-        }
-
-        .auth-card {
-            background: var(--emerald-void);
-            background-image: 
-                radial-gradient(circle at 0% 0%, rgba(212,175,55,0.08) 0%, transparent 50%),
-                url("https://www.transparenttextures.com/patterns/asfalt-dark.png"), 
-                linear-gradient(145deg, var(--emerald-void) 0%, var(--emerald-deep) 100%);
-            border: 1px solid var(--gold-line); 
-            padding: clamp(30px, 6vw, 50px) clamp(20px, 5vw, 40px);
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            margin: clamp(16px, 4vw, 40px) auto;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-            z-index: 1;
-        }
-
-        .auth-card::before {
-            content: ""; position: absolute; inset: 12px;
-            border: 1px solid rgba(212,175,55,0.1);
-            pointer-events: none; z-index: 2;
-        }
-
-        .section-divider {
-            border-top: 1px solid rgba(212,175,55,0.15);
-            margin: clamp(20px, 4vw, 30px) 0 clamp(18px, 3vw, 25px);
-            padding-top: clamp(18px, 3vw, 25px);
-            position: relative;
-        }
-
-        .input-label {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(8px, 1.8vw, 9px);
-            font-weight: 600; 
-            letter-spacing: 2px;
-            color: var(--gold-main); 
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input {
-            width: 100%;
-            background: rgba(255,255,255,0.03) !important;
-            border: 1px solid rgba(212,175,55,0.2) !important;
-            color: #ffffff !important;
-            padding: clamp(10px, 2vw, 12px) 14px !important;
-            font-family: 'IBM Plex Sans Thai', sans-serif;
-            /* ป้องกัน iOS zoom เมื่อ focus */
-            font-size: max(16px, 14px) !important;
-            transition: all 0.4s ease;
-            border-radius: 1px;
-        }
-
-        input:focus {
-            outline: none;
-            background: rgba(255,255,255,0.06) !important;
-            border-color: var(--gold-main) !important;
-            box-shadow: 0 0 15px rgba(212,175,55,0.1);
-        }
-
-        .btn-create {
-            width: 100%;
-            padding: clamp(13px, 3vw, 16px);
-            border: none;
-            cursor: pointer;
-            background: linear-gradient(45deg, #B38728, #FBF5B7, #AA771C);
-            color: var(--emerald-deep);
-            font-family: 'Cinzel', serif;
-            font-size: clamp(10px, 2vw, 11px);
-            font-weight: 800;
-            letter-spacing: clamp(2px, 0.5vw, 3px);
-            transition: all 0.4s ease;
-            margin-top: clamp(16px, 3vw, 20px);
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        @media (hover: hover) {
-            .btn-create:hover { transform: translateY(-2px); filter: brightness(1.1); }
-        }
-
-        .footer-link {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(10px, 2vw, 11px);
-            letter-spacing: 2px;
-            color: var(--emerald-void);
-            opacity: 0.5;
-            transition: 0.3s;
-        }
-
-        /* ── MOBILE ── */
-        @media (max-width: 480px) {
-            .auth-card {
-                padding: 32px 20px;
-                border: none;
-                background: none;
-                background-image: none;
-                box-shadow: none;
-                margin: 0 auto;
-            }
-            .auth-card::before { display: none; }
-            body { background-color: var(--emerald-void); }
-            body::before { display: none; }
-            .footer-link { color: #fff; opacity: 0.5; }
-        }
-
-        @media (min-width: 481px) and (max-width: 640px) {
-            .auth-card { padding: 36px 28px; margin: 10px auto; }
-        }
+        :root { --ivory: #fcfcf9; --emerald: #062c1a; --gold: #d4af37; }
+        body { background-color: var(--ivory); font-family: 'IBM Plex Sans Thai', sans-serif; height: 100vh; display: flex; flex-direction: column; }
+        input { border: none !important; border-bottom: 1px solid rgba(6, 44, 26, 0.1) !important; background: transparent !important; padding: 12px 0 !important; width: 100%; outline: none; font-size: 14px; }
+        input:focus { border-bottom-color: var(--gold) !important; }
+        .btn-auth { background: var(--gold); color: var(--emerald); padding: 16px; font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 11px; font-weight: 700; width: 100%; margin-top: 2rem; }
     </style>
 </head>
 <body>
-
-<header>
-    <div style="text-align:center;padding:0 16px;">
-        <h1 class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(1rem,4vw,1.4rem);letter-spacing:clamp(4px,1.5vw,10px);font-weight:700;">THE D'VINE ROOM</h1>
-    </div>
-</header>
-
-<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(12px,3vw,20px);position:relative;z-index:1;">
-    
-    <div class="auth-card">
-        <div style="text-align:center;margin-bottom:clamp(22px,4vw,35px);">
-            <h2 style="font-family:'Cinzel',serif;font-size:clamp(1rem,4vw,1.1rem);letter-spacing:clamp(3px,1vw,5px);color:var(--gold-bright);">SIGN UP</h2>
-            <p style="font-size:clamp(10px,2vw,11px);color:rgba(255,255,255,0.4);margin-top:8px;letter-spacing:1px;">Join the Circle of Sovereignty</p>
+    <header class="bg-[#062c1a] py-4 px-6 border-b border-[#d4af37]/20">
+        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xs text-white tracking-[0.4em] font-cinzel">THE D'VINE ROOM</a>
+            <a href="index.html" class="text-white text-[10px] tracking-[0.2em] font-cinzel opacity-70">← BACK TO HOME</a>
         </div>
-
-        <div style="display:grid;gap:clamp(14px,3vw,20px);">
-            <div>
-                <label class="input-label">Full Name</label>
-                <input type="text" placeholder="ระบุชื่อ-นามสกุลของท่าน" autocomplete="name">
+    </header>
+    <main class="flex-grow flex items-center justify-center px-6">
+        <div class="w-full max-w-sm">
+            <div class="text-center mb-10">
+                <h1 class="font-cinzel text-3xl tracking-[0.2em] mb-4 text-[#062c1a]">CREATE ACCOUNT</h1>
+                <p class="text-[10px] tracking-[0.3em] uppercase opacity-40">Join the sovereign knowledge circle</p>
             </div>
-            <div>
-                <label class="input-label">Email Address</label>
-                <input type="email" placeholder="your@email.com" autocomplete="email" inputmode="email">
-            </div>
-            <div>
-                <label class="input-label">Secure Password</label>
-                <input type="password" placeholder="••••••••••••" autocomplete="new-password">
-            </div>
+            <form class="space-y-6">
+                <div><label class="text-[9px] font-bold tracking-widest uppercase opacity-60">Full Name</label><input type="text" placeholder="John Doe"></div>
+                <div><label class="text-[9px] font-bold tracking-widest uppercase opacity-60">Email Address</label><input type="email" placeholder="email@example.com"></div>
+                <div><label class="text-[9px] font-bold tracking-widest uppercase opacity-60">Password</label><input type="password" placeholder="Create Password"></div>
+                <button type="submit" class="btn-auth">SIGN UP NOW</button>
+            </form>
+            <div class="mt-8 text-center"><a href="signin.html" class="text-[10px] tracking-[0.2em] opacity-40 hover:opacity-100 transition-opacity uppercase">Already have an account? Sign In</a></div>
         </div>
-
-        <div class="section-divider">
-            <p style="font-family:'Cinzel',serif;font-size:clamp(9px,2vw,10px);letter-spacing:clamp(2px,0.6vw,4px);color:var(--gold-main);margin-bottom:clamp(14px,3vw,20px);text-align:center;">Birth Coordinates</p>
-            
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,2vw,12px);margin-bottom:clamp(10px,2vw,15px);">
-                <div>
-                    <label class="input-label" style="font-size:clamp(7px,1.5vw,8px);letter-spacing:1px;">Day</label>
-                    <input type="number" placeholder="DD" min="1" max="31" inputmode="numeric">
-                </div>
-                <div>
-                    <label class="input-label" style="font-size:clamp(7px,1.5vw,8px);letter-spacing:1px;">Month</label>
-                    <input type="number" placeholder="MM" min="1" max="12" inputmode="numeric">
-                </div>
-                <div>
-                    <label class="input-label" style="font-size:clamp(7px,1.5vw,8px);letter-spacing:1px;">Year (BE)</label>
-                    <input type="text" placeholder="25XX" inputmode="numeric">
-                </div>
-            </div>
-
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,2vw,12px);margin-bottom:clamp(10px,2vw,15px);">
-                <div>
-                    <label class="input-label" style="font-size:clamp(7px,1.5vw,8px);letter-spacing:1px;">Hour</label>
-                    <input type="number" placeholder="HH" min="0" max="23" inputmode="numeric">
-                </div>
-                <div>
-                    <label class="input-label" style="font-size:clamp(7px,1.5vw,8px);letter-spacing:1px;">Minute</label>
-                    <input type="number" placeholder="MM" min="0" max="59" inputmode="numeric">
-                </div>
-            </div>
-
-            <div>
-                <label class="input-label" style="font-size:clamp(7px,1.5vw,8px);letter-spacing:1px;">Location of Birth</label>
-                <input type="text" placeholder="City, Province, Country">
-            </div>
-        </div>
-
-        <button onclick="handleSignup()" class="btn-create">CREATE ACCOUNT</button>
-
-        <div style="margin-top:clamp(18px,3vw,25px);text-align:center;">
-            <p style="font-size:clamp(10px,2vw,11px);color:rgba(255,255,255,0.4);">Already a member? 
-                <a href="signin.html" style="color:var(--gold-main);font-weight:700;margin-left:5px;">Sign In</a>
-            </p>
-        </div>
-    </div>
-
-    <a href="index.html" class="footer-link" style="margin-top:clamp(14px,3vw,20px);">← RETURN HOME</a>
-</div>
-
-<!-- Modal -->
-<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(10px);padding:20px;">
-    <div style="background:var(--emerald-void);border:1px solid var(--gold-main);padding:clamp(30px,6vw,50px) clamp(20px,5vw,40px);max-width:400px;width:100%;text-align:center;">
-        <h3 style="font-family:'Cinzel',serif;font-size:clamp(0.95rem,3.5vw,1.1rem);letter-spacing:clamp(2px,0.8vw,4px);color:var(--gold-main);margin-bottom:16px;">COMING SOON</h3>
-        <p style="font-size:clamp(12px,2.5vw,13px);color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:clamp(20px,4vw,30px);">
-            Celestial registration is being calibrated.<br>Leave your email to be the first to enter.
-        </p>
-        <input type="email" id="waitlist-email" placeholder="your@email.com" inputmode="email" style="margin-bottom:16px;">
-        <button onclick="saveEmail()" class="btn-create" style="margin-top:0;">NOTIFY ME</button>
-        <button onclick="closeModal()" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.3);font-size:10px;margin-top:16px;letter-spacing:2px;display:block;width:100%;">DISMISS</button>
-    </div>
-</div>
-
-<script>
-function handleSignup() { document.getElementById('modal').style.display = 'flex'; }
-function closeModal() { document.getElementById('modal').style.display = 'none'; }
-function saveEmail() {
-    var email = document.getElementById('waitlist-email').value;
-    if (!email || !email.includes('@')) { alert('Please enter a valid celestial address.'); return; }
-    alert('Recorded. We will notify you when the gateway opens.');
-    closeModal();
-}
-</script>
-
+    </main>
 </body>
 </html>
