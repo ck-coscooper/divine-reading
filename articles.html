@@ -48,6 +48,7 @@
             box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         }
 
+        /* --- Master Locked Navigation --- */
         .nav-link { 
             font-family: 'Cinzel', serif;
             font-weight: 700;
@@ -56,31 +57,31 @@
             border-bottom: 2px solid transparent;
             display: block; 
             padding: 10px clamp(10px, 2.5vw, 22px);
-            @media (max-width: 480px) {
-    nav {
-        background: rgba(4, 31, 19, 0.95);
-        border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
-    }
-    
-    .nav-link {
-        font-size: 11px !important; /* ล็อกขนาดให้กดง่าย */
-        padding: 15px 12px !important;
-        letter-spacing: 1px !important;
-        opacity: 0.8;
-    }
-    
-    .nav-link.active {
-        background: rgba(212, 175, 55, 0.05); /* ไฮไลท์เมนูที่เลือกอยู่ */
-    }
-}
+            font-size: clamp(9px, 2.2vw, 13px); 
+            letter-spacing: clamp(1px, 0.4vw, 3px);
             transition: all 0.3s;
             opacity: 0.65;
             white-space: nowrap;
         }
+
         .nav-link:hover, .nav-link.active { 
-            color: var(--gold-main); opacity: 1; letter-spacing: clamp(2px, 0.5vw, 4px); 
+            color: var(--gold-main); 
+            opacity: 1; 
+            letter-spacing: clamp(2px, 0.5vw, 4px);
         }
         .nav-link.active { border-bottom: 2px solid var(--gold-main); }
+
+        @media (max-width: 480px) {
+            nav {
+                background: rgba(4, 31, 19, 0.95) !important;
+                border-top: 1px solid rgba(212, 175, 55, 0.15) !important;
+            }
+            .nav-link {
+                font-size: 10px !important;
+                padding: 12px 10px !important; 
+                letter-spacing: 1px !important;
+            }
+        }
 
         /* ── ARTICLE LIST ── */
         .article-container {
@@ -143,7 +144,7 @@
             gap: clamp(14px, 3vw, 35px);
             z-index: 5;
             flex: 1;
-            min-width: 0; /* ป้องกัน text overflow */
+            min-width: 0;
         }
 
         .article-number {
@@ -181,44 +182,26 @@
 
         /* ── MOBILE ── */
         @media (max-width: 480px) {
-    .article-row, .course-row, .crystal-row {
-        flex-direction: row !important; /* บังคับให้อยู่แถวเดียวกันแต่จัดระเบียบใหม่ */
-        align-items: center;
-        padding: 18px 15px !important;
-        gap: 15px;
-    }
-    
-    .article-info, .course-info, .crystal-info {
-        gap: 15px !important;
-    }
-
-    .article-number, .course-number, .crystal-number {
-        font-size: 16px !important; /* เล็กลงแต่คมชัด */
-        min-width: 25px !important;
-        opacity: 0.6;
-    }
-
-    .article-tag, .course-tag, .crystal-tag {
-        display: none; /* ซ่อน Text บนมือถือเพื่อลดความรก */
-    }
-
-    /* เพิ่มลูกศรเล็กๆ ด้านหลังแทน Text เพื่อให้ดูเหมือน Native App */
-    .article-row::after, .course-row::after, .crystal-row::after {
-        content: "→";
-        position: static; /* ปลดล็อกจากการเป็นกรอบทอง */
-        font-family: 'Inter', sans-serif;
-        color: var(--gold-main);
-        font-size: 14px;
-        opacity: 0.8;
-        background: none;
-        width: auto;
-        height: auto;
-        border: none;
-    }
-
-            .article-tag {
-                margin-left: 0;
-                padding-left: clamp(28px, 5vw, 40px); /* indent ตาม number */
+            .article-row {
+                flex-direction: row !important;
+                align-items: center;
+                padding: 18px 15px !important;
+                gap: 15px;
+            }
+            .article-info { gap: 15px !important; }
+            .article-number { font-size: 16px !important; min-width: 25px !important; opacity: 0.6; }
+            .article-tag { display: none; }
+            .article-row::after {
+                content: "→";
+                position: static;
+                font-family: 'Inter', sans-serif;
+                color: var(--gold-main);
+                font-size: 14px;
+                opacity: 0.8;
+                background: none;
+                width: auto;
+                height: auto;
+                border: none;
             }
             main { padding: 2.5rem 1rem 5rem !important; }
         }
@@ -244,8 +227,8 @@
     </div>
 
     <div style="text-align:center;padding:14px 16px 10px;">
-        <h1 class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(1rem,4vw,2.2rem);letter-spacing:clamp(4px,1.5vw,10px);font-weight:700;">THE D'VINE ROOM</h1>
-        <p class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(7px,1.8vw,11px);letter-spacing:clamp(1px,0.4vw,2px);margin-top:3px;opacity:0.85;">SCARS OF THE DIVINE / AJ. FAAN</p>
+        <h1 class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(1.2rem, 6vw, 2.2rem);letter-spacing:clamp(2px, 1.2vw, 8px);font-weight:700;line-height:1.2;">THE D'VINE ROOM</h1>
+        <p class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(7px, 1.8vw, 11px);letter-spacing:2px;margin-top:3px;opacity:0.85;">SCARS OF THE DIVINE / AJ. FAAN</p>
     </div>
 
     <nav style="border-top:1px solid rgba(212,175,55,0.12);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;">
@@ -262,7 +245,8 @@
 <main style="padding:3rem 1.5rem 8rem; position:relative; z-index:1;">
     <div style="margin-bottom:3.5rem; text-align:center;">
         <a href="learn.html" style="font-family:'Cinzel',serif;font-size:clamp(9px,1.8vw,13px);letter-spacing:clamp(2px,0.5vw,3px);color:var(--emerald-void);opacity:0.6;text-transform:uppercase;display:inline-block;margin-bottom:1.8rem;padding:7px 14px;border:1px solid rgba(6,44,26,0.2);transition:all 0.3s;">← BACK TO LEARN</a>
-<h2 style="font-family:'Cinzel',serif;font-size:clamp(2rem, 6vw, 3.8rem);letter-spacing:0.25em;font-weight:700;color:var(--emerald-void);line-height:1.2;text-transform:uppercase;">ARTICLES</h2>        <div style="width:44px;height:1px;background:var(--gold-main);margin:20px auto;opacity:0.6;"></div>
+        <h2 style="font-family:'Cinzel',serif;font-size:clamp(2rem, 6vw, 4rem);letter-spacing:0.25em;font-weight:700;color:var(--emerald-void);line-height:1.2;text-transform:uppercase;">ARTICLES</h2>
+        <div style="width:44px;height:1px;background:var(--gold-main);margin:20px auto;opacity:0.6;"></div>
         <p style="color:var(--emerald-void);font-size:clamp(8px,2vw,10px);letter-spacing:0.45em;font-weight:600;opacity:0.5;text-transform:uppercase;">Deep Insights & Sovereignty</p>
     </div>
 
@@ -309,7 +293,7 @@
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('touchend', function(e) {
                 e.preventDefault();
-                window.location.href = this.href;
+                window.location.href = this.getAttribute('href');
             });
         });
     }

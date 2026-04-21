@@ -44,21 +44,42 @@
             position: sticky; top: 0; z-index: 100;
             background: linear-gradient(180deg, rgba(6, 44, 26, 0.99) 0%, rgba(4, 31, 19, 0.97) 100%);
             backdrop-filter: blur(20px); border-bottom: 1px solid var(--gold-line);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
         }
 
+        /* --- Master Locked Navigation --- */
         .nav-link { 
-            font-family:'Cinzel',serif; font-weight:700; text-transform:uppercase; 
-            color:#ffffff; border-bottom:2px solid transparent; display:block; 
-            padding:10px clamp(8px,1.5vw,20px);
-            font-size:clamp(10px,1.5vw,14px); 
-            letter-spacing:clamp(1px,0.3vw,3px); transition: all 0.3s; opacity: 0.65;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase; 
+            color: #ffffff;
+            border-bottom: 2px solid transparent;
+            display: block; 
+            padding: 10px clamp(10px, 2.5vw, 22px);
+            font-size: clamp(9px, 2.2vw, 13px); 
+            letter-spacing: clamp(1px, 0.4vw, 3px);
+            transition: all 0.3s;
+            opacity: 0.65;
+            white-space: nowrap;
         }
-        .nav-link:hover, .nav-link.active { color:var(--gold-main); opacity: 1; letter-spacing: 0.3em; }
+
+        .nav-link:hover, .nav-link.active { 
+            color: var(--gold-main); 
+            opacity: 1; 
+            letter-spacing: clamp(2px, 0.5vw, 4px);
+        }
         .nav-link.active { border-bottom: 2px solid var(--gold-main); }
 
-        /* แยก Media Query ของ Nav ออกมาให้ถูกต้อง */
         @media (max-width: 480px) {
-            .nav-link { font-size: 11px !important; padding: 15px 10px !important; }
+            nav {
+                background: rgba(4, 31, 19, 0.95) !important;
+                border-top: 1px solid rgba(212, 175, 55, 0.15) !important;
+            }
+            .nav-link {
+                font-size: 10px !important;
+                padding: 12px 10px !important; 
+                letter-spacing: 1px !important;
+            }
         }
 
         .ebook-container {
@@ -111,12 +132,12 @@
             .ebook-row:hover .ebook-title { color: #ffffff; }
         }
 
-        .ebook-info { display: flex; align-items: center; gap: clamp(14px, 3vw, 35px); z-index: 5; flex: 1; }
+        .ebook-info { display: flex; align-items: center; gap: clamp(14px, 3vw, 35px); z-index: 5; flex: 1; min-width: 0; }
 
         .ebook-number {
             font-family: 'Cinzel', serif;
             font-size: clamp(18px, 3.5vw, 24px); font-weight: 700; color: var(--white-ivory);
-            opacity: 0.4; min-width: 40px; transition: 0.4s;
+            opacity: 0.4; min-width: clamp(28px, 5vw, 40px); transition: 0.4s;
         }
 
         .ebook-title {
@@ -134,16 +155,18 @@
         }
 
         .back-btn {
-            font-family:'Cinzel',serif; font-size:clamp(10px,1.2vw,13px); letter-spacing:3px;
+            font-family:'Cinzel',serif; font-size:clamp(9px,1.8vw,13px); letter-spacing:3px;
             color:var(--emerald-void); opacity:0.6; text-transform:uppercase;
-            display:inline-block; margin-bottom:2rem; padding:8px 20px;
+            display:inline-block; margin-bottom:1.8rem; padding:7px 14px;
             border:1px solid rgba(6,44,26,0.25); transition:all 0.3s;
         }
         .back-btn:hover { opacity:1; border-color:var(--gold-main); color:var(--gold-main); }
 
-        /* ── MOBILE OPTIMIZATION ── */
+        /* ── MOBILE ── */
         @media (max-width: 480px) {
             .ebook-row { flex-direction: row !important; padding: 18px 15px !important; gap: 15px; }
+            .ebook-info { gap: 15px !important; }
+            .ebook-number { font-size: 16px !important; min-width: 25px !important; opacity: 0.6; }
             .ebook-tag { display: none; }
             .ebook-row::after { 
                 content: "→"; position: static; color: var(--gold-main); font-size: 14px; 
@@ -155,8 +178,8 @@
 </head>
 <body>
 <header>
-    <div style="display:flex;justify-content:flex-end;align-items:center;padding:8px 24px;gap:15px;border-bottom:1px solid rgba(212,175,55,0.08);">
-        <div style="display:flex;gap:10px;">
+    <div style="display:flex;justify-content:flex-end;align-items:center;padding:7px 20px;gap:12px;border-bottom:1px solid rgba(212,175,55,0.08);">
+        <div style="display:flex;gap:8px;">
             <button style="background:none;border:none;cursor:pointer;font-size:9px;letter-spacing:2px;color:#D4AF37;font-weight:700;">TH</button>
             <span style="color:#D4AF37;opacity:0.2;font-size:9px;">|</span>
             <button style="background:none;border:none;cursor:pointer;font-size:9px;letter-spacing:2px;color:#D4AF37;opacity:0.35;font-weight:700;">EN</button>
@@ -165,12 +188,12 @@
         <button style="background:none;border:none;cursor:pointer;color:rgba(252,252,249,0.55);font-size:9px;letter-spacing:2px;font-weight:500;">SIGN IN</button>
         <button style="background:linear-gradient(45deg,#B38728,#FBF5B7,#AA771C);border:none;cursor:pointer;font-size:9px;font-weight:800;color:#041f13;padding:5px 12px;border-radius:1px;letter-spacing:1px;">SIGN UP</button>
     </div>
-    <div style="text-align:center;padding:16px 16px 12px;">
+    <div style="text-align:center;padding:14px 16px 10px;">
         <h1 class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(1.2rem, 6vw, 2.2rem);letter-spacing:clamp(2px, 1.2vw, 8px);font-weight:700;line-height:1.2;">THE D'VINE ROOM</h1>
-        <p class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(8px,1.3vw,12px);letter-spacing:1px;margin-top:4px; opacity: 0.85;">SCARS OF THE DIVINE / AJ. FAAN</p>
+        <p class="gold-text" style="font-family:'Cinzel',serif;font-size:clamp(7px, 1.8vw, 11px);letter-spacing:2px;margin-top:3px;opacity:0.85;">SCARS OF THE DIVINE / AJ. FAAN</p>
     </div>
-    <nav style="border-top:1px solid rgba(212,175,55,0.12);overflow-x:auto;scrollbar-width:none;">
-        <div style="display:flex;justify-content:center;min-width:fit-content;padding:0 10px;">
+    <nav style="border-top:1px solid rgba(212,175,55,0.12);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+        <div style="display:flex;justify-content:center;min-width:fit-content;padding:0 8px;">
             <a href="learn.html" class="nav-link active">LEARN</a>
             <a href="tarot.html" class="nav-link">TAROT</a>
             <a href="index.html" class="nav-link">READING</a>
@@ -181,11 +204,11 @@
 </header>
 
 <main style="padding:3rem 1.5rem 8rem; position:relative; z-index:1;">
-    <div style="margin-bottom:4rem; text-align:center;">
+    <div style="margin-bottom:3.5rem; text-align:center;">
         <a href="learn.html" class="back-btn">← BACK TO LEARN</a>
-        <h2 style="font-family:'Cinzel',serif;font-size:clamp(2rem, 6vw, 3.8rem);letter-spacing:0.25em;font-weight:700;color:var(--emerald-void);line-height:1.2; text-transform: uppercase;">Ebook</h2>
-        <div style="width:clamp(30px, 5vw, 60px);height:1.5px;background:var(--gold-main);margin:25px auto;opacity:0.6;"></div>
-        <p style="color:var(--emerald-void);font-size:10px;letter-spacing:0.45em;font-weight:600;opacity:0.5;text-transform:uppercase;">Digital Grimoires & Sacred Scripts</p>
+        <h2 style="font-family:'Cinzel',serif;font-size:clamp(2rem, 6vw, 4rem);letter-spacing:0.25em;font-weight:700;color:var(--emerald-void);line-height:1.2; text-transform: uppercase;">Ebook</h2>
+        <div style="width:44px;height:1px;background:var(--gold-main);margin:20px auto;opacity:0.6;"></div>
+        <p style="color:var(--emerald-void);font-size:clamp(8px,2vw,10px);letter-spacing:0.45em;font-weight:600;opacity:0.5;text-transform:uppercase;">Digital Grimoires & Sacred Scripts</p>
     </div>
 
     <div class="ebook-container">
@@ -218,8 +241,14 @@
 <script>
     if ('ontouchstart' in window) {
         document.querySelectorAll('.ebook-row').forEach(item => {
-            item.addEventListener('touchstart', () => { item.style.transform = 'scale(0.98)'; });
-            item.addEventListener('touchend', () => { item.style.transform = 'scale(1)'; });
+            item.addEventListener('touchstart', () => { 
+                item.style.transform = 'scale(0.98)';
+                item.style.transition = 'all 0.12s ease';
+            }, {passive: true});
+            item.addEventListener('touchend', () => { 
+                item.style.transform = '';
+                item.style.transition = 'all 0.5s cubic-bezier(0.15, 0.83, 0.66, 1)';
+            }, {passive: true});
         });
         
         document.querySelectorAll('.nav-link').forEach(link => {
