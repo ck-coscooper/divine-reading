@@ -776,8 +776,10 @@
 
         switchStep('step-3', 'step-4');
 
-        // ตัดระบบวนลูปออก เพราะเราต้องการย่อหน้าเดียวจบที่ทรงพลัง
-        textContainer.innerHTML = `<p class="mb-6">${diagnosis}</p>`;
+        // --- วางโค้ดนี้แทนที่ ---
+// ระบบ Forensic Rendering: แยกย่อหน้าตามสัญลักษณ์ \n แล้วห่อด้วย Tag <p> แยกชิ้น
+const paragraphs = diagnosis.split('\n').filter(p => p.trim() !== '');
+textContainer.innerHTML = paragraphs.map(p => `<p class="mb-8 font-th-looped text-justify">${p}</p>`).join('');
     }    
 
     function switchStep(hide, show) {
