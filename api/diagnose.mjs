@@ -189,7 +189,7 @@ ${baseRules}`;
     },
     body: JSON.stringify({
       model: 'claude-sonnet-4-5',
-      max_tokens: 1200,
+      max_tokens: 1000,
       system,
       messages: [{ role: 'user', content: fullPrompt }]
     })
