@@ -99,7 +99,7 @@
     display: grid; 
     /* Mobile: ปรับเป็น 2 คอลัมน์เพื่อให้ไพ่ใหญ่สะใจ (Large Hero Card) 
        หากต้องการ 3 ใบตามเดิมให้เปลี่ยนเป็น repeat(3, 1fr) */
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px; 
     max-width: 1400px; /* ขยายกรอบให้กว้างขึ้นเพื่อรองรับไพ่ที่ใหญ่ขึ้น */
     margin: 0 auto;
@@ -219,7 +219,19 @@
             border-color: var(--gold) !important;
             box-shadow: 0 20px 40px rgba(6, 44, 26, 0.06) !important;
             transform: translateY(-2px);
-        }
+           } 
+           
+         /* — NEW: AI RESPONSE EDITORIAL STYLE — */
+    #ai-response {
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        font-weight: 300;
+        line-height: 2.2;
+        letter-spacing: 0.03em;
+        text-align: justify;
+        color: var(--emerald);
+        opacity: 0.95;
+        padding-top: 20px;
+    }
         textarea#user-inquiry::placeholder {
             color: rgba(6, 44, 26, 0.3);
         }
@@ -304,7 +316,7 @@
     <section id="step-1">
         <div class="mb-8 px-6 text-center">
 <p class="text-[10px] tracking-[0.2em] uppercase mb-10 opacity-40">Connect with the Divine Sphere</p>
-            <h1 class="hero-title !text-3xl md:!text-5xl !mb-0">SOUL THE <span class="gold-gradient-text">COORDINATES</span></h1>
+            <h1 class="hero-title !text-3xl md:!text-5xl !mb-0">SOUL<br><span class="gold-gradient-text">COORDINATES</span></h1>
         </div>
 
         <div class="form-container max-w-xl mx-auto px-6 space-y-5 bg-white/40 p-8 rounded-2xl border border-[#062c1a]/5 shadow-sm backdrop-blur-sm transition-all duration-500">
@@ -729,10 +741,7 @@
 
         prompt += "\n\n" + t.langInstruction;
 
-        const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
-        const apiUrl = isLocal 
-            ? 'https://divine-reading.vercel.app/api/diagnose' 
-            : '/api/diagnose';
+        const apiUrl = '/api/diagnose';
 
         return fetch(apiUrl, {
             method: 'POST',
@@ -767,11 +776,8 @@
 
         switchStep('step-3', 'step-4');
 
-        textContainer.innerHTML = diagnosis
-            .split('\n')
-            .filter(p => p.trim() !== '')
-            .map(p => '<p class="mb-8">' + p + '</p>')
-            .join('');
+        // ตัดระบบวนลูปออก เพราะเราต้องการย่อหน้าเดียวจบที่ทรงพลัง
+        textContainer.innerHTML = `<p class="mb-6">${diagnosis}</p>`;
     }    
 
     function switchStep(hide, show) {
