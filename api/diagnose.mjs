@@ -198,7 +198,7 @@ ${baseRules}`;
       'anthropic-version': '2023-06-01'
     },
     body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
+      model: 'claude-3-5-sonnet-20240620', // หรือรุ่น Sonnet/Opus ล่าสุดที่คุณมีสิทธิ์เข้าถึง
       max_tokens: 1200, 
       system,
       messages: [{ role: 'user', content: fullPrompt }]
