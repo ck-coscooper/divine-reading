@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE D'VINE ROOM — Destiny Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian: #0a0906;
+  --obsidian-2: #111009;
+  --obsidian-3: #1a1815;
+  --gold: #D4AF37;
+  --gold-dim: rgba(212,175,55,0.18);
+  --gold-border: rgba(212,175,55,0.25);
+  --ivory: #F5F0E8;
+  --ivory-dim: rgba(245,240,232,0.75);
+  --ivory-muted: rgba(245,240,232,0.38);
+  --emerald: #0D2318;
+  --card-bg: rgba(20,18,14,0.9);
+  --ff-h: 'Cinzel', serif;
+  --ff-b: 'IBM Plex Sans Thai', sans-serif;
+  --ff-l: 'Inter', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--obsidian);
+  color: var(--ivory);
+  font-family: var(--ff-b);
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* noise */
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size:200px 200px; pointer-events:none; z-index:0;
+}
+.gold-text {
+  background: linear-gradient(135deg,#C9A227 0%,#E8C84A 35%,#D4AF37 60%,#F5E8B0 75%,#D4AF37 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+/* ── HEADER ── */
+.site-header {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding: clamp(12px,2vw,18px) clamp(16px,4vw,48px);
+  display:flex; align-items:center; justify-content:space-between;
+  background: rgba(10,9,6,0.96);
+  border-bottom: 0.5px solid var(--gold-border);
+  backdrop-filter: blur(12px);
+}
+.logo { font-family:var(--ff-h); font-size:clamp(0.72rem,1.8vw,0.95rem); font-weight:600;
+  letter-spacing:clamp(3px,1.2vw,8px); text-transform:uppercase; text-decoration:none;
+  background:linear-gradient(135deg,#C9A227,#E8C84A,#D4AF37); -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent; background-clip:text; }
+.nav-links { display:flex; gap:clamp(16px,3vw,40px); list-style:none; }
+.nav-links a { font-family:var(--ff-l); font-size:0.62rem; font-weight:400; letter-spacing:2.5px;
+  text-transform:uppercase; text-decoration:none; color:var(--ivory-muted); transition:color .3s; }
+.nav-links a:hover { color:var(--gold); }
+@media(max-width:640px){ .nav-links{display:none;} }
+/* ── MAIN ── */
+.main { position:relative; z-index:1; padding-top:clamp(70px,12vw,96px); }
+/* ── USER BANNER ── */
+.user-banner {
+  padding: clamp(24px,4vw,40px) clamp(16px,4vw,48px);
+  border-bottom: 0.5px solid var(--gold-dim);
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  background: linear-gradient(90deg, rgba(13,35,24,0.5) 0%, transparent 100%);
+}
+.user-info-name { font-family:var(--ff-h); font-size:clamp(1rem,3vw,1.8rem); font-weight:600;
+  letter-spacing:clamp(1px,0.4vw,3px); text-transform:uppercase; }
+.user-info-sub { font-family:var(--ff-l); font-size:0.6rem; letter-spacing:3px; color:var(--ivory-muted);
+  text-transform:uppercase; margin-top:5px; }
+.daymaster-badge {
+  background: var(--gold-dim); border: 0.5px solid var(--gold-border);
+  padding: clamp(8px,1.5vw,14px) clamp(16px,2.5vw,28px); text-align:center;
+}
+.daymaster-char { font-size:clamp(1.8rem,5vw,3rem); font-weight:700; display:block; margin-bottom:2px; }
+.daymaster-label { font-family:var(--ff-l); font-size:0.55rem; letter-spacing:3px; color:var(--ivory-muted); text-transform:uppercase; }
+/* ── SECTION LABEL ── */
+.section-label { font-family:var(--ff-l); font-size:0.58rem; letter-spacing:4px; text-transform:uppercase;
+  color:var(--gold); opacity:.6; margin-bottom:12px; }
+.section-wrapper { padding: clamp(24px,4vw,48px) clamp(16px,4vw,48px); }
+.divider { height:0.5px; background:linear-gradient(to right,var(--gold-border),transparent); margin:0; }
+/* ── 4 PILLARS CHART ── */
+.pillars-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(6px,1.2vw,12px);
+  max-width:800px;
+}
+.pillar {
+  border: 0.5px solid var(--gold-dim); background:var(--card-bg);
+  display:flex; flex-direction:column; position:relative; overflow:hidden;
+  transition: border-color .4s;
+}
+.pillar:hover { border-color: var(--gold-border); }
+.pillar.day-master { border-color: rgba(212,175,55,0.5); }
+.pillar-header {
+  background: var(--obsidian-3); padding: 7px 4px;
+  text-align:center; border-bottom: 0.5px solid var(--gold-dim);
+}
+.pillar-header.day { background: var(--gold-dim); }
+.pillar-label { font-family:var(--ff-l); font-size:0.55rem; letter-spacing:3px; text-transform:uppercase; color:var(--ivory-muted); }
+.pillar-tengod { font-family:var(--ff-l); font-size:0.52rem; letter-spacing:1px; color:var(--gold); margin-top:3px; opacity:.8; }
+.pillar-body { padding: clamp(8px,1.5vw,16px) clamp(6px,1vw,10px); text-align:center; flex:1; }
+/* Heavenly Stem row */
+.stem-area { padding: clamp(6px,1.2vw,12px) 0; }
+.stem-char { font-size:clamp(1.6rem,5vw,2.8rem); font-weight:700; display:block; line-height:1; }
+.stem-en { font-family:var(--ff-l); font-size:clamp(0.5rem,1.2vw,0.65rem); color:var(--ivory-muted); letter-spacing:1px; margin-top:4px; }
+.stem-elem { font-family:var(--ff-l); font-size:0.52rem; letter-spacing:2px; margin-top:3px; display:inline-block; padding:2px 6px; background:var(--gold-dim); border:0.5px solid var(--gold-dim); }
+.branch-divider { height:0.5px; background:var(--gold-dim); margin: clamp(6px,1vw,10px) 0; }
+/* Earthly Branch row */
+.branch-char { font-size:clamp(1.4rem,4vw,2.2rem); font-weight:700; display:block; line-height:1; margin-bottom:4px; }
+.branch-animal { font-family:var(--ff-l); font-size:clamp(0.48rem,1vw,0.6rem); color:var(--ivory-muted); letter-spacing:1px; }
+/* Hidden stems */
+.hidden-stems { padding: clamp(6px,1vw,10px) clamp(4px,0.8vw,8px); border-top: 0.5px solid var(--gold-dim); background: rgba(0,0,0,0.2); }
+.hidden-label { font-family:var(--ff-l); font-size:0.48rem; letter-spacing:2px; color:var(--ivory-muted); opacity:.5; margin-bottom:5px; text-transform:uppercase; }
+.hidden-row { display:flex; gap:4px; justify-content:center; flex-wrap:wrap; }
+.hidden-item { text-align:center; flex:1; min-width:0; }
+.hidden-char { font-size:clamp(0.7rem,2vw,1rem); font-weight:700; display:block; }
+.hidden-sub { font-family:var(--ff-l); font-size:0.44rem; color:var(--ivory-muted); display:block; margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+/* COLUMN LABELS */
+.pillars-labels { display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(6px,1.2vw,12px); margin-bottom:6px; max-width:800px; }
+.col-label { text-align:center; font-family:var(--ff-l); font-size:0.55rem; letter-spacing:2px; color:var(--ivory-muted); text-transform:uppercase; }
+/* ── ELEMENT BARS ── */
+.element-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(8px,1.5vw,16px); max-width:640px; }
+.element-card { border: 0.5px solid var(--gold-dim); padding: clamp(10px,1.8vw,18px) clamp(8px,1.2vw,12px); text-align:center; background:var(--card-bg); }
+.element-char { font-size:clamp(1.2rem,3.5vw,2rem); display:block; margin-bottom:6px; font-weight:700; }
+.element-name { font-family:var(--ff-l); font-size:0.52rem; letter-spacing:2px; color:var(--gold); text-transform:uppercase; margin-bottom:8px; display:block; }
+.element-bar-bg { height:3px; background:rgba(255,255,255,0.06); width:100%; }
+.element-bar-fill { height:3px; background:linear-gradient(90deg,var(--gold),#F5E8B0); transition:width 1.2s cubic-bezier(.19,1,.22,1); }
+.element-score { font-family:var(--ff-l); font-size:0.55rem; color:var(--ivory-muted); margin-top:5px; }
+/* ── 10 PROFILES ── */
+.profile-list { display:flex; flex-direction:column; gap:10px; max-width:640px; }
+.profile-row { display:flex; align-items:center; gap:10px; }
+.profile-rank { font-family:var(--ff-l); font-size:0.5rem; color:var(--ivory-muted); width:14px; text-align:right; flex-shrink:0; }
+.profile-name { font-family:var(--ff-l); font-size:clamp(0.55rem,1.2vw,0.65rem); color:var(--ivory-dim); flex:1; min-width:0; }
+.profile-bar-bg { height:2px; width:clamp(60px,15vw,120px); background:rgba(255,255,255,0.06); flex-shrink:0; }
+.profile-bar-fill { height:2px; background:var(--gold); transition:width 1.5s cubic-bezier(.19,1,.22,1); }
+.profile-pct { font-family:var(--ff-l); font-size:0.55rem; color:var(--gold); width:28px; text-align:right; flex-shrink:0; }
+/* ── INSIGHT PANEL ── */
+.insight-panel {
+  border: 0.5px solid var(--gold-border); padding: clamp(20px,3vw,36px);
+  background: linear-gradient(135deg, rgba(13,35,24,0.8) 0%, var(--card-bg) 100%);
+  max-width:640px;
+}
+.insight-eyebrow { font-family:var(--ff-l); font-size:0.55rem; letter-spacing:4px; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+.insight-title { font-family:var(--ff-h); font-size:clamp(1rem,2.5vw,1.5rem); font-weight:600; margin-bottom:12px; }
+.insight-body { font-size:clamp(0.8rem,1.8vw,0.9rem); line-height:1.8; color:var(--ivory-dim); }
+/* ── DETAILS TABLE (noble people, etc.) ── */
+.details-table { border: 0.5px solid var(--gold-dim); max-width:640px; width:100%; }
+.dt-header { background:var(--obsidian-3); padding:8px clamp(10px,1.5vw,16px);
+  font-family:var(--ff-l); font-size:0.55rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); border-bottom:0.5px solid var(--gold-dim); }
+.dt-row { display:grid; grid-template-columns:1fr 1fr; border-bottom:0.5px solid rgba(212,175,55,0.06); }
+.dt-row:last-child { border-bottom:none; }
+.dt-cell { padding: clamp(6px,1vw,10px) clamp(10px,1.5vw,16px); font-size:clamp(0.65rem,1.4vw,0.75rem); }
+.dt-cell:first-child { color:var(--ivory-muted); font-family:var(--ff-l); font-size:0.58rem; letter-spacing:1.5px; border-right:0.5px solid rgba(212,175,55,0.06); }
+/* ── MAIN LAYOUT ── */
+.content-cols { display:grid; grid-template-columns:1fr; gap:0; }
+@media(min-width:900px){ .content-cols { grid-template-columns:1fr 1fr; } }
+/* ── FOOTER ── */
+footer { position:relative; z-index:1; padding: clamp(28px,4vw,48px) clamp(16px,4vw,48px);
+  border-top:0.5px solid var(--gold-dim); text-align:center; }
+footer p { font-family:var(--ff-l); font-size:0.58rem; letter-spacing:3px; color:var(--ivory-muted); opacity:.4; text-transform:uppercase; }
+/* ── PRINT BUTTON ── */
+.action-bar { display:flex; gap:12px; flex-wrap:wrap; padding: clamp(12px,2vw,20px) clamp(16px,4vw,48px);
+  border-bottom:0.5px solid var(--gold-dim); background:rgba(10,9,6,0.5); }
+.btn-action { font-family:var(--ff-l); font-size:0.58rem; letter-spacing:3px; text-transform:uppercase;
+  padding: 10px 20px; cursor:pointer; transition:all .3s; text-decoration:none; display:inline-block; }
+.btn-primary { background:var(--gold); color:var(--obsidian); border:none; font-weight:500; }
+.btn-primary:hover { opacity:.85; }
+.btn-ghost { background:none; color:var(--ivory-dim); border:0.5px solid var(--gold-border); }
+.btn-ghost:hover { color:var(--gold); border-color:var(--gold); }
+/* ── MOBILE PILLARS ── */
+@media(max-width:520px){
+  .pillars-grid { grid-template-columns:repeat(2,1fr); }
+  .pillars-labels { grid-template-columns:repeat(2,1fr); }
+}
+/* ── ANIMATE ON LOAD ── */
+.fade-up { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+@media print {
+  .site-header,.action-bar { display:none !important; }
+  body { background:#fff !important; color:#000 !important; }
+  .main { padding-top:0 !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">The D'vine Room</a>
+  <nav><ul class="nav-links">
+    <li><a href="learn.html">Learn</a></li>
+    <li><a href="tarot.html">Tarot</a></li>
+    <li><a href="bazi.html">Bazi</a></li>
+    <li><a href="reading.html">Reading</a></li>
+  </ul></nav>
+</header>
+
+<div class="main">
+
+  <!-- ACTION BAR -->
+  <div class="action-bar">
+    <a href="bazi.html" class="btn-action btn-ghost">← Plot Again</a>
+    <button onclick="window.print()" class="btn-action btn-primary">Print / Save PDF</button>
+  </div>
+
+  <!-- USER BANNER -->
+  <div class="user-banner fade-up">
+    <div>
+      <div class="user-info-name" id="display-name">—</div>
+      <div class="user-info-sub" id="display-dob">—</div>
+    </div>
+    <div class="daymaster-badge">
+      <span class="daymaster-char gold-text" id="dm-char">辛</span>
+      <span class="daymaster-label" id="dm-label">Day Master</span>
+    </div>
+  </div>
+
+  <!-- ── NATAL CHART ── -->
+  <div class="section-wrapper fade-up">
+    <div class="section-label">四柱命盤 · Natal Chart — Four Pillars of Destiny</div>
+
+    <div class="pillars-labels" id="pillar-labels"></div>
+    <div class="pillars-grid" id="pillars-grid"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── TWO COLUMN: ELEMENTS + PROFILES ── -->
+  <div class="content-cols">
+
+    <!-- Elements -->
+    <div class="section-wrapper fade-up" style="border-right:0.5px solid var(--gold-dim);">
+      <div class="section-label">五行 · Five Elements</div>
+      <div class="element-grid" id="element-grid"></div>
+    </div>
+
+    <!-- 10 Profiles -->
+    <div class="section-wrapper fade-up">
+      <div class="section-label">十神 · 10 Profiles Strength</div>
+      <div class="profile-list" id="profile-list"></div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── TWO COLUMN: INSIGHT + DETAILS ── -->
+  <div class="content-cols">
+
+    <div class="section-wrapper fade-up">
+      <div class="section-label">Sovereign Insight</div>
+      <div class="insight-panel">
+        <div class="insight-eyebrow">Main Structure</div>
+        <div class="insight-title" id="main-structure">—</div>
+        <div class="insight-body" id="insight-body">—</div>
+      </div>
+    </div>
+
+    <div class="section-wrapper fade-up">
+      <div class="section-label">Personal Chart Details</div>
+      <div class="details-table" id="details-table">
+        <div class="dt-header">Celestial Markers</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>The D'vine Room — Scars of the Divine · Bazi Blueprint 2026</p>
+</footer>
+
+<!-- ── ENGINE ── -->
+<script>
+// ── EMBED BAZI ENGINE INLINE ──
+const STEMS=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+const STEMS_EN=['Jia','Yi','Bing','Ding','Wu','Ji','Geng','Xin','Ren','Gui'];
+const STEMS_ELEM=['Yang Wood','Yin Wood','Yang Fire','Yin Fire','Yang Earth','Yin Earth','Yang Metal','Yin Metal','Yang Water','Yin Water'];
+const STEMS_ELEM_CH=['木','木','火','火','土','土','金','金','水','水'];
+const BRANCHES=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+const BRANCHES_EN=['Zi','Chou','Yin','Mao','Chen','Si','Wu','Wei','Shen','You','Xu','Hai'];
+const ANIMALS=['Rat','Ox','Tiger','Rabbit','Dragon','Snake','Horse','Goat','Monkey','Rooster','Dog','Pig'];
+const ANIMALS_CH=['鼠','牛','虎','兔','龍','蛇','馬','羊','猴','雞','狗','豬'];
+const BRANCH_ELEM=['Yang Water','Yin Earth','Yang Wood','Yin Wood','Yang Earth','Yin Fire','Yang Fire','Yin Earth','Yang Metal','Yin Metal','Yang Earth','Yin Water'];
+const BRANCH_ELEM_CH=['水','土','木','木','土','火','火','土','金','金','土','水'];
+const HIDDEN_STEMS={
+  0:[{s:9,p:100}],
+  1:[{s:5,p:60},{s:7,p:30},{s:9,p:10}],
+  2:[{s:0,p:60},{s:2,p:30},{s:4,p:10}],
+  3:[{s:1,p:100}],
+  4:[{s:4,p:60},{s:1,p:30},{s:9,p:10}],
+  5:[{s:2,p:60},{s:6,p:30},{s:4,p:10}],
+  6:[{s:3,p:70},{s:5,p:30}],
+  7:[{s:3,p:60},{s:5,p:30},{s:1,p:10}],
+  8:[{s:4,p:60},{s:6,p:30},{s:8,p:10}],
+  9:[{s:7,p:100}],
+  10:[{s:3,p:60},{s:4,p:30},{s:7,p:10}],
+  11:[{s:8,p:70},{s:0,p:30}],
+};
+const TG_TABLE=[
+  [0,1,2,3,4,5,6,7,8,9],[1,0,3,2,5,4,7,6,9,8],
+  [8,9,0,1,2,3,4,5,6,7],[9,8,1,0,3,2,5,4,7,6],
+  [6,7,8,9,0,1,2,3,4,5],[7,6,9,8,1,0,3,2,5,4],
+  [4,5,6,7,8,9,0,1,2,3],[5,4,7,6,9,8,1,0,3,2],
+  [2,3,4,5,6,7,8,9,0,1],[3,2,5,4,7,6,9,8,1,0],
+];
+const TG_EN=['F','RW','EG','HO','DW','IW','7K','DO','IR','DR'];
+const TG_CH=['比','劫','食','傷','財','才','殺','官','卩','印'];
+const TG_FULL=['Friend (比肩)','Rob Wealth (劫財)','Eating God (食神)','Hurting Officer (傷官)',
+  'Direct Wealth (偏財)','Indirect Wealth (正財)','Seven Killings (七殺)','Direct Officer (正官)',
+  'Indirect Resource (偏印)','Direct Resource (正印)'];
+const PROFILE_NAMES=[
+  'The Friend','The Leader','The Artist','The Performer',
+  'The Director','The Pioneer','The Warrior','The Diplomat',
+  'The Philosopher','The Analyzer'];
+
+function getJD(y,m,d){
+  if(m<=2){y--;m+=12;}
+  const A=Math.floor(y/100),B=2-A+Math.floor(A/4);
+  return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5;
+}
+function getYearP(year){
+  return {s:((year-4)%10+10)%10, b:((year-4)%12+12)%12};
+}
+function getMonthP(year,month,day){
+  const terms=[6,4,6,5,6,6,7,7,8,8,7,7];
+  let mIdx=month-2;
+  if(month===1)mIdx=11;
+  if(day<terms[month-1])mIdx--;
+  mIdx=((mIdx%12)+12)%12;
+  const bIdx=(mIdx+2)%12;
+  const yS=getYearP(year).s;
+  const base=[0,2,4,6,8][yS%5];
+  const sIdx=(base+mIdx+2)%10;
+  return {s:sIdx, b:bIdx};
+}
+function getDayP(year,month,day){
+  const jd=Math.floor(getJD(year,month,day)+0.5);
+  const ref=Math.floor(getJD(1900,1,31)+0.5);
+  const d=jd-ref;
+  return {s:((d%10)+10)%10, b:((d%12)+12)%12};
+}
+function getHourP(hour,dayStem){
+  const bIdx=Math.floor((hour+1)/2)%12;
+  const base=[0,2,4,6,8][dayStem%5];
+  return {s:(base+bIdx)%10, b:bIdx};
+}
+function tg(dm,ts){return TG_TABLE[dm][ts];}
+
+function calcBazi(year,month,day,hour){
+  const yP=getYearP(year);
+  const mP=getMonthP(year,month,day);
+  const dP=getDayP(year,month,day);
+  const hP=getHourP(hour,dP.s);
+  const dm=dP.s;
+  
+  function pillar(p,lbl,isDM){
+    const tgCode=isDM?-1:tg(dm,p.s);
+    const hidden=(HIDDEN_STEMS[p.b]||[]).map(h=>({
+      s:h.s,stem:STEMS[h.s],stemEn:STEMS_EN[h.s],
+      elemCh:STEMS_ELEM_CH[h.s],elemEn:STEMS_ELEM[h.s],
+      tgEn:TG_EN[tg(dm,h.s)],tgCh:TG_CH[tg(dm,h.s)],p:h.p
+    }));
+    return {
+      label:lbl,isDM,
+      stem:STEMS[p.s],stemEn:STEMS_EN[p.s],stemElemEn:STEMS_ELEM[p.s],stemElemCh:STEMS_ELEM_CH[p.s],
+      branch:BRANCHES[p.b],branchEn:BRANCHES_EN[p.b],animal:ANIMALS[p.b],animalCh:ANIMALS_CH[p.b],
+      branchElemEn:BRANCH_ELEM[p.b],branchElemCh:BRANCH_ELEM_CH[p.b],
+      tgCode,tgEn:isDM?'DM':TG_EN[tgCode],tgCh:isDM?'日元':TG_CH[tgCode],hidden
+    };
+  }
+  
+  const pillars={
+    hour:pillar(hP,'HOUR',false),
+    day:pillar(dP,'DAY',true),
+    month:pillar(mP,'MONTH',false),
+    year:pillar(yP,'YEAR',false),
+  };
+  
+  // Elements
+  const eMap={'木':'Wood','火':'Fire','土':'Earth','金':'Metal','水':'Water'};
+  const eScore={Wood:0,Fire:0,Earth:0,Metal:0,Water:0};
+  const allP=[hP,dP,mP,yP];
+  allP.forEach(p=>{
+    eScore[eMap[STEMS_ELEM_CH[p.s]]]+=10;
+    eScore[eMap[BRANCH_ELEM_CH[p.b]]]+=8;
+    (HIDDEN_STEMS[p.b]||[]).forEach(h=>eScore[eMap[STEMS_ELEM_CH[h.s]]]+=h.p*0.04);
+  });
+  const totalE=Object.values(eScore).reduce((a,b)=>a+b,0)||1;
+  
+  // Profiles
+  const profiles=TG_FULL.map((name,idx)=>{
+    const tgStem=TG_TABLE[dm].indexOf(idx);
+    const elemCh=tgStem>=0?STEMS_ELEM_CH[tgStem]:'木';
+    const raw=eScore[eMap[elemCh]]/totalE*100;
+    return {idx,fullName:name,profileName:PROFILE_NAMES[idx],pct:Math.min(Math.round(raw*1.4+Math.random()*8),99)};
+  }).sort((a,b)=>b.pct-a.pct);
+  
+  const structures=['Thinkers 思考型','Managers 管理型','Creators 創作型','Connectors 社交型','Achievers 成就型'];
+  
+  return {
+    pillars,dm,dmStem:STEMS[dm],dmEn:STEMS_EN[dm],dmElem:STEMS_ELEM[dm],
+    eScore,profiles,
+    mainStructure:structures[dm%5],
+    mainProfile:profiles[0]?.fullName||'',
+    celestialAnimal:`${ANIMALS[yP.b]} (${ANIMALS_CH[yP.b]})`,
+    peachBlossom:`${ANIMALS[3]} (${BRANCHES[3]})`,
+    yearBranch:`${BRANCHES[yP.b]} ${ANIMALS[yP.b]}`,
+  };
+}
+
+// ── RENDER ──
+function renderStem(c){
+  const WOOD=['木'];const FIRE=['火'];const EARTH=['土'];const METAL=['金'];const WATER=['水'];
+  if(WOOD.includes(c))return'#4CAF50';
+  if(FIRE.includes(c))return'#E57373';
+  if(EARTH.includes(c))return'#D4AF37';
+  if(METAL.includes(c))return'#90CAF9';
+  if(WATER.includes(c))return'#7986CB';
+  return'#F5F0E8';
+}
+
+function buildPillarHTML(p){
+  const isDM=p.isDM;
+  let html=`
+  <div class="pillar${isDM?' day-master':''}">
+    <div class="pillar-header${isDM?' day':''}">
+      <div class="pillar-label">${p.label} ${isDM?'(Master)':''}</div>
+      <div class="pillar-tengod">${p.tgCh} ${p.tgEn}</div>
+    </div>
+    <div class="pillar-body">
+      <div class="stem-area">
+        <span class="stem-char${isDM?' gold-text':''}" style="${isDM?'':'color:'+renderStem(p.stemElemCh)}">${p.stem}</span>
+        <div class="stem-en">${p.stemEn}</div>
+        <span class="stem-elem">${p.stemElemCh} ${p.stemElemEn}</span>
+      </div>
+      <div class="branch-divider"></div>
+      <div>
+        <span class="branch-char" style="color:${renderStem(p.branchElemCh)}">${p.branch}</span>
+        <div class="branch-animal">${p.animal} ${p.animalCh}</div>
+        <div class="branch-animal" style="margin-top:2px;opacity:.6">${p.branchElemCh} ${p.branchElemEn}</div>
+      </div>
+    </div>
+    <div class="hidden-stems">
+      <div class="hidden-label">Hidden Stems 藏干</div>
+      <div class="hidden-row">`;
+  p.hidden.forEach(h=>{
+    html+=`<div class="hidden-item">
+      <span class="hidden-char" style="color:${renderStem(h.elemCh)}">${h.stem}</span>
+      <span class="hidden-sub">${h.stemEn}</span>
+      <span class="hidden-sub" style="color:var(--gold);opacity:.7">${h.tgEn}</span>
+    </div>`;
+  });
+  html+=`</div></div></div>`;
+  return html;
+}
+
+function buildElementHTML(name,ch,colorCh,score,total){
+  const pct=Math.round(score/total*100);
+  const colors={'Wood':'#4CAF50','Fire':'#E57373','Earth':'#D4AF37','Metal':'#90CAF9','Water':'#7986CB'};
+  const col=colors[name]||'#D4AF37';
+  return`<div class="element-card">
+    <span class="element-char" style="color:${col}">${ch}</span>
+    <span class="element-name" style="color:${col}">${name}</span>
+    <div class="element-bar-bg"><div class="element-bar-fill" style="width:${pct}%;background:${col}"></div></div>
+    <div class="element-score">${pct}%</div>
+  </div>`;
+}
+
+function buildInsight(bazi){
+  const insights={
+    0:`ดวงชะตาของคุณเปี่ยมด้วย Wood Element สะท้อนถึงความคิดสร้างสรรค์ การเติบโต และความยืดหยุ่น เส้นทางที่เหมาะสมคือการสร้างสิ่งใหม่ — ไม่ว่าจะเป็นธุรกิจ ศิลปะ หรือความสัมพันธ์`,
+    1:`Fire Element ที่โดดเด่นในชะตาของคุณ บ่งบอกถึงพลังงานสูง ความกล้าหาญ และความสามารถในการจุดประกายผู้อื่น ระวังความร้อนใจที่อาจทำให้การตัดสินใจเร็วเกินไป`,
+    2:`Earth Element ที่แข็งแกร่งในชะตา สะท้อนถึงความมั่นคง ความน่าเชื่อถือ และทักษะการสร้างรากฐาน คุณเป็นที่พึ่งพาได้ในสายตาผู้อื่นเสมอ`,
+    3:`Metal Element ที่เด่นชัดในชะตา บ่งบอกถึงความแม่นยำ วินัย และมาตรฐานสูง คุณมีความสามารถในการตัดสิ่งที่ไม่จำเป็นออกได้อย่างเฉียบขาด`,
+    4:`Water Element ที่ไหลเวียนอยู่ในชะตา บ่งบอกถึงปัญญาล้ำลึก ความสามารถในการปรับตัว และสัญชาตญาณที่แม่นยำ คุณมักเข้าใจสิ่งต่างๆ ก่อนที่จะได้รับการพิสูจน์`,
+  };
+  return insights[bazi.dm%5]||insights[0];
+}
+
+// ── MAIN INIT ──
+document.addEventListener('DOMContentLoaded',()=>{
+  const params=new URLSearchParams(location.search);
+  const name=params.get('userName')||'Sacred Soul';
+  const dobStr=params.get('userDob')||'1-1-1990';
+  const timeStr=params.get('userTime')||'12:00';
+  const gender=params.get('userGender')||'1';
+  const unknown=timeStr==='Unknown';
+  
+  const [d,m,y]=dobStr.split('-').map(Number);
+  const [hr,min]=unknown?[12,0]:timeStr.split(':').map(Number);
+  
+  // Display
+  document.getElementById('display-name').textContent=name.toUpperCase();
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const genderLabel=gender==='1'?'MALE ♂':'FEMALE ♀';
+  document.getElementById('display-dob').textContent=`Born: ${d} ${months[m-1]||''} ${y}${unknown?'':' · '+String(hr).padStart(2,'0')+':'+String(min).padStart(2,'0')} · ${genderLabel}`;
+  
+  // Calculate
+  const bazi=calcBazi(y,m,d,hr);
+  
+  // Day master
+  document.getElementById('dm-char').textContent=bazi.dmStem;
+  document.getElementById('dm-label').textContent=`${bazi.dmEn} · ${bazi.dmElem}`;
+  
+  // Pillars (Hour, Day, Month, Year — display order)
+  const pillarOrder=['hour','day','month','year'];
+  const labelsEl=document.getElementById('pillar-labels');
+  const gridEl=document.getElementById('pillars-grid');
+  labelsEl.innerHTML='';gridEl.innerHTML='';
+  
+  pillarOrder.forEach(k=>{
+    const p=bazi.pillars[k];
+    labelsEl.innerHTML+=`<div class="col-label">${k==='day'?'<span style="color:var(--gold)">'+p.label+'</span>':p.label}</div>`;
+    gridEl.innerHTML+=buildPillarHTML(p);
+  });
+  
+  // Elements
+  const eData=[
+    {n:'Wood',ch:'木',eCh:'木'},{n:'Fire',ch:'火',eCh:'火'},
+    {n:'Earth',ch:'土',eCh:'土'},{n:'Metal',ch:'金',eCh:'金'},
+    {n:'Water',ch:'水',eCh:'水'},
+  ];
+  const total=Object.values(bazi.eScore).reduce((a,b)=>a+b,0)||1;
+  document.getElementById('element-grid').innerHTML=eData.map(e=>
+    buildElementHTML(e.n,e.ch,e.eCh,bazi.eScore[e.n]||0,total)
+  ).join('');
+  
+  // Profiles
+  const pList=document.getElementById('profile-list');
+  pList.innerHTML=bazi.profiles.map((p,i)=>`
+  <div class="profile-row">
+    <span class="profile-rank">${i+1}</span>
+    <span class="profile-name">${p.profileName} — ${p.fullName}</span>
+    <div class="profile-bar-bg"><div class="profile-bar-fill" style="width:0%" data-w="${p.pct}%"></div></div>
+    <span class="profile-pct">${p.pct}%</span>
+  </div>`).join('');
+  
+  // Animate bars after render
+  setTimeout(()=>{
+    document.querySelectorAll('.profile-bar-fill').forEach(el=>{
+      el.style.width=el.dataset.w;
+    });
+    document.querySelectorAll('.element-bar-fill').forEach(el=>{
+      const w=el.style.width;
+      el.style.width='0%';
+      setTimeout(()=>el.style.width=w,50);
+    });
+  },200);
+  
+  // Insight
+  document.getElementById('main-structure').textContent=bazi.mainStructure;
+  document.getElementById('insight-body').textContent=buildInsight(bazi);
+  
+  // Details table
+  const dt=document.getElementById('details-table');
+  const rows=[
+    ['Celestial Animal','生肖',bazi.celestialAnimal],
+    ['Day Master','日主',`${bazi.dmStem} ${bazi.dmEn} (${bazi.dmElem})`],
+    ['Main Structure','結構格',bazi.mainStructure],
+    ['Main Profile','命格',bazi.mainProfile],
+    ['Year Branch','年支',bazi.yearBranch],
+    ['Peach Blossom','桃花',bazi.peachBlossom],
+  ];
+  rows.forEach(([enLabel,chLabel,val])=>{
+    dt.innerHTML+=`<div class="dt-row">
+      <div class="dt-cell">${enLabel} ${chLabel}</div>
+      <div class="dt-cell">${val}</div>
+    </div>`;
+  });
+  
+  // Fade-up animation
+  setTimeout(()=>{
+    document.querySelectorAll('.fade-up').forEach((el,i)=>{
+      setTimeout(()=>el.classList.add('visible'),i*120);
+    });
+  },50);
+});
+</script>
+</body>
+</html>

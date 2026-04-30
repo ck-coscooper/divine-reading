@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE D'VINE ROOM — Bazi Destiny Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian:#0a0906; --obsidian-2:#111009; --obsidian-3:#1a1815;
+  --gold:#D4AF37; --gold-dim:rgba(212,175,55,0.18); --gold-border:rgba(212,175,55,0.25);
+  --ivory:#F5F0E8; --ivory-dim:rgba(245,240,232,0.75); --ivory-muted:rgba(245,240,232,0.38);
+  --ff-h:'Cinzel',serif; --ff-b:'IBM Plex Sans Thai',sans-serif; --ff-l:'Inter',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidian);color:var(--ivory);font-family:var(--ff-b);font-weight:300;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size:200px 200px;pointer-events:none;z-index:0;}
+.gold-text{background:linear-gradient(135deg,#C9A227 0%,#E8C84A 35%,#D4AF37 60%,#F5E8B0 75%,#D4AF37 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+/* HEADER */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:clamp(12px,2vw,18px) clamp(16px,4vw,48px);
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,9,6,0.96);border-bottom:0.5px solid var(--gold-border);
+  backdrop-filter:blur(12px);}
+.logo{font-family:var(--ff-h);font-size:clamp(0.72rem,1.8vw,0.95rem);font-weight:600;
+  letter-spacing:clamp(3px,1.2vw,8px);text-transform:uppercase;text-decoration:none;
+  background:linear-gradient(135deg,#C9A227,#E8C84A,#D4AF37);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-links{display:flex;gap:clamp(16px,3vw,40px);list-style:none;}
+.nav-links a{font-family:var(--ff-l);font-size:0.62rem;font-weight:400;letter-spacing:2.5px;
+  text-transform:uppercase;text-decoration:none;color:var(--ivory-muted);transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+@media(max-width:640px){.nav-links{display:none;}}
+/* MAIN */
+.main{position:relative;z-index:1;padding-top:clamp(70px,12vw,96px);
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding-bottom:80px;}
+/* HERO */
+.hero{text-align:center;padding:clamp(32px,5vw,60px) clamp(16px,4vw,48px) clamp(24px,4vw,40px);
+  max-width:700px;width:100%;}
+.eyebrow{font-family:var(--ff-l);font-size:0.58rem;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);opacity:.6;margin-bottom:clamp(14px,2.5vw,24px);}
+.hero-title{font-family:var(--ff-h);font-size:clamp(2rem,8vw,5rem);font-weight:600;
+  line-height:.9;letter-spacing:clamp(-0.5px,-.1vw,-2px);margin-bottom:clamp(8px,1.5vw,16px);}
+.hero-subtitle{font-family:var(--ff-b);font-size:clamp(0.78rem,2vw,0.9rem);font-weight:300;
+  line-height:1.75;color:var(--ivory-muted);max-width:480px;margin:clamp(12px,2vw,20px) auto clamp(32px,5vw,48px);}
+/* FORM CONTAINER */
+.form-wrap{width:100%;max-width:560px;padding:0 clamp(16px,4vw,32px);}
+.form-card{background:rgba(26,24,21,0.85);border:0.5px solid var(--gold-border);
+  padding:clamp(24px,4vw,44px);}
+.form-title{font-family:var(--ff-h);font-size:0.65rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);opacity:.7;margin-bottom:clamp(20px,3vw,32px);
+  padding-bottom:clamp(12px,2vw,20px);border-bottom:0.5px solid var(--gold-dim);}
+/* FORM FIELDS */
+.field-group{display:grid;gap:clamp(14px,2.5vw,20px);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,16px);}
+.field-row.thirds{grid-template-columns:1fr 1fr 1fr;}
+.field{display:flex;flex-direction:column;gap:6px;}
+label{font-family:var(--ff-l);font-size:0.52rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);opacity:.75;}
+input,select{
+  background:rgba(255,255,255,0.04)!important;
+  border:0.5px solid rgba(212,175,55,0.25)!important;
+  color:var(--ivory)!important;
+  font-family:var(--ff-l)!important;font-size:0.8rem!important;
+  padding:0 14px!important;height:42px!important;
+  width:100%;transition:border-color .3s,box-shadow .3s;
+  outline:none;border-radius:0!important;
+  -webkit-appearance:none;appearance:none;
+}
+input:focus,select:focus{
+  border-color:var(--gold)!important;
+  box-shadow:0 0 0 1px rgba(212,175,55,0.1)!important;
+}
+select option{background:#1a1815;color:var(--ivory);}
+input::placeholder{color:var(--ivory-muted)!important;font-size:0.75rem!important;}
+/* CHECKBOX */
+.check-row{display:flex;align-items:center;gap:10px;padding:clamp(10px,1.8vw,16px) 0;
+  border-top:0.5px solid var(--gold-dim);margin-top:4px;}
+.check-row input[type=checkbox]{width:16px!important;height:16px!important;
+  padding:0!important;cursor:pointer;accent-color:var(--gold);}
+.check-row label{opacity:.55;cursor:pointer;font-size:0.5rem!important;letter-spacing:2px!important;}
+/* SUBMIT */
+.btn-submit{width:100%;background:var(--gold);color:var(--obsidian);
+  border:none;padding:clamp(14px,2.5vw,18px);
+  font-family:var(--ff-l);font-size:0.65rem;font-weight:500;letter-spacing:4px;text-transform:uppercase;
+  cursor:pointer;margin-top:clamp(16px,2.5vw,24px);transition:opacity .3s,transform .3s;}
+.btn-submit:hover{opacity:.85;transform:translateY(-1px);}
+.btn-submit:active{transform:translateY(0);}
+/* FOOTER */
+footer{position:relative;z-index:1;padding:clamp(24px,4vw,40px);
+  border-top:0.5px solid var(--gold-dim);text-align:center;}
+footer p{font-family:var(--ff-l);font-size:0.55rem;letter-spacing:3px;color:var(--ivory-muted);opacity:.35;text-transform:uppercase;}
+@media(max-width:480px){
+  .field-row,.field-row.thirds{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">The D'vine Room</a>
+  <nav><ul class="nav-links">
+    <li><a href="learn.html">Learn</a></li>
+    <li><a href="tarot.html">Tarot</a></li>
+    <li><a href="reading.html">Reading</a></li>
+    <li><a href="almanac.html">Almanac</a></li>
+  </ul></nav>
+</header>
+
+<div class="main">
+  <div class="hero">
+    <p class="eyebrow">The Four Pillars of Destiny · 八字命理</p>
+    <h1 class="hero-title">
+      <span class="gold-text">BAZI</span><br>BLUEPRINT
+    </h1>
+    <p class="hero-subtitle">กรอกข้อมูลวันเกิดเพื่อเปิดเผยโครงสร้างชะตากรรมของคุณ<br>ด้วยศาสตร์แห่ง Four Pillars of Destiny</p>
+  </div>
+
+  <div class="form-wrap">
+    <div class="form-card">
+      <div class="form-title">Enter Birth Details / กรอกข้อมูลเกิด</div>
+
+      <div class="field-group">
+
+        <!-- Name + Gender -->
+        <div class="field-row">
+          <div class="field">
+            <label>Full Name / ชื่อ</label>
+            <input type="text" id="bazi-name" placeholder="Name identifier">
+          </div>
+          <div class="field">
+            <label>Gender / เพศ</label>
+            <select id="bazi-gender">
+              <option value="">Select</option>
+              <option value="1">Male ♂</option>
+              <option value="-1">Female ♀</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Day Month Year -->
+        <div class="field-row thirds">
+          <div class="field">
+            <label>Day / วัน</label>
+            <select id="bazi-day"></select>
+          </div>
+          <div class="field">
+            <label>Month / เดือน</label>
+            <select id="bazi-month"></select>
+          </div>
+          <div class="field">
+            <label>Year AD / ปี ค.ศ.</label>
+            <input type="number" id="bazi-year" placeholder="e.g. 1990" min="1900" max="2030">
+          </div>
+        </div>
+
+        <!-- Hour Minute -->
+        <div class="field-row" id="time-row">
+          <div class="field">
+            <label>Hour / ชั่วโมง</label>
+            <select id="bazi-hour"></select>
+          </div>
+          <div class="field">
+            <label>Minute / นาที</label>
+            <select id="bazi-minute"></select>
+          </div>
+        </div>
+
+        <!-- Unknown time -->
+        <div class="check-row">
+          <input type="checkbox" id="bazi-unknown" onchange="toggleTime(this)">
+          <label for="bazi-unknown">Time of Birth Unknown (ไม่ทราบเวลาเกิด)</label>
+        </div>
+
+      </div>
+
+      <button class="btn-submit" onclick="plotBazi()">Plot My Destiny →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>The D'vine Room — Scars of the Divine</p>
+</footer>
+
+<script>
+window.onload=function(){
+  const months=['January','February','March','April','May','June',
+    'July','August','September','October','November','December'];
+  
+  const dayEl=document.getElementById('bazi-day');
+  for(let i=1;i<=31;i++){
+    const o=document.createElement('option');
+    o.value=i; o.textContent=i<10?'0'+i:i;
+    dayEl.appendChild(o);
+  }
+  const monEl=document.getElementById('bazi-month');
+  months.forEach((m,i)=>{
+    const o=document.createElement('option');
+    o.value=i+1; o.textContent=`${i+1<10?'0'+(i+1):(i+1)} — ${m}`;
+    monEl.appendChild(o);
+  });
+  const hrEl=document.getElementById('bazi-hour');
+  for(let i=0;i<=23;i++){
+    const o=document.createElement('option');
+    o.value=i; o.textContent=i<10?'0'+i:i;
+    hrEl.appendChild(o);
+  }
+  const minEl=document.getElementById('bazi-minute');
+  for(let i=0;i<=59;i+=5){
+    const o=document.createElement('option');
+    o.value=i; o.textContent=i<10?'0'+i:i;
+    minEl.appendChild(o);
+  }
+  // Default hour 12
+  hrEl.value=12;
+};
+
+function toggleTime(cb){
+  document.getElementById('time-row').style.opacity=cb.checked?'0.3':'1';
+  document.getElementById('time-row').style.pointerEvents=cb.checked?'none':'auto';
+}
+
+function plotBazi(){
+  const name=document.getElementById('bazi-name').value.trim();
+  const gender=document.getElementById('bazi-gender').value;
+  const day=document.getElementById('bazi-day').value;
+  const month=document.getElementById('bazi-month').value;
+  const year=document.getElementById('bazi-year').value;
+  const hour=document.getElementById('bazi-hour').value;
+  const minute=document.getElementById('bazi-minute').value;
+  const unknown=document.getElementById('bazi-unknown').checked;
+
+  if(!name){alert('กรุณากรอกชื่อก่อนนะคะ');return;}
+  if(!year||year<1900||year>2030){alert('กรุณาระบุปีเกิด ค.ศ. ให้ถูกต้อง (1900-2030)');return;}
+  if(!day||!month){alert('กรุณาเลือกวันและเดือนเกิด');return;}
+
+  const params=new URLSearchParams({
+    userName:name,
+    userGender:gender,
+    userDob:`${day}-${month}-${year}`,
+    userTime:unknown?'Unknown':`${hour}:${minute}`
+  });
+  window.location.href=`result.html?${params.toString()}`;
+}
+</script>
+</body>
+</html>
