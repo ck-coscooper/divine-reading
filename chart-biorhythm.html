@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE D'VINE ROOM | Biorhythm — คลื่นชีวิต</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;500;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --ivory: #fcfcf9; 
+            --emerald: #062c1a; 
+            --gold: #d4af37;
+        }
+        body { 
+            background-color: var(--ivory); 
+            color: var(--emerald);
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 10vw, 6.5rem); 
+            line-height: 0.9; 
+            letter-spacing: -0.05em; 
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        input, select { 
+            background: #ffffff !important;
+            border: 1px solid rgba(6, 44, 26, 0.1) !important;
+            border-radius: 4px !important;
+            padding: 0 15px !important;
+            color: #000000 !important;
+            font-size: 16px !important;
+            width: 100%;
+            height: 48px !important; 
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            border-color: var(--gold) !important;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.1) !important;
+            outline: none !important;
+        }
+        label {
+            font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.25em;
+            text-transform: uppercase; color: #B38728; font-weight: 700;
+            display: block; margin-bottom: 8px;
+        }
+        .btn-scan {
+            background-color: var(--emerald);
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            padding: 18px;
+            width: 100%;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+        .btn-scan:hover { background-color: var(--gold); color: var(--emerald); }
+        #result-section { display: none; }
+        .graph-wrapper {
+            background: white;
+            border: 1px solid rgba(6, 44, 26, 0.05);
+            padding: 20px;
+            overflow-x: auto;
+            border-radius: 8px;
+        }
+        .wave-stat {
+            background: white;
+            border: 1px solid rgba(6,44,26,0.05);
+            padding: 24px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .wave-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .wave-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<header class="sticky top-0 z-50 bg-[#062c1a] text-white py-4 px-6 border-b border-[#d4af37]/20">
+    <div class="max-w-[1400px] mx-auto">
+        <div class="flex justify-between items-center mb-4 md:mb-2">
+            <a href="index.html" class="text-[10px] md:text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors uppercase">THE D'VINE ROOM</a>
+            <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
+        </div>
+        <nav class="flex overflow-x-auto no-scrollbar gap-4 md:gap-8 text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-cinzel opacity-70 whitespace-nowrap pt-2 md:pt-0 justify-start md:justify-center border-t border-white/5 md:border-none">
+            <a href="index.html" class="hidden md:block hover:text-[#d4af37] transition-colors">HOME</a>
+            <a href="learn.html" class="hover:text-[#d4af37] transition-colors">LEARN</a>
+            <a href="tarot.html" class="hover:text-[#d4af37] transition-colors">TAROT</a>
+            <a href="reading.html" class="hover:text-[#d4af37] transition-colors">READING</a>
+            <a href="chart.html" class="text-[#d4af37]">LIFE CHART</a>
+            <a href="almanac.html" class="hover:text-[#d4af37] transition-colors">ALMANAC</a>
+            <a href="community.html" class="hover:text-[#d4af37] transition-colors">COMMUNITY</a>
+        </nav>
+    </div>
+</header>
+
+<main class="py-8">
+    <section id="form-section">
+        <div class="mb-12 px-6 text-center">
+            <a href="chart.html" class="inline-block mb-12 text-[10px] tracking-[0.3em] uppercase opacity-40 hover:opacity-100 transition-opacity">← Back to Archive</a>
+            <p class="text-[10px] tracking-[0.3em] uppercase mb-8 opacity-40 font-cinzel">Connect with the Divine Sphere</p>
+            <h1 class="hero-title">BIO<br><span class="gold-gradient-text">RHYTHM</span></h1>
+        </div>
+
+        <div class="max-w-xl mx-auto px-6 space-y-6">
+            <div class="bg-white/60 p-8 md:p-10 rounded-2xl border border-[#062c1a]/5 shadow-sm backdrop-blur-md">
+                <div class="space-y-6">
+                    <div>
+                        <label>Full Name</label>
+                        <input type="text" id="inp-name" placeholder="Enter Full Name">
+                    </div>
+                    <div>
+                        <p class="text-[9px] tracking-widest text-[#B38728] uppercase font-bold mb-3">Birth Date</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div><label>Day</label><select id="inp-day"></select></div>
+                            <div><label>Month</label><select id="inp-month"></select></div>
+                            <div><label>Year (BE)</label><select id="inp-year"></select></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-[9px] tracking-widest text-[#B38728] uppercase font-bold mb-3">Target Date (Today)</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div><label>Day</label><select id="trn-day"></select></div>
+                            <div><label>Month</label><select id="trn-month"></select></div>
+                            <div><label>Year</label><select id="trn-year"></select></div>
+                        </div>
+                    </div>
+                    <button class="btn-scan mt-4" onclick="generateBiorhythm()">SCAN WAVES</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="result-section" class="max-w-5xl mx-auto px-6 space-y-8">
+        <div class="bg-[#062c1a] text-white p-8 md:p-12 rounded-xl shadow-2xl">
+            <p class="text-[10px] tracking-[0.5em] uppercase opacity-40 mb-3 font-cinzel">Biorhythm Wave Report</p>
+            <h2 id="out-name" class="text-4xl md:text-5xl font-bold font-cinzel uppercase tracking-tighter" style="color:var(--gold)"></h2>
+            <p id="out-meta" class="text-[10px] opacity-40 tracking-[0.2em] mt-2"></p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+            <div class="wave-stat">
+                <span class="wave-label" style="color:#3b82f6">ร่างกาย<br>Physical</span>
+                <p id="out-physical" class="wave-value" style="color:#3b82f6"></p>
+                <p id="out-physical-state" class="text-xs opacity-50 mt-2 font-cinzel tracking-wider"></p>
+            </div>
+            <div class="wave-stat">
+                <span class="wave-label" style="color:#ef4444">อารมณ์<br>Emotional</span>
+                <p id="out-emotional" class="wave-value" style="color:#ef4444"></p>
+                <p id="out-emotional-state" class="text-xs opacity-50 mt-2 font-cinzel tracking-wider"></p>
+            </div>
+            <div class="wave-stat">
+                <span class="wave-label" style="color:var(--gold)">สติปัญญา<br>Intellectual</span>
+                <p id="out-intellectual" class="wave-value" style="color:var(--gold)"></p>
+                <p id="out-intellectual-state" class="text-xs opacity-50 mt-2 font-cinzel tracking-wider"></p>
+            </div>
+        </div>
+
+        <div class="graph-wrapper">
+            <canvas id="bioCanvas" class="w-full"></canvas>
+        </div>
+
+        <div class="bg-white border border-[#062c1a]/05 rounded-lg p-6" style="border-left: 4px solid var(--gold);">
+            <p class="text-[10px] tracking-[0.4em] uppercase font-bold mb-3" style="color:var(--gold)">Analysis</p>
+            <p id="out-analysis" class="text-sm leading-relaxed opacity-70"></p>
+        </div>
+
+        <div class="text-center py-10">
+            <button onclick="location.reload()" class="font-cinzel text-[10px] tracking-[0.3em] opacity-30 hover:opacity-100 transition-opacity uppercase">← New Scan</button>
+        </div>
+    </section>
+</main>
+
+<footer class="py-16 text-center border-t border-[#062c1a]/5">
+    <p class="font-cinzel text-[10px] tracking-[0.3em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+</footer>
+
+<script>
+window.onload = function() {
+    const pop = (id, s, e, pad) => {
+        const el = document.getElementById(id);
+        for(let i=s; i<=e; i++) el.innerHTML += `<option value="${i}">${pad ? String(i).padStart(2,'0') : i}</option>`;
+    };
+    pop('inp-day', 1, 31);
+    for(let i=1; i<=12; i++) {
+        document.getElementById('inp-month').innerHTML += `<option value="${i}">${i}</option>`;
+        document.getElementById('trn-month').innerHTML += `<option value="${i}">${i}</option>`;
+    }
+    const currBE = new Date().getFullYear() + 543;
+    for(let i=currBE; i>=2480; i--) document.getElementById('inp-year').innerHTML += `<option value="${i-543}">${i}</option>`;
+    for(let i=currBE+5; i>=currBE-2; i--) document.getElementById('trn-year').innerHTML += `<option value="${i-543}" ${i===currBE?'selected':''}>${i}</option>`;
+
+    const thaiNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }));
+    for(let i=1; i<=31; i++) document.getElementById('trn-day').innerHTML += `<option value="${i}">${i}</option>`;
+    document.getElementById('trn-day').value = thaiNow.getDate();
+    document.getElementById('trn-month').value = thaiNow.getMonth() + 1;
+    document.getElementById('trn-year').value = thaiNow.getFullYear();
+};
+
+function daysBetween(d1, d2) {
+    return Math.floor((d2 - d1) / 86400000);
+}
+
+function getState(val) {
+    if (val > 50) return 'HIGH';
+    if (val > 0) return 'RISING';
+    if (val > -50) return 'FALLING';
+    return 'LOW';
+}
+
+function getAnalysis(p, e, i) {
+    const avg = (p + e + i) / 3;
+    if (avg > 50) return "พลังงานรวมอยู่ในระดับสูงมาก เป็นช่วงเวลาที่เหมาะสมสำหรับการบุก การตัดสินใจใหญ่ และการเริ่มต้นสิ่งใหม่ — ใช้โมเมนตัมนี้ให้เต็มที่";
+    if (avg > 0) return "พลังงานรวมอยู่ในระดับบวก เหมาะสำหรับการสานต่องานที่ทำค้างไว้ และการสร้างความสัมพันธ์ที่ดี";
+    if (avg > -50) return "พลังงานรวมอยู่ในช่วงขาลง ควรระวังการตัดสินใจสำคัญ เน้นการพักผ่อนและฟื้นฟู";
+    return "พลังงานรวมอยู่ในระดับต่ำ — ช่วงนี้เหมาะสำหรับการพักฟื้น ไตร่ตรอง และวางแผน ไม่ใช่การบุกโจมตี";
+}
+
+function generateBiorhythm() {
+    const name = document.getElementById('inp-name').value.trim();
+    if (!name) { alert('กรุณาระบุข้อมูลให้ครบถ้วน'); return; }
+
+    const bD = parseInt(document.getElementById('inp-day').value);
+    const bM = parseInt(document.getElementById('inp-month').value);
+    const bY = parseInt(document.getElementById('inp-year').value);
+    const tD = parseInt(document.getElementById('trn-day').value);
+    const tM = parseInt(document.getElementById('trn-month').value);
+    const tY = parseInt(document.getElementById('trn-year').value);
+
+    const birthDate = new Date(bY, bM-1, bD);
+    const targetDate = new Date(tY, tM-1, tD);
+    const days = daysBetween(birthDate, targetDate);
+
+    const physical = Math.round(Math.sin(2 * Math.PI * days / 23) * 100);
+    const emotional = Math.round(Math.sin(2 * Math.PI * days / 28) * 100);
+    const intellectual = Math.round(Math.sin(2 * Math.PI * days / 33) * 100);
+
+    document.getElementById('out-name').innerText = name;
+    document.getElementById('out-meta').innerText = `วันเกิด: ${bD}/${bM}/${bY+543} BE | วันที่วัด: ${tD}/${tM}/${tY+543} BE | Day ${days.toLocaleString()}`;
+    document.getElementById('out-physical').innerText = `${physical > 0 ? '+' : ''}${physical}%`;
+    document.getElementById('out-physical-state').innerText = getState(physical);
+    document.getElementById('out-emotional').innerText = `${emotional > 0 ? '+' : ''}${emotional}%`;
+    document.getElementById('out-emotional-state').innerText = getState(emotional);
+    document.getElementById('out-intellectual').innerText = `${intellectual > 0 ? '+' : ''}${intellectual}%`;
+    document.getElementById('out-intellectual-state').innerText = getState(intellectual);
+    document.getElementById('out-analysis').innerText = getAnalysis(physical, emotional, intellectual);
+
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('result-section').style.display = 'block';
+    drawBioGraph(days, birthDate);
+}
+
+function drawBioGraph(centerDay, birthDate) {
+    const canvas = document.getElementById('bioCanvas');
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const parent = canvas.parentElement;
+
+    canvas.width = parent.clientWidth * dpr;
+    canvas.height = 300 * dpr;
+    ctx.scale(dpr, dpr);
+
+    const W = parent.clientWidth;
+    const H = 300;
+    const pad = { t: 30, r: 20, b: 40, l: 40 };
+    const gW = W - pad.l - pad.r;
+    const gH = H - pad.t - pad.b;
+    const totalDays = 60;
+    const startDay = centerDay - 30;
+
+    ctx.clearRect(0, 0, W, H);
+
+    // Grid
+    ctx.strokeStyle = 'rgba(6,44,26,0.04)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad.l, pad.t + gH/2); ctx.lineTo(W-pad.r, pad.t + gH/2); ctx.stroke();
+    for(let i=0; i<=4; i++) {
+        const y = pad.t + (gH/4)*i;
+        ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(W-pad.r, y); ctx.stroke();
+    }
+
+    // Today line
+    const todayX = pad.l + (gW/totalDays)*30;
+    ctx.strokeStyle = 'rgba(6,44,26,0.15)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(todayX, pad.t); ctx.lineTo(todayX, H-pad.b); ctx.stroke();
+    ctx.setLineDash([]);
+
+    const waves = [
+        { cycle: 23, color: '#3b82f6' },
+        { cycle: 28, color: '#ef4444' },
+        { cycle: 33, color: '#d4af37' }
+    ];
+
+    waves.forEach(w => {
+        ctx.beginPath();
+        ctx.strokeStyle = w.color;
+        ctx.lineWidth = 2;
+        for(let i=0; i<=totalDays; i++) {
+            const d = startDay + i;
+            const val = Math.sin(2 * Math.PI * d / w.cycle);
+            const x = pad.l + (gW/totalDays)*i;
+            const y = pad.t + gH/2 - val*(gH/2)*0.9;
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+    });
+
+    // Month labels
+    ctx.fillStyle = 'rgba(6,44,26,0.3)';
+    ctx.font = 'bold 9px IBM Plex Sans Thai';
+    ctx.textAlign = 'center';
+    for(let i=0; i<=totalDays; i+=10) {
+        const d = new Date(birthDate.getTime() + (startDay+i)*86400000);
+        const x = pad.l + (gW/totalDays)*i;
+        ctx.fillText(`${d.getDate()}/${d.getMonth()+1}`, x, H-10);
+    }
+}
+</script>
+
+</body>
+</html>

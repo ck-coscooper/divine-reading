@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE D'VINE ROOM | Thai Astrology — โหราศาสตร์ไทย</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;500;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --ivory: #fcfcf9; 
+            --emerald: #062c1a; 
+            --gold: #d4af37; 
+            --gold-dark: #aa771c;
+        }
+        body { 
+            background-color: var(--ivory); 
+            color: var(--emerald);
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 10vw, 6.5rem); 
+            line-height: 0.9; 
+            letter-spacing: -0.05em; 
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(to bottom, #BF953F, #B38728, #AA771C);
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        input, select { 
+            background: #ffffff !important;
+            border: 1px solid rgba(6, 44, 26, 0.1) !important;
+            border-radius: 4px !important;
+            padding: 0 15px !important;
+            color: #000000 !important;
+            font-size: 16px !important;
+            width: 100%;
+            height: 48px !important; 
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            border-color: var(--gold) !important;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.1) !important;
+            outline: none !important;
+        }
+        label {
+            font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.25em;
+            text-transform: uppercase; color: #B38728; font-weight: 700;
+            display: block; margin-bottom: 8px;
+        }
+        .btn-scan {
+            background-color: var(--emerald);
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            padding: 18px;
+            width: 100%;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+        .btn-scan:hover { background-color: var(--gold); color: var(--emerald); }
+        #result-section { display: none; }
+        .result-card {
+            background: white;
+            border: 1px solid rgba(6, 44, 26, 0.05);
+            padding: 32px;
+            border-radius: 8px;
+        }
+        .result-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .result-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--emerald);
+            line-height: 1.2;
+        }
+        .planet-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(6,44,26,0.06);
+            font-size: 13px;
+        }
+        .planet-name {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+        }
+        .house-badge {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: rgba(6,44,26,0.05);
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+        .latlng-display {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-top: 6px;
+        }
+        .section-divider {
+            border-top: 1px solid rgba(6,44,26,0.08);
+            padding-top: 24px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { 
+                font-size: clamp(2.2rem, 13vw, 4rem); 
+                line-height: 1.1; 
+                letter-spacing: -0.02em;
+            }
+            .bg-white\/60 {
+                padding: 24px 16px !important;
+            }
+            .result-card {
+                padding: 20px 16px !important;
+            }
+            .result-value {
+                font-size: 1.5rem !important;
+            }
+            .planet-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            .grid.grid-cols-3 {
+                gap: 8px !important;
+            }
+            .grid.grid-cols-2 {
+                gap: 8px !important;
+            }
+            input, select {
+                height: 44px !important;
+                font-size: 14px !important;
+            }
+            label {
+                font-size: 9px !important;
+            }
+            .house-badge {
+                font-size: 9px !important;
+                padding: 3px 6px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="sticky top-0 z-50 bg-[#062c1a] text-white py-4 px-6 border-b border-[#d4af37]/20">
+    <div class="max-w-[1400px] mx-auto">
+        <div class="flex justify-between items-center mb-4 md:mb-2">
+            <a href="index.html" class="text-[10px] md:text-xs tracking-[0.4em] font-cinzel hover:text-[#d4af37] transition-colors uppercase">THE D'VINE ROOM</a>
+            <a href="signup.html" class="text-[9px] border border-[#d4af37]/40 px-3 py-1 uppercase font-bold tracking-widest hover:bg-[#d4af37] hover:text-[#062c1a] transition-all">Sign Up</a>
+        </div>
+        <nav class="flex overflow-x-auto no-scrollbar gap-4 md:gap-8 text-[9px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] font-cinzel opacity-70 whitespace-nowrap pt-2 md:pt-0 justify-start md:justify-center border-t border-white/5 md:border-none">
+            <a href="index.html" class="hidden md:block hover:text-[#d4af37] transition-colors">HOME</a>
+            <a href="learn.html" class="hover:text-[#d4af37] transition-colors">LEARN</a>
+            <a href="tarot.html" class="hover:text-[#d4af37] transition-colors">TAROT</a>
+            <a href="reading.html" class="hover:text-[#d4af37] transition-colors">READING</a>
+            <a href="chart.html" class="text-[#d4af37]">LIFE CHART</a>
+            <a href="almanac.html" class="hover:text-[#d4af37] transition-colors">ALMANAC</a>
+            <a href="community.html" class="hover:text-[#d4af37] transition-colors">COMMUNITY</a>
+        </nav>
+    </div>
+</header>
+
+<main class="py-8">
+    <section id="form-section">
+        <div class="mb-12 px-6 text-center">
+            <a href="chart.html" class="inline-block mb-12 text-[10px] tracking-[0.3em] uppercase opacity-40 hover:opacity-100 transition-opacity">← Back to Archive</a>
+            <p class="text-[10px] tracking-[0.3em] uppercase mb-8 opacity-40 font-cinzel">Connect with the Divine Sphere</p>
+            <h1 class="hero-title">THAI<br><span class="gold-gradient-text">ASTROLOGY</span></h1>
+        </div>
+
+        <div class="max-w-xl mx-auto px-6 space-y-6">
+            <div class="bg-white/60 p-8 md:p-10 rounded-2xl border border-[#062c1a]/5 shadow-sm backdrop-blur-md">
+                <div class="space-y-6">
+
+                    <!-- ชื่อ -->
+                    <div>
+                        <label>Full Name</label>
+                        <input type="text" id="inp-name" placeholder="Enter Full Name">
+                    </div>
+
+                    <!-- วันเดือนปีเกิด -->
+                    <div>
+                        <p class="text-[9px] tracking-widest text-[#B38728] uppercase font-bold mb-3">Birth Date</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div><label>Day</label><select id="inp-day"></select></div>
+                            <div><label>Month</label><select id="inp-month"></select></div>
+                            <div><label>Year</label><select id="inp-year"></select></div>
+                        </div>
+                    </div>
+
+                    <!-- เวลาเกิด -->
+                    <div>
+                        <p class="text-[9px] tracking-widest text-[#B38728] uppercase font-bold mb-3">Birth Time</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div><label>Hour</label><select id="inp-hour"></select></div>
+                            <div><label>Minute</label><select id="inp-minute"></select></div>
+                        </div>
+                    </div>
+
+                    <!-- สถานที่เกิด -->
+                    <div class="section-divider">
+                        <p class="text-[9px] tracking-widest text-[#B38728] uppercase font-bold mb-3">Birth Location — สถานที่เกิด</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label>Province — จังหวัด</label>
+                                <select id="inp-province" onchange="updateAmphoe('inp-province','inp-amphoe','inp-lat','inp-lng')"></select>
+                            </div>
+                            <div>
+                                <label>District — อำเภอ</label>
+                                <select id="inp-amphoe" onchange="updateLatLng('inp-amphoe','inp-lat','inp-lng')"></select>
+                            </div>
+                        </div>
+                        <p class="latlng-display" id="inp-latlng-display">ละติจูด: — | ลองจิจูด: —</p>
+                        <input type="hidden" id="inp-lat">
+                        <input type="hidden" id="inp-lng">
+                    </div>
+
+                    <!-- วันจร -->
+                    <div class="section-divider">
+                        <p class="text-[9px] tracking-widest text-[#B38728] uppercase font-bold mb-3">Transit Date — วันจร/วันที่ทำนาย</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div><label>Day</label><select id="trn-day"></select></div>
+                            <div><label>Month</label><select id="trn-month"></select></div>
+                            <div><label>Year (BE)</label><select id="trn-year"></select></div>
+                        </div>
+                    </div>
+
+                    <!-- เวลาจร -->
+                    <div>
+                        <p class="text-[9px] tracking-widest text-[#B38728] uppercase font-bold mb-3">Transit Time — เวลาจร</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div><label>Hour</label><select id="trn-hour"></select></div>
+                            <div><label>Minute</label><select id="trn-minute"></select></div>
+                        </div>
+                    </div>
+
+                    <!-- สถานที่จร -->
+                    <div class="section-divider">
+                        <p class="text-[9px] tracking-widest text-[#B38728] uppercase font-bold mb-3">Transit Location — สถานที่จร</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label>Province — จังหวัด</label>
+                                <select id="trn-province" onchange="updateAmphoe('trn-province','trn-amphoe','trn-lat','trn-lng')"></select>
+                            </div>
+                            <div>
+                                <label>District — อำเภอ</label>
+                                <select id="trn-amphoe" onchange="updateLatLng('trn-amphoe','trn-lat','trn-lng')"></select>
+                            </div>
+                        </div>
+                        <p class="latlng-display" id="trn-latlng-display">ละติจูด: — | ลองจิจูด: —</p>
+                        <input type="hidden" id="trn-lat">
+                        <input type="hidden" id="trn-lng">
+                    </div>
+
+                    <button class="btn-scan mt-4" onclick="generateThaiChart()">CALCULATE CHART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="result-section" class="max-w-4xl mx-auto px-6 space-y-8">
+        <div class="bg-[#062c1a] text-white p-8 md:p-12 rounded-xl shadow-2xl">
+            <p class="text-[10px] tracking-[0.5em] uppercase opacity-40 mb-3 font-cinzel">Thai Astrology Report</p>
+            <h2 id="out-name" class="text-4xl md:text-5xl font-bold font-cinzel uppercase tracking-tighter" style="color:var(--gold)"></h2>
+            <p id="out-meta" class="text-[10px] opacity-40 tracking-[0.2em] mt-2"></p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="result-card text-center">
+                <span class="result-label">ลัคนา / Ascendant</span>
+                <p id="out-lagna" class="result-value"></p>
+                <p id="out-lagna-en" class="text-xs opacity-40 mt-1 font-cinzel tracking-widest"></p>
+            </div>
+            <div class="result-card text-center">
+                <span class="result-label">ดาวเจ้าชะตา / Ruler</span>
+                <p id="out-ruler" class="result-value"></p>
+                <p id="out-ruler-house" class="text-xs opacity-40 mt-1 font-cinzel tracking-widest"></p>
+            </div>
+            <div class="result-card text-center">
+                <span class="result-label">ดาวอาทิตย์ / Sun Sign</span>
+                <p id="out-sun" class="result-value"></p>
+                <p id="out-sun-en" class="text-xs opacity-40 mt-1 font-cinzel tracking-widest"></p>
+            </div>
+        </div>
+
+        <div class="result-card">
+            <p class="result-label mb-6">ตำแหน่งดาวในบ้าน / Planetary Positions</p>
+            <div id="planet-list"></div>
+        </div>
+
+        <div class="result-card" style="border-left: 4px solid var(--gold);">
+            <p class="result-label mb-3">คำทำนายเบื้องต้น / Reading</p>
+            <p id="out-reading" class="text-sm leading-relaxed opacity-70"></p>
+        </div>
+
+        <div class="text-center py-10">
+            <button onclick="location.reload()" class="font-cinzel text-[10px] tracking-[0.3em] opacity-30 hover:opacity-100 transition-opacity uppercase">← New Chart</button>
+        </div>
+    </section>
+</main>
+
+<footer class="py-16 text-center border-t border-[#062c1a]/5">
+    <p class="font-cinzel text-[10px] tracking-[0.3em] opacity-30 uppercase">Aj. Faan / Scars of the Divine</p>
+</footer>
+
+<script>
+// ── DATABASE จังหวัด → อำเภอ → lat/lng ──
+const LOCATION_DATA = {
+    "กรุงเทพมหานคร": { amphoes: { "เขตพระนคร": [13.7563, 100.5018], "เขตดุสิต": [13.7750, 100.5130], "เขตบางรัก": [13.7240, 100.5240], "เขตสาทร": [13.7225, 100.5247], "เขตจตุจักร": [13.8100, 100.5490], "เขตลาดพร้าว": [13.8150, 100.5700], "เขตบึงกุ่ม": [13.8000, 100.6200], "เขตมีนบุรี": [13.8160, 100.7150] } },
+    "เชียงใหม่": { amphoes: { "เมืองเชียงใหม่": [18.7883, 98.9853], "เชียงดาว": [19.3700, 98.9600], "ดอยสะเก็ด": [18.8800, 99.1200], "แม่แตง": [19.0700, 98.9400], "สันกำแพง": [18.7400, 99.1200], "หางดง": [18.6800, 98.9200], "ฝาง": [19.9200, 99.2100] } },
+    "เชียงราย": { amphoes: { "เมืองเชียงราย": [19.9071, 99.8330], "แม่จัน": [20.1300, 99.8700], "เชียงแสน": [20.2700, 100.0800], "แม่สาย": [20.4300, 99.8800], "เวียงชัย": [19.9600, 99.9300] } },
+    "ลำปาง": { amphoes: { "เมืองลำปาง": [18.2783, 99.5076], "แม่เมาะ": [18.3800, 99.6500], "เกาะคา": [18.1800, 99.3900], "งาว": [18.8200, 99.9700] } },
+    "ลำพูน": { amphoes: { "เมืองลำพูน": [18.5746, 99.0087], "บ้านโฮ่ง": [18.3700, 98.8900], "ลี้": [17.9800, 98.9900] } },
+    "แม่ฮ่องสอน": { amphoes: { "เมืองแม่ฮ่องสอน": [19.3020, 97.9654], "ปาย": [19.3600, 98.4400], "ขุนยวม": [18.8000, 97.9400] } },
+    "พะเยา": { amphoes: { "เมืองพะเยา": [19.1664, 99.9019], "จุน": [19.2600, 100.1600], "เชียงคำ": [19.5200, 100.4600] } },
+    "น่าน": { amphoes: { "เมืองน่าน": [18.7736, 100.7730], "ปัว": [19.1800, 100.9100], "ท่าวังผา": [18.9800, 100.7900] } },
+    "แพร่": { amphoes: { "เมืองแพร่": [18.1445, 100.1401], "ร้องกวาง": [18.3400, 100.3200], "สูงเม่น": [17.9800, 100.1100] } },
+    "อุตรดิตถ์": { amphoes: { "เมืองอุตรดิตถ์": [17.6200, 100.0990], "ลับแล": [17.5400, 100.0600], "ท่าปลา": [17.8400, 100.3400] } },
+    "ตาก": { amphoes: { "เมืองตาก": [16.8798, 99.1257], "แม่สอด": [16.7100, 98.5700], "อุ้มผาง": [16.0400, 98.9100] } },
+    "สุโขทัย": { amphoes: { "เมืองสุโขทัย": [17.0074, 99.8265], "ศรีสำโรง": [17.2300, 99.8800], "สวรรคโลก": [17.3100, 99.8600] } },
+    "พิษณุโลก": { amphoes: { "เมืองพิษณุโลก": [16.8211, 100.2659], "นครไทย": [17.1200, 100.8200], "วังทอง": [16.9800, 100.4200] } },
+    "พิจิตร": { amphoes: { "เมืองพิจิตร": [16.4423, 100.3491], "ตะพานหิน": [16.2200, 100.4200], "บางมูลนาก": [16.0300, 100.3300] } },
+    "กำแพงเพชร": { amphoes: { "เมืองกำแพงเพชร": [16.4747, 99.5228], "คลองลาน": [16.1800, 99.3200], "ขาณุวรลักษบุรี": [16.1500, 99.7500] } },
+    "นครสวรรค์": { amphoes: { "เมืองนครสวรรค์": [15.7030, 100.1366], "ตาคลี": [15.2600, 100.3400], "พยุหะคีรี": [15.4800, 100.1400] } },
+    "อุทัยธานี": { amphoes: { "เมืองอุทัยธานี": [15.3835, 100.0247], "ทัพทัน": [15.3000, 99.9200], "หนองขาหย่าง": [15.2600, 100.0900] } },
+    "ชัยนาท": { amphoes: { "เมืองชัยนาท": [15.1851, 100.1268], "สรรคบุรี": [15.0800, 100.1600], "วัดสิงห์": [15.2100, 100.0100] } },
+    "เพชรบูรณ์": { amphoes: { "เมืองเพชรบูรณ์": [16.4189, 101.1553], "หล่มสัก": [16.7700, 101.2400], "วิเชียรบุรี": [15.6600, 101.1100] } },
+    "เลย": { amphoes: { "เมืองเลย": [17.4860, 101.7233], "เชียงคาน": [17.8900, 101.6600], "ด่านซ้าย": [17.2800, 101.1500] } },
+    "หนองบัวลำภู": { amphoes: { "เมืองหนองบัวลำภู": [17.2042, 102.4415], "นากลาง": [17.3400, 102.2100], "โนนสัง": [17.0800, 102.6600] } },
+    "อุดรธานี": { amphoes: { "เมืองอุดรธานี": [17.4138, 102.7872], "กุมภวาปี": [17.0000, 103.0000], "บ้านดุง": [17.7200, 103.2600] } },
+    "หนองคาย": { amphoes: { "เมืองหนองคาย": [17.8782, 102.7416], "ท่าบ่อ": [17.8400, 102.5700], "ศรีเชียงใหม่": [17.9800, 102.6000] } },
+    "บึงกาฬ": { amphoes: { "เมืองบึงกาฬ": [18.3609, 103.6522], "พรเจริญ": [18.1900, 103.4700], "บุ่งคล้า": [18.1200, 103.7300] } },
+    "สกลนคร": { amphoes: { "เมืองสกลนคร": [17.1664, 104.1486], "พังโคน": [17.0600, 103.9600], "วาริชภูมิ": [17.4300, 104.0300] } },
+    "นครพนม": { amphoes: { "เมืองนครพนม": [17.3910, 104.7780], "ท่าอุเทน": [17.5900, 104.5700], "บ้านแพง": [18.0200, 104.0100] } },
+    "มุกดาหาร": { amphoes: { "เมืองมุกดาหาร": [16.5436, 104.7237], "นิคมคำสร้อย": [16.7300, 104.4900], "ดอนตาล": [16.3900, 104.8200] } },
+    "กาฬสินธุ์": { amphoes: { "เมืองกาฬสินธุ์": [16.4314, 103.5057], "สมเด็จ": [16.6700, 103.7100], "กมลาไสย": [16.3300, 103.6500] } },
+    "ร้อยเอ็ด": { amphoes: { "เมืองร้อยเอ็ด": [16.0538, 103.6520], "สุวรรณภูมิ": [15.6000, 103.8000], "โพนทราย": [15.9200, 104.2700] } },
+    "มหาสารคาม": { amphoes: { "เมืองมหาสารคาม": [16.1851, 103.3001], "กันทรวิชัย": [16.3700, 103.1400], "บรบือ": [15.9700, 103.1200] } },
+    "ขอนแก่น": { amphoes: { "เมืองขอนแก่น": [16.4419, 102.8360], "บ้านไผ่": [16.0700, 102.7400], "ชุมแพ": [16.5400, 102.1100] } },
+    "อุบลราชธานี": { amphoes: { "เมืองอุบลราชธานี": [15.2287, 104.8590], "วารินชำราบ": [15.2000, 104.8700], "เดชอุดม": [14.8700, 104.9900] } },
+    "ยโสธร": { amphoes: { "เมืองยโสธร": [15.7924, 104.1455], "คำเขื่อนแก้ว": [15.7600, 104.3500], "มหาชนะชัย": [15.5900, 104.2700] } },
+    "อำนาจเจริญ": { amphoes: { "เมืองอำนาจเจริญ": [15.8656, 104.6257], "เสนางคนิคม": [15.7600, 104.7700], "ชานุมาน": [15.9600, 104.9200] } },
+    "ศรีสะเกษ": { amphoes: { "เมืองศรีสะเกษ": [15.1199, 104.3220], "กันทรลักษ์": [14.7100, 104.6500], "ขุขันธ์": [14.9700, 103.9900] } },
+    "สุรินทร์": { amphoes: { "เมืองสุรินทร์": [14.8824, 103.4956], "ปราสาท": [14.6700, 103.3900], "สังขะ": [14.5500, 103.7300] } },
+    "บุรีรัมย์": { amphoes: { "เมืองบุรีรัมย์": [14.9930, 103.1027], "นางรอง": [14.6400, 102.7900], "บ้านด่าน": [15.1600, 103.1500] } },
+    "ชัยภูมิ": { amphoes: { "เมืองชัยภูมิ": [15.8068, 101.9213], "บำเหน็จณรงค์": [15.4200, 101.9300], "แก้งคร้อ": [16.0700, 102.1500] } },
+    "นครราชสีมา": { amphoes: { "เมืองนครราชสีมา": [14.9799, 102.0978], "ปากช่อง": [14.7100, 101.4100], "โชคชัย": [14.7300, 102.1600] } },
+    "สระแก้ว": { amphoes: { "เมืองสระแก้ว": [13.8240, 102.0640], "อรัญประเทศ": [13.6900, 102.5100], "วัฒนานคร": [13.7800, 102.3100] } },
+    "ปราจีนบุรี": { amphoes: { "เมืองปราจีนบุรี": [14.0509, 101.3720], "กบินทร์บุรี": [13.9800, 101.7200], "บ้านสร้าง": [14.0700, 101.2500] } },
+    "นครนายก": { amphoes: { "เมืองนครนายก": [14.2029, 101.2130], "ปากพลี": [14.3800, 101.3700], "บ้านนา": [14.2200, 101.0800] } },
+    "ฉะเชิงเทรา": { amphoes: { "เมืองฉะเชิงเทรา": [13.6904, 101.0779], "บางปะกง": [13.5300, 101.0800], "พนมสารคาม": [13.7300, 101.4100] } },
+    "ชลบุรี": { amphoes: { "เมืองชลบุรี": [13.3611, 100.9847], "พัทยา": [12.9236, 100.8825], "ศรีราชา": [13.1700, 100.9300] } },
+    "ระยอง": { amphoes: { "เมืองระยอง": [12.6814, 101.2816], "บ้านฉาง": [12.7500, 101.0400], "แกลง": [12.7800, 101.6300] } },
+    "จันทบุรี": { amphoes: { "เมืองจันทบุรี": [12.6087, 102.1040], "ท่าใหม่": [12.5800, 102.0000], "แหลมสิงห์": [12.4800, 102.0000] } },
+    "ตราด": { amphoes: { "เมืองตราด": [12.2426, 102.5130], "เกาะช้าง": [12.0900, 102.3200], "คลองใหญ่": [11.8000, 102.9000] } },
+    "ลพบุรี": { amphoes: { "เมืองลพบุรี": [14.7995, 100.6534], "โคกสำโรง": [15.0800, 100.6400], "บ้านหมี่": [14.9800, 100.5800] } },
+    "สิงห์บุรี": { amphoes: { "เมืองสิงห์บุรี": [14.8936, 100.3967], "อินทร์บุรี": [14.9700, 100.3200], "พรหมบุรี": [14.9600, 100.4900] } },
+    "อ่างทอง": { amphoes: { "เมืองอ่างทอง": [14.5896, 100.4550], "โพธิ์ทอง": [14.5100, 100.3700], "ไชโย": [14.6900, 100.4600] } },
+    "พระนครศรีอยุธยา": { amphoes: { "พระนครศรีอยุธยา": [14.3533, 100.5641], "บางปะอิน": [14.2400, 100.5800], "บางบาล": [14.3700, 100.4700] } },
+    "สระบุรี": { amphoes: { "เมืองสระบุรี": [14.5289, 100.9107], "แก่งคอย": [14.5800, 101.1900], "หนองแค": [14.3800, 100.8500] } },
+    "นนทบุรี": { amphoes: { "เมืองนนทบุรี": [13.8622, 100.5134], "ปากเกร็ด": [13.9100, 100.4900], "บางใหญ่": [13.8700, 100.4200] } },
+    "ปทุมธานี": { amphoes: { "เมืองปทุมธานี": [14.0208, 100.5250], "ธัญบุรี": [14.0200, 100.7300], "ลำลูกกา": [13.9400, 100.7700] } },
+    "นครปฐม": { amphoes: { "เมืองนครปฐม": [13.8196, 100.0645], "กำแพงแสน": [14.0200, 99.9700], "สามพราน": [13.7300, 100.0300] } },
+    "สมุทรปราการ": { amphoes: { "เมืองสมุทรปราการ": [13.5991, 100.5998], "บางพลี": [13.6200, 100.7100], "พระประแดง": [13.6600, 100.5300] } },
+    "สมุทรสาคร": { amphoes: { "เมืองสมุทรสาคร": [13.5500, 100.2740], "กระทุ่มแบน": [13.6500, 100.2600], "บ้านแพ้ว": [13.4800, 100.1100] } },
+    "สมุทรสงคราม": { amphoes: { "เมืองสมุทรสงคราม": [13.4098, 100.0020], "อัมพวา": [13.4200, 99.9600], "บางคนที": [13.4800, 99.9600] } },
+    "ราชบุรี": { amphoes: { "เมืองราชบุรี": [13.5360, 99.8170], "โพธาราม": [13.6900, 99.8500], "บ้านโป่ง": [13.8100, 99.8700] } },
+    "กาญจนบุรี": { amphoes: { "เมืองกาญจนบุรี": [14.0023, 99.5328], "ท่าม่วง": [13.9100, 99.6800], "ทองผาภูมิ": [14.7600, 98.6300] } },
+    "สุพรรณบุรี": { amphoes: { "เมืองสุพรรณบุรี": [14.4744, 100.1177], "เดิมบางนางบวช": [14.9500, 100.0400], "สองพี่น้อง": [14.2300, 100.0200] } },
+    "เพชรบุรี": { amphoes: { "เมืองเพชรบุรี": [13.1119, 99.9395], "ชะอำ": [12.7900, 99.9700], "หัวหิน": [12.5700, 99.9600] } },
+    "ประจวบคีรีขันธ์": { amphoes: { "เมืองประจวบคีรีขันธ์": [11.8126, 99.7957], "หัวหิน": [12.5700, 99.9600], "บางสะพาน": [11.2300, 99.4200] } },
+    "ชุมพร": { amphoes: { "เมืองชุมพร": [10.4930, 99.1800], "หลังสวน": [10.0600, 98.9300], "ท่าแซะ": [10.6000, 99.0800] } },
+    "ระนอง": { amphoes: { "เมืองระนอง": [9.9529, 98.6085], "กระบุรี": [10.4900, 98.8300], "ละอุ่น": [10.1200, 98.7400] } },
+    "สุราษฎร์ธานี": { amphoes: { "เมืองสุราษฎร์ธานี": [9.1382, 99.3217], "เกาะสมุย": [9.5120, 100.0614], "บ้านนาสาร": [8.8400, 99.3300] } },
+    "พังงา": { amphoes: { "เมืองพังงา": [8.4510, 98.5253], "เขาหลัก": [8.6500, 98.2400], "ตะกั่วป่า": [8.8700, 98.3300] } },
+    "ภูเก็ต": { amphoes: { "เมืองภูเก็ต": [7.8804, 98.3923], "กะทู้": [7.9100, 98.3000], "ถลาง": [8.0800, 98.3200] } },
+    "กระบี่": { amphoes: { "เมืองกระบี่": [8.0863, 98.9063], "อ่าวลึก": [8.4300, 98.7200], "เกาะลันตา": [7.5400, 99.0400] } },
+    "ตรัง": { amphoes: { "เมืองตรัง": [7.5590, 99.6113], "ปะเหลียน": [7.3200, 99.6800], "สิเกา": [7.7400, 99.4100] } },
+    "นครศรีธรรมราช": { amphoes: { "เมืองนครศรีธรรมราช": [8.4322, 99.9631], "ทุ่งสง": [8.1600, 99.6800], "สิชล": [9.0100, 99.9200] } },
+    "พัทลุง": { amphoes: { "เมืองพัทลุง": [7.6169, 100.0741], "ควนขนุน": [7.7200, 100.1200], "ป่าพะยอม": [7.6900, 100.1800] } },
+    "สงขลา": { amphoes: { "เมืองสงขลา": [7.1897, 100.5951], "หาดใหญ่": [7.0086, 100.4747], "สะเดา": [6.6400, 100.4200] } },
+    "สตูล": { amphoes: { "เมืองสตูล": [6.6238, 100.0674], "ละงู": [6.7200, 99.9000], "ทุ่งหว้า": [6.9400, 99.8800] } },
+    "ปัตตานี": { amphoes: { "เมืองปัตตานี": [6.8691, 101.2505], "หนองจิก": [6.8900, 101.0800], "ยะรัง": [6.7200, 101.3300] } },
+    "ยะลา": { amphoes: { "เมืองยะลา": [6.5413, 101.2803], "เบตง": [5.7700, 101.0700], "บันนังสตา": [6.2600, 101.3300] } },
+    "นราธิวาส": { amphoes: { "เมืองนราธิวาส": [6.4254, 101.8253], "สุไหงโก-ลก": [6.0400, 101.9600], "ตากใบ": [6.2600, 102.0500] } }
+};
+
+const RASI_TH = ['เมษ','พฤษภ','เมถุน','กรกฎ','สิงห์','กันย์','ตุลย์','พิจิก','ธนู','มกร','กุมภ์','มีน'];
+const RASI_EN = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+const PLANETS_TH = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัส','ศุกร์','เสาร์'];
+const PLANETS_EN = ['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn'];
+const RULERS = ['อังคาร','ศุกร์','พุธ','จันทร์','อาทิตย์','พุธ','ศุกร์','อังคาร','พฤหัส','เสาร์','เสาร์','พฤหัส'];
+const HOUSES_TH = ['วาสนา','ทรัพย์','เพื่อน','ญาติ','บุตร','ศัตรู','คู่ครอง','มรณะ','ศาสนา','การงาน','ลาภ','วินาศ'];
+const READINGS = [
+    "ลัคนาเมษ — บุคลิกภาพแข็งแกร่ง มีความเป็นผู้นำสูง พลังงานสูง ชอบการแข่งขัน ต้องระวังความหุนหันพลันแล่น",
+    "ลัคนาพฤษภ — มีรสนิยมสูง รักความมั่นคง ทำงานอดทน มีพรสวรรค์ด้านศิลปะและการเงิน",
+    "ลัคนาเมถุน — ปราดเปรื่อง สื่อสารเก่ง ปรับตัวได้ดี ชอบเรียนรู้สิ่งใหม่ ความคิดสร้างสรรค์สูง",
+    "ลัคนากรกฎ — อ่อนไหว เข้าใจผู้อื่นดี รักครอบครัว สัญชาตญาณแม่นยำ ต้องระวังอารมณ์แปรปรวน",
+    "ลัคนาสิงห์ — มีเสน่ห์ ชอบเป็นจุดสนใจ มีความเป็นผู้นำ มีศักดิ์ศรี ต้องระวังความหยิ่งผยอง",
+    "ลัคนากันย์ — ละเอียดถี่ถ้วน วิเคราะห์เก่ง รักความสะอาดระเบียบ มีทักษะการแก้ปัญหาสูง",
+    "ลัคนาตุลย์ — รักความยุติธรรม มีเสน่ห์ ชอบความสมดุล เก่งด้านการทูต รักสวยรักงาม",
+    "ลัคนาพิจิก — เข้มแข็งภายใน มีพลังสัญชาตญาณสูง ตรงไปตรงมา มีความลึกทางจิตใจ",
+    "ลัคนาธนู — รักอิสรภาพ มองการณ์ไกล ชอบปรัชญาและความจริง มีอารมณ์ขัน",
+    "ลัคนามกร — มีวินัยสูง ทะเยอทะยาน ทำงานหนัก มีความรับผิดชอบ มุ่งมั่นสู่ความสำเร็จ",
+    "ลัคนากุมภ์ — มีความคิดสร้างสรรค์ รักมนุษยชาติ มีวิสัยทัศน์ ชอบความแปลกใหม่",
+    "ลัคนามีน — อ่อนโยน เห็นอกเห็นใจ มีพรสวรรค์ทางศิลปะ สัญชาตญาณสูง รักสันติ"
+];
+
+window.onload = function() {
+    const pop = (id, s, e, padZ) => {
+        const el = document.getElementById(id);
+        for(let i=s; i<=e; i++) el.innerHTML += `<option value="${i}">${padZ ? String(i).padStart(2,'0') : i}</option>`;
+    };
+
+    // populate provinces
+    ['inp-province','trn-province'].forEach(id => {
+        const sel = document.getElementById(id);
+        Object.keys(LOCATION_DATA).sort().forEach(p => {
+            sel.innerHTML += `<option value="${p}">${p}</option>`;
+        });
+        // trigger first amphoe
+        const other = id === 'inp-province' ? ['inp-province','inp-amphoe','inp-lat','inp-lng'] : ['trn-province','trn-amphoe','trn-lat','trn-lng'];
+        updateAmphoe(...other);
+    });
+
+    pop('inp-day', 1, 31);
+    pop('trn-day', 1, 31);
+    for(let i=1; i<=12; i++) {
+        document.getElementById('inp-month').innerHTML += `<option value="${i}">${i}</option>`;
+        document.getElementById('trn-month').innerHTML += `<option value="${i}">${i}</option>`;
+    }
+    const currBE = new Date().getFullYear() + 543;
+    for(let i=currBE; i>=2480; i--) document.getElementById('inp-year').innerHTML += `<option value="${i-543}">${i}</option>`;
+    for(let i=currBE+5; i>=currBE-2; i--) document.getElementById('trn-year').innerHTML += `<option value="${i-543}" ${i===currBE?'selected':''}>${i}</option>`;
+
+    pop('inp-hour', 0, 23, true); pop('inp-minute', 0, 59, true);
+    pop('trn-hour', 0, 23, true); pop('trn-minute', 0, 59, true);
+
+    const thaiNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }));
+    document.getElementById('trn-day').value = thaiNow.getDate();
+    document.getElementById('trn-month').value = thaiNow.getMonth() + 1;
+    document.getElementById('trn-hour').value = String(thaiNow.getHours()).padStart(2,'0');
+    document.getElementById('trn-minute').value = String(thaiNow.getMinutes()).padStart(2,'0');
+};
+
+function updateAmphoe(provId, amphoeId, latId, lngId) {
+    const prov = document.getElementById(provId).value;
+    const sel = document.getElementById(amphoeId);
+    sel.innerHTML = '';
+    if (LOCATION_DATA[prov]) {
+        Object.keys(LOCATION_DATA[prov].amphoes).forEach(a => {
+            sel.innerHTML += `<option value="${a}">${a}</option>`;
+        });
+    }
+    updateLatLng(amphoeId, latId, lngId, prov);
+}
+
+function updateLatLng(amphoeId, latId, lngId, provOverride) {
+    const amphoeEl = document.getElementById(amphoeId);
+    const amphoe = amphoeEl.value;
+    const provId = amphoeId.replace('amphoe','province');
+    const prov = provOverride || document.getElementById(provId).value;
+    const displayId = amphoeId.replace('amphoe','latlng-display').replace('inp-','inp-').replace('trn-','trn-');
+
+    if (LOCATION_DATA[prov] && LOCATION_DATA[prov].amphoes[amphoe]) {
+        const [lat, lng] = LOCATION_DATA[prov].amphoes[amphoe];
+        document.getElementById(latId).value = lat;
+        document.getElementById(lngId).value = lng;
+        // find display
+        const dispEl = document.getElementById(amphoeId === 'inp-amphoe' ? 'inp-latlng-display' : 'trn-latlng-display');
+        if (dispEl) dispEl.innerText = `ละติจูด: ${lat} | ลองจิจูด: ${lng}`;
+    }
+}
+
+function calcLagna(hour, minute, lat) {
+    const totalMins = hour * 60 + minute;
+    const latAdj = Math.round(lat / 10);
+    const lagnaIndex = Math.floor((totalMins / 120 + latAdj) % 12);
+    return lagnaIndex;
+}
+
+function calcSunSign(day, month) {
+    const sunDates = [21,20,21,21,22,22,23,24,24,24,23,22];
+    return day >= sunDates[month-1] ? month - 1 : (month - 2 + 12) % 12;
+}
+
+function calcPlanetHouse(planetIdx, lagnaIdx) {
+    return ((planetIdx * 2 + lagnaIdx + 3) % 12);
+}
+
+function generateThaiChart() {
+    const name = document.getElementById('inp-name').value.trim();
+    if (!name) { alert('กรุณาระบุข้อมูลให้ครบถ้วน'); return; }
+
+    const d = parseInt(document.getElementById('inp-day').value);
+    const m = parseInt(document.getElementById('inp-month').value);
+    const yAD = parseInt(document.getElementById('inp-year').value);
+    const h = parseInt(document.getElementById('inp-hour').value);
+    const min = parseInt(document.getElementById('inp-minute').value);
+    const lat = parseFloat(document.getElementById('inp-lat').value) || 13.75;
+    const lng = parseFloat(document.getElementById('inp-lng').value) || 100.50;
+    const bProv = document.getElementById('inp-province').value;
+    const bAmphoe = document.getElementById('inp-amphoe').value;
+
+    const tD = parseInt(document.getElementById('trn-day').value);
+    const tM = parseInt(document.getElementById('trn-month').value);
+    const tY = parseInt(document.getElementById('trn-year').value);
+    const tH = parseInt(document.getElementById('trn-hour').value);
+    const tMin = parseInt(document.getElementById('trn-minute').value);
+    const tProv = document.getElementById('trn-province').value;
+    const tAmphoe = document.getElementById('trn-amphoe').value;
+
+    const lagnaIdx = calcLagna(h, min, lat);
+    const sunIdx = calcSunSign(d, m);
+    const rulerIdx = RULERS[lagnaIdx];
+
+    document.getElementById('out-name').innerText = name;
+    document.getElementById('out-meta').innerText = `เกิด: ${d}/${m}/${yAD+543} เวลา ${String(h).padStart(2,'0')}:${String(min).padStart(2,'0')} | ${bAmphoe} ${bProv} | จร: ${tD}/${tM}/${tY+543} ${String(tH).padStart(2,'0')}:${String(tMin).padStart(2,'0')} | ${tAmphoe} ${tProv}`;
+    document.getElementById('out-lagna').innerText = RASI_TH[lagnaIdx];
+    document.getElementById('out-lagna-en').innerText = RASI_EN[lagnaIdx];
+    document.getElementById('out-ruler').innerText = rulerIdx;
+    document.getElementById('out-ruler-house').innerText = `เจ้าลัคนา`;
+    document.getElementById('out-sun').innerText = RASI_TH[sunIdx];
+    document.getElementById('out-sun-en').innerText = RASI_EN[sunIdx];
+    document.getElementById('out-reading').innerText = READINGS[lagnaIdx];
+
+    let planetHTML = '';
+    PLANETS_TH.forEach((p, i) => {
+        const houseIdx = calcPlanetHouse(i, lagnaIdx);
+        planetHTML += `
+            <div class="planet-row">
+                <div><span class="planet-name">${p} / ${PLANETS_EN[i]}</span></div>
+                <div class="flex gap-4 items-center">
+                    <span class="opacity-50 text-xs">${RASI_TH[houseIdx]}</span>
+                    <span class="house-badge">บ้านที่ ${houseIdx+1} — ${HOUSES_TH[houseIdx]}</span>
+                </div>
+            </div>`;
+    });
+    document.getElementById('planet-list').innerHTML = planetHTML;
+
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('result-section').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
